@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0">
+		<title>HourWeb</title>
+
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- min indica que el archivo tiene el codigo minificado o comprimido. A efectos de eficiencia es mejor
+		acceder a ellos -->
+		<link rel="stylesheet" href="css/estilos.css">
+		<link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png"/>
+		<!-- Optional theme solo le da un degrqadado al boton o a otros componentes. No es necesario -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+		<script src="firebase/config.js" charset="utf-8"></script>
+	</head>
+	<!-- https://silviomoreto.github.io/bootstrap-select/examples/ combos-->
+	<body style="background-color:#e9e9e9">
+		<span id="idpage" class="4"></span>
+		<div class="container_config">
+			<header>
+				<!-- aqui disponemos nuestro menu de navegacion con un NAV
+			navbar-inverse cambiamos los colores y con navbar-static-top hacemos que se quede arriba
+			role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
+				<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<!-- boton para ocultar y mostrar menu en modo responsive-design
+						La barra de navegación responsive requiere el uso del plugin collapse de JavaScript incluido
+						en Bootstrap 3. Aquello que queda afectado por el data-toggle queda oculto o se expande según pulsemos	-->
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-hw">
+								<!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
+						de nuestras etiquetas Kinddle x ej -->
+								<span class="sr-only">
+									Desplegar / ocultar Menú
+								</span>
+								<!-- triplicamos el icono dentro del boton para reproducir las 3 lineas para 'colapsar' el contenido
+							del navbar-->
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
+							<a href="home.html" class="navbar-brand" style="font-family:arial,verdana,sans-serif; font-weight:800;">
+								HourWeb
+							</a>
+							<a href="home.html" class="navbar-brand">
+								<span class="glyphicon glyphicon-home"></span>
+							</a>
+						</div>
+						<!-- Inicia menu -->
+						<div class="collapse navbar-collapse" id="navegacion-hw">
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<!-- no enlazamos con nada porque es para desplegar el dropdown -->
+									<!-- es la unica clase que con la palabra caret me aniade la flecha para abajo del boton -->
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="nav_nombre">
+										
+										<!-- encerrar nombre en etiqueta strong -->
+									</a>
+									<ul class="dropdown-menu" role="menu" id="nav_lista">
+										<li>
+											<a href="configuracion.html" class="editar_perfil">Configuración de Perfil</a>
+										</li>
+										<li id="salir">
+											<a href="#" class="editar_perfil">Salir
+												<span class="glyphicon glyphicon-off"></span>
+											</a>
+										</li>
+									</ul>
+								</li>
+								<!-- fin dropdown -->
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-info-sign icon_style"></span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+			<!-- fin nav-->
+			<br>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<h2>
+							<span class="glyphicon glyphicon-user text-primary"></span>
+							<span class="text-primary text-lg-left">Edición de Perfil</span>
+						</h2>
+						<hr class="" style="color:white; border:1px solid rgb(53, 113, 150)">
+					</div>
+				</div>
+
+				<div class="row">
+					<br><br>
+					<!-- EDICION DEL PERFIL -->
+					<div class="col-xs-12 col-sm-4 col-lg-3">
+
+						<div class="perfil_config">
+							<img class="img-responsive img-rounded" alt="sin foto" id="config_foto"/>
+							<label class="fileContainer btn-block btn btn-success btn-xs" style="font-weight:bold">
+								Cambiar Imagen
+								<input type="file" class="btn btn-primary" accept="image/*" id="cambiar_foto"/>
+							</label>
+
+						</div>
+					</div>
+					<div class="col-xs-12 col-md-8 col-lg-9 bg-info">
+						<div>
+							<h3 style="font-weight:bold;">Información Personal</h3>
+						</div>
+						<form class="form-inline">
+							<!-- se agruparan en linea -->
+							<div class="form-group">
+								<input class="form-control input_nombre" id="config_nombre" type="text" placeholder="Cambiar Nombre" required>
+
+								<input class="form-control input_apellido" id="config_apellido" type="text" placeholder="Cambiar Apellidos" required>
+
+								<button type="button" class="btn btn-info btn_datos" id="cambiar_datos">
+									<strong>Cambiar Datos</strong>
+								</button>
+							</div>
+							<!-- nombre centro -->
+							<div class="form-group">
+								<div class="input-group">
+									<input class="form-control input_centro" id="config_centro" type="text" placeholder="Nombre Centro" required>
+								</div>
+								<button type="button" class="btn btn-info" id="cambiar_centro">
+									<strong>Cambiar Centro</strong>
+								</button>
+								<div style="height:10px;"></div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/tooltip.js"></script>
+		<script src="firebase/database.js" charset="utf-8"></script>
+		<script src="firebase/user.js" charset="utf-8"></script>
+		<script src="firebase/storage.js" charset="utf-8"></script>
+		<script src="firebase/controlador.js" charset="utf-8"></script>
+	</body>
+</html>

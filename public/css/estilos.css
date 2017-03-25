@@ -1,0 +1,770 @@
+/* NAV */
+.navbar {
+    margin-bottom: 0;
+}
+a .navbar_brand {
+    font-family: 'Tahoma', arial, sans-serif;
+    font-weight: bold;
+}
+a.editar_perfil:hover{
+  background-color: #353437;
+  color:white;
+  font-family:'Tahoma',sans-serif;
+  font-weight:bold;
+}
+.icon_style{
+  align-items: stretch;
+  color:#5f97eb;
+}
+/* TABS */
+
+li>a[role=tab] {
+    font-family: "Verdana", Georgia, Serif;
+    font-size: 15px;
+    font-weight: 900;
+    color: black;
+    border: 3px solid orange;
+    background-color: rgb(232, 127, 17);
+    margin-bottom: 5px;
+}
+
+/* INDEX */
+/*boton Entrar */
+.btn_entrar:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    transition: background-color 2000ms linear;
+    -webkit-transition: background-color 2000ms linear;
+    -ms-transition: background-color 2000ms linear;
+}
+kbd {
+    background-color: black;
+    font-size: 15px;
+}
+/* fondo del INDEX */
+/*.jumbotron {
+    font-family: 'Verdana', sans-serif;
+    font-weight: bolder;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #141120;
+}*/
+
+/* text-shadow:
+     1. horizontal a dcha si es positivo
+	   2. positivo hacia abajo
+	   3. difuminado intensidad, cuanto MÁS valor menos intenso  */
+
+.titulo_web {
+    text-shadow: 7px 1px 5px #7fc1d1;
+    -webkit-text-shadow: 7px 1px 5px #7fc1d1;
+    /* chrome */
+    -moz-text-shadow: 7px 1px 5px #7fc1d1;
+    /* mozilla */
+    -o-text-shadow: 7px 1px 5px #7fc1d1;
+    /* opera */
+    -ms-text-shadow: 7px 1px 5px #7fc1d1;
+    /* microsoft explorer*/
+    font-size: 100px;
+    color: white;
+    margin-top: 20px;
+}
+.subtitulo_web {
+    text-shadow: 5px 1px 5px #7fc1d1;
+    -webkit-text-shadow: 5px 1px 5px #7fc1d1;
+    /* chrome */
+    -moz-text-shadow: 5px 1px 5px #7fc1d1;
+    /* mozilla */
+    -o-text-shadow: 5px 1px 5px #7fc1d1;
+    /* opera */
+    -ms-text-shadow: 5px 1px 5px #7fc1d1;
+    /* microsoft explorer*/
+    font-size: 25px;
+    color: white;
+}
+/* COMBOS RESERVAR  */
+
+#combo_tipo_reserva, #combo_fecha {
+    font-family: 'Arial', verdana, sans-serif;
+    width: 250px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    text-align: right;
+}
+
+.opcion_combo {
+    font-family: 'Arial', verdana, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+}
+
+.ultima_columna {
+    width: 20px;
+}
+hr.estilo_hr {
+    border: 1px;
+    border-top: solid rgb(255, 255, 255);
+    border-bottom: 1px solid #333;
+    height: 0;
+}
+/* tablas */
+
+/*table.tabla_admin>tr, td {
+    background-color: #dbf2f2;
+}*/
+td, th {
+    text-align: center;
+}
+table.tabla_mi_horario>thead,tbody>tr,td{
+  color:black;
+  border:1px solid rgb(238, 120, 120);
+  max-width: 100px;
+}
+/* aviso de validacion de los logins */
+
+#error_reg_admin, #error_reg_user {
+    font-family: "Verdana", Georgia, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(233, 17, 24);
+}
+/* hacemos referencia a inputs de los ids de los pass */
+
+#pass1_u, #pass2_u, #pass1, #pass2, #nombre_admin, #apellido_admin, #email_entrar, #pass_entrar, #nombre_centro, #email_admin, #email_user, #apellido_user, #nombre_user {
+    border: 1px solid #0641f1;
+    background-color: #b3e3e3;
+    width: 230px;
+    font-family: "Verdana", Georgia, sans-serif;
+    font-weight: 600;
+}
+#id_centro {
+    font-family: "Tahoma", Georgia, sans-serif;
+    font-weight: 600;
+}
+/* login admin asignar horas */
+.horas {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-family: "Tahoma", Georgia, sans-serif;
+    font-size: 15px;
+}
+/* damos estilos a los placeholders y controlamos la compatibilidad para los
+distintos navegadores web*/
+input::-webkit-input-placeholder {
+    color: rgb(23, 18, 20);
+    font-family: "Verdana", Georgia, sans-serif;
+    font-weight: bold;
+}
+input:-moz-placeholder {
+    color: rgb(23, 18, 20);
+    font-family: "Verdana", Georgia, sans-serif;
+    font-weight: bold;
+}
+/* microsoft explorer*/
+input:-ms-input-placeholder {
+    color: rgb(23, 18, 20);
+    font-family: "Verdana", Georgia, sans-serif;
+    font-weight: bold;
+}
+
+/* HOME perfil y listas */
+ul.list-group>li.list-group-item.lista_hora:hover {
+  box-shadow: 10px 10px 5px #888888;
+}
+div.round1 {
+  padding: 20px 19px;
+  padding-right: 20px;
+  padding-left: 19px;
+  border-radius: 34px;
+	background-image:
+    radial-gradient(circle at 0 0, rgba(204,0,0,0) 14px, rgb(179, 198, 244) 15px),
+    radial-gradient(circle at 100% 0, rgba(204,0,0,0) 14px,rgb(179, 198, 244)  15px),
+    radial-gradient(circle at 100% 100%, rgba(204,0,0,0) 14px, rgb(179, 198, 244)  15px),
+    radial-gradient(circle at 0 100%, rgba(204,0,0,0) 14px, rgb(179, 198, 244)  15px);
+}
+article.foto_izquierda {
+   color:#ffffff;
+   font-weight: 700;
+   font-family: 'Tahoma', arial, sans-serif;
+   border: 2px solid #beb6c3;
+   border-bottom: 3px solid #beb6c3;
+   box-shadow:  0px 1px  #888888;
+   text-align: center;
+   background-color: rgb(8, 135, 175);
+   margin-bottom: 20px;
+   height: 50%;
+}
+.mostrar_centro{
+  font-size: 20px;
+  color:white;
+  font-weight:bold;
+  border: 1px solid grey;
+}
+h3.listas.sombra{
+  text-shadow: 1px 1px 2px rgb(5, 4, 41);
+  color:rgb(1, 5, 19);
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+.titulo_reservas{
+  text-shadow: 1px 1px 2px rgb(5, 4, 41);
+  color:rgb(1, 5, 19);
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+/* listas home*/
+ul.list-group>li.col-md-25 {
+    background-color: #531619;
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+    align-content: center;
+}
+
+ul.list-group>li.list-group-item.lista_reservas {
+    background-color: rgb(1, 91, 99);
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    height: 100px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    align-content: center;
+}
+
+ul.list-group>li.list-group-item.lista_recurso {
+    background-color: rgb(1, 91, 99);
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    font-weight: bold;
+    height: 50px;
+    width: 290px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    text-align: center;
+    align-content: center;
+}
+
+ul.list-group>li.list-group-item.lista_hora {
+    background-color: rgb(1, 91, 99);
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    height: 80px;
+    width: 130px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align:center;
+    align-content: center;
+}
+ul.list-group>li.list-group-item.titulo_lista_hora{
+  color: white;
+  font-family: 'Tahoma', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  height: 80px;
+  width: 130px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding-top: 13px;
+  text-align:center;
+  align-content: center;
+  background-color:skyblue;
+}
+.input_recurso{
+  margin-top:20px;
+  margin-bottom: 23px;
+  width: 400px;
+  font-family:'Verdana',sans-serif;
+  font-weight:bold;
+  align-content:center;
+}
+
+ul.list-group>li.list-group-item.lista_administrador {
+    background-color: #015b63;
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    height: 50px;
+    width: 100%;
+
+    margin-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    align-content: center;
+}
+
+ul.list-group>li.list-group-item.lista_permanente {
+    background-color: #015b63;
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    align-content: center;
+    text-align: center;
+    /*aniadimos scroll a la listas en auto para que aparezcan si proccede*/
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+ul.list-group>li.list-group-item.lista_administrador:hover {
+  background-color: rgb(250, 233, 227);
+  text-decoration: line-through;
+  color:black;
+  box-shadow: 10px 10px 5px #888888;
+}
+ul.list-group>li.list-group-item.lista_permanente:hover {
+  background-color: rgb(250, 233, 227);
+  text-decoration: line-through;
+  text-emphasis: black;
+  color:black;
+  box-shadow: 10px 10px 5px #888888;
+}
+/* pseudoclase hover que tachara el texto cuando pasemos el cursor por la lista
+ , cambiara la fuente y el color, tambien mostrara una imagen de fondo*/
+
+li.list-group-item.dias:hover {
+    font-family: 'Verdana', sans-serif;
+    color: black;
+    text-decoration: line-through;
+    background-color: white;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+/* INPUTS DE CONFIGURACION DE PERFIL */
+input.input_nombre, .input_apellido,.btn_datos{
+  font-weight: bold;
+  font-family: 'Tahoma', sans-serif;
+  margin-bottom: 10px;
+}
+input.input_centro{
+  font-weight: bold;
+  font-family: 'Tahoma', sans-serif;
+}
+/*AÑADIR 5 COLUMNAS EXACTAS DENTRO DEL TAB Mis Reservas */
+/* xs -768px // sm +768px-992px // md +992px-1200px // lg +1200px*/
+
+/* media Queies para dispositivos a partir de 1200px listas html home*/
+
+@media (min-width: 1200px) {
+    .col-lg-5 {
+        width: 20%;
+    }
+    /* cambiamos a 5 columnas en tamanio lg */
+    ul.list-group>li.dias {
+        background-color: #34495e;
+        color: white;
+        font-family: 'Tahoma', sans-serif;
+        text-align: center;
+        font-weight: 700;
+        height:90px;
+        width:192px;
+        margin-bottom: 4px;
+        align-content: center;
+    }
+    ul.list-group>li.list-group-item.lista_recurso {
+        background-color: rgb(1, 91, 99);
+        color: white;
+        font-family: 'Tahoma', sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+        height: 80px;
+        width: 190px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        margin-right: 0px;;
+        padding-top: 17px;
+        text-align: center;
+        align-content: center;
+    }
+    ul.list-group>li.list-group-item.lista_hora {
+        background-color: rgb(1, 91, 99);
+        color: white;
+        font-family: 'Tahoma', sans-serif;
+        font-weight: bold;
+        font-size: 15px;
+        height: 80px;
+        width: 130px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        margin-left: 0px;
+        padding: 25px;
+        text-align:center;
+        align-content: center;
+    }
+    ul.list-group>li.list-group-item.titulo_lista_hora{
+      color: white;
+      font-family: 'Tahoma', sans-serif;
+      font-weight: bold;
+      font-size: 20px;
+      height: 80px;
+      width: 130px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      padding-top: 13px;
+      text-align:center;
+      align-content: center;
+      background-color:skyblue;
+    }
+}
+/* para dispositivos hasta 1200px listas html home*/
+
+@media (max-width: 1200px) {
+    .col-md-25 {
+        width: 100%;
+    }
+    ul.list-group>li.dias {
+        background-color: #34495e;
+        color: white;
+        font-family: 'Tahoma', sans-serif;
+        text-align: center;
+        font-weight: 700;
+        height: 70px;
+        width: 100%;
+        align-content: center;
+        margin-bottom: 8px;
+    }
+    ul.list-group>li.dias:hover{
+      background-color: white;
+      box-shadow: 10px 10px 5px #888888;
+
+    }
+}
+@media (max-width:359px){
+  article.foto_izquierda {
+    border-right: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    color:white;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Tahoma', arial, sans-serif;
+    border: 2px solid #ffffff;
+    text-align: center;
+    background-color: rgb(8, 135, 175);
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width:351px) and (max-width:520px){
+article.foto_izquierda {
+      background-color: rgb(8, 135, 175);
+      color:white;
+      font-size: 18px;
+      border-right: 1px solid #ffffff;
+      border-top: 1px solid #ffffff;
+      text-align: center;
+      margin-bottom: 20px;
+      margin-left: 20%;
+      margin-right: 20%;
+      width: 60%;
+      height: 50%;
+  }
+}
+@media only screen and (min-width:465px) and (max-width:644px){
+  a.pestanias_home{
+    width: 150px;
+    font-weight: bold;
+    font-family: 'Verdana',sans-serif;
+    background-color: yellow;
+  }
+}
+@media only screen and (min-width:521px) and (max-width:768px){
+article.foto_izquierda {
+      background-color: rgb(8, 135, 175);
+      color:white;
+      font-size: 18px;
+      border-right: 1px solid #ffffff;
+      border-top: 1px solid #ffffff;
+      text-align: center;
+      margin-bottom: 20px;
+      margin-left: 25%;
+      margin-right: 25%;
+      width: 50%;
+      height: 50%;
+  }
+}
+/* ENTRE 350 y 768px ESTA INDETERMINADO POR BOOTSTRAP !!! */
+@media only screen and (min-width:343px) and (max-width:768px){
+
+  .perfil_config{
+      max-width: 50%;
+      max-height: 25%;
+      align-content: center;
+      padding-left: 0px;
+      padding-bottom: 15px;
+  }
+  .titulo_web {
+      text-shadow: 6px 1px 5px #7fc1d1;
+      -webkit-text-shadow: 6px 1px 5px #7fc1d1;
+      /* chrome */
+      -moz-text-shadow: 6px 1px 5px #7fc1d1;
+      /* mozilla */
+      -o-text-shadow: 6px 1px 5px #7fc1d1;
+      /* opera */
+      -ms-text-shadow: 6px 1px 5px #7fc1d1;
+      /* microsoft explorer*/
+      margin-top: 20px;
+      font-size: 75px;
+      color: white;
+  }
+  .subtitulo_web {
+      text-shadow: 5px 1px 5px #7fc1d1;
+      -webkit-text-shadow: 5px 1px 5px #7fc1d1;
+      /* chrome */
+      -moz-text-shadow: 5px 1px 5px #7fc1d1;
+      /* mozilla */
+      -o-text-shadow: 5px 1px 5px #7fc1d1;
+      /* opera */
+      -ms-text-shadow: 5px 1px 5px #7fc1d1;
+      /* microsoft explorer*/
+      font-size: 20px;
+      color: white;
+      margin-top:10px;
+  }
+}
+/* true si cumple con ambos valores del tamanio de la pantalla */
+@media only screen and (min-width:500px) and (max-width:992px){
+  ul.list-group>li.list-group-item.lista_recurso {
+      background-color: rgb(1, 91, 99);
+      color: white;
+      font-family: 'Tahoma', sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      height: 70px;
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      margin-left: 40px;
+      padding-top: 17px;
+      text-align: center;
+      align-content: center;
+  }
+  ul.list-group>li.list-group-item.lista_hora {
+      background-color: rgb(1, 91, 99);
+      color: white;
+      font-family: 'Tahoma', sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      height: 70px;
+      width: 200px;
+      margin-left: 30px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      padding: 20px;
+      text-align:center;
+      align-content: center;
+  }
+  ul.list-group>li.list-group-item.titulo_lista_hora{
+    color: white;
+    font-family: 'Tahoma', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    height: 70px;
+    width: 200px;
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 20px;
+    text-align:center;
+    align-content: center;
+    background-color:skyblue;
+  }
+}
+
+/* para pantallas xs xtrasmall*/
+
+@media(max-width: 768px) {
+
+    table {
+        align-content: center;
+    }
+    ul.list-group>li.list-group-item.lista_recurso {
+        background-color: rgb(1, 91, 99);
+        color: white;
+        font-family: 'Tahoma', sans-serif;
+        font-weight: bold;
+        font-size: 12px;
+        height: 80px;
+        width: 155px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding-top: 17px;
+        text-align: center;
+        align-content: center;
+    }
+    ul.list-group>li.list-group-item.lista_hora {
+        background-color: rgb(1, 91, 99);
+        color: white;
+        font-family: 'Tahoma', sans-serif;
+        font-weight: bold;
+        font-size: 15px;
+        height: 80px;
+        width: 120px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+        padding: 25px;
+        text-align:center;
+        align-content: center;
+
+    }
+    ul.list-group>li.list-group-item.titulo_lista_hora{
+      color: white;
+      font-family: 'Tahoma', sans-serif;
+      font-weight: bold;
+      font-size: 20px;
+      height: 80px;
+      width: 120px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      margin-left: 20px;
+      text-align:center;
+      align-content: center;
+      background-color:skyblue;
+    }
+    .input_nombre,.input_apellido,.btn_datos,.input_centro{
+      margin-bottom: 10px;
+    }
+}
+@media(max-width: 1000px) {
+  .input_recurso{
+    max-width: 230px;
+    margin-bottom: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+}
+/* SWITCH */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    /**/
+    height: 18px;
+    /**/
+}
+/* Hide default HTML checkbox */
+.switch input {
+    display: none;
+}
+/* slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    top:2px;
+    height: 14px;
+    /*-------*/
+    width: 14px;
+    /*----*/
+    left: 2px;
+    /*------*/
+    bottom: 2px;
+    /*------------*/
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(16px);
+    /**/
+    -ms-transform: translateX(16px);
+    /**/
+    transform: translateX(16px);
+    /**/
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* FILES CSS */
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+
+/* Example stylistic flourishes */
+
+.fileContainer {
+    background: blue;
+    border-radius: .5em;
+    float: left;
+    padding: .5em;
+}
+
+.fileContainer [type=file] {
+    cursor: pointer;
+}
+/*colores*/
+/*#34495e*/
+/* aside #c0392b */

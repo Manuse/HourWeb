@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0">
+        <title>HourWeb</title>
+        <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <!-- min indica que el archivo tiene el codigo minificado o comprimido. A efectos de eficiencia es mejor
+		    acceder a ellos -->
+        <link rel="stylesheet" href="css/estilos.css">
+        <!-- Optional theme solo le da un degrqadado al boton o a otros componentes. No es necesario -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+        <script src="firebase/config.js" charset="utf-8"></script>
+    </head>
+
+    <body style="background-color:#e9e9e9">
+        <div>
+            <span id="idpage" class="5"></span>
+            <header>
+                <!-- aqui disponemos nuestro menu de navegacion con un NAV
+			          navbar-inverse cambiamos los colores y con navbar-static-top hacemos que se quede arriba
+			         role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
+                <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <!-- boton para ocultar y mostrar menu en modo responsive-design
+						                La barra de navegación responsive requiere el uso del plugin collapse de JavaScript incluido
+						                en Bootstrap 3. Aquello que queda afectado por el data-toggle queda oculto o se expande según pulsemos	-->
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-hw">
+                                <!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
+						                    de nuestras etiquetas Kinddle x ej -->
+                                <span class="sr-only">
+                                    Desplegar / ocultar Menú
+                                </span>
+                                <!-- triplicamos el icono dentro del boton para reproducir las 3 lineas para 'colapsar' el contenido
+							                  del navbar-->
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
+                            <a href="home.html" class="navbar-brand" style="font-weight:800;">
+                                HourWeb
+                            </a>
+                            <a href="home.html" class="navbar-brand">
+                                <span class="glyphicon glyphicon-home"></span>
+                            </a>
+                        </div>
+
+                        <!-- Inicia menu -->
+                        <div class="collapse navbar-collapse" id="navegacion-hw">
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li class="dropdown">
+                                    <!-- no enlazamos con nada porque es para desplegar el dropdown -->
+                                    <!-- es la unica clase que con la palabra caret me aniade la flecha para abajo del boton -->
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="nav_nombre">
+                                        <!-- encerrar nombre en etiqueta strong -->
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" id="nav_lista">
+                                        <li>
+                                            <a href="configuracion.html" class="editar_perfil">Configuración de Perfil</a>
+                                        </li>
+                                        <li id="salir">
+                                            <a href="#" class="editar_perfil">Salir
+                                                <span class="glyphicon glyphicon-off"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- fin dropdown -->
+                                <li>
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-info-sign icon_style"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- fin nav-->
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div role="tabpanel">
+                            <ul class="nav nav-tabs" role="tablist" style="padding-top:40px;">
+                                <li role="presentation" style="width:257px">
+                                    <a href="#seccion1" class="active pestanias" aria-controls="seccion1" data-toggle="tab" role="tab">RECURSOS
+                                    </a>
+                                </li>
+                                <li role="presentation" style="width:257px">
+                                    <a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab" class="pestanias">RESERVAS PERMANENTES
+                                    </a>
+                                </li>
+                                <li role="presentation" style="width:257px">
+                                    <a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab" class="pestanias">
+                                        USUARIOS
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- TABS -->
+                            <!-- EL CONTENIDO DE CADA TAB IRA DENTRO DE UN DIV DE LA CLASE tab-content -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" role="tabpanel" id="seccion1">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <div class="" style="margin-top:30px;margin-bottom:20px;"></div>
+                                                <div class="input-group-addon addon_recurso" style="background-color:skyblue;">
+                                                    <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
+
+                                                    <div class="btn-group">
+                                                        <select class="btn btn-lg btn-success" name="combo_fecha" id="combo_tipo" style="margin-top:20px;">
+                                                            <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
+                                                            <option class="opcion_combo" value="clase">CLASE</option>
+                                                            <option class="opcion_combo" value="objeto">OBJETO</option>
+                                                        </select>
+                                                        <button type="button" class="btn btn-lg btn-info btn-inline" name="guardar_recurso" id="guardar_recurso" style="margin-top:20px;">
+                                                            <span class="glyphicon glyphicon-floppy-save"></span>
+                                                            <span class="hidden-xs hidden-sm">
+                                                                Guardar</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                                <ul class="list-group" id="id_recurso" style="margin-top:30px;">
+                                                    <!-- list-group-item elimina los puntos por default de la etiqueta ul -->
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" role="tabpanel" id="seccion2">
+                                    <div class="row" style="margin-bottom:20px;">
+                                        <div class="col-xs-9 col-md-10">
+                                            <h3 class="listas_administrador">Recursos Permanentes</h3>
+                                        </div>
+                                        <!-- Boton hidden-sm las letras del boton-->
+                                        <div class="col-xs-3 col-md-2">
+                                            <button type="button" class="btn btn-info btn-lg" id="guardar_reserva" style="margin-top:7px;">
+                                                <span class="glyphicon glyphicon-floppy-save"></span>
+                                                <span class="hidden-xs hidden-sm">
+                                                    Guardar</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="border:1px  groove #beb6c3; background-color:#d8dde2; padding-bottom:10px;">
+                                        <div class="col-md-3">
+                                            <br>
+                                            <h3 class="listas" style="font-weight:bold;">USUARIO</h3>
+                                            <select class="form-control pull-right btn-primary" name="combo_fecha" id="combo_usuario">
+                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <br>
+                                            <h3 class="listas" style="font-weight:bold;">RECURSOS</h3>
+                                            <select class="form-control pull-right btn-primary" name="combo_fecha" id="combo_recurso">
+                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
+                                               
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <br>
+                                            <h3 class="listas" style="font-weight:bold;">DÍAS</h3>
+                                            <select class="form-control pull-right btn-primary" name="combo_dia" id="combo_dia">
+                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
+                                                <option class="opcion_combo" value="1">Lunes</option>
+                                                <option class="opcion_combo" value="2">Martes</option>
+                                                <option class="opcion_combo" value="3">Miércoles</option>
+                                                <option class="opcion_combo" value="4">Jueves</option>
+                                                <option class="opcion_combo" value="5">Viernes</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <br>
+                                            <h3 class="listas" style="font-weight:bold;">HORAS</h3>
+                                            <select class="form-control pull-right btn-primary" name="combo_horas" id="combo_horas">
+                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->                                               
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="border:1px solid #beb6c3; background-color:#d8dde2;">
+                                        <div class="col-md-12" style="margin-top:50px;">
+                                            <ul class="list-group" id="lista_permanentes">
+                                                <!-- list-group-item elimina los puntos por default de la etiqueta ul -->
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" role="tabpanel" id="seccion3">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h3 class="listas">Usuarios</h3>
+
+                                            <table class="table table-bordered  table-responsive tabla_admin">
+                                                <!-- la clase table extiende la tabla y separa cada fila con una línea.
+                              								 table-hover cambia el color o resalta cada la línea al pasar el mouse.
+                              								 table-condensed comprime el tamanio de la tabla
+                              								 table-responsive hace responsive la tabla -->
+                                                <tbody id="tabla_usuarios">
+                                               
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-latest.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/tooltip.js"></script>
+        <script src="firebase/database.js" charset="utf-8"></script>
+        <script src="firebase/user.js" charset="utf-8"></script>
+        <script src="firebase/controlador.js" charset="utf-8"></script>
+    </body>
+</html>
