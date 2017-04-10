@@ -1,0 +1,125 @@
+<br>
+<div class="container-fluid">
+			<div class="row">
+				<!-- FOTO Y DATOS DE USUARIO -->
+				<article class="col-xs-12 col-sm-3 col-md-2 col-lg-2 foto_izquierda">
+					<img class="img-responsive img-rounded" alt="sin foto" id="foto_home" style="height:50%;width:90%; margin-left:5%; margin-right:5%; margin-top:7px; margin-bottom:10px;"/>
+					<p id="foto_nombre" style="padding-left: 1px; padding-right: 1px;"></p>
+					<p id="foto_centro"></p>
+					<p id="foto_codigo"></p>
+				</article>
+				<br><br>
+				<div class="col-xs-12 col-sm-9 col-md-10 col-lg-10">
+					<div role="tabpanel">
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation">
+								<!-- la primera tab le agregamos la clase active para señalarla por defecto tambien al primer
+								 panel. Ingresaremos el ID correspondiente en aria-controls, no es necesario referirlo con #  -->
+								<a href="#seccion1" class="active pestanias_home" aria-controls="seccion1" data-toggle="tab" role="tab">Mis Reservas
+								</a>
+							</li>
+							<li role="presentation">
+								<a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab" class="pestanias_home">Mi Horario
+								</a>
+							</li>
+							<li role="presentation">
+								<a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab" class="pestanias_home">
+									Mis Mensajes
+									<span class="badge success">50</span>
+								</a>
+							</li>
+						</ul>
+						<!-- TABS -->
+						<!-- EL CONTENIDO DE CADA TAB IRA DENTRO DE UN DIV DE LA CLASE tab-content -->
+						<div class="tab-content">
+							<div class="tab-pane active" role="tabpanel" id="seccion1">
+								<div style="margin-top:10px; margin-bottom:40px;">
+									<button type="button" name="button" id="ir_reserva" class="btn btn-info btn-lg pull-right">RESERVAR</button>
+									<h3 class="titulo_reservas">
+										<u>LISTAS DE RESERVAS</u>
+									</h3>
+								</div>
+								<div class="round1">
+									<div class="row">
+										<!--lunes-->
+										<div class="col-md-25 col-lg-5">
+											<h3 class="listas sombra">LUNES</h3>
+											<ul class="list-group" id="lunes">
+												
+											</ul>
+										</div>
+
+										<!--martes-->
+										<div class="col-md-25 col-lg-5">
+											<h3 class="listas sombra">MARTES</h3>
+											<ul id="martes" class="list-group">
+												
+											</ul>
+										</div>
+
+										<!--miercoles-->
+										<div class="col-md-25 col-lg-5">
+											<h3 class="listas sombra">MIÉRCOLES</h3>
+											<ul id="miercoles" class="list-group">
+												
+											</ul>
+										</div>
+
+										<!--jueves-->
+										<div class="col-md-25 col-lg-5">
+											<h3 class="listas sombra">JUEVES</h3>
+											<ul id="jueves" class="list-group">
+												
+											</ul>
+										</div>
+
+										<!-- viernes-->
+										<div class="col-md-25 col-lg-5">
+											<h3 class="listas sombra">VIERNES</h3>
+											<ul id="viernes" class="list-group">
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane" role="tabpanel" id="seccion2">
+									<div class="col-xs-12">
+										<table class="table table-bordered table-responsive tabla_mi_horario">
+											<thead>
+												<tr class="bg-info">
+													<th>Horas</th>
+													<th>Lunes</th>
+													<th>Martes</th>
+													<th>Miercoles</th>
+													<th>Jueves</th>
+													<th>Viernes</th>
+												</tr>
+											</thead>
+											<tbody id="tabla_horarios">
+												
+											</tbody>
+										</table>
+									</div>
+									<div style="float:right">
+										<button type="button" class="btn btn-lg btn-info" id="cambiar_horario">Cambiar</button>
+										<button type="button" class="btn btn-lg btn-info" id="guardar_horario" style="display:none">Guardar</button>
+									</div>
+							</div>
+
+							<div class="tab-pane" role="tabpanel" id="seccion3">
+								<h3>Listas??</h3>
+								
+
+								<ol>
+									<li>lista</li>
+									<li>lista</li>
+									<li>lista</li>
+									<li>lista</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>

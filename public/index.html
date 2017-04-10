@@ -1,222 +1,101 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" ng-app="app">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0">
 		<title>HourWeb</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png"/>
-		<!-- min indica que el archivo tiene el codigo minificado o comprimido. A efectos de eficiencia es mejor
-		acceder a ellos -->
 		<link rel="stylesheet" href="css/estilos.css">
+		<!-- fa-icons-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+
+		<!-- Optional theme solo le da un degrqadado al boton o a otros componentes. No es necesario -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 		<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+		<script src="firebase/config.js" charset="utf-8"></script>
+	</head>
+	<!-- https://silviomoreto.github.io/bootstrap-select/examples/ combos-->
+	<body style="background-color:#e9e9e9">
+		<span id="idpage" class="3"></span>
+		<div class="">
+			<header>
+				<!-- aqui disponemos nuestro menu de navegacion con un NAV
+			navbar-inverse cambiamos los colores y con navbar-static-top hacemos que se quede arriba
+			role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
+				<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<!-- boton para ocultar y mostrar menu en modo responsive-design
+						La barra de navegación responsive requiere el uso del plugin collapse de JavaScript incluido
+						en Bootstrap 3. Aquello que queda afectado por el data-toggle queda oculto o se expande según pulsemos	-->
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion-hw">
+								<!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
+								de nuestras etiquetas Kinddle x ej -->
+								<span class="sr-only">
+									Desplegar / ocultar Menú
+								</span>
+								<!-- triplicamos el icono dentro del boton para reproducir las 3 lineas para 'colapsar' el contenido
+							del navbar-->
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
+							<a href="home.html" class="navbar-brand" style="font-family:arial,verdana,sans-serif; font-weight:bold;">
+								HourWeb
+							</a>
+							<a href="home.html" class="navbar-brand">
+								<span class="glyphicon glyphicon-home"></span>
+							</a>
+						</div>
+
+						<!-- Inicia menu -->
+						<div class="collapse navbar-collapse" id="navegacion-hw">
+							<ul class="nav navbar-nav navbar-right">
+
+								<li class="dropdown">
+									<!-- no enlazamos con nada porque es para desplegar el dropdown -->
+									<!-- es la unica clase que con la palabra caret me aniade la flecha para abajo del boton -->
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="nav_nombre">
+										
+										<!-- encerrar nombre en etiqueta strong -->
+									</a>
+									<ul class="dropdown-menu" role="menu" id="nav_lista">
+										<li>
+											<a href="configuracion.html" class="editar_perfil">Configuración de Perfil</a>
+										</li>
+										<li id="salir">
+											<a href="#" class="editar_perfil">Salir
+												<span class="glyphicon glyphicon-off"></span>
+											</a>
+										</li>
+									</ul>
+								</li>
+								<!-- fin dropdown -->
+								<li>
+									<a href="#">
+										<span class="fa fa-info-circle" style="font-size:25px; color:rgb(107, 156, 208)"></span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</header>
+			<!-- fin nav-->
+
+			<div ui-view>
+                
+            </div>
+		</div>
 		<script src="https://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="firebase/config.js" charset="utf-8"></script>
-
-	</head>
-	<body style="background-image: url('imagenes/fondo_azulejo.jpg')">
-		<span id="idpage" class="1"></span>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-					<p class="titulo_web">HourWeb</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<p class="subtitulo_web">nuestra web de reservas de recursos escolares</p>
-					<hr class="estilo_hr">
-				</div>
-			</div>
-
-			<a href="#ventana_entrar" class="btn btn-default btn-lg btn_entrar" data-toggle="modal">Entrar</a>
-
-			<!-- encierro los botones en un btn-group para unirlos correctamente-->
-			<div class="btn-group btn-group-lg pull-right">
-				<a href="#ventana_admin" class="btn btn-primary btn-lg" data-toggle="modal">Registro como Administrador</a>
-				<a href="#ventana_user" class="btn btn-info btn-lg" data-toggle="modal">Registro como Usuario</a>
-			</div>
-		</div>
-
-		<!-- FORMULARIOS LOGIN Y ENTRADA EN LA WEB -->
-		<!-- FORMULARIO LOGIN ADMINISTRADOR -->
-		<div class="modal fade" id="ventana_admin" aria-hidden="true" data-backdrop="false" role="dialog">
-			<div class="modal-dialog">
-				<!-- Contenido de toda la ventana header, body, footer-->
-				<div class="modal-content">
-
-					<!-- Header de la ventana -->
-					<div class="modal-header">
-						<button type="button" class="close btn-info" data-dismiss="modal" aria-hidden="true" id="cancela_admin">
-							<span>Cancelar
-							</span>&times;</button>
-						<h4 class="modal-title">
-							<span >
-								<strong>Registro Administrador</strong>
-							</span>
-						</h4>
-					</div>
-
-					<div class="modal-body">
-						<form class="form-inline">
-							<!-- se agruparan en linea -->
-							<div class="form-group">
-								<input class="form-control form_nombre" id="nombre_admin" type="text" placeholder="Nombre" required>
-								<br><br>
-								<input class="form-control form_apellido" id="apellido_admin" type="text" placeholder="Apellidos" required>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="email_admin" type="email" placeholder="Correo" required>
-								</div>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="pass1" type="password" placeholder="Password" required>
-									<br><br>
-									<input class="form-control" id="pass2" type="password" placeholder="Confirmar Password" required>
-								</div>
-							</div>
-							<br><br>
-							<!-- nombre centro -->
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="nombre_centro" type="text" placeholder="Nombre Centro" required>
-									<br><br>
-									<label class="horas">
-										Elija el número de horas lectivas
-									</label>
-									<input class="form-control" id="id_horas" type="number" style="width:50px" name="horas" min="2" max="8" value="2">
-								</div>
-							</div>
-						</form>
-					</div>
-					<br>
-					<div class="modal-footer">
-						<p id="error_reg_admin"></p>
-						<button type="button" class="btn btn-lg btn-info" name="button" id="registrar_admin">
-							<strong>Registrar</strong>
-						</button>
-					</div>
-
-				</div>
-				<!-- fin modal-content -->
-			</div>
-		</div>
-
-		<!-- FORMULARIO LOGIN USUARIO-->
-		<div class="modal fade" id="ventana_user" aria-hidden="true" data-backdrop="false" role="dialog">
-			<div class="modal-dialog">
-				<!-- Contenido de toda la ventana -->
-				<div class="modal-content">
-					<!-- Header de la ventana -->
-					<div class="modal-header">
-						<button type="button" class="close btn-info" data-dismiss="modal" aria-hidden="true" id="cancela_user">
-							<span>Cancelar
-							</span>&times;
-						</button>
-						<h4 class="modal-title">
-							<span >
-								<strong>Registro Usuario</strong>
-							</span>
-						</h4>
-					</div>
-
-					<div class="modal-body">
-						<form class="form-inline">
-							<!-- se agruparan en linea -->
-							<div class="form-group">
-								<input class="form-control form_nombre" id="nombre_user" type="text" placeholder="Nombre" required>
-								<br><br>
-								<input class="form-control form_apellido" id="apellido_user" type="text" placeholder="Apellidos" required>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="email_user" type="email" placeholder="Correo" required>
-								</div>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="pass1_u" type="password" placeholder="Password" required>
-									<br><br>
-									<input class="form-control" id="pass2_u" type="password" placeholder="Confirmar Password" required>
-								</div>
-							</div>
-							<br><br>
-							<!-- nombre centro -->
-							<div class="form-group">
-								<div class="input-group">
-									<label style="font-family:Verdana,arial,sans-serif;">
-										Código del Centro :
-									</label>
-									<br>
-									<input class="form-control" id="id_centro" type="text" name="id_centro" required>
-								</div>
-							</div>
-
-						</form>
-					</div>
-					<br>
-					<div class="modal-footer">
-						<p id="error_reg_user"></p>
-						<button type="button" class="btn btn-lg btn-info" name="button" id="registrar_user">
-							<strong>Registrar</strong>
-						</button>
-					</div>
-				</div>
-				<!-- fin modal-content -->
-			</div>
-		</div>
-
-		<!-- SIGN-UP ADMIN O USER -->
-		<div class="modal fade" id="ventana_entrar" aria-hidden="true" data-backdrop="false" role="dialog">
-			<div class="modal-dialog">
-				<!-- Contenido de toda la ventana header, body, footer-->
-				<div class="modal-content">
-
-					<!-- Header de la ventana -->
-					<div class="modal-header">
-						<button type="button" class="close btn-info" data-dismiss="modal" aria-hidden="true" id="cancela_entrar">
-							<span>Cancelar
-							</span>&times;
-						</button>
-						<h4 class="modal-title">
-							<span >
-								<strong>Entrar en HourWeb</strong>
-							</span>
-						</h4>
-					</div>
-
-					<div class="modal-body">
-						<form class="form-inline">
-							<!-- se agruparan en linea -->
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="email_entrar" type="email" placeholder="Correo" required>
-									<br><br>
-									<input class="form-control" id="pass_entrar" type="password" placeholder="Password" required>
-								</div>
-							</div>
-							<br><br>
-						</form>
-					</div>
-					<br>
-					<div class="modal-footer">
-						<p id="error_entrar"></p>
-						<button type="button" class="btn btn-lg btn-info" name="boton_entrar" id="id_entrar">
-							<strong>Entrar</strong>
-						</button>
-					</div>
-				</div>
-				<!-- fin modal-content -->
-			</div>
-		</div>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-ui-router.min.js"></script>      
+        <script src="js/ui-boostrap.js"></script>  
+        <script src="js/app.js"></script>  
+		<script src="js/tooltip.js"></script>
 		<script src="firebase/database.js" charset="utf-8"></script>
 		<script src="firebase/user.js" charset="utf-8"></script>
 		<script src="firebase/controlador.js" charset="utf-8"></script>
