@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" >
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0">
@@ -10,12 +10,12 @@
 		acceder a ellos -->
 		<link rel="stylesheet" href="css/estilos.css">
 		<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
-		<script src="https://code.jquery.com/jquery-latest.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<!--<script src="https://code.jquery.com/jquery-latest.js"></script>-->
+		<!--<script src="js/bootstrap.min.js"></script>-->
 		<script src="firebase/config.js" charset="utf-8"></script>
 
 	</head>
-	<body style="background-image: url('imagenes/fondo_azulejo.jpg')">
+	<body style="background-image: url('imagenes/fondo_azulejo.jpg')" ng-app="app" ng-controller="LoginController as vm">
 		<span id="idpage" class="1"></span>
 		<div class="container">
 			<div class="row">
@@ -30,195 +30,25 @@
 				</div>
 			</div>
 
-			<a href="#ventana_entrar" class="btn btn-default btn-lg btn_entrar" data-toggle="modal">Entrar</a>
-
+			<button type="button" class="btn btn-default btn-lg btn_entrar" ng-click="vm.loginForm()">Entrar</button>
+			
 			<!-- encierro los botones en un btn-group para unirlos correctamente-->
 			<div class="btn-group btn-group-lg pull-right">
-				<a href="#ventana_admin" class="btn btn-primary btn-lg" data-toggle="modal">Registro como Administrador</a>
-				<a href="#ventana_user" class="btn btn-info btn-lg" data-toggle="modal">Registro como Usuario</a>
+				<button type="button" class="btn btn-primary btn-lg" ng-click="vm.adminForm()">Registro como Administrador</button>
+				<button type="button" class="btn btn-info btn-lg" ng-click="vm.standarForm()">Registro como Usuario</button>
 			</div>
 		</div>
-
-		<!-- FORMULARIOS LOGIN Y ENTRADA EN LA WEB -->
-		<!-- FORMULARIO LOGIN ADMINISTRADOR -->
-		<div class="modal fade" id="ventana_admin" aria-hidden="true" data-backdrop="false" role="dialog">
-			<div class="modal-dialog">
-				<!-- Contenido de toda la ventana header, body, footer-->
-				<div class="modal-content">
-
-					<!-- Header de la ventana -->
-					<div class="modal-header">
-						<button type="button" class="close btn-info" data-dismiss="modal" aria-hidden="true" id="cancela_admin">
-							<span>Cancelar
-							</span>&times;</button>
-						<h4 class="modal-title">
-							<span >
-								<strong>Registro Administrador</strong>
-							</span>
-						</h4>
-					</div>
-
-					<div class="modal-body">
-						<form class="form-inline">
-							<!-- se agruparan en linea -->
-							<div class="form-group">
-								<input class="form-control form_nombre" id="nombre_admin" type="text" placeholder="Nombre" required>
-								<br><br>
-								<input class="form-control form_apellido" id="apellido_admin" type="text" placeholder="Apellidos" required>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="email_admin" type="email" placeholder="Correo" required>
-								</div>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="pass1" type="password" placeholder="Password" required>
-									<br><br>
-									<input class="form-control" id="pass2" type="password" placeholder="Confirmar Password" required>
-								</div>
-							</div>
-							<br><br>
-							<!-- nombre centro -->
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="nombre_centro" type="text" placeholder="Nombre Centro" required>
-									<br><br>
-									<label class="horas">
-										Elija el número de horas lectivas
-									</label>
-									<input class="form-control" id="id_horas" type="number" style="width:50px" name="horas" min="2" max="8" value="2">
-								</div>
-							</div>
-						</form>
-					</div>
-					<br>
-					<div class="modal-footer">
-						<p id="error_reg_admin"></p>
-						<button type="button" class="btn btn-lg btn-info" name="button" id="registrar_admin">
-							<strong>Registrar</strong>
-						</button>
-					</div>
-
-				</div>
-				<!-- fin modal-content -->
-			</div>
-		</div>
-
-		<!-- FORMULARIO LOGIN USUARIO-->
-		<div class="modal fade" id="ventana_user" aria-hidden="true" data-backdrop="false" role="dialog">
-			<div class="modal-dialog">
-				<!-- Contenido de toda la ventana -->
-				<div class="modal-content">
-					<!-- Header de la ventana -->
-					<div class="modal-header">
-						<button type="button" class="close btn-info" data-dismiss="modal" aria-hidden="true" id="cancela_user">
-							<span>Cancelar
-							</span>&times;
-						</button>
-						<h4 class="modal-title">
-							<span >
-								<strong>Registro Usuario</strong>
-							</span>
-						</h4>
-					</div>
-
-					<div class="modal-body">
-						<form class="form-inline">
-							<!-- se agruparan en linea -->
-							<div class="form-group">
-								<input class="form-control form_nombre" id="nombre_user" type="text" placeholder="Nombre" required>
-								<br><br>
-								<input class="form-control form_apellido" id="apellido_user" type="text" placeholder="Apellidos" required>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="email_user" type="email" placeholder="Correo" required>
-								</div>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="pass1_u" type="password" placeholder="Password" required>
-									<br><br>
-									<input class="form-control" id="pass2_u" type="password" placeholder="Confirmar Password" required>
-								</div>
-							</div>
-							<br><br>
-							<!-- nombre centro -->
-							<div class="form-group">
-								<div class="input-group">
-									<label style="font-family:Verdana,arial,sans-serif;">
-										Código del Centro :
-									</label>
-									<br>
-									<input class="form-control" id="id_centro" type="text" name="id_centro" required>
-								</div>
-							</div>
-
-						</form>
-					</div>
-					<br>
-					<div class="modal-footer">
-						<p id="error_reg_user"></p>
-						<button type="button" class="btn btn-lg btn-info" name="button" id="registrar_user">
-							<strong>Registrar</strong>
-						</button>
-					</div>
-				</div>
-				<!-- fin modal-content -->
-			</div>
-		</div>
-
-		<!-- SIGN-UP ADMIN O USER -->
-		<div class="modal fade" id="ventana_entrar" aria-hidden="true" data-backdrop="false" role="dialog">
-			<div class="modal-dialog">
-				<!-- Contenido de toda la ventana header, body, footer-->
-				<div class="modal-content">
-
-					<!-- Header de la ventana -->
-					<div class="modal-header">
-						<button type="button" class="close btn-info" data-dismiss="modal" aria-hidden="true" id="cancela_entrar">
-							<span>Cancelar
-							</span>&times;
-						</button>
-						<h4 class="modal-title">
-							<span >
-								<strong>Entrar en HourWeb</strong>
-							</span>
-						</h4>
-					</div>
-
-					<div class="modal-body">
-						<form class="form-inline">
-							<!-- se agruparan en linea -->
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="email_entrar" type="email" placeholder="Correo" required>
-									<br><br>
-									<input class="form-control" id="pass_entrar" type="password" placeholder="Password" required>
-								</div>
-							</div>
-							<br><br>
-						</form>
-					</div>
-					<br>
-					<div class="modal-footer">
-						<p id="error_entrar"></p>
-						<button type="button" class="btn btn-lg btn-info" name="boton_entrar" id="id_entrar">
-							<strong>Entrar</strong>
-						</button>
-					</div>
-				</div>
-				<!-- fin modal-content -->
-			</div>
-		</div>
+		
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular-ui-router.min.js"></script>      
+        <script src="js/ui-bootstrap-tpls.js"></script> 
+		<script src="js/app.js"></script> 		
+		<script src="controllers/loginController.js"></script>
+		<script src="controllers/loginFormController.js"></script>
+		<script src="controllers/standarFormController.js"></script>
+		<script src="controllers/adminFormController.js"></script>
 		<script src="firebase/database.js" charset="utf-8"></script>
-		<script src="firebase/user.js" charset="utf-8"></script>
-		<script src="firebase/controlador.js" charset="utf-8"></script>
+		<!--<script src="firebase/user.js" charset="utf-8"></script>-->
+		<!--<script src="firebase/controlador.js" charset="utf-8"></script>-->
 	</body>
 </html>

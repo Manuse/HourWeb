@@ -1,0 +1,36 @@
+<div class="modal-content">
+
+	<!-- Header de la ventana -->
+	<div class="modal-header">
+		<button type="button" class="close btn-info" ng-click="vmm.close()" aria-hidden="true">
+							<span>Cancelar
+							</span>&times;
+						</button>
+		<h4 class="modal-title">
+			<span>
+								<strong>Entrar en HourWeb</strong>
+							</span>
+		</h4>
+	</div>
+	<form class="form-inline" ng-submit="vm.iniciarSesion()">
+		<div class="modal-body">
+			<!-- se agruparan en linea -->
+			<br><br>
+			<div class="form-group">
+				<div class="input-group">
+					<input class="form-control" type="email" placeholder="Correo" required ng-model="vmm.email">
+					<br><br>
+					<input class="form-control" type="password" placeholder="Password" required ng-model="vmm.pass">
+				</div>
+			</div>
+			<br><br>
+		</div>
+		<br>
+		<div class="modal-footer">
+			<p ng-if="vm.error != ''">Error: {{vmm.error}}</p>
+			<button type="submit" class="btn btn-lg btn-info" name="boton_entrar">
+							<strong>Entrar</strong>
+						</button>
+		</div>
+	</form>
+</div>
