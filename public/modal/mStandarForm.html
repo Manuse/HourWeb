@@ -1,58 +1,55 @@
 <div class="modal-content">
-					<!-- Header de la ventana -->
-					<div class="modal-header">
-						<button type="button" class="close btn-info" data-dismiss="modal" aria-hidden="true" id="cancela_user">
+	<!-- Header de la ventana -->
+	<div class="modal-header">
+		<button type="button" class="close btn-info" ng-click="vmm.close()">
 							<span>Cancelar
 							</span>&times;
 						</button>
-						<h4 class="modal-title">
-							<span >
-								<strong>Registro Usuario</strong>
-							</span>
-						</h4>
-					</div>
+		<h4 class="modal-title">
+			<span><strong>Registro Usuario</strong></span>
+		</h4>
+	</div>
+	<form class="form-inline" ng-submit="vmm.registrar()">
+		<div class="modal-body">
 
-					<div class="modal-body">
-						<form class="form-inline">
-							<!-- se agruparan en linea -->
-							<div class="form-group">
-								<input class="form-control form_nombre" id="nombre_user" type="text" placeholder="Nombre" required>
-								<br><br>
-								<input class="form-control form_apellido" id="apellido_user" type="text" placeholder="Apellidos" required>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="email_user" type="email" placeholder="Correo" required>
-								</div>
-							</div>
-							<br><br>
-							<div class="form-group">
-								<div class="input-group">
-									<input class="form-control" id="pass1_u" type="password" placeholder="Password" required>
-									<br><br>
-									<input class="form-control" id="pass2_u" type="password" placeholder="Confirmar Password" required>
-								</div>
-							</div>
-							<br><br>
-							<!-- nombre centro -->
-							<div class="form-group">
-								<div class="input-group">
-									<label style="font-family:Verdana,arial,sans-serif;">
+			<!-- se agruparan en linea -->
+			<div class="form-group">
+				<input class="form-control form_nombre" type="text" placeholder="Nombre" required ng-model="vmm.nombre">
+				<br><br>
+				<input class="form-control form_apellido" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
+			</div>
+			<br><br>
+			<div class="form-group">
+				<div class="input-group">
+					<input class="form-control" type="email" placeholder="Correo" required ng-model="vmm.email">
+				</div>
+			</div>
+			<br><br>
+			<div class="form-group">
+				<div class="input-group">
+					<input class="form-control" id="pass1_u" type="password" placeholder="Password" required ng-model="vmm.pass1">
+					<br><br>
+					<input class="form-control" id="pass2_u" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
+				</div>
+			</div>
+			<br><br>
+			<!-- nombre centro -->
+			<div class="form-group">
+				<div class="input-group">
+					<label style="font-family:Verdana,arial,sans-serif;">
 										Código del Centro :
 									</label>
-									<br>
-									<input class="form-control" id="id_centro" type="text" name="id_centro" required>
-								</div>
-							</div>
-
-						</form>
-					</div>
 					<br>
-					<div class="modal-footer">
-						<p id="error_reg_user"></p>
-						<button type="button" class="btn btn-lg btn-info" name="button" id="registrar_user">
-							<strong>Registrar</strong>
-						</button>
-					</div>
+					<input class="form-control" type="text" required ng-model="vmm.centro">
 				</div>
+			</div>
+
+
+		</div>
+		<br>
+		<div class="modal-footer">
+			<p ng-bind="vmm.error"></p>
+			<button type="submit" class="btn btn-lg btn-info"><strong>Registrar</strong></button>
+		</div>
+	</form>
+</div>
