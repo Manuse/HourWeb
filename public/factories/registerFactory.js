@@ -93,9 +93,9 @@
         AUTH.onAuthStateChanged(function(user) {
     if (user) {//el usuario esta logueao       
       window.location = "index.html"
-  } else {//si no esta logueado te redirigira al login
+  } /*else {//si no esta logueado te redirigira al login
            window.location = "login.html"; // si se desloguea que sea enviado a este otro html
-    }
+    }*/
 });
         
         return factory;
