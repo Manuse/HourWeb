@@ -8,6 +8,7 @@
 
     function registerFactory(AUTH, DATABASE) {
 
+        
         var factory = {
             registrarUser: function (dataUser, dataCenter, email, pass) {
                 AUTH.createUserWithEmailAndPassword(ema, pass).then(function (res) {
@@ -89,6 +90,14 @@
             });
         }
 
+        AUTH.onAuthStateChanged(function(user) {
+    if (user) {//el usuario esta logueao       
+      window.location = "index.html"
+  } else {//si no esta logueado te redirigira al login
+           window.location = "login.html"; // si se desloguea que sea enviado a este otro html
+    }
+});
+        
         return factory;
 
     }
