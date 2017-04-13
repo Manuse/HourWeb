@@ -54,8 +54,8 @@ kbd {
 
 /* text-shadow:
      1. horizontal a dcha si es positivo
-	   2. positivo hacia abajo
-	   3. difuminado intensidad, cuanto MÁS valor menos intenso  */
+	 2. positivo hacia abajo
+	 3. difuminado intensidad, cuanto MÁS valor menos intenso  */
 
 .titulo_web {
     text-shadow: 7px 1px 5px #7fc1d1;
