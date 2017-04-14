@@ -1,59 +1,59 @@
 <div class="modal-content">
 
-	<!-- Header de la ventana -->
-	<div class="modal-header">
-		<button type="button" class="close btn-info" ng-click="vmm.close()">
+    <!-- Header de la ventana -->
+    <div class="modal-header">
+        <button type="button" class="close btn-info" ng-click="vmm.close()">
 							<span>Cancelar
 							</span>&times;</button>
-		<h4 class="modal-title">
-			<span>
-								<strong>Registro Administrador</strong>
-							</span>
-		</h4>
-	</div>
-	<form class="form-inline">
-		<div class="modal-body">
+        <h4 class="modal-title">
+            <span>
+			    <strong>Registro Administrador</strong>
+			</span>
+        </h4>
+    </div>
+    <form class="form-inline">
+        <div class="modal-body">
 
-			<!-- se agruparan en linea -->
-			<div class="form-group">
-				<input class="form-control form_nombre" type="text" placeholder="Nombre" required ng-model="vmm.nombre">
-				<br><br>
-				<input class="form-control form_apellido" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
-			</div>
-			<br><br>
-			<div class="form-group">
-				<div class="input-group">
-					<input class="form-control" type="email" placeholder="Correo" required ng-model="vmm.email">
-				</div>
-			</div>
-			<br><br>
-			<div class="form-group">
-				<div class="input-group">
-					<input class="form-control" type="password" placeholder="Password" required ng-model="vmm.pass1">
-					<br><br>
-					<input class="form-control" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
-				</div>
-			</div>
-			<br><br>
-			<!-- nombre centro -->
-			<div class="form-group">
-				<div class="input-group">
-					<input class="form-control" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
-					<br><br>
-					<label class="horas">
+            <!-- se agruparan en linea -->
+            <div class="form-group">
+                <input class="form-control form_nombre" type="text" placeholder="Nombre" required ng-model="vmm.nombre">
+                <br><br>
+                <input class="form-control form_apellido" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
+            </div>
+            <br><br>
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="email" placeholder="Correo" required ng-model="vmm.email">
+                </div>
+            </div>
+            <br><br>
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="password" placeholder="Password" required ng-model="vmm.pass1">
+                    <br><br>
+                    <input class="form-control" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
+                </div>
+            </div>
+            <br><br>
+            <!-- nombre centro -->
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
+                    <br><br>
+                    <label class="horas">
 										Elija el número de horas lectivas
 									</label>
-					<input class="form-control" type="number" style="width:50px" name="horas" min="2" max="8" value="2" ng-model="vmm.horas">
-				</div>
-			</div>
+                    <input class="form-control" type="number" style="width:50px" name="horas" min="2" max="8" value="2" ng-model="vmm.horas">
+                </div>
+            </div>
 
-		</div>
-		<br>
-		<div class="modal-footer">
-			<p ng-bind="vmm.error"></p>
-			<button type="submit" class="btn btn-lg btn-info">
+        </div>
+        <br>
+        <div class="modal-footer">
+            <p ng-bind="vmm.error"></p>
+            <button type="submit" class="btn btn-lg btn-info">
 							<strong>Registrar</strong>
 						</button>
-		</div>
-	</form>
+        </div>
+    </form>
 </div>

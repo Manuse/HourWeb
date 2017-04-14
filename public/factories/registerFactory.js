@@ -6,14 +6,8 @@
         .factory('registerFactory', registerFactory);
 
 
-<<<<<<< HEAD
-    function registerFactory(AUTH, DATABASE) {
-
-
-=======
     function registerFactory(AUTH, DATABASE, $uibModal) {
-      
->>>>>>> ee739f4de29019450cb74938b6aafa49d9237fff
+
         var factory = {
             registrarUser: function (dataUser, dataCenter, email, pass) {
                 AUTH.createUserWithEmailAndPassword(email, pass).then(function (res) {
