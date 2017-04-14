@@ -52,5 +52,14 @@
 		<!--<script src="firebase/database.js" charset="utf-8"></script>
 		<script src="firebase/user.js" charset="utf-8"></script>-->
 		<!--<script src="firebase/controlador.js" charset="utf-8"></script>-->
+		<script>
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {//el usuario esta logueao 
+                window.location = "index.html"
+            } else {//si no esta logueado te redirigira al login
+                // window.location = "login.html"; // si se desloguea que sea enviado a este otro html
+            }
+        });
+        </script>
 	</body>
 </html>
