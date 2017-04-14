@@ -8,7 +8,7 @@
 
     function registerFactory(AUTH, DATABASE) {
 
-        
+
         var factory = {
             registrarUser: function (dataUser, dataCenter, email, pass) {
                 AUTH.createUserWithEmailAndPassword(ema, pass).then(function (res) {
@@ -70,26 +70,26 @@
             crearUser(user); //metodo que crea el nodo en usuario
         }
 
-         function error(err){
+        function error(err) {
             var modalInstance = $uibModal.open({
                 animation: false,
                 templateUrl: 'modal/mError.html',
                 controller: 'ErrorController',
                 controllerAs: 'vmmm',
-                resolve:{
-                    item: function(){
+                resolve: {
+                    item: function () {
                         return err;
                     }
                 }
             });
 
             modalInstance.result.then(function () {
-     
+
             }, function () {
-      
+
             });
         }
-        
+
         return factory;
 
     }
