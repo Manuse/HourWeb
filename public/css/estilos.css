@@ -133,7 +133,7 @@ table.tabla_mi_horario>thead,tbody>tr,td{
 }
 /* hacemos referencia a inputs de los ids de los pass */
 
-#pass1_u, #pass2_u, #pass1, #pass2, #nombre_admin, #apellido_admin, #email_entrar, #pass_entrar, #nombre_centro, #email_admin, #email_user, #apellido_user, #nombre_user {
+.form_login {
     border: 1px solid #0641f1;
     background-color: #b3e3e3;
     width: 230px;
