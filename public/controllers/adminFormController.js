@@ -35,6 +35,9 @@
             registerFactory.registrarUser(newuser, newcentro, vm.email, vm.pass1);
         }
 
+        vm.close = function(){
+            $uibModalInstance.close();
+        }
         
     }
 })();

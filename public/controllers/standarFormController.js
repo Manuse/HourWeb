@@ -11,7 +11,7 @@
             } else if (vm.pass1 != vm.pass2) {
                 vm.error = "Las contraseñas no son iguales";
             } else {
-                vm.comprobarCentro()
+                vm.comprobarCentro();
             }
         }
 
@@ -34,6 +34,9 @@
             });
         }
 
+        vm.close = function(){
+            $uibModalInstance.close();
+        }
         
 
     }
