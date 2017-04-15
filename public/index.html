@@ -17,9 +17,8 @@
 	</head>
 	<!-- https://silviomoreto.github.io/bootstrap-select/examples/ combos-->
 	<body style="background-color:#e9e9e9">
-		<span id="idpage" data-idpage="3"></span>
 		<div class="">
-			<header>
+			<header ng-controller="UserController as uc">
 				<!-- aqui disponemos nuestro menu de navegacion con un NAV
 			navbar-inverse cambiamos los colores y con navbar-static-top hacemos que se quede arriba
 			role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
@@ -42,10 +41,10 @@
 								<span class="icon-bar"></span>
 							</button>
 							<!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
-							<a href="home.html" class="navbar-brand" style="font-family:arial,verdana,sans-serif; font-weight:bold;">
+							<a ui-sref="home" class="navbar-brand" style="font-family:arial,verdana,sans-serif; font-weight:bold;">
 								HourWeb
 							</a>
-							<a href="home.html" class="navbar-brand">
+							<a ui-sref="home"  class="navbar-brand">
 								<span class="glyphicon glyphicon-home"></span>
 							</a>
 						</div>
@@ -63,9 +62,14 @@
 									</a>
 									<ul class="dropdown-menu" role="menu" id="nav_lista">
 										<li>
-											<a href="configuracion.html" class="editar_perfil">Configuración de Perfil</a>
+											<a ui-sref="configuracion" class="editar_perfil">Configuración de Perfil</a>
 										</li>
-										<li id="salir">
+										<li ng-if="uc.getUser.tipo == 'administrador'">
+											<a ui-sref="administrador" class="editar_perfil">Administrador
+												<span class="glyphicon glyphicon-off"></span>
+											</a>
+										</li>
+										<li id="salir" ng-click="uc.signOut()">
 											<a href="#" class="editar_perfil">Salir
 												<span class="glyphicon glyphicon-off"></span>
 											</a>
@@ -74,7 +78,7 @@
 								</li>
 								<!-- fin dropdown -->
 								<li>
-									<a href="#">
+									<a href="#" >
 										<span class="fa fa-info-circle" style="font-size:25px; color:rgb(107, 156, 208)"></span>
 									</a>
 								</li>
@@ -94,8 +98,9 @@
         <script src="js/angular.min.js"></script>
         <script src="js/angular-ui-router.min.js"></script>      
         <script src="js/ui-bootstrap-tpls.js"></script>  
-        <script src="js/app.js"></script>  
-		<script src="factories/registerFactory.js"></script>
+        <script src="js/app.js"></script> 
+        <script src="factories/userFactory.js"></script>
+        <script src="controllers/userController.js"></script>
 		<!--<script src="firebase/database.js" charset="utf-8"></script>
 		<script src="firebase/user.js" charset="utf-8"></script>
 		<script src="firebase/controlador.js" charset="utf-8"></script>-->

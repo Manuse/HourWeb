@@ -1,7 +1,7 @@
 (function () {
     angular.module('app').controller('LoginController', loginController);
 
-    function loginController($uibModal) {
+    function loginController($uibModal, $location) {
         var vm = this;
         vm.animationsEnabled = true;
         vm.loginForm = function() {
