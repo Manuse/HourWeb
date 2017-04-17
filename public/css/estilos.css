@@ -1,7 +1,7 @@
 /* NAV sobreescribimos focus y hover sobre enlaces en el nav -- librería bootstrap.css, línea 4006 */
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
-background-color: black !important;
+background-color: white !important;
 border-color: #337ab7;
 }
 
@@ -39,11 +39,9 @@ li>a[role=tab] {
     margin-bottom: 5px;
 }
 
-
 /* INDEX */
 
-
-/*boton Entrar */
+/*boton ENTRAR */
 
 .btn_entrar:hover {
     background-color: black;
@@ -58,25 +56,6 @@ kbd {
     background-color: black;
     font-size: 15px;
 }
-
-
-/* fondo del INDEX */
-
-
-/*.jumbotron {
-    font-family: 'Verdana', sans-serif;
-    font-weight: bolder;
-    color: white;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    background-color: #141120;
-}*/
-
-
-/* text-shadow:
-     1. horizontal a dcha si es positivo
-	 2. positivo hacia abajo
-	 3. difuminado intensidad, cuanto MÁS valor menos intenso  */
 
 .titulo_web {
     text-shadow: 7px 1px 5px #7fc1d1;
@@ -151,8 +130,7 @@ th {
 }
 
 table.tabla_mi_horario>thead,
-tbody>tr,
-td {
+tbody>tr,td {
     color: black;
     border: 1px solid rgb(238, 120, 120);
     max-width: 100px;
@@ -184,7 +162,6 @@ td {
     font-family: "Tahoma", Georgia, sans-serif;
     font-weight: 600;
 }
-
 
 /* login admin asignar horas */
 
