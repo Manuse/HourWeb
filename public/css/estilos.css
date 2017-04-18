@@ -6,6 +6,11 @@
     
 }
 
+ul>li[role=menuitem]{
+    width: 220px;
+    background-color: yellow;
+    
+}
 .navbar {
     margin-bottom: 10px;
 }
@@ -733,7 +738,6 @@ input.input_centro {
     height: 18px;
     /**/
 }
-
 
 /* Hide default HTML checkbox */
 
