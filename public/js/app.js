@@ -10,6 +10,18 @@
     .state("reservar",{
         url:"/reservar",
         templateUrl:"templates/reservar.html"
+        //controller:'Controller',
+        //controllerAs:"ctrl"
+    }).state("configuracion",{
+            url:"/configuracion", 
+        templateUrl:"templates/configuracion.html",
+        //controller:'Controller',
+        //controllerAs:"ctrl"
+    }).state("administrador",{
+            url:"/administrador", 
+        templateUrl:"templates/administrador.html",
+        //controller:'Controller',
+        //controllerAs:"ctrl"
     });
     }).constant("DATABASE", firebase.database())
     .constant("AUTH", firebase.auth())
