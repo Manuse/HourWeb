@@ -1,17 +1,20 @@
 /* NAV sobreescribimos focus y hover sobre enlaces en el nav -- librería bootstrap.css, línea 4006 */
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
-background-color: white !important;
-border-color: #337ab7;
+    color: white;
+    background-color: #932626!important;
+    
 }
 
 .navbar {
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 
-a .navbar_brand {
-    font-family: 'Tahoma', arial, sans-serif;
+.navbar-brand {
+    font-size: 40px;
+    font-family: 'Verdana', arial, sans-serif;
     font-weight: bold;
+    color:white;
 }
 
 a.editar_perfil:hover {
@@ -737,7 +740,6 @@ input.input_centro {
 .switch input {
     display: none;
 }
-
 
 /* slider */
 

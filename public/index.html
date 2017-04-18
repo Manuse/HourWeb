@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="es" ng-app="app">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0">
-		<title>HourWeb</title>
-		<link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png"/>
-		<link rel="stylesheet" href="css/estilos.css">
-		<!-- fa-icons-->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0">
+    <title>HourWeb</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- fa-icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
-		<!-- Optional theme solo le da un degrqadado al boton o a otros componentes. No es necesario -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-		<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
-		<script src="firebase/config.js" charset="utf-8"></script>
-	</head>
-	<!-- https://silviomoreto.github.io/bootstrap-select/examples/ combos-->
-	<body style="background-color:#e9e9e9;padding-top:10px;">
-		<div class="">
-			<header ng-controller="NavController as uc">
-				<!-- aqui disponemos nuestro menu de navegacion con un NAV
-			navbar-inverse cambiamos los colores y con navbar-static-top hacemos que se quede arriba
-			role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
-				<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<!-- boton para ocultar y mostrar menu en modo responsive-design
+    <!-- Optional theme solo le da un degrqadado al boton o a otros componentes. No es necesario -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+    <script src="firebase/config.js" charset="utf-8"></script>
+</head>
+<!-- https://silviomoreto.github.io/bootstrap-select/examples/ combos-->
+
+<body style="background-color:#e9e9e9;padding-top:10px;">
+    <div class="container-fluid" ng-controller="NavController as uc">        
+            <!-- navbar-inverse pinta nav de negro y navbar-static-top la fijamos arriba
+			    role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
+
+            <nav class="navbar navbar-static-top" style="background-color:#932626;" role="navigation">
+
+                <div class="navbar-header">
+                    <!-- boton para ocultar y mostrar menu en modo responsive-design
                             La barra de navegación responsive requiere el uso del plugin collapse de JavaScript incluido en Bootstrap 3. Aquello que queda afectado por el data-toggle queda oculto o se expande según pulsemos	-->
-							<button type="button" class="navbar-toggle" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
+                    <button type="button" class="navbar-toggle" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
 								<!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
 								de nuestras etiquetas Kinddle x ej -->
 								<span class="sr-only">
@@ -39,69 +39,67 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
-							<a ui-sref="home" class="navbar-brand" style="font-family:arial,verdana,sans-serif; font-weight:bold;">
-								HourWeb
-							</a>
-							<a ui-sref="home"  class="navbar-brand">
-								<span class="glyphicon glyphicon-home"></span>
-							</a>
-						</div>
+                    <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
+                    <a ui-sref="home" class="navbar-brand">HourWeb</a>
+                    <a ui-sref="home" class="navbar-brand">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </a>
+                </div>
 
-						<!-- Inicia menu -->
-						<div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">						
-							<ul class="nav navbar-nav navbar-right">							
-								<li>
-									
-									<span uib-dropdown>
-									<a href id="simple-dropdown" class="dropdown-toggle navbar-text navbar-link" uib-dropdown-toggle>						
-										<strong ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">tttttt</strong>
-										<span class="caret"></span>
-									</a>
-									<hr>
-									<ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
-										<li role="menuitem">
-											<a ui-sref="configuracion" class="editar_perfil">Editar Perfil</a>
-										</li>
-										<li role="menuitem" ng-if="uc.getUser.tipo == 'administrador'">
-											<a ui-sref="administrador" class="editar_perfil">Administrador</a>
-										</li>
-										<li class="divider"></li>
-										<li role="menuitem" id="salir" ng-click="uc.signOut()">
-											<a href="#" class="editar_perfil">Cerrar Sesión
-											<span class="glyphicon glyphicon-off"></span>
-											</a>
-										</li>
-									</ul>
-									</span>
-								</li>
-								<!-- fin dropdown -->
-								<li>
-									<a href="#" >
-										<span class="fa fa-info-circle" style="font-size:25px; color:rgb(107, 156, 208)"></span>
-									</a>
-								</li>
-							</ul>							
-						</div>
-					</div>
-				</nav>
-			</header>
-			<!-- fin nav-->
+                <!-- Inicia menu -->
+                <div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
 
-			<div ui-view>
-                
-            </div>
-		</div>
-		<!--<script src="https://code.jquery.com/jquery-latest.js"></script>
+                            <span uib-dropdown>
+									<a href id="simple-dropdown" class="dropdown-toggle navbar-text" uib-dropdown-toggle>						
+										<strong style="font-size:17px;color:white;" ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">tttttt</strong>
+										<span class="caret" style="color:white;font-weight:bolder;"></span>
+                            </a>
+                            <hr>
+                            <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                                <li role="menuitem">
+                                    <a ui-sref="configuracion" class="editar_perfil">Editar Perfil</a>
+                                </li>
+                                <li role="menuitem" ng-if="uc.getUser.tipo == 'administrador'">
+                                    <a ui-sref="administrador" class="editar_perfil">Administrador</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li role="menuitem" id="salir" ng-click="uc.signOut()">
+                                    <a href="#" class="editar_perfil">Cerrar Sesión
+									    <span class="glyphicon glyphicon-off"></span>
+									</a>
+                                </li>
+                            </ul>
+                            </span>
+                        </li>
+                        <!-- fin dropdown -->
+                        <li>
+                            <a href="#">
+                                <span class="fa fa-info-circle" style="font-size:24px;margin-right:10px; color:skyblue"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        
+    </div>
+    <!-- fin nav-->
+
+    <div ui-view>
+
+    </div>
+
+    <!--<script src="https://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>-->
-        <script src="js/angular.min.js"></script>
-        <script src="js/angular-ui-router.min.js"></script>      
-        <script src="js/ui-bootstrap-tpls.js"></script>  
-        <script src="js/app.js"></script> 
-        <script src="factories/userFactory.js"></script>
-        <script src="controllers/navController.js"></script>
-		<!--<script src="firebase/database.js" charset="utf-8"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="js/ui-bootstrap-tpls.js"></script>
+    <script src="js/app.js"></script>
+    <script src="factories/userFactory.js"></script>
+    <script src="controllers/navController.js"></script>
+    <!--<script src="firebase/database.js" charset="utf-8"></script>
 		<script src="firebase/user.js" charset="utf-8"></script>
 		<script src="firebase/controlador.js" charset="utf-8"></script>-->
-	</body>
+</body>
 </html>
