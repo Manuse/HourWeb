@@ -2,24 +2,24 @@
 
 .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
     color: white;
-    background-color: #932626!important;
+    background-color: black!important;
     
 }
 
-ul>li[role=menuitem]{
-    width: 220px;
-    background-color: yellow;
-    
+ul.dropdown-menu{
+    width: 210px;
+    margin-right: 50px;
 }
+
 .navbar {
     margin-bottom: 10px;
 }
 
-.navbar-brand {
-    font-size: 40px;
-    font-family: 'Verdana', arial, sans-serif;
-    font-weight: bold;
-    color:white;
+div.navbar-header>a.navbar-brand {
+    color: white;
+    font-size: 20px;
+    font-family: 'Kaushan Script', cursive,sans-serif;
+    font-weight: bold;    
 }
 
 a.editar_perfil:hover {
