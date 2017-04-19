@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
     <!-- Optional theme solo le da un degrqadado al boton o a otros componentes. No es necesario -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-HyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
     <script src="firebase/config.js" charset="utf-8"></script>
@@ -49,39 +49,43 @@
             <!-- Inicia menu -->
             <div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">
                 <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a><img class="profile-image" src="imagenes/logo.png" alt="no sale" style="display: inline-block; height: 32px; margin-top: -5px"></a>    
-                        </li>
-                       <li>
+                    <li>
+                        <a>
+                        <img class="profile-image img-profile" src="imagenes/avatar.png" alt="no sale">
+                        </a>
+                    </li>
+                    <li>
                         <span uib-dropdown>
 						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" style="margin-right:50px;" uib-dropdown-toggle >						    						
-							    <strong style="font-size:17px;color:white;" ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">tttttt</strong>
+							    <strong style="font-size:18px;color:white;" ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">NombreYApellidos</strong>
 								<span class="glyphicon glyphicon-triangle-bottom" style="color:white; font-size:12px;"></span>
-                            </a>
+                        </a>
                         <hr>
                         <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                             <li role="menuitem">
-                                <a ui-sref="configuracion" class="editar_perfil">Editar Perfil</a>
+                                <a ui-sref="configuracion" class="editar-perfil">Editar Perfil
+                                <span class="glyphicon glyphicon-user" style="color:black;font-size:15px;margin-left:4px"></span>
+                                </a>
                             </li>
                             <li role="menuitem" ng-if="uc.getUser.tipo == 'administrador'">
-                                <a ui-sref="administrador" class="editar_perfil">Administrador</a>
+                                <a ui-sref="administrador" class="editar-perfil">Administrador</a>
                             </li>
                             <li class="divider"></li>
                             <li role="menuitem">
-                                <a href="#">Ayuda
-                                    <span class="glyphicon glyphicon-info-sign editar_perfil" style="color:grey;font-size:15px;"></span>
+                                <a href="#" class="editar-perfil">Ayuda
+                                    <span class="glyphicon glyphicon-info-sign editar-perfil" style="color:grey;font-size:15px;margin-left:4px"></span>
                                 </a>
                             </li>
                             <li role="menuitem" id="salir" ng-click="uc.signOut()">
-                                <a href="#" class="editar_perfil">Cerrar Sesión
-								    <span class="glyphicon glyphicon-off"></span>
+                                <a href="#" class="editar-perfil">Cerrar Sesión
+								    <span class="glyphicon glyphicon-off" style="margin-left:3px"></span>
 								</a>
-                            </li>                            
+                            </li>
                         </ul>
                         </span>
                     </li>
                     <!-- fin dropdown -->
-                    
+
                 </ul>
             </div>
         </nav>
