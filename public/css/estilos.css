@@ -4,7 +4,7 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: black!important;
+    background-color: #B0C4DE !important;
 }
 
 ul.dropdown-menu {
@@ -14,27 +14,28 @@ ul.dropdown-menu {
     
 }
 
-
 /* Imagen de perfil del navbar */
 
 div.navbar-collapse>ul.navbar-right>li>a>img.img-profile {
     display: inline-block;
-    height: 39px;
+    height: 35px;
     margin-top: -5px;
 }
 
-.navbar {
-    margin-bottom: 5px;
+/* glyphicon HOME */
+div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home{
+    font-size: 25px;
+    color:white;
+    margin-top: 14px;
 }
-
 /* titulo de la web */
-div.navbar-header>a.navbar-brand {
+div.navbar-header>div.navbar-brand>a {
     font-size: 25px;
     color: white;
     font-family: 'Kaushan Script', cursive, sans-serif;
-    font-weight: bold;
-    margin-top: 5px;
+    font-weight: bold;    
 }
+
 
 a.editar-perfil:hover {
     background-color: #353437;

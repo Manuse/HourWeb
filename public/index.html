@@ -40,15 +40,22 @@
 								<span class="icon-bar"></span>
 				</button>
                 <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
-                <a ui-sref="home" class="navbar-brand">HOURWEB</a>
-                <a ui-sref="home" class="navbar-brand active">
-                    <span class="glyphicon glyphicon-home"></span>
-                </a>
+                <div class="navbar-brand">
+                <a class="navbar-link" ui-sref="home">HOURWEB</a>
+                
+                </div>
             </div>
 
             <!-- Inicia menu -->
             <div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">
                 <ul class="nav navbar-nav navbar-right">
+                   <li>
+                       <div class="icono-home">                      
+                        <a ui-sref="home">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </a>
+                        </div> 
+                   </li>
                     <li>
                         <a>
                         <img class="profile-image img-profile" src="imagenes/avatar.png" alt="no sale">
@@ -56,10 +63,10 @@
                     </li>
                     <li>
                         <span uib-dropdown>
-						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" style="margin-right:50px;" uib-dropdown-toggle >						    						
+						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" style="margin-right:50px;" uib-dropdown-toggle>				    						
 							    <strong style="font-size:18px;color:white;" ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">NombreYApellidos</strong>
 								<span class="glyphicon glyphicon-triangle-bottom" style="color:white; font-size:12px;"></span>
-                        </a>
+                            </a>
                         <hr>
                         <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                             <li role="menuitem">
