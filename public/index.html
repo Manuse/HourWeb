@@ -18,17 +18,17 @@
 </head>
 <!-- https://silviomoreto.github.io/bootstrap-select/examples/ combos-->
 
-<body class="container-fluid" style="background-color:#e9e9e9;padding-top:10px;">
+<body style="background-color:#e9e9e9;">
     <div ng-controller="NavController as uc">
         <!-- navbar-inverse pinta nav de negro y navbar-static-top la fijamos arriba
 			    role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
+        
+            <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
 
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-
-            <div class="navbar-header">
-                <!-- boton para ocultar y mostrar menu en modo responsive-design
+                <div class="navbar-header">
+                    <!-- boton para ocultar y mostrar menu en modo responsive-design
                             La barra de navegación responsive requiere el uso del plugin collapse de JavaScript incluido en Bootstrap 3. Aquello que queda afectado por el data-toggle queda oculto o se expande según pulsemos	-->
-                <button type="button" class="navbar-toggle well-lg" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
+                    <button type="button" class="navbar-toggle well-lg" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
 								<!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
 								de nuestras etiquetas Kinddle x ej -->
 								<span class="sr-only">
@@ -39,68 +39,68 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 				</button>
-                <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
-                <div class="navbar-brand">
-                <a class="navbar-link" ui-sref="home">HOURWEB</a>
-                
-                </div>
-            </div>
+                    <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
+                    <div class="navbar-brand">
+                        <a class="navbar-text" ui-sref="home">HOURWEB</a>
 
-            <!-- Inicia menu -->
-            <div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">
-                <ul class="nav navbar-nav navbar-right">
-                   <li>
-                       <div class="icono-home">                      
-                        <a ui-sref="home">
-                            <span class="glyphicon glyphicon-home"></span>
-                        </a>
-                        </div> 
-                   </li>
-                    <li>
-                        <a>
-                        <img class="profile-image img-profile" src="imagenes/avatar.png" alt="no sale">
-                        </a>
-                    </li>
-                    <li>
-                        <span uib-dropdown>
+                    </div>
+                </div>
+
+                <!-- Inicia menu -->
+                <div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <div class="icono-home">
+                                <a ui-sref="home">
+                                    <span class="glyphicon glyphicon-home"></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <a>
+                                <img class="profile-image img-profile" src="imagenes/avatar.png" alt="no sale">
+                            </a>
+                        </li>
+                        <li>
+                            <span uib-dropdown>
 						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" style="margin-right:50px;" uib-dropdown-toggle>				    						
 							    <strong style="font-size:18px;color:white;" ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">NombreYApellidos</strong>
 								<span class="glyphicon glyphicon-triangle-bottom" style="color:white; font-size:12px;"></span>
                             </a>
-                        <hr>
-                        <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
-                            <li role="menuitem">
-                                <a ui-sref="configuracion" class="editar-perfil">Editar Perfil
-                                <span class="glyphicon glyphicon-user" style="color:black;font-size:15px;margin-left:4px"></span>
+                            <hr>
+                            <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                                <li role="menuitem">
+                                    <a ui-sref="configuracion" class="editar-perfil">Editar Perfil
+                                <span class="glyphicon glyphicon-user" style="font-size:15px;margin-left:4px"></span>
                                 </a>
-                            </li>
-                            <li role="menuitem" ng-if="uc.getUser.tipo == 'administrador'">
-                                <a ui-sref="administrador" class="editar-perfil">Administrador</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li role="menuitem">
-                                <a href="#" class="editar-perfil">Ayuda
+                                </li>
+                                <li role="menuitem" ng-if="uc.getUser.tipo == 'administrador'">
+                                    <a ui-sref="administrador" class="editar-perfil">Administrador</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li role="menuitem">
+                                    <a href="#" class="editar-perfil">Ayuda
                                     <span class="glyphicon glyphicon-info-sign editar-perfil" style="color:grey;font-size:15px;margin-left:4px"></span>
                                 </a>
-                            </li>
-                            <li role="menuitem" id="salir" ng-click="uc.signOut()">
-                                <a href="#" class="editar-perfil">Cerrar Sesión
+                                </li>
+                                <li role="menuitem" id="salir" ng-click="uc.signOut()">
+                                    <a href="#" class="editar-perfil">Cerrar Sesión
 								    <span class="glyphicon glyphicon-off" style="margin-left:3px"></span>
 								</a>
-                            </li>
-                        </ul>
-                        </span>
-                    </li>
-                    <!-- fin dropdown -->
+                                </li>
+                            </ul>
+                            </span>
+                        </li>
+                        <!-- fin dropdown -->
 
-                </ul>
-            </div>
-        </nav>
-
-    </div>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    
     <!-- fin nav-->
 
-    <div ui-view>
+    <div  class="container" ui-view>
 
     </div>
 

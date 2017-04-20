@@ -4,10 +4,11 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: #B0C4DE !important;
+    background-color: black !important;
 }
 
 ul.dropdown-menu {
+    
     width: 230px;
     margin-right: 80px;
     margin-top: 9px;
@@ -15,7 +16,6 @@ ul.dropdown-menu {
 }
 
 /* Imagen de perfil del navbar */
-
 div.navbar-collapse>ul.navbar-right>li>a>img.img-profile {
     display: inline-block;
     height: 35px;
@@ -24,13 +24,15 @@ div.navbar-collapse>ul.navbar-right>li>a>img.img-profile {
 
 /* glyphicon HOME */
 div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home{
-    font-size: 25px;
+    font-size: 24px;
     color:white;
     margin-top: 14px;
 }
-/* titulo de la web */
+
+/* TITULO de la web */
 div.navbar-header>div.navbar-brand>a {
-    font-size: 25px;
+    margin-top: 5px;
+    font-size: 40px;
     color: white;
     font-family: 'Kaushan Script', cursive, sans-serif;
     font-weight: bold;    
@@ -237,7 +239,7 @@ div.round1 {
     padding-right: 20px;
     padding-left: 19px;
     border-radius: 34px;
-    background-image: radial-gradient(circle at 0 0, rgba(204, 0, 0, 0) 14px, rgb(179, 198, 244) 15px), radial-gradient(circle at 100% 0, rgba(204, 0, 0, 0) 14px, rgb(179, 198, 244) 15px), radial-gradient(circle at 100% 100%, rgba(204, 0, 0, 0) 14px, rgb(179, 198, 244) 15px), radial-gradient(circle at 0 100%, rgba(204, 0, 0, 0) 14px, rgb(179, 198, 244) 15px);
+    background-image: radial-gradient(circle at 0 0, rgba(204, 0, 0, 0) 14px, rgb(179, 198, 244) 15px), radial-gradient(circle at 100% 0, rgba(204, 0, 0, 0) 14px, rgb(179, 198, 244) 15px), radial-gradient(circle at 100% 100%, rgba(204, 0, 0, 0) 14px, rgb(179, 198, 200) 15px), radial-gradient(circle at 0 100%, rgba(204, 0, 0, 0) 14px, rgb(179, 198, 244) 15px);
 }
 
 article.foto_izquierda {
