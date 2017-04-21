@@ -2,9 +2,9 @@
 
     angular
         .module('app')
-        .home('HomeController', homeController);
+        .controller('HomeController', homeController);
 
-    function homeController(userFactory) {
+    function homeController(userFactory, $scope) {
         var vm = this;
         var interval = setInterval(recarga, 1000);
 
