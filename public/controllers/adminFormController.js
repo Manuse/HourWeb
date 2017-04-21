@@ -11,7 +11,7 @@
             } else if (isNaN(vm.horas)) {
                 vm.error = "El numero de horas debe ser numero";
             } else if (vm.horas < 2 || vm.horas > 8) {
-                vm.error = "Las horas deben estar entre 2 y 8";
+                vm.error = "Debe seleccionar un rango entre 2 y 8 horas";
             } else if (vm.pass1 != vm.pass2) {
                 vm.error = "Las contraseñas no son iguales";
             } else {
