@@ -11,12 +11,13 @@
             AUTH.signOut();
         };
 
-        vm.getUser = userFactory.getUser();
+        //vm.getUser = userFactory.getUser();
 
         function recarga() {
             if (userFactory.getUser() != null) {
                 $scope.$apply(function () {
                     vm.getUser = userFactory.getUser();
+                    vm.photo = userFactory.getPhoto();
                     clearInterval(interval);
                 });
 
