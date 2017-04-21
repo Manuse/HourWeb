@@ -4,20 +4,29 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: rgb(200, 140, 240) !important;
+    background-color: rgb(200, 170, 240) !important;
 }
 
+/* background-color gradiente */
 nav{
-background: rgba(210,190,234,0.84);
-background: -moz-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(210,190,234,0.84)), color-stop(22%, rgba(115,198,213,0.84)), color-stop(41%, rgba(33,204,195,0.88)), color-stop(71%, rgba(187,152,221,0.94)), color-stop(100%, rgba(201,151,237,1)));
-background: -webkit-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-background: -o-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-background: -ms-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-background: linear-gradient(to right, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2beea', endColorstr='#c997ed', GradientType=1 );
+    background: rgba(210,190,234,0.84);
+    background: -moz-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(210,190,234,0.84)), color-stop(22%, rgba(115,198,213,0.84)), color-stop(41%, rgba(33,204,195,0.88)), color-stop(71%, rgba(187,152,221,0.94)), color-stop(100%, rgba(201,151,237,1)));
+    background: -webkit-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
+    background: -o-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
+    background: -ms-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
+    background: linear-gradient(to right, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2beea', endColorstr='#c997ed', GradientType=1 );
 }
 
+/*Nombre de Usuario en navbar*/
+/* Icono desplegar dropdown Usuario*/
+div.navbar-collapse>ul.navbar-right>li>span.span-main-dropdown>a.dropdown-toggle>span.glyphicon-triangle-bottom{
+    color:white;
+    font-size: 13px;
+}
+
+/* posicion del dropdown del navbar */
 ul.dropdown-menu {    
     width: 230px;
     margin-right: 80px;
@@ -25,17 +34,20 @@ ul.dropdown-menu {
 }
 
 /* Imagen de perfil del navbar */
-div.navbar-collapse>ul.navbar-right>li>a>img.img-profile {
-    
-    height: 35px;
-    margin-top: -5px;
+div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {    
+    height: 42px;
+    margin-top: 7px;
+    margin-bottom: 5px;
 }
 
 /* glyphicon HOME */
 div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home{
-    font-size: 24px;
+    margin-top: 11px;
+    margin-bottom:12px;
+    font-size: 31px;
+    margin-right: 20px;
     color:white;
-    margin-top: 14px;
+    
 }
 
 /* TITULO de la web */
@@ -58,6 +70,14 @@ a.editar-perfil:hover {
 .icon_style {
     align-items: stretch;
     color: #5f97eb;
+}
+
+@media(max-width: 770px) {
+    /* desplazamos a la derecha elementos justo al aparecer el menú desplegable icon-bar */
+    div.navbar-collapse>ul.navbar-right{
+        margin-left: 5px;
+    }
+    
 }
 
 /* TABS */
