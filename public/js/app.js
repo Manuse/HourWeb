@@ -4,8 +4,8 @@
         $stateProvider.state("home",{
             url:"/home", 
         templateUrl:"templates/home.html",
-        //controller:'Controller',
-        //controllerAs:"ctrl"
+        controller:'HomeController',
+        controllerAs:"vm"
     })
     .state("reservar",{
         url:"/reservar",

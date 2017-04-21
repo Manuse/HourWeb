@@ -5,11 +5,7 @@
 
     function userFactory(DATABASE, AUTH) {
         var users;
-       /* DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).once("value", function (snapshot) {
-            for (var user in snapshot.val()) {
-                user = snapshot.val()[user];
-            }
-        });*/
+        var photo;
         AUTH.onAuthStateChanged(function (user) {
             if (user) { //el usuario esta logueao 
                 if(firebase.auth().currentUser.emailVerified){
@@ -18,10 +14,9 @@
 					 firebase.auth().signOut();
 				}
                  DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).once("value", function (snapshot) {
-                    for (var user in snapshot.val()) {
-                        console.log(users)
+                    for (var user in snapshot.val()) {                       
                         users = snapshot.val()[user];
-                        console.log(users)
+                        photo = AUTH.currentUser.photoURL;
                     }
                 });
             } else { //si no esta logueado te redirigira al login
@@ -33,8 +28,8 @@
             getUser: function () {
                 return users;
             },
-            recargarUser: function () {
-               
+            getPhoto: function(){
+                return photo;
             }
         };
         return factory;
