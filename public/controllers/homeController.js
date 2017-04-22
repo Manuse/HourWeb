@@ -27,7 +27,7 @@
                 vm.jueves = [];
                 vm.viernes = [];
                 var semana1 = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
-                if (vm.semana) {
+                if (vm.semana == 1) {
                     semana1.setDate(semana1.getDate() + 7);
                 }
                 for (var data in reser) {
@@ -35,12 +35,13 @@
                     if (reser[data].fecha.length > 1) {
                         var date = new Date(fecha);
                         if (semana1 < date || semana1.getDate() == date.getDate() && semana1.getMonth() == date.getMonth()) {
+                            
                             var reserva = {
                                 code: data,
                                 recurso: reser[data].recurso,
                                 hora: reser[data].hora,
                                 fecha: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
-                            }
+                            };
                             switch (parseInt(date.getDay())) {
                                 case 1:
                                     vm.lunes.push(reserva);
@@ -56,7 +57,7 @@
                                     break;
                                 case 5:
                                     vm.viernes.push(reserva);
-                                    break
+                                    break;
                             }
                         }
                     } else {
@@ -65,7 +66,7 @@
                             recurso: reser[data].recurso,
                             hora: reser[data].hora,
                             fecha: "Permanente"
-                        }
+                        };
                         switch (parseInt(reser[data].fecha)) {
                             case 1:
                                 vm.lunes.push(reserva);
@@ -81,7 +82,7 @@
                                 break;
                             case 5:
                                 vm.viernes.push(reserva);
-                                break
+                                break;
 
                         }
                     }
