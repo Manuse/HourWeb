@@ -6,9 +6,12 @@
     color: white;
     background-color: rgb(200, 170, 240) !important;
 }
+nav.navbar-color{
+    background-color: yellow;
+}
 
 /* background-color gradiente */
-nav{
+/*nav{
     background: rgba(210,190,234,0.84);
     background: -moz-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
     background: -webkit-gradient(left top, right top, color-stop(0%, rgba(210,190,234,0.84)), color-stop(22%, rgba(115,198,213,0.84)), color-stop(41%, rgba(33,204,195,0.88)), color-stop(71%, rgba(187,152,221,0.94)), color-stop(100%, rgba(201,151,237,1)));
@@ -17,7 +20,7 @@ nav{
     background: -ms-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
     background: linear-gradient(to right, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2beea', endColorstr='#c997ed', GradientType=1 );
-}
+}*/
 
 /*Nombre de Usuario en navbar*/
 /* Icono desplegar dropdown Usuario*/
@@ -72,11 +75,26 @@ a.editar-perfil:hover {
     color: #5f97eb;
 }
 
-@media(max-width: 770px) {
+@media(max-width: 767px) {
     /* desplazamos a la derecha elementos justo al aparecer el menú desplegable icon-bar */
-    div.navbar-collapse>ul.navbar-right{
-        margin-left: 5px;
-    }
+    .navbar-nav .dropdown-menu {
+    display: block;
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+    /* no mostramos el icono home e imagen usuario*/
+  .icono-home,.imagen-navbar{
+    display: none !important;
+  }
+  /*.navbar-inverse .navbar-nav .dropdown-menu > li > a {
+    color: #9d9d9d;
+  }*/
     
 }
 
@@ -94,7 +112,6 @@ li>a[role=tab] {
 
 
 /* INDEX */
-
 
 /*boton ENTRAR */
 
