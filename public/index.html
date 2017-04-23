@@ -12,7 +12,8 @@
 
     <!-- Optional theme solo le da un degradado al boton o a otros componentes. No es necesario -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-HyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
-    <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
     <script src="firebase/config.js" charset="utf-8"></script>
 </head>
@@ -26,7 +27,7 @@
 
             <div class="navbar-header">
                 
-                <button type="button" class="navbar-toggle well-lg" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
+                <button type="button" class="navbar-toggle well well-md" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
 								<!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
 								de nuestras etiquetas Kinddle x ej -->
 								<span class="sr-only">
@@ -39,7 +40,7 @@
 				</button>
                 <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
                 <div class="navbar-brand">
-                    <a class="navbar-text" ui-sref="home">HOURWEB</a>
+                    <a class="navbar-text titulo-web" ui-sref="home">HOURWEB</a>
                 </div>
             </div>
 
@@ -66,7 +67,7 @@
 							    <strong style="font-size:18px;color:white;" ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">NombreYApellidos</strong>
 								<span class="glyphicon glyphicon-triangle-bottom"></span>
                             </a>
-                        <hr>
+                        <hr class="dropdown-separador">
                         <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                             <li role="menuitem">
                                 <a ui-sref="configuracion" class="editar-perfil">Editar Perfil

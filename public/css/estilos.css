@@ -4,62 +4,68 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background: black url('../imagenes/verde-noise.png') repeat; !important;
-}
-nav.navbar-color{
-    background: black url('../imagenes/verde-noise.png') repeat;
-    font-size:1.2em;
-	padding-top: 1px;
-	
-	background-color: rgba(51, 51, 51, 1);
-	-webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-	-moz-box-shadow:    2px 2px 3px skyblue, -2px 2px 3px skyblue;
-	-ms-box-shadow:     2px 2px 3px skyblue, -2px 2px 3px skyblue;
-	-o-box-shadow:      2px 2px 3px skyblue, -2px 2px 3px skyblue;
-	box-shadow:         2px 4px 3px skyblue, -2px 2px 3px skyblue;
+    background-color: #ba77a8 !important;    
 }
 
+nav.navbar-color {
+    background-color: #ba77a8;
+    font-size: 1.2em;
+    padding-top: 1px;
+    -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -moz-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -ms-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    box-shadow: 2px 4px 3px grey, -2px 2px 3px skyblue;
+}
 
 
-/*Nombre de Usuario en navbar*/
-/* Icono desplegar dropdown Usuario*/
-div.navbar-collapse>ul.navbar-right>li>span.span-main-dropdown>a.dropdown-toggle>span.glyphicon-triangle-bottom{
-    color:white;
+/* Nombre de Usuario en navbar */
+
+
+/* glyphicon flecha hacia abajo desplegar dropdown Usuario*/
+
+span.glyphicon-triangle-bottom {
+    color: white;
     font-size: 13px;
 }
 
+
 /* posicion del dropdown del navbar */
-ul.dropdown-menu {    
+
+ul.dropdown-menu {
     width: 230px;
     margin-right: 80px;
-    margin-top: 9px;    
+    margin-top: 9px;
 }
 
+
 /* Imagen de perfil del navbar */
-div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {    
+
+div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
     height: 42px;
     margin-top: 7px;
     margin-bottom: 5px;
 }
 
+
 /* glyphicon HOME */
-div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home{
+
+div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home {
     margin-top: 11px;
-    margin-bottom:12px;
+    margin-bottom: 12px;
     font-size: 31px;
     margin-right: 20px;
-    color:white;
-    
+    color: white;
 }
 
 /* TITULO de la web */
-div.navbar-header>div.navbar-brand>a { 
-    color:white;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 35px;    
-    font-family: 'Rubik Mono One', sans-serif;
-    font-weight: bold;    
+
+div>a.navbar-text.titulo-web {
+    color: white;
+    margin-top: 4px;
+    font-size: 2.5em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bolder;
 }
 
 a.editar-perfil:hover {
@@ -74,30 +80,48 @@ a.editar-perfil:hover {
     color: #5f97eb;
 }
 
-/* Mostramos al desplegar el navegador sólo el menú resultante del dropdown*/
+/* Mostramos al desplegar el navegador sólo el menú resultante del dropdown 
+-- quitamos imagen user e icono home */
+
 @media(max-width: 767px) {
-    /* desplazamos a la derecha elementos justo al aparecer el menú desplegable icon-bar */
+    div.navbar-brand{
+        margin-top: 5px;
+    }
+    div.navbar-brand>a.navbar-text.titulo-web {
+        color: white;        
+        font-size: 1.5em;
+        font-family: 'Raleway', sans-serif;
+        font-weight: bold;
+    }
+    .icono-home,
+    .imagen-navbar,
+    .span-main-dropdown>a.dropdown-toggle,
+    hr.dropdown-separador,
+    li.divider {
+        display: none !important;
+    }
+    
     ul.dropdown-menu{
-    display: block;
-    position: static;
-    float: none;
-    width: auto;
-    margin-top: 0;
-    background-color: transparent;
-    border: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-    /* no mostramos el icono home e imagen usuario*/
-  .icono-home,.imagen-navbar,.span-main-dropdown>a.dropdown-toggle{
-    display: none !important;
-  }
+        display: inline-block;
+    }
     
-  /*.navbar-inverse .navbar-nav .dropdown-menu > li > a {
-    color: #9d9d9d;
-  }*/
+    ul.dropdown-menu {
+        margin-top: 0px;
+        margin-left: 10px;
+        font-size: 1.1em;
+        display: inline;
+        position: static;        
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: 0;
+    }
     
+    a.editar-perfil:hover {
+        background-color: #ba77a8 !important;
+    }
 }
+
 
 /* TABS */
 
@@ -113,6 +137,7 @@ li>a[role=tab] {
 
 
 /* INDEX */
+
 
 /*boton ENTRAR */
 
