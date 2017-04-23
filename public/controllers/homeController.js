@@ -13,13 +13,19 @@
                 $scope.$apply(function () {
                     vm.getUser = userFactory.getUser();
                     vm.photo = userFactory.getPhoto();
+                    recogerMisReservas();
                     clearInterval(interval);
                 });
             }
         }
 
-        function RecogerMisReservas() {
-            REF.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.uid).on("value", function (snapshot) {
+        vm.refrecarCalendario = function () {
+            recogerMisReservas();
+        };
+
+
+        function recogerMisReservas() {
+            REF.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).on("value", function (snapshot) {
                 var reser = snapshot.val();
                 vm.lunes = [];
                 vm.martes = [];
@@ -35,12 +41,16 @@
                     if (reser[data].fecha.length > 1) {
                         var date = new Date(fecha);
                         if (semana1 < date || semana1.getDate() == date.getDate() && semana1.getMonth() == date.getMonth()) {
-                            
+                            var activ = true;
+                            if (new Date() < date) {
+                                activ = false;
+                            }
                             var reserva = {
                                 code: data,
                                 recurso: reser[data].recurso,
                                 hora: reser[data].hora,
-                                fecha: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+                                fecha: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
+                                activo: activ
                             };
                             switch (parseInt(date.getDay())) {
                                 case 1:
@@ -65,7 +75,8 @@
                             code: data,
                             recurso: reser[data].recurso,
                             hora: reser[data].hora,
-                            fecha: "Permanente"
+                            fecha: "Permanente",
+                            activo: true
                         };
                         switch (parseInt(reser[data].fecha)) {
                             case 1:
@@ -91,15 +102,45 @@
         }
 
         vm.borrarReserva = function () {
-            var reserva = this.getAttribute("data-code");
+            var reserva = this.dataset.code;
             var reser = REF.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva);
             reser.once("value", function (datos) {
                 var a = datos.val();
                 if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
                     reser.remove();
                 } else {
-                    alert("No puedes borrar las asignaciones permanentes");//futuro modal
+                    alert("No puedes borrar las asignaciones permanentes"); //futuro modal
                 }
+            });
+        };
+
+        function rellenarTablaHorarios() {
+            REF.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (horas) {
+                REF.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
+                    vm.filas = [];
+                    var data = snapshot.val();
+                    for (var i = 1; i <= horas.val(); i++) { //filas                                     
+                        var columnas = [];
+                        for (var j = 1; j <= 5; j++) { //columnas
+                            var valor = "";
+                            for (var data1 in data) {
+                                if (data[data1].dia == j && data[data1].hora == i) { // si existe un registro del horario en ese dia y hora se le pone como valor al input
+                                    valor = data[data1].nombre;
+                                }
+                            }
+                            var celda = {
+                                fila: i,
+                                columna: j,
+                                curso: valor
+                            };
+                            columnas.push(celda);
+                        }
+                        vm.filas.push({
+                            hora: i,
+                            columna: columnas
+                        });
+                    }
+                });
             });
         }
 
@@ -166,5 +207,53 @@
                 }
             }
         }
+    });
+}
+
+
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------
+
+
+function rellenarTablaHorarios(tabla) {
+    REF.ref("user/").orderByChild("id").equalTo(getCurrentUser().uid).once("value", function(sna) {
+        var a = sna.val(),
+            cod;
+        for (var i in a) {
+            cod = a[i].codcentro;
+        }
+        REF.ref("centros/" + cod + "/horas").once("value", function(horas) {
+            REF.ref("horarios/").orderByChild("usuario").equalTo(getCurrentUser().uid).once("value", function(snapshot) {
+                var data = snapshot.val();
+                while (tabla.hasChildNodes()) {
+                    tabla.removeChild(tabla.firstChild);
+                }
+                for (var i = 1; i <= horas.val(); i++) { //filas
+                    var fila = document.createElement("tr");//creamos la fila
+                    fila.setAttribute("name", "fila");
+                    var columnahora = document.createElement("th");//primera columna que es la hora
+                    columnahora.textContent = i;
+                    fila.appendChild(columnahora);
+                    for (var j = 1; j <= 5; j++) { //columnas
+                        var columna = document.createElement("td"),// creamos la columna
+                            input = document.createElement("input");// creamos el input de dentro de la columna
+                        input.setAttribute("type", "text");
+                        input.setAttribute("maxlength", "20");
+                        input.setAttribute("class", "form-control");
+                        input.setAttribute("id", i + "-" + j);//le ponemos de id la fila y la columna
+                        input.disabled = true;// lo ponemos no editable
+                        for (var data1 in data) {
+                            if (data[data1].dia == j && data[data1].hora == i) {// si existe un registro del horario en ese dia y hora se le pone como valor al input
+                                input.value = data[data1].nombre;
+                            }
+                        }
+                        columna.appendChild(input);
+                        fila.appendChild(columna);
+                        tabla.appendChild(fila);
+                    }
+                }
+            });
+        });
     });
 }*/
