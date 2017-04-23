@@ -2,8 +2,9 @@
 
     angular.module('app').controller('AdminFormController', adminFormController);
 
-    function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, $uibModal) {
+    function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, $uibModal,$log) {
         var vm = this;
+        vm.mihora = newDate();
 
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0 || vm.horas == 0) {
@@ -38,6 +39,37 @@
         vm.close = function(){
             $uibModalInstance.close();
         }
+        /* variables para cambiar hora según rango */
+        vm.horaup = 1;
+        vm.minutoup = 5;
+        vm.opciones = {
+          horaup: [1,2,3],
+          minutoup: [1,2,5,10,25,30]    
+        };
+        
+        /* AM/PM */
+        vm.ismeridian = true;
+        
+        vm.toggleMode = function() {
+            vm.ismeridian = !vm.ismeridian;
+        };
+        
+        vm.time_picker = function(){
+            
+        };       
+        
+        
+        vm.update = function() {            
+            var hora_actual = new Date();
+                hora_actual.setHours( 00 );
+                hora_actual.setMinutes( 0 );
+                vm.mihora = hora_actual;
+        };
+        
+        vm.changed = function () {
+            $log.log('Reiniciar Hora: ' + vm.mytime);
+        };      
+        
         
     }
 })();

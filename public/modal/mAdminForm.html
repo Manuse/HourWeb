@@ -41,14 +41,35 @@
                     <input class="form-control form_login" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
                     <br><br>
                     <label class="horas">
-					    Elija el número de horas lectivas
+					    Horario
 					</label>
                     <input class="form-control form_login" type="number" style="width:50px" name="horas" min="2" max="8" value="2" ng-model="vmm.horas">
                 </div>
             </div>
+            <br>
+            
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control form_login" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
+                    <br><br>
+                    <label class="horas">
+					    Horario
+					</label>
+                   <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="horaup" minute-step ="minutoup" show-meridian="ismeridian">
+                       <button type="button" class="btn btn-info" ng-click="toggleMode()">
+                       12H / 24H
+                       </button>
+                       <button type="button" class="btn btn-default" ng-click="update()">Reiniciar a 00:00
+                       </button>                       
+                   </div>
 
+                  <pre class="alert alert-info">Hora seleccionada: {{mytime | date:'shortTime' }}</pre>
+                   
+                </div>
+            </div>
         </div>
-        <br>
+        
+        
         <div class="modal-footer">
             <p ng-bind="vmm.error"></p>
             <button type="submit" class="btn btn-lg btn-info">
