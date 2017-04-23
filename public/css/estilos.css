@@ -4,23 +4,22 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: rgb(200, 170, 240) !important;
+    background: black url('../imagenes/verde-noise.png') repeat; !important;
 }
 nav.navbar-color{
-    background-color: yellow;
+    background: black url('../imagenes/verde-noise.png') repeat;
+    font-size:1.2em;
+	padding-top: 1px;
+	
+	background-color: rgba(51, 51, 51, 1);
+	-webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+	-moz-box-shadow:    2px 2px 3px skyblue, -2px 2px 3px skyblue;
+	-ms-box-shadow:     2px 2px 3px skyblue, -2px 2px 3px skyblue;
+	-o-box-shadow:      2px 2px 3px skyblue, -2px 2px 3px skyblue;
+	box-shadow:         2px 4px 3px skyblue, -2px 2px 3px skyblue;
 }
 
-/* background-color gradiente */
-/*nav{
-    background: rgba(210,190,234,0.84);
-    background: -moz-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(210,190,234,0.84)), color-stop(22%, rgba(115,198,213,0.84)), color-stop(41%, rgba(33,204,195,0.88)), color-stop(71%, rgba(187,152,221,0.94)), color-stop(100%, rgba(201,151,237,1)));
-    background: -webkit-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-    background: -o-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-    background: -ms-linear-gradient(left, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-    background: linear-gradient(to right, rgba(210,190,234,0.84) 0%, rgba(115,198,213,0.84) 22%, rgba(33,204,195,0.88) 41%, rgba(187,152,221,0.94) 71%, rgba(201,151,237,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2beea', endColorstr='#c997ed', GradientType=1 );
-}*/
+
 
 /*Nombre de Usuario en navbar*/
 /* Icono desplegar dropdown Usuario*/
@@ -75,9 +74,10 @@ a.editar-perfil:hover {
     color: #5f97eb;
 }
 
+/* Mostramos al desplegar el navegador sólo el menú resultante del dropdown*/
 @media(max-width: 767px) {
     /* desplazamos a la derecha elementos justo al aparecer el menú desplegable icon-bar */
-    .navbar-nav .dropdown-menu {
+    ul.dropdown-menu{
     display: block;
     position: static;
     float: none;
@@ -89,9 +89,10 @@ a.editar-perfil:hover {
     box-shadow: none;
   }
     /* no mostramos el icono home e imagen usuario*/
-  .icono-home,.imagen-navbar{
+  .icono-home,.imagen-navbar,.span-main-dropdown>a.dropdown-toggle{
     display: none !important;
   }
+    
   /*.navbar-inverse .navbar-nav .dropdown-menu > li > a {
     color: #9d9d9d;
   }*/
