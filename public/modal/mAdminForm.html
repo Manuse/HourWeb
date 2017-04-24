@@ -5,11 +5,11 @@
         <button type="button" class="close btn-info" ng-click="vmm.close()">
 		    <span>Cancelar</span>&times;
        </button>
-       <h4 class="modal-title">
-           <span>
+        <h4 class="modal-title">
+            <span>
                <strong>Registro Administrador</strong>
            </span>
-       </h4>
+        </h4>
     </div>
     <form class="form-inline">
         <div class="modal-body">
@@ -34,20 +34,9 @@
                     <input class="form-control" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
                 </div>
             </div>
-            <br><br>
-            <!-- nombre centro -->
-            <div class="form-group">
-                <div class="input-group">
-                    <input class="form-control form_login" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
-                    <br><br>
-                    <label class="horas">
-					    Horario
-					</label>
-                    <input class="form-control form_login" type="number" style="width:50px" name="horas" min="2" max="8" value="2" ng-model="vmm.horas">
-                </div>
-            </div>
-            <br>
+            <br><br>           
             
+
             <div class="form-group">
                 <div class="input-group">
                     <input class="form-control form_login" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
@@ -55,21 +44,22 @@
                     <label class="horas">
 					    Horario
 					</label>
-                   <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="horaup" minute-step ="minutoup" show-meridian="ismeridian">
-                       <button type="button" class="btn btn-info" ng-click="toggleMode()">
+                    <div class="mi-timepicker" uib-timepicker ng-model="mihora" ng-change="vmm.changed()" hour-step="vmm.horaup" minute-step="vmm.minutoup" show-meridian="vmm.ismeridian">
+
+                    </div>
+                    <button type="button" class="btn btn-info pull-right" ng-click="vmm.toggleMode()">
                        12H / 24H
                        </button>
-                       <button type="button" class="btn btn-default" ng-click="update()">Reiniciar a 00:00
-                       </button>                       
-                   </div>
+                    <button type="button" class="btn btn-default" ng-click="vmm.update()">Reiniciar a 00:00
+                       </button>
 
-                  <pre class="alert alert-info">Hora seleccionada: {{mytime | date:'shortTime' }}</pre>
-                   
+                    <pre class="alert alert-info">Hora actual: {{vmm.mihora | date:'shortTime' }}</pre>
+                    <!-- preguntar q coño es el operador | -->
                 </div>
             </div>
         </div>
-        
-        
+
+
         <div class="modal-footer">
             <p ng-bind="vmm.error"></p>
             <button type="submit" class="btn btn-lg btn-info">

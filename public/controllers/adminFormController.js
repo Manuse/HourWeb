@@ -54,11 +54,6 @@
             vm.ismeridian = !vm.ismeridian;
         };
         
-        vm.time_picker = function(){
-            
-        };       
-        
-        
         vm.update = function() {            
             var hora_actual = new Date();
                 hora_actual.setHours( 00 );
@@ -66,8 +61,9 @@
                 vm.mihora = hora_actual;
         };
         
+        /* muestra em consola los cambios */
         vm.changed = function () {
-            $log.log('Reiniciar Hora: ' + vm.mytime);
+            $log.log('Reiniciar Hora: ' + vm.mihora);
         };      
         
         

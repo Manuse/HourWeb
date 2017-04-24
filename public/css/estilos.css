@@ -122,6 +122,10 @@ a.editar-perfil:hover {
     }
 }
 
+/* Timepicker */
+div.mi-timepicker>table.iu-timepicker>tbody>tr.text-center>td[ng-show=showMeridian]{
+    display: none !important;    
+}
 
 /* TABS */
 
