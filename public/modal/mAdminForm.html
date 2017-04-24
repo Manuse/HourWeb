@@ -41,34 +41,9 @@
                 <div class="input-group">
                     <input class="form-control form_login" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
                     <br><br>
-                    <label class="horas">
-					    Horario
-					</label>
-                    <div class="mi-timepicker" uib-timepicker ng-model="mihora" ng-change="vmm.changed()" hour-step="vmm.horaup" minute-step="vmm.minutoup" show-meridian="vmm.ismeridian">
+                                     <!-- preguntar q coño es el operador | -->
 
-                    </div>
-                    <button type="button" class="btn btn-info pull-right" ng-click="vmm.toggleMode()">
-                       12H / 24H
-                       </button>
-                    <button type="button" class="btn btn-default" ng-click="vmm.update()">Reiniciar a 00:00
-                       </button>
-
-                    <pre class="alert alert-info">Hora actual: {{vmm.mihora | date:'shortTime' }}</pre>
-                    <!-- preguntar q coño es el operador | -->
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5><small class="text-center">Aumentar rango de horas:</small></h5>
-                            <br>
-                            <select class="form-control" ng-model="vmm.horaup" ng-options="opt for opt in vmm.opciones.horaup"></select>
-                        </div>
-                        <div class="col-md-6">
-                            <h5><small class="text-center">Aumentar rango de minutos:</small></h5>
-                            <select class="form-control" ng-model="vmm.minutoup" ng-options="opt for opt in vmm.opciones.minutoup">                                
-                            </select>
-
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -81,4 +56,8 @@
 			</button>
         </div>
     </form>
+    <label class="horas">
+					    Horario
+					</label>
+                    <div class="mi-timepicker" uib-timepicker ng-model="mihora" ng-change="vmm.changed()" hour-step="vmm.horaup" minute-step="vmm.minutoup" show-meridian="false"></div> 
 </div>
