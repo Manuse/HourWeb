@@ -4,7 +4,7 @@
 
     function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, $uibModal,$log) {
         var vm = this;
-        vm.mihora = newDate();
+        vm.mihora = new Date();
 
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0 || vm.horas == 0) {
