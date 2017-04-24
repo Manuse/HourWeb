@@ -143,6 +143,8 @@
                 });
             });
         }
+//        2 BOTONES UI-BOOTSTRAP
+        vm.radioModel = 'Left';
 
     }
 })();
