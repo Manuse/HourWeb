@@ -39,6 +39,7 @@
         vm.close = function(){
             $uibModalInstance.close();
         }
+        
         /* variables para cambiar hora según rango */
         vm.horaup = 1;
         vm.minutoup = 5;
