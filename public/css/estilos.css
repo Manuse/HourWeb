@@ -4,7 +4,7 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: #66b3ff !important;    
+    background-color: #66b3ff !important;
 }
 
 nav.navbar-color {
@@ -35,7 +35,8 @@ span.glyphicon-triangle-bottom {
 ul.dropdown-menu {
     width: 230px;
     margin-right: 80px;
-    margin-top: 9px;
+    margin-top: 8px;
+    box-shadow: 0px 1px 5px grey;
 }
 
 
@@ -53,18 +54,13 @@ div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
 div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home {
     margin-top: 11px;
     margin-bottom: 12px;
-    font-size: 31px;    
+    font-size: 31px;
     color: white;
-}
-
-div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home:hover{
-    color: #cce6ff;
-}
-
-/* div glyphicon-icon */
-
-div.navbar-collapse>ul.navbar-right>li>div.icono-home{
     margin-right: 20px;
+}
+
+div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home:hover {
+    color: #cce6ff;
 }
 
 /* TITULO de la web */
@@ -77,9 +73,6 @@ div>a.navbar-text.titulo-web {
     font-weight: bolder;
 }
 
-div>a.navbar-text.titulo-web:hover{
-    background-color: transparent;
-}
 
 a.editar-perfil:hover {
     background-color: #353437;
@@ -88,24 +81,20 @@ a.editar-perfil:hover {
     font-weight: bold;
 }
 
-.icon_style {
-    align-items: stretch;
-    color: #5f97eb;
-}
-
 /* Mostramos al desplegar el navegador sólo el menú resultante del dropdown 
 -- quitamos imagen user e icono home */
 
 @media(max-width: 767px) {
-    div.navbar-brand{
+    div.navbar-brand {
         margin-top: 5px;
     }
-    
     /* elementos que eliminamos en esa resolucion del screen */
     div.navbar-brand>a.navbar-text.titulo-web {
-        color: white;        
-        font-size: 28px;    
+        color: white;
+        font-size: 28px;
     }
+    /* el elemento no genera ninguna caja. El elemento desaparece por completo de la página y no ocupa sitio, , los elementos adyacentes ocuparan su lugar
+    */
     .icono-home,
     .imagen-navbar,
     .span-main-dropdown>a.dropdown-toggle,
@@ -113,28 +102,29 @@ a.editar-perfil:hover {
     li.divider {
         display: none !important;
     }
-    
     /* elementos del dropdown */
     ul.dropdown-menu {
         margin-top: 0px;
         margin-left: 10px;
         font-size: 1.1em;
         display: inline;
-        position: static;        
+        position: static;
         background-color: transparent;
         -webkit-box-shadow: none;
         box-shadow: none;
         border: 0;
     }
-    
-    div.navbar-collapse.in.collapse{
-        background-color:  #80c1ff;
+    div.navbar-collapse.in.collapse {
+        background-color: #66b3ff ;
+        transition: 3.5s;
+        background-color: #1ac6ff;
+        
     }
-    
     a.editar-perfil:hover {
-        background-color:  #80c1ff !important;
+        background-color: #80c1ff !important;
     }
 }
+
 
 /* TABS */
 
@@ -150,6 +140,7 @@ li>a[role=tab] {
 
 
 /* INDEX */
+
 
 /*boton ENTRAR */
 
@@ -945,15 +936,16 @@ input:checked+.slider:before {
 .fileContainer [type=file] {
     cursor: pointer;
 }
-.color1{
+
+.color1 {
     background-color: aqua;
 }
-.border{
-  
-   border: 1px solid black;
-   
+
+.border {
+    border: 1px solid black;
 }
-.colortab{
+
+.colortab {
     background-color: #ba77a8;
     font-size: 1.2em;
     padding-top: 1px;
@@ -964,18 +956,17 @@ input:checked+.slider:before {
     box-shadow: 2px 4px 3px grey, -2px 2px 3px skyblue;
 }
 
-div.btn-group.pull-right{
-margin-top: 12px;
-
+div.btn-group.pull-right {
+    margin-top: 12px;
 }
 
-div.btn-group.pull-right{
-margin-top: 12px;
-
+div.btn-group.pull-right {
+    margin-top: 12px;
 }
-.btnreservar{
-  margin-left: 75px;
-  margin-top: 12px;
+
+.btnreservar {
+    margin-left: 75px;
+    margin-top: 12px;
 }
 
 
