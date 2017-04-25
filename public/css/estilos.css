@@ -945,6 +945,29 @@ input:checked+.slider:before {
 .fileContainer [type=file] {
     cursor: pointer;
 }
+.color1{
+    background-color: aqua;
+}
+.border{
+  
+   border: 1px solid black;
+   
+}
+.colortab{
+    background-color: #ba77a8;
+    font-size: 1.2em;
+    padding-top: 1px;
+    -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -moz-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -ms-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    box-shadow: 2px 4px 3px grey, -2px 2px 3px skyblue;
+}
+
+div.btn-group.pull-right{
+margin-top: 12px;
+
+}
 
 
 /*colores*/
