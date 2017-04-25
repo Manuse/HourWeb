@@ -21,23 +21,22 @@
 
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="seccion1">
-                            <div class="btn-group pull-right" style="padding-right:75px">
+                            <div class="btn-group pull-right" style="margin-right:75px">
                                 <!--
                      2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos
                      la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina
 -->
 
-                                <div class="pull-left" style="padding-right:8px">
-                                    <a ui-sref="reservar" name="button" id="ir_reserva" class="btn btn-info btn-lg">RESERVAR</a>
 
-                                </div>
-                                <label class="btn btn-primary btn-lg" ng-model="vm.radioModel" uib-btn-radio="'Left'">1 Semana</label>
-                                <label class="btn btn-primary btn-lg" ng-model="vm.radioModel" uib-btn-radio="'Right'">2 Semana</label>
+
+
+
+                                <label class="btn btn-danger btn-sm" ng-model="vm.radioModel" uib-btn-radio="'Left'">1 Semana</label>
+                                <label class="btn btn-warning btn-sm" ng-model="vm.radioModel" uib-btn-radio="'Right'">2 Semana</label>
 
                             </div>
-
-
-                            <br><br><br>
+                            <a ui-sref="reservar" name="button" id="ir_reserva" class="btn btn-info btnreservar btn-sm">RESERVAR</a> 
+                            <br><br>
 
                             <!--                       DIV VACIO-->
                             <div class="col-lg-1"></div>
