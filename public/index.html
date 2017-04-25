@@ -12,7 +12,7 @@
 
     <!-- Optional theme solo le da un degradado al boton o a otros componentes. No es necesario -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-HyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
-    
+
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
     <script src="firebase/config.js" charset="utf-8"></script>
@@ -23,10 +23,10 @@
         <!-- navbar-inverse pinta nav de negro y navbar-static-top la fijamos arriba
 			    role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
 
-        <nav  class="navbar navbar-default navbar-static-top navbar-color" role="navigation">
+        <nav class="navbar navbar-default navbar-static-top navbar-color" role="navigation">
 
             <div class="navbar-header">
-                
+
                 <button type="button" class="navbar-toggle well well-md" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
 								<!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
 								de nuestras etiquetas Kinddle x ej -->
@@ -55,9 +55,10 @@
                         </div>
                     </li>
                     <li>
-                       <div class="imagen-navbar">                        <a>
-                            <img class="img-responsive img-rounded profile-image img-profile" ng-src="{{uc.photo}}" alt="no foto">
-                        </a>
+                        <div class="imagen-navbar">
+                            <a>
+                                <img class="img-responsive img-rounded profile-image img-profile" ng-src="{{uc.photo}}" alt="no foto">
+                            </a>
                         </div>
                     </li>
                     <li>
@@ -66,7 +67,7 @@
 						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" style="margin-right:50px;" uib-dropdown-toggle>				    						
 							    <strong style="font-size:18px;color:white;" ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">NombreYApellidos</strong>
 								<span class="glyphicon glyphicon-triangle-bottom"></span>
-                            </a>
+                        </a>
                         <hr class="dropdown-separador">
                         <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                             <li role="menuitem">

@@ -4,18 +4,18 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: #ba77a8 !important;    
+    background-color: #66b3ff !important;    
 }
 
 nav.navbar-color {
-    background-color: #ba77a8;
+    background-color: #66b3ff;
     font-size: 1.2em;
     padding-top: 1px;
     -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
     -moz-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
     -ms-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
     -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    box-shadow: 2px 4px 3px grey, -2px 2px 3px skyblue;
+    box-shadow: 2px 4px 3px skyblue, -2px 2px 3px skyblue;
 }
 
 
@@ -53,9 +53,18 @@ div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
 div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home {
     margin-top: 11px;
     margin-bottom: 12px;
-    font-size: 31px;
-    margin-right: 20px;
+    font-size: 31px;    
     color: white;
+}
+
+div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home:hover{
+    color: #cce6ff;
+}
+
+/* div glyphicon-icon */
+
+div.navbar-collapse>ul.navbar-right>li>div.icono-home{
+    margin-right: 20px;
 }
 
 /* TITULO de la web */
@@ -66,6 +75,10 @@ div>a.navbar-text.titulo-web {
     font-size: 2.5em;
     font-family: 'Raleway', sans-serif;
     font-weight: bolder;
+}
+
+div>a.navbar-text.titulo-web:hover{
+    background-color: transparent;
 }
 
 a.editar-perfil:hover {
@@ -87,11 +100,11 @@ a.editar-perfil:hover {
     div.navbar-brand{
         margin-top: 5px;
     }
+    
+    /* elementos que eliminamos en esa resolucion del screen */
     div.navbar-brand>a.navbar-text.titulo-web {
         color: white;        
-        font-size: 1.5em;
-        font-family: 'Raleway', sans-serif;
-        font-weight: bold;
+        font-size: 28px;    
     }
     .icono-home,
     .imagen-navbar,
@@ -101,10 +114,7 @@ a.editar-perfil:hover {
         display: none !important;
     }
     
-    ul.dropdown-menu{
-        display: inline-block;
-    }
-    
+    /* elementos del dropdown */
     ul.dropdown-menu {
         margin-top: 0px;
         margin-left: 10px;
@@ -117,14 +127,13 @@ a.editar-perfil:hover {
         border: 0;
     }
     
-    a.editar-perfil:hover {
-        background-color: #ba77a8 !important;
+    div.navbar-collapse.in.collapse{
+        background-color:  #80c1ff;
     }
-}
-
-/* Timepicker */
-div.mi-timepicker>table.iu-timepicker>tbody>tr.text-center>td[ng-show=showMeridian]{
-    display: none !important;    
+    
+    a.editar-perfil:hover {
+        background-color:  #80c1ff !important;
+    }
 }
 
 /* TABS */
@@ -141,7 +150,6 @@ li>a[role=tab] {
 
 
 /* INDEX */
-
 
 /*boton ENTRAR */
 
