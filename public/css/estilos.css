@@ -63,6 +63,7 @@ div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home:hove
     color: #cce6ff;
 }
 
+
 /* TITULO de la web */
 
 div>a.navbar-text.titulo-web {
@@ -73,15 +74,17 @@ div>a.navbar-text.titulo-web {
     font-weight: bolder;
 }
 
-div>a.navbar-text.titulo-web:hover{
+div>a.navbar-text.titulo-web:hover {
     text-decoration: none;
 }
+
 a.editar-perfil:hover {
     background-color: #353437;
     color: white;
     font-family: 'Tahoma', sans-serif;
     font-weight: bold;
 }
+
 
 /* Mostramos al desplegar el navegador sólo el menú resultante del dropdown 
 -- quitamos imagen user e icono home */
@@ -117,10 +120,9 @@ a.editar-perfil:hover {
         border: 0;
     }
     div.navbar-collapse.in.collapse {
-        background-color: #66b3ff ;
+        background-color: #66b3ff;
         transition: 3.5s;
         background-color: #1ac6ff;
-        
     }
     a.editar-perfil:hover {
         background-color: #80c1ff !important;
@@ -146,13 +148,40 @@ li>a[role=tab] {
 
 /*boton ENTRAR */
 
-.btn_entrar:hover {
-    background-color: black;
-    color: white;
-    border: 1px solid white;
-    transition: background-color 2000ms linear;
-    -webkit-transition: background-color 2000ms linear;
-    -ms-transition: background-color 2000ms linear;
+.boton_entrar {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #FF7F50;
+    border: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
+    padding: 20px;
+    width: 120px;
+    cursor: pointer;
+    margin: 6px;
+}
+
+button.boton_entrar>span{
+    opacity: 0;
+    font-size: 15px;
+    margin-left: -5px;
+}
+
+button.boton_entrar:hover{              
+    border: 1px solid skyblue;
+    transition: 1000ms linear;    
+    -webkit-transition:  1000ms linear;
+    -ms-transition:  1000ms linear;
+    margin-left: -10px;
+}
+
+button.boton_entrar:hover span{
+    opacity: 1;
+    right: 0;
+    margin-left: 5px;
+    
 }
 
 kbd {
@@ -938,7 +967,6 @@ input:checked+.slider:before {
 .fileContainer [type=file] {
     cursor: pointer;
 }
-
 
 .border {
     border: 1px solid black;
