@@ -4,7 +4,7 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: #66b3ff !important;
+    background-color: #66b3ff;
 }
 
 nav.navbar-color {
@@ -73,7 +73,9 @@ div>a.navbar-text.titulo-web {
     font-weight: bolder;
 }
 
-
+div>a.navbar-text.titulo-web:hover{
+    text-decoration: none;
+}
 a.editar-perfil:hover {
     background-color: #353437;
     color: white;
@@ -322,7 +324,7 @@ article.foto_izquierda {
     font-family: 'Tahoma', arial, sans-serif;
     border: 2px solid #beb6c3;
     border-bottom: 3px solid #beb6c3;
-    box-shadow: 0px 1px #888888;
+    box-shadow: 1px 1px #beb6c3;
     text-align: center;
     background-color: rgb(8, 135, 175);
     margin-bottom: 20px;
@@ -937,23 +939,20 @@ input:checked+.slider:before {
     cursor: pointer;
 }
 
-.color1 {
-    background-color: aqua;
-}
 
 .border {
     border: 1px solid black;
 }
 
 .colortab {
-    background-color: #ba77a8;
+    background-color: #66b3ff;
     font-size: 1.2em;
     padding-top: 1px;
     -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
     -moz-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
     -ms-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
     -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    box-shadow: 2px 4px 3px grey, -2px 2px 3px skyblue;
+    box-shadow: 2px 4px 3px skyblue, -2px 2px 3px skyblue;
 }
 
 div.btn-group.pull-right {
