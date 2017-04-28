@@ -1,5 +1,5 @@
 (function() {
-    angular.module('app', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'ngSanitize']).config(function($stateProvider, $urlRouterProvider){
+    angular.module('app', ['ngAnimate', 'ngSanitize', 'ui.router', 'ui.bootstrap']).config(function($stateProvider, $urlRouterProvider){
        
         $stateProvider.state("home",{
             url:"/home", 
