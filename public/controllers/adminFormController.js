@@ -4,15 +4,14 @@
 
     function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, $uibModal,$log) {
         var vm = this;
-        vm.mihora = new Date();
+        vm.inicioHora = new Date('1/1/1 12:00');
+        vm.finHora = new Date('1/1/1 13:00');
 
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0 || vm.horas == 0) {
                 vm.error = "Rellene todos los campos";
-            } else if (isNaN(vm.horas)) {
-                vm.error = "El numero de horas debe ser numero";
-            } else if (vm.horas < 2 || vm.horas > 8) {
-                vm.error = "Debe seleccionar un rango entre 2 y 8 horas";
+            } else if (vm.inicioHora <= vm.finHora && vm.finHora-vm.inicioHora > 7200000) {
+                vm.error = "El inicio debe ser menor que el final y haber un minimo de 2 horas de diferencia";
             } else if (vm.pass1 != vm.pass2) {
                 vm.error = "Las contraseñas no son iguales";
             } else {
@@ -23,7 +22,8 @@
         vm.registrarAdmin = function() {
             newcentro = { //le damos los valores que se van a insertar en la base de datos a los objetos
                 nombre: vm.centro,
-                horas: vm.horas
+                horas: vm.inicioHora.getHours()+':'+vm.inicioHora.getMinutes()+'-'+vm.finHora.getHours()+':'+vm.finHora.getMinutes(),
+                rango_horas:vm.finHora.getHours()-vm.inicioHora.getHours()
             };
             newuser = {
                 id: 0,
@@ -42,30 +42,7 @@
         
         /* variables para cambiar hora según rango */
         vm.horaup = 1;
-        vm.minutoup = 5;
-        vm.opciones = {
-          horaup: [1,2,3],
-          minutoup: [1,2,5,10,25,30]    
-        };
-        
-        /* AM/PM */
-        vm.ismeridian = true;
-        
-        vm.toggleMode = function() {
-            vm.ismeridian = !vm.ismeridian;
-        };
-        
-        vm.update = function() {            
-            var hora_actual = new Date();
-                hora_actual.setHours( 00 );
-                hora_actual.setMinutes( 0 );
-                vm.mihora = hora_actual;
-        };
-        
-        /* muestra em consola los cambios */
-        vm.changed = function () {
-            $log.log('Reiniciar Hora: ' + vm.mihora);
-        };      
+        vm.minutoup = 30;    
         
         
     }
