@@ -148,6 +148,7 @@ li>a[role=tab] {
 
 /*boton ENTRAR */
 
+/*
 .boton_entrar {
     display: inline-block;
     border-radius: 4px;
@@ -183,6 +184,7 @@ button.boton_entrar:hover span{
     margin-left: 5px;
     
 }
+*/
 
 kbd {
     background-color: black;
