@@ -7,9 +7,9 @@
 
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0) {
-                vm.error = "Rellene todos los campos";
+                vm.error("Rellene todos los campos");
             } else if (vm.pass1 != vm.pass2) {
-                vm.error = "Las contraseñas no son iguales";
+                vm.error("Las contraseñas no son iguales");
             } else {
                 vm.comprobarCentro();
             }
@@ -32,7 +32,27 @@
                     vm.error = "El centro no existe";
                 }
             });
-        }
+        };
+
+        vm.error = function(err){
+            var modalInstance = $uibModal.open({
+                animation: false,
+                templateUrl: 'modal/mError.html',
+                controller: 'ErrorController',
+                controllerAs: 'vmmm',
+                resolve:{
+                    item: function(){
+                        return err;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function () {
+     
+            }, function () {
+      
+            });
+        };
 
         vm.close = function(){
             $uibModalInstance.close();

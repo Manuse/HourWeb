@@ -18,8 +18,8 @@
                     insertarUsuario(dataCenter, dataUser, AUTH.currentUser.uid);
                     AUTH.currentUser.sendEmailVerification();
                     error("Se ha enviado un email de verificacion a su correo");
-                }, function (error) { //crea el usuario
-                    switch (error.code) { //dependiendo del error ejecutara un error u otro
+                }, function (err) { //crea el usuario
+                    switch (err.code) { //dependiendo del error ejecutara un error u otro
                         case "auth/email-already-in-use":
                             error("El email es usado");
                             break;
@@ -39,6 +39,7 @@
         function insertarUsuario(newcentro, newuser, uid) {
             try {
                 if (newuser.tipo == "administrador") { //si el usuario es administrador tambien hay que crear el centro y desde la creacion del centro se crea al usuario
+                    console.log("crearcentro")
                     crearCentro(newcentro, newuser, uid);
                 } else { // sino es admnistrador creadmos el usuario directamente
                     newuser.id = uid; //lo ponemos de atributo id el que nos proporciona firebase
@@ -53,18 +54,16 @@
         }
 
         function insertarCentro(centro) {
-            var cent = REF.ref("centros");
-            var key = cent.push({ //inserta el nodo
-                nombre: centro.nombre,
-                horas: centro.horas
-            }).key; //recogemos el nombre del nodo
+            var cent = DATABASE.ref("centros");
+            var key = cent.push(centro).key; //recogemos el nombre del nodo
             return key;
         }
 
         function crearCentro(centro, user, uid) {
-            //insertarCentro(centro);
+            console.log("crearuser")
             user.codcentro = insertarCentro(centro);
             user.id = uid;
+            console.log("crearuser"+user.codcentro)
             crearUser(user); //metodo que crea el nodo en usuario
         }
 

@@ -44,10 +44,10 @@
             }, function () {
       
             });
-        }
+        };
 
         vm.close = function(){
             $uibModalInstance.close();
-        }
+        };
     }
 })();
