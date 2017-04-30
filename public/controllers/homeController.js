@@ -4,7 +4,7 @@
         .module('app')
         .controller('HomeController', homeController);
 
-    function homeController(userFactory, $scope) {
+    function homeController(userFactory, $scope, DATABASE) {
         var vm = this;
         var interval = setInterval(recarga, 1000);
 
@@ -25,7 +25,7 @@
 
 
         function recogerMisReservas() {
-            REF.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).on("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).on("value", function (snapshot) {
                 var reser = snapshot.val();
                 vm.lunes = [];
                 vm.martes = [];
@@ -33,14 +33,16 @@
                 vm.jueves = [];
                 vm.viernes = [];
                 var semana1 = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
+                var fsemana1 = semana1.setDate(semana1.getDate() + 7);
                 if (vm.semana == 1) {
                     semana1.setDate(semana1.getDate() + 7);
+                    fsemana1 = fsemana1.setDate(fsemana1.getDate() + 7);
                 }
                 for (var data in reser) {
                     var fecha = reser[data].fecha;
-                    if (reser[data].fecha.length > 1) {
+                    if (reser[data].fecha.length > 5) {
                         var date = new Date(fecha);
-                        if (semana1 < date || semana1.getDate() == date.getDate() && semana1.getMonth() == date.getMonth()) {
+                        if (semana1 < date || semana1.getDate() == date.getDate() && semana1.getMonth() == date.getMonth() && date<fsemana1) {
                             var activ = true;
                             if (new Date() < date) {
                                 activ = false;
@@ -48,7 +50,7 @@
                             var reserva = {
                                 code: data,
                                 recurso: reser[data].recurso,
-                                hora: reser[data].hora,
+                                hora: (date.getHours()<10 ? '0'+date.getHours():date.getHours())+':'+(new Date(a).getMinutes()!=0 ? new Date(a).getMinutes():new Date(a).getMinutes()+'0'),
                                 fecha: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
                                 activo: activ
                             };
@@ -103,7 +105,7 @@
 
         vm.borrarReserva = function () {
             var reserva = this.dataset.code;
-            var reser = REF.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva);
+            var reser = DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva);
             reser.once("value", function (datos) {
                 var a = datos.val();
                 if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
@@ -114,9 +116,10 @@
             });
         };
 
+        //CAMBIAR
         function rellenarTablaHorarios() {
-            REF.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (horas) {
-                REF.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (horas) {
+                DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
                     vm.filas = [];
                     var data = snapshot.val();
                     for (var i = 1; i <= horas.val(); i++) { //filas                                     

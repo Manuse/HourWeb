@@ -8,11 +8,9 @@
         vm.finHora = new Date('1/1/1 13:00');
 
         vm.registrar = function () {
-            $log.log(vm.finHora-vm.inicioHora)
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0 || vm.horas == 0) {
                 vm.error("Rellene todos los campos");
             } else if (vm.inicioHora >= vm.finHora || vm.finHora-vm.inicioHora < 7200000) {
-                console.log(vm.finHora-vm.inicioHora > 7200000)
                 vm.error("El inicio debe ser menor que el final y haber un minimo de 2 horas de diferencia");
             } else if (vm.pass1 != vm.pass2) {
                 vm.error("Las contraseñas no son iguales");
@@ -22,10 +20,10 @@
         }
 
         vm.registrarAdmin = function() {
-            console.log(vm.inicioHora.getHours()+':'+vm.inicioHora.getMinutes()+'-'+vm.finHora.getHours()+':'+vm.finHora.getMinutes())
+            
             newcentro = { //le damos los valores que se van a insertar en la base de datos a los objetos
                 nombre: vm.centro,
-                horas: vm.inicioHora.getHours()+':'+vm.inicioHora.getMinutes()+'-'+vm.finHora.getHours()+':'+vm.finHora.getMinutes(),
+                horas: vm.inicioHora.getHours()+':'+(vm.inicioHora.getMinutes()!=0 ? vm.inicioHora.getMinutes():vm.inicioHora.getMinutes()+'0')+'-'+vm.finHora.getHours()+':'+(vm.finHora.getMinutes()!=0 ? vm.finHora.getMinutes():vm.finHora.getMinutes()+'0'),
                 rango_horas:vm.finHora.getHours()-vm.inicioHora.getHours()
             };
             newuser = {
@@ -66,7 +64,6 @@
         /* variables para cambiar hora según rango */
         vm.horaup = 1;
         vm.minutoup = 30;    
-        
-        
+            
     }
 })();
