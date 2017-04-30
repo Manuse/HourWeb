@@ -11,9 +11,9 @@
 
         <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
             <ul class="nav nav-tabs colortab2">
-                <li role="presentation" style="padding-left:242px"><a style="font-size:15px" href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab" class="active">Mis Reservas</a></li>
-                <li role="presentation" style="padding-left:5px"><a style="font-size:15px" href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab" class="active">Mis Horarios</a></li>
-                <li role="presentation" style="padding-left:5px"><a style="font-size:15px" href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab">Mis Mensajes</a></li>
+                <li role="presentation" class="li1"><a href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab" class="active">Mis Reservas</a></li>
+                <li role="presentation" class="li2"><a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab" class="active">Mis Horarios</a></li>
+                <li role="presentation" class="li3"><a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab">Mis Mensajes</a></li>
             </ul>
 
             <div class="container-fluid">
@@ -21,7 +21,7 @@
 
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="seccion1">
-                            <div class="btn-group pull-right" style="margin-right:75px">
+                            <div class="btn-group pull-right">
                                 <!--
                      2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos
                      la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina
@@ -30,13 +30,13 @@
                                 <label class="btn btn-warning btn-md" style="font-weight:bold" ng-model="vm.radioModel" uib-btn-radio="'Right'">Semana 2</label>
 
                             </div>
-                            <a ui-sref="reservar" name="button" style="font-weight:bold" id="ir_reserva" class="btn btn-info btnreservar btn-md">RESERVAR</a>
+                            <a ui-sref="reservar" name="button" style="font-weight:bold" id="ir_reserva" class="btn btn-info btn-reservar btn-md">RESERVAR</a>
                             <br><br>
 
                             <!-- DIV VACIO -->
                             <div class="col-lg-1"></div>
                             <div class="border col-lg-2">
-                                <h2 style="text-align:center">Lunes</h2>
+                                <h2>Lunes</h2>
                                 <ul id="lunes" class="list-group">
                                     <li class="list-group-item">First item</li>
                                     <li class="list-group-item">Second Item</li>
@@ -53,7 +53,7 @@
                                 </ul>
                             </div>
                             <div class="border col-lg-2">
-                                <h2 style="text-align:center">Martes</h2>
+                                <h2>Martes</h2>
                                 <ul id="martes" class="list-group">
                                     <li class="list-group-item">First item, el Martes por la tarde temprano</li>
                                     <li class="list-group-item">Esto queda así si le metemos mucho contenido</li>
@@ -70,7 +70,7 @@
                                 </ul>
                             </div>
                             <div class="border col-lg-2">
-                                <h2 style="text-align:center">Miércoles</h2>
+                                <h2>Miércoles</h2>
                                 <ul id="miercoles" class="list-group">
                                     <li class="list-group-item">First item</li>
                                     <li class="list-group-item">kasjhdñkshafjñdhkewfkihewlihfewlihflhewfklewhflkh</li>
@@ -87,7 +87,7 @@
                                 </ul>
                             </div>
                             <div class="border col-lg-2">
-                                <h2 style="text-align:center">Jueves</h2>
+                                <h2>Jueves</h2>
                                 <ul id="jueves" class="list-group">
                                     <li class="list-group-item">First item</li>
                                     <li class="list-group-item">Second Item</li>
@@ -105,7 +105,7 @@
 
                             </div>
                             <div class="border col-lg-2">
-                                <h2 style="text-align:center">Viernes</h2>
+                                <h2>Viernes</h2>
                                 <ul id="viernes" class="list-group">
                                     <li class="list-group-item">First item</li>
                                     <li class="list-group-item">Second Item</li>

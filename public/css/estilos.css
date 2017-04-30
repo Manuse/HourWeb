@@ -4,14 +4,13 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: #66b3ff;
+    background-color: #F9A779;
 }
 
 nav.navbar-color {
     background-color: #F9A779;
     font-size: 1.2em;
     padding-top: 1px;
-    
 }
 
 
@@ -50,7 +49,7 @@ div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
 div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home {
     margin-top: 11px;
     margin-bottom: 12px;
-    font-size: 31px;
+    font-size: 25px;
     color: white;
     margin-right: 20px;
 }
@@ -140,10 +139,34 @@ li>a[role=tab] {
 }
 
 
+/* LI */
+
+.li1 {
+    padding-left: 242px;
+}
+
+.li2 {
+    padding-left: 5px;
+}
+
+.li3 {
+    padding-left: 5px;
+}
+
+
+/* BOTONES SEMANA 1 Y SEMANA 2 */
+
+div.btn-group {
+    margin-right: 75px;
+    margin-top: 12px;
+}
+
+
 /* INDEX */
 
 
 /*boton ENTRAR */
+
 
 /*
 .boton_entrar {
@@ -967,16 +990,24 @@ input:checked+.slider:before {
     cursor: pointer;
 }
 
+
+/* BORDE DE LA LISTA */
+
 .border {
     border: 1px solid black;
 }
+
+
+/* FONDO DE LAS SECTIONS */
 
 .colortab {
     background-color: #A7DBD8;
     font-size: 1.2em;
     padding-top: 1px;
-    
 }
+
+
+/* FONDO UL */
 
 .colortab2 {
     background-color: #E0E4CC;
@@ -988,28 +1019,21 @@ input:checked+.slider:before {
     -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
     box-shadow: 2px 4px 3px skyblue, -2px 2px 3px skyblue;
 }
-.colortab3 {
-    background-color: #B7CBBF;
-    font-size: 1.2em;
-    padding-top: 1px;
-    -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -moz-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -ms-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    box-shadow: 2px 4px 3px skyblue, -2px 2px 3px skyblue;
-}
 
-div.btn-group.pull-right {
-    margin-top: 12px;
-}
 
-div.btn-group.pull-right {
-    margin-top: 12px;
-}
+/* BOTON RESERVAR */
 
-.btnreservar {
+.btn-reservar {
     margin-left: 75px;
     margin-top: 12px;
+    font-weight: bold;
+}
+
+
+/* DIAS DE LA SEMANA*/
+
+div.border>h2 {
+    text-align: center;
 }
 
 
