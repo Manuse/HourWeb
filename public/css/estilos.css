@@ -8,14 +8,10 @@
 }
 
 nav.navbar-color {
-    background-color: #66b3ff;
+    background-color: #F9A779;
     font-size: 1.2em;
     padding-top: 1px;
-    -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -moz-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -ms-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    box-shadow: 2px 4px 3px skyblue, -2px 2px 3px skyblue;
+    
 }
 
 
@@ -133,12 +129,13 @@ a.editar-perfil:hover {
 /* TABS */
 
 li>a[role=tab] {
+    margin-top: 5px;
     font-family: "Verdana", Georgia, Serif;
     font-size: 15px;
     font-weight: 900;
     color: black;
     border: 3px solid orange;
-    background-color: rgb(232, 127, 17);
+    background-color: #B7CBB7;
     margin-bottom: 5px;
 }
 
@@ -975,7 +972,24 @@ input:checked+.slider:before {
 }
 
 .colortab {
-    background-color: #66b3ff;
+    background-color: #A7DBD8;
+    font-size: 1.2em;
+    padding-top: 1px;
+    
+}
+
+.colortab2 {
+    background-color: #E0E4CC;
+    font-size: 1.2em;
+    padding-top: 1px;
+    -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -moz-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -ms-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
+    box-shadow: 2px 4px 3px skyblue, -2px 2px 3px skyblue;
+}
+.colortab3 {
+    background-color: #B7CBBF;
     font-size: 1.2em;
     padding-top: 1px;
     -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
