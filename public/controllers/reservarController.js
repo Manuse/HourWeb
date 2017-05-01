@@ -8,9 +8,10 @@
         var vm = this;
         var interval = setInterval(recarga, 1000);
         vm.recursos = [];
+        vm.tabla = [];
         vm.tipos = [{
             name: 'Selecciones un tipo',
-            value: '?'
+            value: null
         }, {
             name: 'clase',
             value: 'clase'
@@ -20,10 +21,12 @@
         }];
         vm.tipo = vm.tipos[0].value;
         vm.semana = '0';
+
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
                     vm.getUser = userFactory.getUser();
+                    vm.cargarFechaRecursos()
                     clearInterval(interval);
                 });
             }
@@ -31,26 +34,56 @@
 
         function cargarFecha() {
             var dia = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
+            vm.dias = [];
             for (var j = 0; j < 5; j++) {
-                dia.setDate(dia.getDate() + j);
-                if (vm.semana == 1) {
+                dia.setDate(dia.getDate() + (j == 0 ? 0 : 1));
+                if (vm.semana == 1 && j == 0) {
                     dia.setDate(dia.getDate() + 7);
                 }
-                vm.dias.push(dia);
+                vm.dias.push(new Date(dia));
             }
+            console.log(vm.dias)
         }
+
+        vm.cargarFechaRecursos = function () {
+            cargarFecha();
+            if (vm.recurso != null)
+                vm.cargarDisponible();
+        }
+
+        vm.hacerReserva = function (celda, ncelda) {
+            var reserva = {
+                nombre: vm.getUser.nombre + ' ' + vm.getUser.apellido,
+                curso: 'xxx',
+                fecha: celda.fecha.getTime(),
+                recurso: vm.recurso
+            };
+            if (celda.activo && ncelda==null){
+                DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
+            }else if(celda.activo && ncelda.activo){
+                DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
+            }
+        };
 
         vm.cargarRecursos = function () {
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/").orderByChild("tipo").equalTo(vm.tipo).on("value", function (snapshot) {
                 var recurso = snapshot.val();
-                vm.recursos = [];
+                vm.recursos = [{
+                    name: 'Seleccione un recurso',
+                    value: null
+                }];
+                vm.tabla = [];
                 $timeout(function () {
                     for (var data in recurso) {
-                        vm.recursos.push({name:data, value:data});
+                        vm.recursos.push({
+                            name: data,
+                            value: data
+                        });
                     }
-                    try{
-                vm.recurso = vm.recursos[0].value;
-                    }catch(err){}
+                    try {
+                        vm.recurso = vm.recursos[0].value;
+                        console.log(vm.recurso)
+                    } catch (err) {}
                 }, 0);
             });
         };
@@ -62,54 +95,64 @@
             });
         }
 
-        function cargarDisponible() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso).on("value", function (snapshot) {
-                var reservas = snapshot.val();
+        vm.cargarDisponible = function () {
+            if (vm.recurso == null) {
                 vm.tabla = [];
-                DATABASE.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (hor) {
-                    var horas = hor.val().split("-");
-                    for (var i = new Date('1/1/1 ' + horas[0]).getTime(); i <= new Date('1/1/1 ' + horas[1]); i += 1800000) { //fila
-                        var fila = {};
-                        fila.hora = new Date(a).getHours() + ':' + (new Date(a).getMinutes() != 0 ? new Date(a).getMinutes() : new Date(a).getMinutes() + '0');
-                        for (var j = 0; j < 5; j++) { //columnas
-                            vm.dias[j].setHours(new Date(a).getHours());
-                            vm.dias[j].setMinutes(new Date(a).getMinutes());
-                            var celda = {};
-                            celda.activo = true;
-                            celda.fecha = vm.dias[j];
-                            for (var data in reservas) {
-                                if (vm.dias[j] - new Date(reservas[data].fecha) < 3600000 || reservas[data].perm) {
-                                    celda.activo = false;
-                                    celda.nombre = reservas[data].nombre;
-                                    celda.curso = reservas[data].curso;
-                                } else if (new Date(reservas[data].fecha) < new Date()) {
-                                    celda.activo = false;
-                                }
-                            }
-                            switch (j) {
-                                case 0:
-                                    fila.lunes = celda;
-                                    break;
-                                case 1:
-                                    fila.martes = celda;
-                                    break;
-                                case 2:
-                                    fila.miercoles = celda;
-                                    break;
-                                case 3:
-                                    fila.jueves = celda;
-                                    break;
-                                case 4:
-                                    fila.viernes = celda;
-                                    break;
-                            }
-                            vm.tabla.push(fila);
-                        }
-                    }
-                });
-            });
-        }
+            } else {
+                DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso).on("value", function (snapshot) {
+                    var reservas = snapshot.val();
+                    DATABASE.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (hor) {
+                        var horas = hor.val().split("-");
+                        $timeout(function () {
+                            vm.tabla = [];
+                            for (var i = new Date('1/1/1 ' + horas[0]).getTime(); i < new Date('1/1/1 ' + horas[1]); i += 1800000) { //fila
+                                var fila = {};
+                                fila.hora = new Date(i).getHours() + ':' + (new Date(i).getMinutes() != 0 ? new Date(i).getMinutes() : new Date(i).getMinutes() + '0') + ' - ' + new Date(i + 1800000).getHours() + ':' + (new Date(i + 1800000).getMinutes() != 0 ? new Date(i + 1800000).getMinutes() : new Date(i + 1800000).getMinutes() + '0');
+                                for (var j = 0; j < 5; j++) { //columnas
+                                    vm.dias[j].setHours(new Date(i).getHours());
+                                    vm.dias[j].setMinutes(new Date(i).getMinutes());
+                                    vm.dias[j].setSeconds(0);
+                                    var celda = {};
+                                    celda.activo = true;
+                                    celda.fecha = new Date(vm.dias[j]);
+                                    //console.log(celda.fecha);
+                                    if (vm.dias[j] < new Date()) {
+                                        celda.activo = false;
+                                    }
+                                    for (var data in reservas) {
+                                        console.log(vm.dias[j]-new Date(reservas[data].fecha));
+                                        if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000 || reservas[data].perm) {                                                                    
+                                            celda.activo = false;
+                                            celda.nombre = reservas[data].nombre;
+                                            celda.curso = reservas[data].curso;
+                                        }
+                                    }
+                                    switch (j) {
+                                        case 0:
+                                            fila.lunes = celda;
+                                            break;
+                                        case 1:
+                                            fila.martes = celda;
+                                            break;
+                                        case 2:
+                                            fila.miercoles = celda;
+                                            break;
+                                        case 3:
+                                            fila.jueves = celda;
+                                            break;
+                                        case 4:
+                                            fila.viernes = celda;
+                                            break;
+                                    }
 
+                                }
+                                vm.tabla.push(fila);
+                            }
+                        }, 0);
+                    });
+                });
+            }
+        }
 
     }
 })();

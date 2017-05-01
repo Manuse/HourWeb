@@ -9,9 +9,9 @@
     })
     .state("reservar",{
         url:"/reservar",
-        templateUrl:"templates/reservar.html"
-        //controller:'Controller',
-        //controllerAs:"ctrl"
+        templateUrl:"templates/reservar.html",
+        controller:'ReservarController',
+        controllerAs:"vm"
     }).state("configuracion",{
             url:"/configuracion", 
         templateUrl:"templates/configuracion.html",
