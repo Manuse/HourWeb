@@ -4,7 +4,7 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: #F9A779;
+    background-color: #F9A779 !important;
 }
 
 nav.navbar-color {
@@ -1026,7 +1026,7 @@ input:checked+.slider:before {
 .btn-reservar {
     margin-left: 75px;
     margin-top: 12px;
-    font-weight: bold;
+    
 }
 
 
@@ -1035,6 +1035,85 @@ input:checked+.slider:before {
 div.border>h2 {
     text-align: center;
 }
+
+/*PERFIL IZQUIERDA */
+
+div>article.foto_izquierda>img{
+    height: 50%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    
+}
+
+/* NOMBRE FOTO PERFIL*/
+.foto-nombre{
+    padding-left: 1px;
+    padding-right: 1px;
+    
+    }
+
+/* DROPDOWN HACIA LA DERECHA*/
+
+span.span-main-dropdown>a.dropdown-toggle.navbar-text{
+    margin-right: 50px;
+    }
+
+/* STRONG DEL A DE ARRIBA*/
+span.span-main-dropdown>a.dropdown-toggle.navbar-text>strong{
+    font-size: 18px;
+    color: white;
+    }
+
+/* ICONO EDITAR PERFIL */
+.span-perfil{
+    font-size: 15px;
+    margin-left: 4px;
+    }
+/* ICONO AYUDA PERFIL */
+
+.span-ayuda{
+    font-size: 15px;
+    margin-left: 4px;
+    }
+/*ICONO CERRAR SESION PERFIL*/
+
+.span-cerrarsesion{
+    margin-left: 3px;
+}
+
+/*ICONO HOME*/
+.estilo-home{
+    margin-top: 5px;
+}
+
+/* FUENTE BOTONES SEMANA 1 Y SEMANA 2 */
+
+div.tab-pane.active>div.btn-group.pull-right>label{
+    font-weight: bold;
+}
+
+/* FUENTE BOTON RESERVAR */
+div.tab-pane.active>a.btn.btn-info.btn-reservar.btn-md{
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*colores*/

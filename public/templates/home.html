@@ -3,8 +3,8 @@
 <div class="row">
     <div class="container-fluid">
         <article class="hidden-xs hidden-sm col-md-2 col-lg-2 foto_izquierda">
-            <img src="imagenes/logo.png" class="img-responsive img-rounded" alt="sin foto" id="foto_home" style="height:50%;width:90%; margin-left:5%; margin-right:5%; margin-top:7px; margin-bottom:10px;" />
-            <p id="foto_nombre" style="padding-left: 1px; padding-right: 1px;">Diego Lucas Romero</p>
+            <img src="imagenes/logo.png" class="img-responsive img-rounded" alt="sin foto" id="foto_home"/>
+            <p id="foto_nombre" class="foto-nombre">Diego Lucas Romero</p>
             <p id="foto_centro"></p>
             <p id="foto_codigo"></p>
         </article>
@@ -26,11 +26,11 @@
                      2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos
                      la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina
 -->
-                                <label class="btn btn-info btn-md" style="font-weight:bold" ng-model="vm.radioModel" uib-btn-radio="'Left'">Semana 1</label>
-                                <label class="btn btn-warning btn-md" style="font-weight:bold" ng-model="vm.radioModel" uib-btn-radio="'Right'">Semana 2</label>
+                                <label class="btn btn-info btn-md" ng-model="vm.radioModel" uib-btn-radio="'Left'">Semana 1</label>
+                                <label class="btn btn-warning btn-md" ng-model="vm.radioModel" uib-btn-radio="'Right'">Semana 2</label>
 
                             </div>
-                            <a ui-sref="reservar" name="button" style="font-weight:bold" id="ir_reserva" class="btn btn-info btn-reservar btn-md">RESERVAR</a>
+                            <a ui-sref="reservar" name="button" id="ir_reserva" class="btn btn-info btn-reservar btn-md">RESERVAR</a>
                             <br><br>
 
                             <!-- DIV VACIO -->

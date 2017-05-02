@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <div class="icono-home" style="margin-top:5px">
+                        <div class="icono-home estilo-home">
                             <a ui-sref="home">
                                 <span class="glyphicon glyphicon-home"></span>
                             </a>
@@ -64,15 +64,15 @@
                     <li>
                         <span class="span-main-dropdown" uib-dropdown>
                             <!-- Navbar nombre user y glyphicon desplegar -->
-						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" style="margin-right:50px;" uib-dropdown-toggle>				    						
-							    <strong style="font-size:18px;color:white;" ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">NombreYApellidos</strong>
+						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" uib-dropdown-toggle>				    						
+							    <strong ng-bind="uc.getUser.nombre+' '+uc.getUser.apellido">NombreYApellidos</strong>
 								<span class="glyphicon glyphicon-triangle-bottom"></span>
                         </a>
                         <hr class="dropdown-separador">
                         <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                             <li role="menuitem">
                                 <a ui-sref="configuracion" class="editar-perfil">Editar Perfil
-                                <span class="glyphicon glyphicon-user" style="font-size:15px;margin-left:4px"></span>
+                                <span class="glyphicon glyphicon-user span-perfil"></span>
                                 </a>
                             </li>
                             <li role="menuitem" ng-if="uc.getUser.tipo == 'administrador'">
@@ -81,12 +81,12 @@
                             <li class="divider"></li>
                             <li role="menuitem">
                                 <a href="#" class="editar-perfil">Ayuda
-                                    <span class="glyphicon glyphicon-info-sign editar-perfil" style="font-size:15px;margin-left:4px"></span>
+                                    <span class="glyphicon glyphicon-info-sign editar-perfil span-ayuda"></span>
                                 </a>
                             </li>
                             <li role="menuitem" id="salir" ng-click="uc.signOut()">
                                 <a href="#" class="editar-perfil">Cerrar Sesión
-								    <span class="glyphicon glyphicon-off" style="margin-left:3px"></span>
+								    <span class="glyphicon glyphicon-off span-cerrarsesion"></span>
 								</a>
                             </li>
                         </ul>
