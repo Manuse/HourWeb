@@ -28,6 +28,9 @@
         <select ng-if="vm.recursos.length > 1" ng-options="item.value as item.name for item in vm.recursos" ng-change="vm.cargarDisponible()"
             ng-model="vm.recurso">          
         </select>
+        <select ng-if="vm.cursos.length > 0" ng-options="item as item for item in vm.cursos" 
+            ng-model="vm.curso">          
+        </select>
         <input type="radio" name="sme" ng-model="vm.semana" value="0" ng-click="vm.cargarFechaRecursos()">semana 1
         <input type="radio" name="sme" ng-model="vm.semana" value="1" ng-click="vm.cargarFechaRecursos()">semana 2
 

@@ -21,15 +21,33 @@
         }];
         vm.tipo = vm.tipos[0].value;
         vm.semana = '0';
+        vm.cursos = [];
 
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
                     vm.getUser = userFactory.getUser();
-                    vm.cargarFechaRecursos()
+                    vm.cargarFechaRecursos();
+                    cargarCursos();
                     clearInterval(interval);
                 });
             }
+        }
+
+        function cargarCursos() {
+            DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
+                var cursos = snapshot.val();
+                $timeout(function () {
+                    for (var data in cursos) {
+                        if (!vm.cursos.includes(cursos[data].nombre)) {
+                            vm.cursos.push(cursos[data].nombre);
+                        }
+                    }
+                    vm.cursos.sort();
+                    vm.curso = vm.cursos[0];
+                }, 0);
+
+            });
         }
 
         function cargarFecha() {
@@ -58,9 +76,9 @@
                 fecha: celda.fecha.getTime(),
                 recurso: vm.recurso
             };
-            if (celda.activo && ncelda==null){
+            if (celda.activo && ncelda == null) {
                 DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
-            }else if(celda.activo && ncelda.activo){
+            } else if (celda.activo && ncelda.activo) {
                 DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
             }
         };
@@ -90,8 +108,15 @@
 
 
         function cargarTipo() {
-            DATABASE.ref("tipos/").once("value", function (snapshot) {
-                vm.tipos = snapshot.val();
+            DATABASE.ref("centro/" + vm.getUser.codcentro + "/tipos").once("value", function (snapshot) {
+                $timeout(function () {
+                    vm.tipos = snapshot.val();
+                    vm.tipos.unshift({
+                        name: 'Selecciones un tipo',
+                        value: null
+                    });
+                    vm.tipo = vm.tipos[0].value;
+                }, 0);
             });
         }
 
@@ -120,8 +145,8 @@
                                         celda.activo = false;
                                     }
                                     for (var data in reservas) {
-                                        console.log(vm.dias[j]-new Date(reservas[data].fecha));
-                                        if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000 || reservas[data].perm) {                                                                    
+                                        console.log(vm.dias[j] - new Date(reservas[data].fecha));
+                                        if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000 || reservas[data].perm) {
                                             celda.activo = false;
                                             celda.nombre = reservas[data].nombre;
                                             celda.curso = reservas[data].curso;

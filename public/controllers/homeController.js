@@ -46,7 +46,8 @@
                             var activ = true;
                             if (new Date() < date) {
                                 activ = false;
-                            }
+                            }else if(date < new Date() && date > new Date()-3600000)
+                            
                             var reserva = {
                                 code: data,
                                 recurso: reser[data].recurso,

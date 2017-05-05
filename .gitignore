@@ -5,3 +5,4 @@ firebase.json
 config.js
 .vscode
 Thumbs.db
+eslintrc.json
