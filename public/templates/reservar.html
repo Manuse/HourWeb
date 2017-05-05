@@ -1,4 +1,4 @@
-<div class="container" ng-controller="ReservarController as vm">
+<div class="container">
     <div class="row">
         <div class="container">
 
@@ -19,8 +19,8 @@
                 <input type="radio" name="sme" ng-model="vm.semana" value="1" ng-click="vm.cargarFechaRecursos()">semana 2
 -->
                 
-                <label class="btn btn-info btn-md" ng-model="vm.semana" value="0" ng-click="vm.cargarFechaRecursos()">Semana 1</label>
-                <label class="btn btn-warning btn-md" ng-model="vm.semana" value="1" ng-click="vm.cargarFechaRecursos()">Semana 2</label>
+                <label class="btn btn-info btn-md" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.cargarFechaRecursos()">Semana 1</label>
+                <label class="btn btn-warning btn-md" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.cargarFechaRecursos()">Semana 2</label>
             </div>
 
         </div>
