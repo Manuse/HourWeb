@@ -40,11 +40,11 @@
                 vm.jueves = [];
                 vm.viernes = [];
                 var semana1 = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
-                var fsemana1 = new Date().setDate(semana1.getDate() + 7);
+                var fsemana1 = new Date().setDate(semana1.getDate() + 6);
                 $log.log(semana1)
                 if (vm.semana == 1) {
                     semana1.setDate(semana1.getDate() + 7);
-                    fsemana1 = fsemana1.setDate(fsemana1.getDate() + 7);
+                    fsemana1.setDate(fsemana1.getDate() + 7);
                 }
                 $log.log(semana1)
                 $timeout(function () {
