@@ -4,15 +4,14 @@
 .nav .open>a:focus,
 .nav .open>a:hover {
     color: white;
-    background-color: #F9A779 !important;
+    background-color: skyblue !important;
 }
 
-
-
 nav.navbar-color {
-    background-color: #F9A779;
+    background-color: skyblue;
     font-size: 1.2em;
     padding-top: 1px;
+    width: 100%;
 }
 
 
@@ -116,22 +115,17 @@ a.editar-perfil:hover {
         box-shadow: none;
         border: 0;
     }
-    div.navbar-collapse.in.collapse {
-        background-color: #66b3ff;
-        transition: 3.5s;
-        background-color: #1ac6ff;
-    }
+    
     a.editar-perfil:hover {
         background-color: #80c1ff !important;
     }
 }
 
+
 /* BOTON RESERVAR */
 
-.btn-reservar {
-    margin-left: 75px;
-    margin-top: 12px;
-    
+a.btn-reservar {
+    font-weight: bold;
 }
 
 
@@ -141,69 +135,79 @@ div.border>h2 {
     text-align: center;
 }
 
+
 /*PERFIL IZQUIERDA */
 
-div>article.foto_izquierda>img{
+div>article.foto_izquierda>img {
     height: 50%;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 7px;
     margin-bottom: 10px;
-    
 }
 
+
 /* NOMBRE FOTO PERFIL*/
-.foto-nombre{
+
+.foto-nombre {
     padding-left: 1px;
     padding-right: 1px;
-    
-    }
+}
+
 
 /* DROPDOWN HACIA LA DERECHA*/
 
-span.span-main-dropdown>a.dropdown-toggle.navbar-text{
+span.span-main-dropdown>a.dropdown-toggle.navbar-text {
     margin-right: 50px;
-    }
+}
+
 
 /* STRONG DEL A DE ARRIBA*/
-span.span-main-dropdown>a.dropdown-toggle.navbar-text>strong{
+
+span.span-main-dropdown>a.dropdown-toggle.navbar-text>strong {
     font-size: 18px;
     color: white;
-    }
+}
+
 
 /* ICONO EDITAR PERFIL */
-.span-perfil{
+
+.span-perfil {
     font-size: 15px;
     margin-left: 4px;
-    }
+}
+
+
 /* ICONO AYUDA PERFIL */
 
-.span-ayuda{
+.span-ayuda {
     font-size: 15px;
     margin-left: 4px;
-    }
+}
+
+
 /*ICONO CERRAR SESION PERFIL*/
 
-.span-cerrarsesion{
+.span-cerrarsesion {
     margin-left: 3px;
 }
 
+
 /*ICONO HOME*/
-.estilo-home{
+
+.estilo-home {
     margin-top: 5px;
 }
 
+
 /* FUENTE BOTONES SEMANA 1 Y SEMANA 2 */
 
-div.tab-pane.active>div.btn-group.pull-right>label{
+div.tab-pane.active>div.btn-group.pull-right>label {
     font-weight: bold;
 }
 
-/* FUENTE BOTON RESERVAR */
-div.tab-pane.active>a.btn.btn-info.btn-reservar.btn-md{
-    font-weight: bold;
-}
+
 /* TABS */
 
 li>a[role=tab] {
@@ -441,25 +445,23 @@ ul.list-group>li.list-group-item.lista_hora:hover {
 }
 
 div.round1 {
-    
-    border: 1px solid black;
+    border: 1px solid grey;
+    border-style: ridge;
     padding: 20px 19px;
     padding-right: 2px;
-    border-radius: 34px;
-
+    border-radius: 10px;
 }
 
 article.foto_izquierda {
     color: #ffffff;
     font-weight: 700;
     font-family: 'Tahoma', arial, sans-serif;
-    border: 2px solid #beb6c3;
-    border-bottom: 3px solid #beb6c3;
+    border: 2px solid white;
     box-shadow: 1px 1px #beb6c3;
     text-align: center;
     background-color: rgb(8, 135, 175);
     margin-bottom: 20px;
-    height: 50%;
+    height: auto;
 }
 
 .mostrar_centro {
@@ -474,8 +476,7 @@ h3.listas.sombra {
     color: rgb(1, 5, 19);
     font-weight: bold;
     font-family: 'Arial', sans-serif;
-  
-	margin-left: 80px;
+    margin-left: 77px;
 }
 
 h3.listas.sombra-miercoles {
@@ -483,8 +484,7 @@ h3.listas.sombra-miercoles {
     color: rgb(1, 5, 19);
     font-weight: bold;
     font-family: 'Arial', sans-serif;
-  
-	margin-left: 67px;
+    margin-left: 60px;
 }
 
 .titulo_reservas {
@@ -665,7 +665,6 @@ input.input_centro {
 @media (min-width: 1200px) {
     div.col-lg-5 {
         width: 18%;
-        
     }
     /* LISTAS DE HOME cambiamos a 5 columnas en tamanio lg */
     ul.list-group>li.dias {
@@ -675,17 +674,25 @@ input.input_centro {
         text-align: center;
         font-weight: bold;
         height: 190px;
-        width: 200px;
-        margin-bottom: 5px;
+        width: 190px;
+        margin-bottom: 7px;
         align-content: center;
-        border: 2px solid black;
-        border-bottom-width: thick;
+        border: 4px solid skyblue;
+        border-style: ridge;
+        border-bottom-width: 7px;
+        border-bottom-color: #00b8e6;
+        
     }
-    ul.list-group.d_semana{
+    ul.list-group.d_semana {
         margin: 0 auto;
-        width: 100px;        
+        width: 100px;
     }
-    
+    /* BOTÓN RESERVAR HOME */
+    .btn-reservar {
+        margin-left: 55px;
+        margin-top: 13px;
+        font-weight: bold;
+    }
     ul.list-group>li.list-group-item.lista_recurso {
         background-color: rgb(1, 91, 99);
         color: white;
@@ -1107,7 +1114,7 @@ input:checked+.slider:before {
 /* FONDO UL */
 
 .colortab2 {
-    background-color: #E0E4CC;
+    background-color: #d3edf8;
     font-size: 1.2em;
     padding-top: 1px;
     -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
@@ -1117,27 +1124,9 @@ input:checked+.slider:before {
     box-shadow: 2px 4px 3px skyblue, -2px 2px 3px skyblue;
 }
 
-.margen{
+.margen {
     margin-top: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*colores*/
