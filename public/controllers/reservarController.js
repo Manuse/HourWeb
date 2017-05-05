@@ -74,7 +74,8 @@
                 nombre: vm.getUser.nombre + ' ' + vm.getUser.apellido,
                 curso: 'xxx',
                 fecha: celda.fecha.getTime(),
-                recurso: vm.recurso
+                recurso: vm.recurso,
+                usuario:vm.getUser.id
             };
             if (celda.activo && ncelda == null) {
                 DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);

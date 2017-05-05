@@ -4,18 +4,24 @@
         .module('app')
         .controller('HomeController', homeController);
 
-    function homeController(userFactory, $scope, DATABASE) {
+    function homeController(userFactory, $timeout, DATABASE, $log) {
         var vm = this;
         var interval = setInterval(recarga, 1000);
-
+        vm.lunes = [];
+        vm.martes = [];
+        vm.miercoles = [];
+        vm.jueves = [];
+        vm.viernes = [];
+        vm.semana=0;
         function recarga() {
+            console.log('t')
             if (userFactory.getUser() != null) {
-                $scope.$apply(function () {
+                $timeout(function () {
                     vm.getUser = userFactory.getUser();
                     vm.photo = userFactory.getPhoto();
                     recogerMisReservas();
                     clearInterval(interval);
-                });
+                }, 0);
             }
         }
 
@@ -25,6 +31,7 @@
 
 
         function recogerMisReservas() {
+            $log.log('ttt')
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).on("value", function (snapshot) {
                 var reser = snapshot.val();
                 vm.lunes = [];
@@ -33,29 +40,71 @@
                 vm.jueves = [];
                 vm.viernes = [];
                 var semana1 = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
-                var fsemana1 = semana1.setDate(semana1.getDate() + 7);
+                var fsemana1 = new Date().setDate(semana1.getDate() + 7);
+                $log.log(semana1)
                 if (vm.semana == 1) {
                     semana1.setDate(semana1.getDate() + 7);
                     fsemana1 = fsemana1.setDate(fsemana1.getDate() + 7);
                 }
-                for (var data in reser) {
-                    var fecha = reser[data].fecha;
-                    if (reser[data].fecha.length > 5) {
-                        var date = new Date(fecha);
-                        if (semana1 < date || semana1.getDate() == date.getDate() && semana1.getMonth() == date.getMonth() && date<fsemana1) {
-                            var activ = true;
-                            if (new Date() < date) {
-                                activ = false;
-                            }else if(date < new Date() && date > new Date()-3600000)
+                $log.log(semana1)
+                $timeout(function () {
+                    for (var data in reser) {
+                        var fecha = reser[data].fecha;
+                        
+                        if (reser[data].fecha > 10) {
                             
+                            var date = new Date(fecha);
+                            
+                            if (semana1 < date && date < fsemana1) {
+                                var activ = true;
+                                var actu = false;
+                                if (new Date() > date) {
+                                    activ = false;
+                                }
+                                if (date < new Date() && date >= new Date() - 3600000) {
+                                    actu = true;
+                                }
+                                $log.log(date >= new Date() - 3600000)
+                                var reserva = {
+                                    code: data,
+                                    recurso: reser[data].recurso,
+                                    hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
+                                    fecha: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
+                                    activo: activ,
+                                    actual: actu
+                                };
+                                switch (parseInt(date.getDay())) {
+                                    case 1:
+                                        vm.lunes.push(reserva);
+                                        break;
+                                    case 2:
+                                        vm.martes.push(reserva);
+                                        break;
+                                    case 3:
+                                        vm.miercoles.push(reserva);
+                                        break;
+                                    case 4:
+                                        vm.jueves.push(reserva);
+                                        break;
+                                    case 5:
+                                        vm.viernes.push(reserva);
+                                        break;
+                                }
+                            }
+                        } else {
+                            var actu = false;
+                            if (new Date('1/1/1 ' + new Date().getHours() + ':' + new Date().getMinutes()) < new Date('1/1/1 ' + reser[data].hora) && new Date('1/1/1 ' + new Date(new Date() + 3600000).getHours() + ':' + new Date(new Date() + 3600000).getMinutes()) > new Date('1/1/1 ' + reser[data].hora)) {
+                                actu = true;
+                            }
                             var reserva = {
                                 code: data,
                                 recurso: reser[data].recurso,
-                                hora: (date.getHours()<10 ? '0'+date.getHours():date.getHours())+':'+(new Date(a).getMinutes()!=0 ? new Date(a).getMinutes():new Date(a).getMinutes()+'0'),
-                                fecha: date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear(),
-                                activo: activ
+                                hora: reser[data].hora,
+                                fecha: "Permanente",
+                                activo: true,
+                                actual: actu
                             };
-                            switch (parseInt(date.getDay())) {
+                            switch (parseInt(reser[data].fecha)) {
                                 case 1:
                                     vm.lunes.push(reserva);
                                     break;
@@ -71,42 +120,17 @@
                                 case 5:
                                     vm.viernes.push(reserva);
                                     break;
+
                             }
                         }
-                    } else {
-                        var reserva = {
-                            code: data,
-                            recurso: reser[data].recurso,
-                            hora: reser[data].hora,
-                            fecha: "Permanente",
-                            activo: true
-                        };
-                        switch (parseInt(reser[data].fecha)) {
-                            case 1:
-                                vm.lunes.push(reserva);
-                                break;
-                            case 2:
-                                vm.martes.push(reserva);
-                                break;
-                            case 3:
-                                vm.miercoles.push(reserva);
-                                break;
-                            case 4:
-                                vm.jueves.push(reserva);
-                                break;
-                            case 5:
-                                vm.viernes.push(reserva);
-                                break;
-
-                        }
                     }
-                }
+                }, 0);
             });
         }
 
-        vm.borrarReserva = function () {
-            var reserva = this.dataset.code;
-            var reser = DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva);
+        vm.borrarReserva = function (reserva) {
+            if(!reserva.activo){
+            var reser = DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva.code);
             reser.once("value", function (datos) {
                 var a = datos.val();
                 if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
@@ -115,6 +139,7 @@
                     alert("No puedes borrar las asignaciones permanentes"); //futuro modal
                 }
             });
+            }
         };
 
         //CAMBIAR
@@ -147,7 +172,7 @@
                 });
             });
         }
-//        2 BOTONES UI-BOOTSTRAP
+        //        2 BOTONES UI-BOOTSTRAP
         vm.radioModel = 'Left';
 
     }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app">
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0">
+    <title>HourWeb</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imagenes/logo.png" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- fa-icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Optional theme solo le da un degradado al boton o a otros componentes. No es necesario -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-HyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+    <script src="firebase/config.js" charset="utf-8"></script>
+</head>
+
+<body style="background-color:#e9e9e9;">
+    <div ng-controller="HomeController as vm">
+        
+        <ul>
+            <li>lunes</li>
+            <li ng-repeat="lunes in vm.lunes" ng-click="vm.borrarReserva(lunes)">
+                <div ng-class="lunes.activo ? 'text-success' : lunes.actual ? 'text-primary' : 'text-danger'"> 
+                    <p ng-bind="lunes.recurso"></p>
+                    <p ng-bind="lunes.fecha+'-'+lunes.hora"></p>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>martes</li>
+            <li ng-repeat="martes in vm.martes" ng-click="vm.borrarReserva(martes)">
+                <div ng-class="martes.activo ? 'text-success' : martes.actual ? 'text-primary' : 'text-danger'"> 
+                    <p ng-bind="martes.recurso"></p>
+                    <p ng-bind="martes.fecha+'-'+lunes.hora"></p>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>miercoles</li>
+            <li ng-repeat="miercoles in vm.miercoles" ng-click="vm.borrarReserva(miercoles)">
+                <div ng-class="miercoles.activo ? 'text-success' : miercoles.actual ? 'text-primary' : 'text-danger'"> 
+                    <p ng-bind="miercoles.recurso"></p>
+                    <p ng-bind="miercoles.fecha+'-'+miercoles.hora"></p>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>jueves</li>
+            <li ng-repeat="jueves in vm.jueves" ng-click="vm.borrarReserva(jueves)">
+                <div ng-class="jueves.activo ? 'text-success' : jueves.actual ? 'text-primary' : 'text-danger'"> 
+                    <p ng-bind="jueves.recurso"></p>
+                    <p ng-bind="jueves.fecha+'-'+jueves.hora"></p>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li>viernes</li>
+            <li ng-repeat="viernes in vm.viernes" ng-click="vm.borrarReserva(viernes)"> 
+                <div ng-class="viernes.activo ? 'text-success' : viernes.actual ? 'text-primary' : 'text-danger'"> 
+                    <p ng-bind="viernes.recurso"></p>
+                    <p ng-bind="viernes.fecha+'-'+viernes.hora"></p>
+                </div>
+            </li>
+        </ul>
+
+
+    </div>
+
+    <!--<script src="https://code.jquery.com/jquery-latest.js"></script>
+		<script src="js/bootstrap.min.js"></script>-->
+    <script src="js/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.6.4/angular-locale_es-es.min.js"></script>
+    <script src="js/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="js/ui-bootstrap-tpls.js"></script>
+    <script src="js/app.js"></script>
+    <script src="factories/userFactory.js"></script>
+    <script src="controllers/navController.js"></script>
+    <script src="controllers/homeController.js"></script>
+    <script src="controllers/reservarController.js"></script>
+    <!--<script src="firebase/database.js" charset="utf-8"></script>
+		<script src="firebase/user.js" charset="utf-8"></script>
+		<script src="firebase/controlador.js" charset="utf-8"></script>-->
+</body>
+</html>
