@@ -31,7 +31,6 @@
 
 
         function recogerMisReservas() {
-            $log.log('ttt')
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).on("value", function (snapshot) {
                 var reser = snapshot.val();
                 vm.lunes = [];
@@ -41,20 +40,14 @@
                 vm.viernes = [];
                 var semana1 = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
                 var fsemana1 = new Date().setDate(semana1.getDate() + 6);
-                $log.log(semana1)
                 if (vm.semana == 1) {
                     semana1.setDate(semana1.getDate() + 7);
                     fsemana1.setDate(fsemana1.getDate() + 7);
-                }
-                $log.log(semana1)
+                }             
                 $timeout(function () {
                     for (var data in reser) {
-                        var fecha = reser[data].fecha;
-                        
-                        if (reser[data].fecha > 10) {
-                            
-                            var date = new Date(fecha);
-                            
+                        if (reser[data].fecha > 10) {                         
+                            var date = new Date(reser[data].fecha);                          
                             if (semana1 < date && date < fsemana1) {
                                 var activ = true;
                                 var actu = false;
@@ -64,7 +57,6 @@
                                 if (date < new Date() && date >= new Date() - 3600000) {
                                     actu = true;
                                 }
-                                $log.log(date >= new Date() - 3600000)
                                 var reserva = {
                                     code: data,
                                     recurso: reser[data].recurso,

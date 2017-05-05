@@ -37,12 +37,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>HORA&nbsp;</th>
-                    <th ng-bind="vm.dias[0] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>
-                    <th ng-bind="vm.dias[1] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>
-                    <th ng-bind="vm.dias[2] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>
-                    <th ng-bind="vm.dias[3] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>
-                    <th ng-bind="vm.dias[4] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>
+                    <th>&nbsp;HORA&nbsp;</th>
+                    <th ng-repeat="dia in vm.dias" ng-bind="dia | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>                
                 </tr>
             </thead>
             <tbody>
