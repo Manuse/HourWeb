@@ -1,24 +1,32 @@
-<br>
+
 
 <div class="row">
-    <div class="container-fluid">
+   <div class="container">
+    
         <article class="hidden-xs hidden-sm col-md-2 col-lg-2 foto_izquierda">
             <img src="imagenes/logo.png" class="img-responsive img-rounded" alt="sin foto" id="foto_home" />
             <p id="foto_nombre" class="foto-nombre">Diego Lucas Romero</p>
             <p id="foto_centro"></p>
             <p id="foto_codigo"></p>
         </article>
-
-        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
-            <ul class="nav nav-tabs colortab2">
+        </div>
+        </div>
+        
+        
+        <div class="row">
+        
+        <div class="container">
+        
+        <ul class="nav nav-tabs colortab2">
                 <li role="presentation" class="li1"><a href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab" class="active">Mis Reservas</a></li>
                 <li role="presentation" class="li2"><a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab" class="active">Mis Horarios</a></li>
                 <li role="presentation" class="li3"><a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab">Mis Mensajes</a></li>
             </ul>
-
-            <div class="container-fluid">
-                <div class="colortab row">
-
+            
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 round1 margen">
+            
+                <div class="row">
+                   <div class="container-fluid">
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="seccion1">
                             <div class="btn-group pull-right">
@@ -32,91 +40,67 @@
                             </div>
                             <a ui-sref="reservar" name="button" id="ir_reserva" class="btn btn-info btn-reservar btn-md">RESERVAR</a>
                             <br><br>
+                            
+                            <div class="">
+                                    <!--lunes-->
+                                    <div class="col-md-25 col-lg-5" style="margin-left:0px;">
+                                        <h3 class="listas sombra">LUNES</h3>
+                                        <ul class="list-group d_semana" id="lunes">
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Bronze Package
+                                            </li>
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Unlimited users
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                            <!-- DIV VACIO -->
-                            <div class="col-lg-1"></div>
-                            <div class="border col-lg-2">
-                                <h2>Lunes</h2>
-                                <ul id="lunes" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second Item</li>
-                                    <li class="list-group-item"> Third item</li>
+                                    <!--martes-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra">MARTES</h3>
+                                        <ul id="martes" class="list-group d_semana">
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">eL CAMION DE LA BASURA PASA POR LA CALLE
+                                            </li>
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO camionnologo petante
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                </ul>
-                                <div class="border"></div>
-                                <br>
-                                <ul id="lunes" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second Item</li>
-                                    <li class="list-group-item"> Third item</li>
+                                    <!--miercoles-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra-miercoles">MIÉRCOLES</h3>
+                                        <ul id="meircoles" class="list-group d_semana">
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Bronze Package
+                                            </li>
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO camionnologo petante
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
 
-                                </ul>
-                            </div>
-                            <div class="border col-lg-2">
-                                <h2>Martes</h2>
-                                <ul id="martes" class="list-group">
-                                    <li class="list-group-item">First item, el Martes por la tarde temprano</li>
-                                    <li class="list-group-item">Esto queda así si le metemos mucho contenido</li>
-                                    <li class="list-group-item"> kasjhdñkshafjñdhkewfkihewlihfewlihflhewfklewhflkh</li>
+                                    <!--jueves-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra">JUEVES</h3>
+                                        <ul id="jueves" class="list-group d_semana">
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Bronze Package
+                                            </li>
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO camionnologo petante
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                </ul>
-                                <div class="border"></div>
-                                <ul id="martes" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second Item</li>
-                                    <li class="list-group-item"> Third item</li>
+                                    <!-- viernes-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra">VIERNES</h3>
+                                        <ul id="viernes" class="list-group d_semana">
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO cam
+                                            </li>
+                                            <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO c
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                </ul>
-                            </div>
-                            <div class="border col-lg-2">
-                                <h2>Miércoles</h2>
-                                <ul id="miercoles" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">kasjhdñkshafjñdhkewfkihewlihfewlihflhewfklewhflkh</li>
-                                    <li class="list-group-item"> Informática</li>
+                                </div>
 
-                                </ul>
-                                <div class="border"></div>
-                                <ul id="miercoles" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second Item</li>
-                                    <li class="list-group-item"> Literatura y Ciencias de la Información</li>
-
-                                </ul>
-                            </div>
-                            <div class="border col-lg-2">
-                                <h2>Jueves</h2>
-                                <ul id="jueves" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second Item</li>
-                                    <li class="list-group-item"> Third item</li>
-
-                                </ul>
-                                <div class="border"></div>
-                                <ul id="jueves" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second Item</li>
-                                    <li class="list-group-item"> Third item</li>
-
-                                </ul>
-
-                            </div>
-                            <div class="border col-lg-2">
-                                <h2>Viernes</h2>
-                                <ul id="viernes" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second Item</li>
-                                    <li class="list-group-item"> Third item</li>
-
-                                </ul>
-                                <div class="border"></div>
-                                <ul id="viernes" class="list-group">
-                                    <li class="list-group-item">First item</li>
-                                    <li class="list-group-item">Second Item</li>
-                                    <li class="list-group-item"> Third item</li>
-
-                                </ul>
-                            </div>
+                            
 
                         </div>
                         <div class="tab-pane" role="tabpanel" id="seccion2">
@@ -157,6 +141,9 @@
 
 
         </div>
-    </div>
+        
+        </div>
+        
+        
+        </div>
 
-</div>
