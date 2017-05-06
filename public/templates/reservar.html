@@ -4,11 +4,11 @@
 
             <div class=" col-xs-7 col-sm-8 col-md-9 col-lg-9">
 
-                <select ng-model="vm.tipo" ng-options="item.value as item.name for item in vm.tipos" ng-change="vm.cargarRecursos()">
+                <select class="btn btn-info" ng-model="vm.tipo" ng-options="item.value as item.name for item in vm.tipos" ng-change="vm.cargarRecursos()">
         </select>
-                <select ng-if="vm.recursos.length > 1" ng-options="item.value as item.name for item in vm.recursos" ng-change="vm.cargarDisponible()" ng-model="vm.recurso">          
+                <select class="btn btn-info" ng-if="vm.recursos.length > 1" ng-options="item.value as item.name for item in vm.recursos" ng-change="vm.cargarDisponible()" ng-model="vm.recurso">          
         </select>
-                <select ng-if="vm.cursos.length > 0" ng-options="item as item for item in vm.cursos" ng-model="vm.curso">          
+                <select class="btn btn-info" ng-if="vm.cursos.length > 0" ng-options="item as item for item in vm.cursos" ng-model="vm.curso">          
         </select>
             </div>
 
