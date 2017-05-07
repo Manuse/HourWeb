@@ -38,9 +38,11 @@
                                 <div class="col-md-25 col-lg-5">
                                     <h3 class="listas sombra">LUNES</h3>
                                     <ul class="list-group d_semana" id="lunes">
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Bronze Package
-                                        </li>
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Unlimited users
+                                        <li ng-repeat="lunes in vm.lunes" ng-class="lunes.activo ? 'list-group-item dias bg-success' : lunes.actual ? 'list-group-item dias bg-info' : 'list-group-item dias bg-danger'" ng-click="vm.borrarReserva(lunes)">
+										  <div> 
+                                            <p ng-bind="lunes.recurso"></p>
+                                            <p ng-bind="lunes.fecha+'-'+lunes.hora"></p>
+                                          </div>
                                         </li>
                                     </ul>
                                 </div>
