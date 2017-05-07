@@ -115,7 +115,6 @@ a.editar-perfil:hover {
         box-shadow: none;
         border: 0;
     }
-    
     a.editar-perfil:hover {
         background-color: #80c1ff !important;
     }
@@ -163,7 +162,7 @@ span.span-main-dropdown>a.dropdown-toggle.navbar-text {
 }
 
 
-/* STRONG DEL A DE ARRIBA*/
+/* STRONG DEL a DE ARRIBA*/
 
 span.span-main-dropdown>a.dropdown-toggle.navbar-text>strong {
     font-size: 18px;
@@ -194,7 +193,7 @@ span.span-main-dropdown>a.dropdown-toggle.navbar-text>strong {
 }
 
 
-/*ICONO HOME*/
+/*ICONO HOME login.html?*/
 
 .estilo-home {
     margin-top: 5px;
@@ -205,35 +204,6 @@ span.span-main-dropdown>a.dropdown-toggle.navbar-text>strong {
 
 div.tab-pane.active>div.btn-group.pull-right>label {
     font-weight: bold;
-}
-
-
-/* TABS */
-
-li>a[role=tab] {
-    margin-top: 5px;
-    font-family: "Verdana", Georgia, Serif;
-    font-size: 15px;
-    font-weight: 900;
-    color: black;
-    border: 3px solid orange;
-    background-color: #B7CBB7;
-    margin-bottom: 5px;
-}
-
-
-/* LI */
-
-.li1 {
-    padding-left: 370px;
-}
-
-.li2 {
-    padding-left: 5px;
-}
-
-.li3 {
-    padding-left: 5px;
 }
 
 
@@ -681,7 +651,6 @@ input.input_centro {
         border-style: ridge;
         border-bottom-width: 7px;
         border-bottom-color: #00b8e6;
-        
     }
     ul.list-group.d_semana {
         margin: 0 auto;
@@ -1105,30 +1074,82 @@ input:checked+.slider:before {
 /* FONDO DE LAS SECTIONS */
 
 .colortab {
-    background-color: #A7DBD8;
+    background-color: skyblue;
     font-size: 1.2em;
     padding-top: 1px;
 }
 
 
-/* FONDO UL */
+/* FONDO TABS home.html ul */
+
+
+/* contenedor TAB home*/
 
 .colortab2 {
     background-color: #d3edf8;
     font-size: 1.2em;
     padding-top: 1px;
-    -webkit-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -moz-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -ms-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    -o-box-shadow: 2px 2px 3px skyblue, -2px 2px 3px skyblue;
-    box-shadow: 2px 4px 3px skyblue, -2px 2px 3px skyblue;
+    -webkit-box-shadow: 2px 2px 3px skyblue, -2px 3px 3px skyblue;
+    -moz-box-shadow: 2px 2px 3px skyblue, -2px 3px 3px skyblue;
+    -ms-box-shadow: 2px 2px 3px skyblue, -2px 3px 3px skyblue;
+    -o-box-shadow: 2px 2px 3px skyblue, -2px 3px 3px skyblue;
+    box-shadow: 2px 4px 3px 0px skyblue, -2px 3px 3px skyblue;
 }
+
+
+/* TAB home estilo */
+
+a[role=tab] {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 3px;
+    font-family: 'Verdana', Georgia, Serif;
+    font-size: 15px;
+    font-weight: 900;
+    color: black;
+    background-color: lightblue;
+}
+
+
+/* poner tabs de angular y border-radius a tabs
+modificar listas home en tamaño mediano y xs, tabla, no se ven bien los colores */
 
 .margen {
     margin-top: 10px;
 }
 
 
+/* FOOTER */
+
+footer {
+    margin-top: -50px;
+    font-weight: bold;
+    font-size: 12px;
+    width: auto;
+    height: 230px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; /* el elemento ocupa la dimension real 100% */
+    background: #333;
+    clear: both;
+    
+    
+}
+
+html {
+    height:100%; 
+    margin: 0;
+    
+}
+
+body.mi-body {
+  height: 100%;
+  margin: 0;
+  
+}
+.mi-div{
+    min-height: 64%;
+}
 /*colores*/
 
 

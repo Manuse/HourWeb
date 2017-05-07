@@ -4,13 +4,14 @@
         .module('app')
         .controller('ReservarController', reservarController);
 
+    /* primer select de pruebaReservas.html*/
     function reservarController(userFactory, DATABASE, $timeout) {
         var vm = this;
         var interval = setInterval(recarga, 1000);
         vm.recursos = [];
         vm.tabla = [];
         vm.tipos = [{
-            name: 'Selecciones un tipo',
+            name: 'Selecciones un tipo de recurso',
             value: null
         }, {
             name: 'clase',
@@ -33,7 +34,7 @@
                 });
             }
         }
-
+        
         function cargarCursos() {
             DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
                 var cursos = snapshot.val();
@@ -49,7 +50,7 @@
 
             });
         }
-
+        
         function cargarFecha() {
             var dia = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
             vm.dias = [];
@@ -83,12 +84,13 @@
                 DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
             }
         };
-
+        
+        /* select de pruebaReservas.html que se carga al seleccionar opcion del select anterior */
         vm.cargarRecursos = function () {
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/").orderByChild("tipo").equalTo(vm.tipo).on("value", function (snapshot) {
                 var recurso = snapshot.val();
                 vm.recursos = [{
-                    name: 'Seleccione un recurso',
+                    name: 'Indique el recurso a consultar',
                     value: null
                 }];
                 vm.tabla = [];
@@ -107,20 +109,21 @@
             });
         };
 
-
+        
         function cargarTipo() {
             DATABASE.ref("centro/" + vm.getUser.codcentro + "/tipos").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.tipos = snapshot.val();
                     vm.tipos.unshift({
-                        name: 'Selecciones un tipo',
+                        name: 'Selecciones un recurso',
                         value: null
                     });
                     vm.tipo = vm.tipos[0].value;
                 }, 0);
             });
         }
-
+        
+        /* carga recursos disponibles en la tabla de pruebaReservas.html*/
         vm.cargarDisponible = function () {
             if (vm.recurso == null) {
                 vm.tabla = [];

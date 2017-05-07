@@ -13,8 +13,7 @@
 
     <!-- Optional theme solo le da un degradado al boton o a otros componentes. No es necesario -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-HyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
     <script src="firebase/config.js" charset="utf-8"></script>
@@ -25,11 +24,9 @@
     <div class="container" ng-controller="ReservarController as vm">
         <select ng-model="vm.tipo" ng-options="item.value as item.name for item in vm.tipos" ng-change="vm.cargarRecursos()">
         </select>
-        <select ng-if="vm.recursos.length > 1" ng-options="item.value as item.name for item in vm.recursos" ng-change="vm.cargarDisponible()"
-            ng-model="vm.recurso">          
+        <select ng-if="vm.recursos.length > 1" ng-options="item.value as item.name for item in vm.recursos" ng-change="vm.cargarDisponible()" ng-model="vm.recurso">          
         </select>
-        <select ng-if="vm.cursos.length > 0" ng-options="item as item for item in vm.cursos" 
-            ng-model="vm.curso">          
+        <select ng-if="vm.cursos.length > 0" ng-options="item as item for item in vm.cursos" ng-model="vm.curso">          
         </select>
         <input type="radio" name="sme" ng-model="vm.semana" value="0" ng-click="vm.cargarFechaRecursos()">semana 1
         <input type="radio" name="sme" ng-model="vm.semana" value="1" ng-click="vm.cargarFechaRecursos()">semana 2
@@ -38,7 +35,7 @@
             <thead>
                 <tr>
                     <th>&nbsp;HORA&nbsp;</th>
-                    <th ng-repeat="dia in vm.dias" ng-bind="dia | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>                
+                    <th ng-repeat="dia in vm.dias" ng-bind="dia | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>
                 </tr>
             </thead>
             <tbody>
@@ -46,23 +43,23 @@
                     <td ng-bind="cel.hora"></td>
                     <td ng-class="cel.lunes.activo ? 'bg-success':'bg-danger'" ng-click="vm.hacerReserva(cel.lunes,vm.tabla[$index+1].lunes)">
                         <p ng-bind="cel.lunes.nombre ? cel.lunes.nombre+'-'+cel.lunes.curso:''"></p>
-                        <p ng-bind="cel.lunes.activo ? 'Disponible':cel.lunes.nombre==null ? 'Pasado':'Ocupado'"></p> 
+                        <p ng-bind="cel.lunes.activo ? 'Disponible':cel.lunes.nombre==null ? 'Pasado':'Ocupado'"></p>
                     </td>
                     <td ng-class="cel.martes.activo ? 'bg-success':'bg-danger'" ng-click="vm.hacerReserva(cel.martes, vm.tabla[$index+1].martes)">
                         <p ng-bind="cel.martes.nombre ? cel.martes.nombre+'-'+cel.martes.curso:''"></p>
-                        <p ng-bind="cel.martes.activo ? 'Disponible':cel.martes.nombre==null ? 'Pasado':'Ocupado'"></p>                               
+                        <p ng-bind="cel.martes.activo ? 'Disponible':cel.martes.nombre==null ? 'Pasado':'Ocupado'"></p>
                     </td>
                     <td ng-class="cel.miercoles.activo ? 'bg-success':'bg-danger'" ng-click="vm.hacerReserva(cel.miercoles, vm.tabla[$index+1].miercoles)">
                         <p ng-bind="cel.miercoles.nombre ? cel.miercoles.nombre+'-'+cel.miercoles.curso:''"></p>
-                        <p ng-bind="cel.miercoles.activo ? 'Disponible':cel.miercoles.nombre==null ? 'Pasado':'Ocupado'"></p> 
+                        <p ng-bind="cel.miercoles.activo ? 'Disponible':cel.miercoles.nombre==null ? 'Pasado':'Ocupado'"></p>
                     </td>
                     <td ng-class="cel.jueves.activo ? 'bg-success':'bg-danger'" ng-click="vm.hacerReserva(cel.jueves, vm.tabla[$index+1].jueves)">
                         <p ng-bind="cel.jueves.nombre ? cel.jueves.nombre+'-'+cel.jueves.curso:''"></p>
-                       <p ng-bind="cel.jueves.activo ? 'Disponible':cel.jueves.nombre==null ? 'Pasado':'Ocupado'"></p> 
+                        <p ng-bind="cel.jueves.activo ? 'Disponible':cel.jueves.nombre==null ? 'Pasado':'Ocupado'"></p>
                     </td>
                     <td ng-class="cel.viernes.activo ? 'bg-success':'bg-danger'" ng-click="vm.hacerReserva(cel.viernes, vm.tabla[$index+1].viernes)">
                         <p ng-bind="cel.viernes.nombre ? cel.viernes.nombre+'-'+cel.viernes.curso:''"></p>
-                        <p ng-bind="cel.viernes.activo ? 'Disponible':cel.viernes.nombre==null ? 'Pasado':'Ocupado'"></p> 
+                        <p ng-bind="cel.viernes.activo ? 'Disponible':cel.viernes.nombre==null ? 'Pasado':'Ocupado'"></p>
                     </td>
                 </tr>
             </tbody>
