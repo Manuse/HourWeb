@@ -324,18 +324,20 @@ hr.estilo_hr {
 }
 
 
-/* tablas */
 
 
-/*table.tabla_admin>tr, td {
-    background-color: #dbf2f2;
-}*/
 
+
+/*Contenido cada zelda centrado*/
 td,
 th {
     text-align: center;
+    
+    
+    
 }
 
+/*tabla horario */
 table.tabla_mi_horario>thead,
 tbody>tr,
 td {
@@ -343,6 +345,35 @@ td {
     border: 1px solid rgb(238, 120, 120);
     max-width: 100px;
 }
+
+/* tabla reservar*/
+
+table.tabla_reservar{
+   
+    border-collapse: separate;
+    border-spacing:1px;
+   
+}
+
+table.tabla_reservar>tbody>tr>td{
+    border: 1px solid #5bc0de;
+    
+}
+/*
+table.tabla_reservar>thead>tr>th{
+    border: 1px solid #5bc0de;
+    
+}
+*/
+
+
+
+
+
+
+
+
+
 
 
 /* aviso de validacion de los logins */
@@ -888,6 +919,7 @@ input.input_centro {
     table {
         align-content: center;
     }
+    
     ul.list-group>li.list-group-item.lista_recurso {
         background-color: rgb(1, 91, 99);
         color: white;
@@ -1142,6 +1174,7 @@ body.mi-body {
 .mi-div{
     min-height: 64%;
 }
+
 
 /*colores*/
 
