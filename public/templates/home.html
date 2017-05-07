@@ -15,18 +15,14 @@
 
     <div class="container">
 
-        <ul class="nav nav-tabs colortab2">
-            <li role="presentation" class="tab1"><a href="#seccion1" aria-controls="seccion1" data-toggle="tab" role="tab" class="active">Mis Reservas</a></li>
-            <li role="presentation" class="tab2"><a href="#seccion2" aria-controls="seccion2" data-toggle="tab" role="tab">Mis Horarios</a></li>
-            <li role="presentation" class="tab3"><a href="#seccion3" aria-controls="seccion3" data-toggle="tab" role="tab">Mis Mensajes</a></li>
-        </ul>
-
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 round1 margen">
 
             <div class="row">
                 <div class="container-fluid">
                     <div class="tab-content">
-                        <div class="tab-pane active" role="tabpanel" id="seccion1">
+						<uib-tabset>
+                        <!--<div class="tab-pane active" role="tabpanel" id="seccion1">-->
+						<uib-tab index="0" heading="Mis Reservas">
                             <div class="btn-group pull-right">
                                 <!--
                      2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos
@@ -100,8 +96,10 @@
 
 
 
-                        </div>
-                        <div class="tab-pane" role="tabpanel" id="seccion2">
+                        
+						</uib-tab>
+                        <!--<div class="tab-pane" role="tabpanel" id="seccion2">-->
+						<uib-tab index="1" heading="Mi Horario">
                             <div class="col-xs-12">
                                 <table class="table table-bordered table-responsive tabla_mi_horario">
                                     <thead>
@@ -123,8 +121,10 @@
                                 <button type="button" class="btn btn-lg btn-info" id="cambiar_horario">Cambiar</button>
                                 <button type="button" class="btn btn-lg btn-info" id="guardar_horario" style="display:none">Guardar</button>
                             </div>
-                        </div>
-                        <div class="tab-pane" role="tabpanel" id="seccion3">
+                        
+						</uib-tab>
+						<uib-tab index="2" heading="Mensajes">
+                        <!--<div class="tab-pane" role="tabpanel" id="seccion3">-->
                             <h3>Listas??</h3>
                             <ol>
                                 <li>lista</li>
@@ -132,7 +132,9 @@
                                 <li>lista</li>
                                 <li>lista</li>
                             </ol>
-                        </div>
+                        
+						</uib-tab>
+						</uib-tabset>
                     </div>
                 </div>
             </div>
