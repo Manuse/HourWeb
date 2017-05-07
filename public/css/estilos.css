@@ -416,10 +416,10 @@ ul.list-group>li.list-group-item.lista_hora:hover {
 
 div.round1 {
     border: 1px solid grey;
-    border-style: ridge;
+    border-style: inset;
     padding: 20px 19px;
     padding-right: 2px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 article.foto_izquierda {
@@ -1083,31 +1083,23 @@ input:checked+.slider:before {
 /* FONDO TABS home.html ul */
 
 
-/* contenedor TAB home*/
-
-.colortab2 {
-    background-color: #d3edf8;
-    font-size: 1.2em;
-    padding-top: 1px;
-    -webkit-box-shadow: 2px 2px 3px skyblue, -2px 3px 3px skyblue;
-    -moz-box-shadow: 2px 2px 3px skyblue, -2px 3px 3px skyblue;
-    -ms-box-shadow: 2px 2px 3px skyblue, -2px 3px 3px skyblue;
-    -o-box-shadow: 2px 2px 3px skyblue, -2px 3px 3px skyblue;
-    box-shadow: 2px 4px 3px 0px skyblue, -2px 3px 3px skyblue;
-}
-
 
 /* TAB home estilo */
 
-a[role=tab] {
+.estilo-tab {
+    font-family: 'Verdana',sans-serif;
+    color: blue;
+    font-weight: 600;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 3px;
-    font-family: 'Verdana', Georgia, Serif;
-    font-size: 15px;
-    font-weight: 900;
-    color: black;
-    background-color: lightblue;
+    margin-left: 5px;
+    font-size: 14px;
+   -webkit-box-shadow: 2px 3px 1px 0px skyblue;
+    -moz-box-shadow: 2px 3px 1px 0px skyblue;
+    -ms-box-shadow: 2px 3px 1px 0px skyblue;
+    -o-box-shadow: 2px 3px 1px  0px skyblue;
+    box-shadow: 1px 3px 0px 0px skyblue;
+    border: none;
 }
 
 
@@ -1122,7 +1114,7 @@ modificar listas home en tamaño mediano y xs, tabla, no se ven bien los colores
 /* FOOTER */
 
 footer {
-    margin-top: -50px;
+    text-align: justify;
     font-weight: bold;
     font-size: 12px;
     width: auto;
@@ -1130,9 +1122,9 @@ footer {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; /* el elemento ocupa la dimension real 100% */
-    background: #333;
+    background: skyblue;
     clear: both;
-    
+    margin-top:21px;
     
 }
 
@@ -1150,6 +1142,7 @@ body.mi-body {
 .mi-div{
     min-height: 64%;
 }
+
 /*colores*/
 
 

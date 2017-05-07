@@ -20,14 +20,12 @@
             <div class="row">
                 <div class="container-fluid">
                     <div class="tab-content">
-						<uib-tabset>
-                        <!--<div class="tab-pane active" role="tabpanel" id="seccion1">-->
-						<uib-tab index="0" heading="Mis Reservas">
+                        <!-- indice y titulo de la pestaña en iu-bootstrap, no hace falta controller--> 
+						<uib-tabset>                        
+                                        
+						<uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
                             <div class="btn-group pull-right">
-                                <!--
-                     2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos
-                     la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina
--->
+                                <!-- 2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina -->
                                 <label class="btn btn-info btn-md" ng-model="vm.radioModel" uib-btn-radio="'Left'">Semana 1</label>
                                 <label class="btn btn-warning btn-md" ng-model="vm.radioModel" uib-btn-radio="'Right'">Semana 2</label>
 
@@ -37,7 +35,7 @@
 
                             <div class="">
                                 <!--lunes-->
-                                <div class="col-md-25 col-lg-5" style="margin-left:0px;">
+                                <div class="col-md-25 col-lg-5">
                                     <h3 class="listas sombra">LUNES</h3>
                                     <ul class="list-group d_semana" id="lunes">
                                         <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Bronze Package
@@ -91,15 +89,12 @@
                                         </li>
                                     </ul>
                                 </div>
-
                             </div>
-
-
-
-                        
+                            
+                        <!-- TAB 2 -->
 						</uib-tab>
                         <!--<div class="tab-pane" role="tabpanel" id="seccion2">-->
-						<uib-tab index="1" heading="Mi Horario">
+						<uib-tab index="1" heading="Mi Horario" classes="estilo-tab">
                             <div class="col-xs-12">
                                 <table class="table table-bordered table-responsive tabla_mi_horario">
                                     <thead>
@@ -123,7 +118,9 @@
                             </div>
                         
 						</uib-tab>
-						<uib-tab index="2" heading="Mensajes">
+						
+						<!-- TAB 3 -->
+						<uib-tab index="2" heading="Mensajes" classes="estilo-tab">
                         <!--<div class="tab-pane" role="tabpanel" id="seccion3">-->
                             <h3>Listas??</h3>
                             <ol>
