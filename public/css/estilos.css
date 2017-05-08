@@ -14,6 +14,12 @@ nav.navbar-color {
     width: 100%;
 }
 
+li.perra{
+    background-color: blue;
+}
+li.perra2{
+    background-color: red;
+}
 
 /* Nombre de Usuario en navbar */
 
@@ -613,7 +619,7 @@ li.list-group-item.dias:hover {
     font-family: 'Verdana', sans-serif;
     color: black;
     text-decoration: line-through;
-    background-color: white;
+    
     box-shadow: 1px 1px 1px #888888;
 }
 
@@ -647,8 +653,8 @@ input.input_centro {
         width: 18%;
     }
     /* LISTAS DE HOME cambiamos a 5 columnas en tamanio lg */
-    ul.list-group>li.dias {
-        background-color: white;
+    li.dias {
+        
         color: black;
         font-family: 'Tahoma', sans-serif;
         text-align: center;
@@ -725,21 +731,26 @@ input.input_centro {
     .col-md-25 {
         width: 100%;
     }
-    ul.list-group>li.dias {
-        background-color: #34495e;
-        color: white;
+    li.dias {
+        
+        color: black;
         font-family: 'Tahoma', sans-serif;
         text-align: center;
         font-weight: 700;
         height: 70px;
-        width: 100%;
+        width: 80%;
+        margin: 0 auto;
         align-content: center;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
     }
-    ul.list-group>li.dias:hover {
-        background-color: white;
-        box-shadow: 10px 10px 5px #888888;
+    ul.list-group>li.dias:hover {        
+        box-shadow: 5px 5px 5px #888888;
     }
+    /* Dias de la semana, encabezado del HOME*/
+    h3.listas.sombra-miercoles {
+        margin-left: 77px;
+    }
+    
 }
 
 @media (max-width:359px) {
@@ -747,13 +758,12 @@ input.input_centro {
         border-right: 1px solid #ffffff;
         border-top: 1px solid #ffffff;
         border-bottom: 1px solid #ffffff;
-        color: white;
+        color: black;
         font-size: 15px;
         font-weight: 700;
         font-family: 'Tahoma', arial, sans-serif;
         border: 2px solid #ffffff;
         text-align: center;
-        background-color: rgb(8, 135, 175);
         width: 100%;
     }
 }
