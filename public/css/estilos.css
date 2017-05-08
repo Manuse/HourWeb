@@ -334,7 +334,7 @@ th {
 }
 
 /*tabla horario HOME */
-table.tabla_mi_horario>thead,
+table.tabla-mi-horario>thead,
 tbody>tr,
 td {
     color: black;
@@ -342,7 +342,7 @@ td {
     max-width: 100px;
 }
 
-table.tabla_mi_horario{
+table.tabla-mi-horario{
     margin-top: 30px;
 }
 
@@ -353,7 +353,7 @@ table.tabla-reservar{
     border-spacing:1px;   
 }
 
-table.tabla_reservar>tbody>tr>td{
+table.tabla-reservar>tbody>tr>td{
     border: 1px solid #5bc0de;
     
 }
