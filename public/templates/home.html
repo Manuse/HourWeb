@@ -15,125 +15,133 @@
 
     <div class="container">
 
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 round1 margen">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 round1 margen"  style="background-image: url('imagenes/circulos.png')">
 
             <div class="row">
                 <div class="container-fluid">
                     <div class="tab-content">
-                        <!-- indice y titulo de la pestaña en iu-bootstrap, no hace falta controller--> 
-						<uib-tabset>                        
-                                        
-						<uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
-                            <div class="btn-group pull-right">
-                                <!-- 2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina -->
-                                <label class="btn btn-info btn-md" ng-model="vm.radioModel" uib-btn-radio="'Left'">Semana 1</label>
-                                <label class="btn btn-warning btn-md" ng-model="vm.radioModel" uib-btn-radio="'Right'">Semana 2</label>
+                        <!-- indice y titulo de la pestaña en iu-bootstrap, no hace falta controller-->
+                        <uib-tabset>
 
-                            </div>
-                            <a ui-sref="reservar" name="button" id="ir_reserva" class="btn btn-info btn-reservar btn-md">RESERVAR</a>
-                            <br><br>
+                            <uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
+                                <div class="btn-group pull-right">
+                                    <!-- 2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina -->
+                                    <label class="btn btn-info btn-md" ng-model="vm.radioModel" uib-btn-radio="'Left'">Semana 1</label>
+                                    <label class="btn btn-warning btn-md" ng-model="vm.radioModel" uib-btn-radio="'Right'">Semana 2</label>
 
-                            <div class="">
-                                <!--lunes-->
-                                <div class="col-md-25 col-lg-5">
-                                    <h3 class="listas sombra">LUNES</h3>
-                                    <ul class="list-group d_semana" id="lunes">
-                                        <li ng-repeat="lunes in vm.lunes" ng-class="lunes.activo ? 'list-group-item dias bg-success' : lunes.actual ? 'list-group-item dias bg-info' : 'list-group-item dias bg-danger'" ng-click="vm.borrarReserva(lunes)">
-										  <div> 
-                                            <p ng-bind="lunes.recurso"></p>
-                                            <p ng-bind="lunes.fecha+'-'+lunes.hora"></p>
-                                          </div>
-                                        </li>
-                                    </ul>
+                                </div>
+                                <a ui-sref="reservar" name="button" id="ir_reserva" class="btn btn-info btn-reservar btn-md">RESERVAR</a>
+                                <br><br>
+
+                                <div class="">
+                                    <!--lunes-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra">LUNES</h3>
+                                        <ul class="list-group d_semana" id="lunes">
+                                            <li ng-repeat="lunes in vm.lunes" ng-class="lunes.activo ? 'list-group-item dias bg-success' : lunes.actual ? 'list-group-item dias bg-info' : 'list-group-item dias bg-danger'" ng-click="vm.borrarReserva(lunes)">
+                                                <div>
+                                                    <p ng-bind="lunes.recurso"></p>
+                                                    <p ng-bind="lunes.fecha+'-'+lunes.hora"></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!--martes-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra">MARTES</h3>
+                                        <ul class="list-group d_semana" id="martes">
+                                            <li ng-repeat="martes in vm.martes" ng-class="martes.activo ? 'list-group-item dias bg-success' : martes.actual ? 'list-group-item dias bg-info' : 'list-group-item dias bg-danger'" ng-click="vm.borrarReserva(martes)">
+                                                <div>
+                                                    <p ng-bind="martes.recurso"></p>
+                                                    <p ng-bind="martes.fecha+'-'+martes.hora"></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!--miercoles-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra-miercoles">MIÉRCOLES</h3>
+                                        <ul id="miercoles" class="list-group d_semana">
+                                            <li ng-repeat="miercoles in vm.miercoles" ng-class="miercoles.activo ? 'list-group-item dias bg-success' : miercoles.actual ? 'list-group-item dias bg-info' : 'list-group-item dias bg-danger'" ng-click="vm.borrarReserva(miercoles)">
+                                                <div>
+                                                    <p ng-bind="miercoles.recurso"></p>
+                                                    <p ng-bind="miercoles.fecha+'-'+miercoles.hora"></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                    <!--jueves-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra">JUEVES</h3>
+                                        <ul id="jueves" class="list-group d_semana">
+                                            <li ng-repeat="jueves in vm.jueves" ng-class="jueves.activo ? 'list-group-item dias bg-success' : jueves.actual ? 'list-group-item dias bg-info' : 'list-group-item dias bg-danger'" ng-click="vm.borrarReserva(jueves)">
+                                                <div>
+                                                    <p ng-bind="jueves.recurso"></p>
+                                                    <p ng-bind="jueves.fecha+'-'+martes.hora"></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- viernes-->
+                                    <div class="col-md-25 col-lg-5">
+                                        <h3 class="listas sombra">VIERNES</h3>
+                                        <ul id="viernes" class="list-group d_semana">
+                                            <li ng-repeat="viernes in vm.viernes" ng-class="viernes.activo ? 'list-group-item dias bg-success' : viernes.actual ? 'list-group-item dias bg-info' : 'list-group-item dias bg-danger'" ng-click="vm.borrarReserva(viernes)">
+                                                <div>
+                                                    <p ng-bind="viernes.recurso"></p>
+                                                    <p ng-bind="viernes.fecha+'-'+viernes.hora"></p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
 
-                                <!--martes-->
-                                <div class="col-md-25 col-lg-5">
-                                    <h3 class="listas sombra">MARTES</h3>
-                                    <ul id="martes" class="list-group d_semana">
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">eL CAMION DE LA BASURA PASA POR LA CALLE
-                                        </li>
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO camionnologo petante
-                                        </li>
-                                    </ul>
+                                <!-- TAB 2 -->
+                            </uib-tab>
+                            <!--<div class="tab-pane" role="tabpanel" id="seccion2">-->
+                            <uib-tab index="1" heading="Mi Horario" classes="estilo-tab">
+                                <div class="col-xs-12">
+                                    <table class="table table-bordered table-responsive tabla_mi_horario">
+                                        <thead>
+                                            <tr class="bg-info">
+                                                <th>Horas</th>
+                                                <th>Lunes</th>
+                                                <th>Martes</th>
+                                                <th>Miercoles</th>
+                                                <th>Jueves</th>
+                                                <th>Viernes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla_horarios">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="btn-cambiar">
+                                    <button type="button" class="btn btn-lg btn-info" id="cambiar_horario">Cambiar</button>
+                                    <button type="button" class="btn btn-lg btn-info" id="guardar_horario" style="display:none">Guardar</button>
                                 </div>
 
-                                <!--miercoles-->
-                                <div class="col-md-25 col-lg-5">
-                                    <h3 class="listas sombra-miercoles">MIÉRCOLES</h3>
-                                    <ul id="meircoles" class="list-group d_semana">
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Bronze Package
-                                        </li>
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO camionnologo petante
-                                        </li>
-                                    </ul>
-                                </div>
+                            </uib-tab>
 
+                            <!-- TAB 3 -->
+                            <uib-tab index="2" heading="Mensajes" classes="estilo-tab">
+                                <!--<div class="tab-pane" role="tabpanel" id="seccion3">-->
+                                <h3>Listas??</h3>
+                                <ol>
+                                    <li>lista</li>
+                                    <li>lista</li>
+                                    <li>lista</li>
+                                    <li>lista</li>
+                                </ol>
 
-                                <!--jueves-->
-                                <div class="col-md-25 col-lg-5">
-                                    <h3 class="listas sombra">JUEVES</h3>
-                                    <ul id="jueves" class="list-group d_semana">
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">Bronze Package
-                                        </li>
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO camionnologo petante
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- viernes-->
-                                <div class="col-md-25 col-lg-5">
-                                    <h3 class="listas sombra">VIERNES</h3>
-                                    <ul id="viernes" class="list-group d_semana">
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO cam
-                                        </li>
-                                        <li class="list-group-item dias" data-toggle="tooltip" data-placement="right" title="DESCARTAR">OTORRINO c
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                        <!-- TAB 2 -->
-						</uib-tab>
-                        <!--<div class="tab-pane" role="tabpanel" id="seccion2">-->
-						<uib-tab index="1" heading="Mi Horario" classes="estilo-tab">
-                            <div class="col-xs-12">
-                                <table class="table table-bordered table-responsive tabla_mi_horario">
-                                    <thead>
-                                        <tr class="bg-info">
-                                            <th>Horas</th>
-                                            <th>Lunes</th>
-                                            <th>Martes</th>
-                                            <th>Miercoles</th>
-                                            <th>Jueves</th>
-                                            <th>Viernes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabla_horarios">
-
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div style="float:right">
-                                <button type="button" class="btn btn-lg btn-info" id="cambiar_horario">Cambiar</button>
-                                <button type="button" class="btn btn-lg btn-info" id="guardar_horario" style="display:none">Guardar</button>
-                            </div>
-                        
-						</uib-tab>
-						
-						<!-- TAB 3 -->
-						<uib-tab index="2" heading="Mensajes" classes="estilo-tab">
-                        <!--<div class="tab-pane" role="tabpanel" id="seccion3">-->
-                            <h3>Listas??</h3>
-                            <ol>
-                                <li>lista</li>
-                                <li>lista</li>
-                                <li>lista</li>
-                                <li>lista</li>
-                            </ol>
-                        
-						</uib-tab>
-						</uib-tabset>
+                            </uib-tab>
+                        </uib-tabset>
                     </div>
                 </div>
             </div>

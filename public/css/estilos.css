@@ -134,7 +134,11 @@ div.border>h2 {
     text-align: center;
 }
 
-
+/* BOTON CAMBIAR PESTAÑA HORARIO EN home.html */
+.btn-cambiar{
+    float:right;
+    padding-right:10px;
+}
 /*PERFIL IZQUIERDA */
 
 div>article.foto_izquierda>img {
@@ -323,21 +327,13 @@ hr.estilo_hr {
     height: 0;
 }
 
-
-
-
-
-
-/*Contenido cada zelda centrado*/
+/*Contenido cada celda centrado*/
 td,
 th {
-    text-align: center;
-    
-    
-    
+    text-align: center; 
 }
 
-/*tabla horario */
+/*tabla horario HOME */
 table.tabla_mi_horario>thead,
 tbody>tr,
 td {
@@ -346,38 +342,23 @@ td {
     max-width: 100px;
 }
 
+table.tabla_mi_horario{
+    margin-top: 30px;
+}
+
 /* tabla reservar*/
 
-table.tabla_reservar{
-   
+table.tabla-reservar{   
     border-collapse: separate;
-    border-spacing:1px;
-   
+    border-spacing:1px;   
 }
 
 table.tabla_reservar>tbody>tr>td{
     border: 1px solid #5bc0de;
     
 }
-/*
-table.tabla_reservar>thead>tr>th{
-    border: 1px solid #5bc0de;
-    
-}
-*/
-
-
-
-
-
-
-
-
-
-
 
 /* aviso de validacion de los logins */
-
 #error_reg_admin,
 #error_reg_user {
     font-family: "Verdana", Georgia, sans-serif;
@@ -386,9 +367,7 @@ table.tabla_reservar>thead>tr>th{
     color: rgb(233, 17, 24);
 }
 
-
 /* hacemos referencia a inputs de los ids de los pass */
-
 .form_login {
     border: 1px solid #0641f1;
     background-color: #b3e3e3;
@@ -1121,17 +1100,16 @@ input:checked+.slider:before {
 .estilo-tab {
     font-family: 'Verdana',sans-serif;
     color: blue;
-    font-weight: 600;
+    font-weight: bold;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 5px;
+    margin-left: 6px;
     font-size: 14px;
-   -webkit-box-shadow: 2px 3px 1px 0px skyblue;
-    -moz-box-shadow: 2px 3px 1px 0px skyblue;
-    -ms-box-shadow: 2px 3px 1px 0px skyblue;
-    -o-box-shadow: 2px 3px 1px  0px skyblue;
-    box-shadow: 1px 3px 0px 0px skyblue;
-    border: none;
+   -webkit-box-shadow: 1px 3px 0px 0px skyblue;
+    -moz-box-shadow: 1px 3px 0px 0px skyblue;
+    -ms-box-shadow: 1px 3px 0px 0px skyblue;
+    -o-box-shadow: 1px 3px 0px  0px skyblue;
+    box-shadow: 1px 3px 0px 0px skyblue;    
 }
 
 
