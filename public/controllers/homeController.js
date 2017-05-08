@@ -31,7 +31,7 @@
 
 
         function recogerMisReservas() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).on("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
                 var reser = snapshot.val();
                 vm.lunes = [];
                 vm.martes = [];
@@ -120,13 +120,14 @@
             });
         }
 
-        vm.borrarReserva = function (reserva) {
-            if(!reserva.activo){
+        vm.borrarReserva = function (reserva, array, index) {
+            if(reserva.activo){
             var reser = DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva.code);
-            reser.once("value", function (datos) {
+            reser.once("value", function (datos) {               
                 var a = datos.val();
                 if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
                     reser.remove();
+                    $timeout(function(){array.splice(index,1);},0)
                 } else {
                     alert("No puedes borrar las asignaciones permanentes"); //futuro modal
                 }
