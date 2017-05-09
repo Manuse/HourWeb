@@ -14,10 +14,14 @@ nav.navbar-color {
     width: 100%;
 }
 
-li.perra{
-    background-color: blue;
+li.perra1{
+    
+    background-color: skyblue;
 }
 li.perra2{
+    background-color: green;
+}
+li.perra3{
     background-color: red;
 }
 
