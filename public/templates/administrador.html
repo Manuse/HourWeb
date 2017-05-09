@@ -6,6 +6,7 @@
                 <!--                Empieza el primer tab-->
 
                 <uib-tab index="0" heading="Recursos" classes="estilo-tab">
+                  <br>
                    
                     <div class="input-group-addon addon_recurso" style="background-color:skyblue;">
                         <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
@@ -19,6 +20,7 @@
                         </button>
 
                     </div>
+                    
 
                 </uib-tab>
                 <!--                Termina primer tab-->
@@ -32,7 +34,7 @@
                         </div>
                         <!-- Boton hidden-sm las letras del boton-->
                         <div class="col-xs-3 col-md-2">
-                            <button type="button" class="btn btn-info btn-lg" id="guardar_reserva" style="margin-top:7px;">
+                            <button type="button" class="btn btn-success btn-lg" id="guardar_reserva" style="margin-top:7px;">
                                                 <span class="glyphicon glyphicon-floppy-save"></span>
                                                 <span class="hidden-xs hidden-sm">
                                                     Guardar</span>
@@ -43,7 +45,7 @@
                         <div class="col-md-3">
                             <br>
                             <h3 class="listas" style="font-weight:bold;">USUARIO</h3>
-                            <select class="form-control pull-right btn-primary" name="combo_fecha" id="combo_usuario">
+                            <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_usuario">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                             </select>
                         </div>
@@ -51,7 +53,7 @@
                         <div class="col-md-3">
                             <br>
                             <h3 class="listas" style="font-weight:bold;">RECURSOS</h3>
-                            <select class="form-control pull-right btn-primary" name="combo_fecha" id="combo_recurso">
+                            <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_recurso">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
                                             </select>
@@ -60,7 +62,7 @@
                         <div class="col-md-3">
                             <br>
                             <h3 class="listas" style="font-weight:bold;">DÍAS</h3>
-                            <select class="form-control pull-right btn-primary" name="combo_dia" id="combo_dia">
+                            <select class="form-control pull-right btn-info" name="combo_dia" id="combo_dia">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                 <option class="opcion_combo" value="1">Lunes</option>
                                                 <option class="opcion_combo" value="2">Martes</option>
@@ -72,19 +74,12 @@
                         <div class="col-md-3">
                             <br>
                             <h3 class="listas" style="font-weight:bold;">HORAS</h3>
-                            <select class="form-control pull-right btn-primary" name="combo_horas" id="combo_horas">
+                            <select class="form-control pull-right btn-info" name="combo_horas" id="combo_horas">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->                                               
                                             </select>
                         </div>
                     </div>
-                    <div class="row" style="border:1px solid #beb6c3; background-color:#d8dde2;">
-                        <div class="col-md-12" style="margin-top:50px;">
-                            <ul class="list-group" id="lista_permanentes">
-                                <!-- list-group-item elimina los puntos por default de la etiqueta ul -->
-
-                            </ul>
-                        </div>
-                    </div>
+                    
                 </uib-tab>
                 <!--    Termina el segunda tab-->
 
