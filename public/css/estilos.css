@@ -14,15 +14,16 @@ nav.navbar-color {
     width: 100%;
 }
 
-li.perra1{
+/* Colores listas home actual, pasada futura */
+li.lista-azul{
     
-    background-color: skyblue;
+    background-color: #a8dcf0;
 }
-li.perra2{
-    background-color: green;
+li.lista-verde{
+    background-color: #80ff80;
 }
-li.perra3{
-    background-color: red;
+li.lista-roja{
+    background-color: silver;
 }
 
 /* Nombre de Usuario en navbar */
@@ -620,13 +621,10 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
  , cambiara la fuente y el color, tambien mostrara una imagen de fondo*/
 
 li.list-group-item.dias:hover {
-    font-family: 'Verdana', sans-serif;
-    color: black;
-    text-decoration: line-through;
-    
-    box-shadow: 1px 1px 1px #888888;
-}
+    box-shadow: 1px 2px 2px #888888;   
 
+    
+}
 
 /* INPUTS DE CONFIGURACION DE PERFIL */
 
@@ -658,7 +656,6 @@ input.input_centro {
     }
     /* LISTAS DE HOME cambiamos a 5 columnas en tamanio lg */
     li.dias {
-        
         color: black;
         font-family: 'Tahoma', sans-serif;
         text-align: center;
@@ -667,10 +664,10 @@ input.input_centro {
         width: 190px;
         margin-bottom: 7px;
         align-content: center;
-        border: 4px solid skyblue;
-        border-style: ridge;
-        border-bottom-width: 7px;
-        border-bottom-color: #00b8e6;
+        border: 3px steelblue;
+        border-style:solid;
+        border-bottom-color: steelblue;
+        border-bottom-width: thick;
     }
     ul.list-group.d_semana {
         margin: 0 auto;
@@ -741,18 +738,34 @@ input.input_centro {
         font-family: 'Tahoma', sans-serif;
         text-align: center;
         font-weight: 700;
-        height: 70px;
-        width: 80%;
+        height: 100px;
+        width: 70%;
         margin: 0 auto;
         align-content: center;
         margin-bottom: 12px;
+         border: 3px steelblue;
+        border-style:solid;
+        border-bottom-color: steelblue;
+        border-bottom-width: thick;
     }
     ul.list-group>li.dias:hover {        
         box-shadow: 5px 5px 5px #888888;
     }
     /* Dias de la semana, encabezado del HOME*/
     h3.listas.sombra-miercoles {
-        margin-left: 77px;
+        margin-top: 40px;
+        margin-left: 270px;
+        font-size: 24px;
+    }
+    h3.listas.sombra{
+        margin-top: 40px;
+        margin-left: 290px;
+        font-size: 24px;
+    }
+    .btn-reservar {
+        margin-left: 5px;
+        margin-top: 13px;
+        font-weight: bold;
     }
     
 }
@@ -769,6 +782,7 @@ input.input_centro {
         border: 2px solid #ffffff;
         text-align: center;
         width: 100%;
+        color: aliceblue;
     }
 }
 

@@ -38,7 +38,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra">LUNES</h3>
                                         <ul class="list-group d_semana" id="lunes">
-                                            <li ng-repeat="lunes in vm.lunes" ng-class="lunes.activo ? 'list-group-item dias perra1' : lunes.actual ? 'list-group-item dias perra2' : 'list-group-item dias perra3'" ng-click="vm.borrarReserva(lunes, vm.lunes, $index)">
+                                            <li ng-repeat="lunes in vm.lunes" ng-class="lunes.activo ? 'list-group-item dias lista-azul' : lunes.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(lunes, vm.lunes, $index)">
                                                 <div>
                                                     <p ng-bind="lunes.recurso"></p>
                                                     <p ng-bind="lunes.fecha+'-'+lunes.hora"></p>
@@ -51,7 +51,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra">MARTES</h3>
                                         <ul class="list-group d_semana" id="martes">
-                                            <li ng-repeat="martes in vm.martes" ng-class="martes.activo ? 'list-group-item dias perra1' : martes.actual ? 'list-group-item dias perra2' : 'list-group-item dias perra3'" ng-click="vm.borrarReserva(martes, vm.martes, $index)">
+                                            <li ng-repeat="martes in vm.martes" ng-class="martes.activo ? 'list-group-item dias lista-azul' : martes.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(martes, vm.martes, $index)">
                                                 <div>
                                                     <p ng-bind="martes.recurso"></p>
                                                     <p ng-bind="martes.fecha+'-'+martes.hora"></p>
@@ -64,7 +64,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra-miercoles">MIÉRCOLES</h3>
                                         <ul id="miercoles" class="list-group d_semana">
-                                            <li ng-repeat="miercoles in vm.miercoles" ng-class="miercoles.activo ? 'list-group-item dias perra1' : miercoles.actual ? 'list-group-item dias perra2' : 'list-group-item dias perra3'" ng-click="vm.borrarReserva(miercoles, vm.miercoles, $index)">
+                                            <li ng-repeat="miercoles in vm.miercoles" ng-class="miercoles.activo ? 'list-group-item dias lista-azul' : miercoles.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(miercoles, vm.miercoles, $index)">
                                                 <div>
                                                     <p ng-bind="miercoles.recurso"></p>
                                                     <p ng-bind="miercoles.fecha+'-'+miercoles.hora"></p>
@@ -78,7 +78,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra">JUEVES</h3>
                                         <ul id="jueves" class="list-group d_semana">
-                                            <li ng-repeat="jueves in vm.jueves" ng-class="jueves.activo ? 'list-group-item dias perra1' : jueves.actual ? 'list-group-item dias perra2' : 'list-group-item dias perra3'" ng-click="vm.borrarReserva(jueves, vm.jueves, $index)">
+                                            <li ng-repeat="jueves in vm.jueves" ng-class="jueves.activo ? 'list-group-item dias lista-azul' : jueves.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(jueves, vm.jueves, $index)">
                                                 <div>
                                                     <p ng-bind="jueves.recurso"></p>
                                                     <p ng-bind="jueves.fecha+'-'+jueves.hora"></p>
@@ -91,7 +91,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra">VIERNES</h3>
                                         <ul id="viernes" class="list-group d_semana">
-                                            <li ng-repeat="viernes in vm.viernes" ng-class="viernes.activo ? 'list-group-item dias  perra1' : viernes.actual ? 'list-group-item dias perra2' : 'list-group-item dias perra3'" ng-click="vm.borrarReserva(viernes, vm.viernes, $index)">
+                                            <li ng-repeat="viernes in vm.viernes" ng-class="viernes.activo ? 'list-group-item dias  lista-azul' : viernes.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(viernes, vm.viernes, $index)">
                                                 <div>
                                                     <p ng-bind="viernes.recurso"></p>
                                                     <p ng-bind="viernes.fecha+'-'+viernes.hora"></p>
