@@ -1,21 +1,69 @@
-<div class="row">
-    <div class="container">
-
-        <article class="hidden-xs hidden-sm col-md-2 col-lg-2 foto_izquierda">
-            <img src="imagenes/logo.png" class="img-responsive img-rounded" alt="sin foto" id="foto_home" />
-            <p id="foto_nombre" class="foto-nombre">Diego Lucas Romero</p>
-            <p id="foto_centro"></p>
-            <p id="foto_codigo"></p>
-        </article>
-    </div>
-</div>
 
 
-<div class="row">
 
     <div class="container">
 
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 round1 margen"  style="background-image: url('imagenes/circulos.png')">
+        <div class="row">
+            <div class="col-sm-12 hidden-xs perfil-home">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">INFORMACIÓN PERSONAL</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-sm-2">
+                            <img class="img-circle img-responsive imagen-home" alt="Usuario Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" />
+                        </div>
+                        <div class="col-sm-10">
+                            <table class="table table-responsive tabla-home">
+                                <tbody>
+                                    <tr class="tr-home">
+                                        <td class="td-home">
+                                            <label class="nomenclatura">Nombre:</label>
+                                        </td>
+                                        <td class="td-datos-home">
+                                            <span>Francisco Mariscal Vázquez</span>
+
+                                        </td>
+                                    </tr>
+                                    <tr class="tr-home">
+                                        <td class="td-home">
+                                            <label class="nomenclatura">Centro:</label>
+                                        </td>
+                                        <td class="td-datos-home">
+                                            <span style="color:black;">salesianas Mª Auxiliadora</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr-home">
+                                        <td class="td-home">
+                                            <label class="nomenclatura">Teléfono:</label>
+                                        </td>
+                                        <td class="td-datos-home">
+                                            <span style="color:black;">954545454</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr-home">
+                                        <td class="td-home">
+                                            <label class="nomenclatura">email:</label>
+                                        </td>
+                                        <td class="td-datos-home">
+                                            <span style="color:black;"><a href="#">usuario@gmail.com</a></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="tr-home">
+                                        <td class="td-datos-home"><button class="btn btn-primary btn-xs">Consultar Código del Centro</button> </td>
+                                        <td class="td-cod-centro-home"><p>fdjksfksdnfksdjfldshfkdn7656757jvndhjfksdjm</p></td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- FIN PANEL-->
+            </div>
+        </div>
 
             <div class="row">
                 <div class="container-fluid">
@@ -38,7 +86,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra">LUNES</h3>
                                         <ul class="list-group d_semana" id="lunes">
-                                            <li ng-repeat="lunes in vm.lunes" ng-class="lunes.activo ? 'list-group-item dias lista-azul' : lunes.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(lunes, vm.lunes, $index)">
+                                            <li ng-repeat="lunes in vm.lunes" ng-class="lunes.activo ? 'list-group-item dias lista-verde' : lunes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(lunes, vm.lunes, $index)">
                                                 <div>
                                                     <p ng-bind="lunes.recurso"></p>
                                                     <p ng-bind="lunes.fecha+'-'+lunes.hora"></p>
@@ -51,7 +99,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra">MARTES</h3>
                                         <ul class="list-group d_semana" id="martes">
-                                            <li ng-repeat="martes in vm.martes" ng-class="martes.activo ? 'list-group-item dias lista-azul' : martes.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(martes, vm.martes, $index)">
+                                            <li ng-repeat="martes in vm.martes" ng-class="martes.activo ? 'list-group-item dias lista-verde' : martes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(martes, vm.martes, $index)">
                                                 <div>
                                                     <p ng-bind="martes.recurso"></p>
                                                     <p ng-bind="martes.fecha+'-'+martes.hora"></p>
@@ -64,7 +112,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra-miercoles">MIÉRCOLES</h3>
                                         <ul id="miercoles" class="list-group d_semana">
-                                            <li ng-repeat="miercoles in vm.miercoles" ng-class="miercoles.activo ? 'list-group-item dias lista-azul' : miercoles.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(miercoles, vm.miercoles, $index)">
+                                            <li ng-repeat="miercoles in vm.miercoles" ng-class="miercoles.activo ? 'list-group-item dias lista-verde' : miercoles.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(miercoles, vm.miercoles, $index)">
                                                 <div>
                                                     <p ng-bind="miercoles.recurso"></p>
                                                     <p ng-bind="miercoles.fecha+'-'+miercoles.hora"></p>
@@ -78,7 +126,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra">JUEVES</h3>
                                         <ul id="jueves" class="list-group d_semana">
-                                            <li ng-repeat="jueves in vm.jueves" ng-class="jueves.activo ? 'list-group-item dias lista-azul' : jueves.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(jueves, vm.jueves, $index)">
+                                            <li ng-repeat="jueves in vm.jueves" ng-class="jueves.activo ? 'list-group-item dias lista-verde' : jueves.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(jueves, vm.jueves, $index)">
                                                 <div>
                                                     <p ng-bind="jueves.recurso"></p>
                                                     <p ng-bind="jueves.fecha+'-'+jueves.hora"></p>
@@ -91,7 +139,7 @@
                                     <div class="col-md-25 col-lg-5">
                                         <h3 class="listas sombra">VIERNES</h3>
                                         <ul id="viernes" class="list-group d_semana">
-                                            <li ng-repeat="viernes in vm.viernes" ng-class="viernes.activo ? 'list-group-item dias  lista-azul' : viernes.actual ? 'list-group-item dias lista-verde' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(viernes, vm.viernes, $index)">
+                                            <li ng-repeat="viernes in vm.viernes" ng-class="viernes.activo ? 'list-group-item dias  lista-verde' : viernes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(viernes, vm.viernes, $index)">
                                                 <div>
                                                     <p ng-bind="viernes.recurso"></p>
                                                     <p ng-bind="viernes.fecha+'-'+viernes.hora"></p>
@@ -149,7 +197,5 @@
 
         </div>
 
-    </div>
+ 
 
-
-</div>
