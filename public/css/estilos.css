@@ -1,28 +1,33 @@
 /* PERFIL home.html */
+
 table.tabla-home {
     height: 50%;
     border: 0;
     margin-top: 15px;
 }
-tr.tr-home{
-    border:0;
+
+tr.tr-home {
+    border: 0;
 }
-td.td-home{
+
+td.td-home {
     border: 0;
     text-align: left;
     width: 30px;
     font-size: 12px;
     padding: 0;
-    
 }
-td.td-datos-home{
+
+td.td-datos-home {
     border: 0;
     text-align: left;
     font-size: 13px;
     padding: 0;
 }
-td.td-cod-centro-home{
+
+td.td-cod-centro-home {
     border: 0;
+    font-weight: bold;
 }
 
 h4.panel-title {
@@ -31,9 +36,7 @@ h4.panel-title {
     font-family: 'Verdana', sans-serif;
     font-weight: 600;
     color: azure;
-    
 }
-
 
 
 /* NAV sobreescribimos focus y hover sobre enlaces en el nav -- librería bootstrap.css, línea 4006 */
@@ -55,18 +58,39 @@ nav.navbar-color {
 
 /* Colores listas home actual, pasada futura */
 
+
 /* color de la lista para recursos asignados en el futuro */
+
 li.lista-verde {
-    background-color:#80ff80 ;
-}
-/* color lista presente, que coincide con la hora actual */
-li.lista-azul {
-    background-color: #a8dcf0;
+    background-color: #D6F6CB;
+    border: 4px gold;
+    border-style: ridge;
+    border-bottom-width: 7px;
+    border-bottom-color: #ECAC25;
 }
 
+
+/* color lista presente, que coincide con la hora actual */
+
+li.lista-azul {
+    background-color: #00CDCD;
+    border: 4px steelblue;
+    border-style: ridge;
+    border-bottom-width: 7px;
+    border-bottom-color: steelblue;
+    border-bottom-width: thick;
+}
+
+
 /* color lista pasadas */
+
 li.lista-roja {
-    background-color:crimson;
+    background-color: #FCAE9E;
+    border: 4px steelblue;
+    border-style: ridge;
+    border-bottom-width: 7px;
+    border-bottom-color: steelblue;
+    border-bottom-width: thick;
 }
 
 
@@ -84,28 +108,45 @@ span.glyphicon-triangle-bottom {
 /* posicion del dropdown del navbar */
 
 ul.dropdown-menu {
-    width: 230px;
+    width: 290px;
     height: 150px;
-    margin-right: 80px;
+    margin-right: 50px;
     margin-top: 8px;
     box-shadow: 0px 1px 5px grey;
 }
 
-/* Elementos del dropdown del navbar */
-a.editar-perfil{
-    font-size: 15px;    
-}
-/* imagen usuarios dropdown navbar */
-img.imagen-user-dropdown{
-    width:24px;
-    height:24px;
-    margin-left:5px;
+
+/* tamaño letra del dropdown del navbar */
+
+a.editar-perfil {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 15px;
 }
 
 a.editar-perfil:hover {
-    font-family: 'Tahoma', sans-serif;
     font-weight: bold;
 }
+
+
+/* Imagenes asociadas a enlaces del dropdown del navbar */
+
+img.imagen-tool-dropdown,
+img.imagen-ayuda-dropdown,
+img.imagen-off-dropdown {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+
+/* imagen usuarios dropdown navbar */
+
+img.imagen-user-dropdown {
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+}
+
 
 /* Imagen de perfil del navbar */
 
@@ -114,6 +155,7 @@ div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
     margin-top: 7px;
     margin-bottom: 5px;
 }
+
 
 /* ICONO AYUDA PERFIL */
 
@@ -135,6 +177,7 @@ div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
 .estilo-home {
     margin-top: 5px;
 }
+
 
 /* glyphicon HOME */
 
@@ -164,6 +207,7 @@ div>a.navbar-text.titulo-web {
 div>a.navbar-text.titulo-web:hover {
     text-decoration: none;
 }
+
 
 /* Mostramos al desplegar el navegador sólo el menú resultante del dropdown 
 -- quitamos imagen user e icono home */
@@ -259,9 +303,6 @@ span.span-main-dropdown>a.dropdown-toggle.navbar-text>strong {
     font-size: 18px;
     color: white;
 }
-
-
-
 
 
 /* FUENTE BOTONES SEMANA 1 Y SEMANA 2 */
@@ -719,11 +760,6 @@ input.input_centro {
         height: 190px;
         width: 190px;
         margin-bottom: 7px;
-        align-content: center;
-        border: 3px steelblue;
-        border-style: solid;
-        border-bottom-color: steelblue;
-        border-bottom-width: thick;
     }
     ul.list-group.d_semana {
         margin: 0 auto;
@@ -822,6 +858,9 @@ input.input_centro {
         margin-top: 13px;
         font-weight: bold;
     }
+    td.td-cod-centro-home {
+        text-align: right;
+    }
 }
 
 @media (max-width:359px) {
@@ -863,6 +902,7 @@ input.input_centro {
         font-family: 'Verdana', sans-serif;
         background-color: yellow;
     }
+    
 }
 
 @media only screen and (min-width:521px) and (max-width:768px) {
@@ -1232,6 +1272,57 @@ body.mi-body {
     min-height: 64%;
 }
 
+
+/* CONFIGURACION DEL PERFIL DE USUARIO configuracion.html */
+
+
+/* titulo Edicion de Perfil */
+
+h2.titulo-perfil {
+    margin-bottom: 3px;
+}
+
+
+/* hr bajo el titulo Edicion de Perfil */
+
+hr.linea-configuracion {
+    margin-top: 0px;
+    color: rgb(53, 113, 150);
+    border: 1px solid rgb(53, 113, 150);
+}
+
+.input-nombre-config {
+    font-weight: bold;
+    font-family: 'Tahoma', sans-serif;
+    margin-bottom: 10px;
+}
+
+/* inputs nombre y apellidos en configuracion.html */
+@media only screen and (min-width:767px) and (max-width:989px) {
+    div.form-group>input.input-nombre-config{
+        width: 190px;
+    }
+    
+}
+
+/* boton consultar codigo configuracion.html */
+td.td-datos-home-config{
+    border: 0;
+    text-align: center;
+    font-size: 13px;
+}
+
+p.cod-centro-config{
+    font-weight: bold;
+    background-color: skyblue;
+    
+}
+
+/* boton consultar/ocultar codigo centro */
+button.btn-consultar-cod-centro{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
 
 /*colores*/
 
