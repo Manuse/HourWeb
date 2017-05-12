@@ -6,28 +6,63 @@
                 <!--                Empieza el primer tab-->
 
                 <uib-tab index="0" heading="Recursos" classes="estilo-tab">
-                  <br>
-                   
-                    <div class="input-group-addon addon_recurso" style="background-color:skyblue;">
-                        <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
-                        <select class="btn btn-lg btn-info" name="combo_fecha" id="combo_tipo">
+                    <br>
+                    <div class="row">
+
+                        <div class="col-lg-6">
+
+                            <div class="input-group-addon addon_recurso" style="background-color:skyblue;">
+                                <ul class="list-group">
+
+                                    <li class="list-group-item">
+                                        <span class="badge pull-right">14</span> Clase
+                                        <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        <span class="badge pull-right">14</span> Objeto
+                                        <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
+                                    </li>
+                                    
+
+                                </ul>
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                        <div class="col-lg-6">
+
+                            <div class="input-group-addon addon_recurso" style="background-color:skyblue;">
+                                <h3>Crea tipologia</h3>
+
+                                <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
+                                <select class="btn btn-lg btn-info" name="combo_fecha" id="combo_tipo">
                                 <option class="opcion_combo" value="clase">CLASE</option>
                                 <option class="opcion_combo" value="objeto">OBJETO</option>
                             </select>
-                        <button type="button" class="btn btn-lg btn-success" name="guardar_recurso" id="guardar_recurso">
+                                <button type="button" class="btn btn-lg btn-success" name="guardar_recurso" id="guardar_recurso">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar</span>
                         </button>
 
+                            </div>
+                        </div>
+
+
                     </div>
-                    
+
 
                 </uib-tab>
                 <!--                Termina primer tab-->
 
                 <!--    Empieza el segundo tab-->
 
-                <uib-tab index="1" heading="Recursos" classes="estilo-tab">
+                <uib-tab index="1" heading="Reservas Permanentes" classes="estilo-tab">
                     <div class="row" style="margin-bottom:20px;">
                         <div class="col-xs-9 col-md-10">
                             <h3 class="listas_administrador">Recursos Permanentes</h3>
@@ -79,13 +114,13 @@
                                             </select>
                         </div>
                     </div>
-                    
+
                 </uib-tab>
                 <!--    Termina el segunda tab-->
 
                 <!--    Empieza el tercer tab-->
 
-                <uib-tab index="2" heading="Recursos" classes="estilo-tab">
+                <uib-tab index="2" heading="Usuarios" classes="estilo-tab">
                     <div class="row">
                         <div class="col-xs-12">
                             <h3 class="listas">Usuarios</h3>
@@ -101,6 +136,12 @@
                             </table>
                         </div>
                     </div>
+                </uib-tab>
+                <uib-tab index="3" heading="Centros" classes="estilo-tab">
+
+                </uib-tab>
+                <uib-tab index="4" heading="Cursos" classes="estilo-tab">
+
                 </uib-tab>
                 <!--   Termina el tercer tab-->
             </uib-tabset>
