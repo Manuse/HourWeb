@@ -22,8 +22,8 @@
                 }).state("administrador", {
                     url: "/administrador",
                     templateUrl: "templates/administrador.html",
-                    //controller:'Controller',
-                    //controllerAs:"ctrl"
+                    controller:'AdministradorController',
+                    controllerAs:"vm"
                 });
         }).constant("DATABASE", firebase.database())
         .constant("AUTH", firebase.auth())
