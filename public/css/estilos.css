@@ -902,7 +902,6 @@ input.input_centro {
         font-family: 'Verdana', sans-serif;
         background-color: yellow;
     }
-    
 }
 
 @media only screen and (min-width:521px) and (max-width:768px) {
@@ -1297,32 +1296,114 @@ hr.linea-configuracion {
     margin-bottom: 10px;
 }
 
+
 /* inputs nombre y apellidos en configuracion.html */
+
 @media only screen and (min-width:767px) and (max-width:989px) {
-    div.form-group>input.input-nombre-config{
+    div.form-group>input.input-nombre-config {
         width: 190px;
     }
-    
 }
 
+
 /* boton consultar codigo configuracion.html */
-td.td-datos-home-config{
+
+td.td-datos-home-config {
     border: 0;
     text-align: center;
     font-size: 13px;
 }
 
-p.cod-centro-config{
+p.cod-centro-config {
     font-weight: bold;
     background-color: skyblue;
-    
 }
 
+
 /* boton consultar/ocultar codigo centro */
-button.btn-consultar-cod-centro{
+
+button.btn-consultar-cod-centro {
     margin-top: 7px;
     margin-bottom: 7px;
 }
+
+
+/* Imagen editar foto */
+
+img.imagen-editar-foto {
+    width: 30px;
+    height: 30px;
+}
+
+a.btn-editar-foto {
+    position: relative;
+    top: 30px;
+    left: 110px;
+}
+
+
+/* imagen principal de configuracion */
+
+img.imagen-config {}
+
+@media only screen and (min-width:992px) and (max-width:999px) {
+    /* Imagen boton editar foto -plus-  */
+    img.imagen-editar-foto {
+        width: 25px;
+        height: 25px;
+    }
+    a.btn-editar-foto {
+        position: relative;
+        top: 30px;
+        left: 90px;
+    }
+}
+
+@media only screen and (min-width:769px) and (max-width:991px) {
+    /* Imagen editar foto */
+    img.imagen-editar-foto {
+        width: 20px;
+        height: 20px;
+    }
+    /* boton con foto */
+    a.btn-editar-foto {
+        position: relative;
+        top: 25px;
+        left: 60px;
+        width: 120px;
+        height: 120px;
+    }
+    /* imagen principal*/
+    img.imagen-config {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media(max-width: 768px) {
+    /* Imagen editar foto */
+    img.imagen-editar-foto {
+        width: 22px;
+        height: 22px;
+    }
+    
+     /* boton con foto */
+    a.btn-editar-foto {
+        position: relative;
+        top: 25px;
+        left: 150px;
+        width: 120px;
+        height: 120px;
+    }
+    /* imagen principal*/
+    img.imagen-config {
+        position: relative;
+        left: 60px;
+        width: 120px;
+        height: 120px;
+    }
+}
+
 
 /*colores*/
 

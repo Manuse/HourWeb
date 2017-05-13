@@ -16,10 +16,15 @@
                     <h4 class="panel-title">USUARIO</h4>
                 </div>
                 <div class="panel-body">
-                    <div class="col-xs-12 col-sm-2">
-                        <img class="img-circle img-responsive imagen-home" alt="Usuario Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" />
+                    <div class="col-xs-12 col-sm-2 div-foto-config">
+                       <!-- Imagen Editar Foto -->
+                       <a href="#" class="btn-editar-foto" id="">
+                           <img src="imagenes/boton-plus-svg1.svg" class="imagen-editar-foto img-circle" alt="no foto">
+						   
+						</a>
+                        <img class="img-circle img-responsive imagen-config" alt="Usuario Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" />                      
                     </div>
-                    <div class="col-sm-10">
+                    <div class="col-xs-12 col-sm-10">
                         <table class="table table-responsive tabla-home">
                             <tbody>
                                 <tr class="tr-home">
@@ -40,6 +45,25 @@
 
                                     </td>
                                 </tr>
+                                
+                                <!-- TELEFONOS -->
+                                <tr class="tr-home">
+                                    <td colspan="2" class="td-datos-home">
+                                        <form class="form-inline">
+                                            <!-- se agruparan en linea -->
+                                            <div class="form-group">
+                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Móvil: 654545454" required>
+
+                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Tlf: 954545454" required>
+
+                                                <button type="button" class="btn btn-info btn_datos pull-right" id="cambiar_datos" style="margin-left:5px;">
+									            <strong>Cambiar Datos</strong>
+								                </button>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <!-- CAMBIAR CENTRO -->
                                 <tr class="tr-home">
 
                                     <td colspan="2" class="td-datos-home">
@@ -55,14 +79,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                                <tr class="tr-home">
-                                    <td class="td-home">
-                                        <label class="nomenclatura">Teléfono:</label>
-                                    </td>
-                                    <td class="td-datos-home">
-                                        <span style="color:black;">954545454</span>
-                                    </td>
-                                </tr>
+                                
                                 <tr class="tr-home">
                                     <td class="td-home">
                                         <label class="nomenclatura">email:</label>
@@ -88,51 +105,5 @@
         </div>
     </div>
 
-    <div class="container">
-
-
-        <div class="row">
-            <br><br>
-            <!-- EDICION DEL PERFIL -->
-            <div class="col-xs-12 col-sm-4 col-lg-3">
-
-                <div class="perfil_config">
-                    <img class="img-responsive img-rounded" alt="sin foto" id="config_foto" />
-                    <label class="fileContainer btn-block btn btn-success btn-xs" style="font-weight:bold">
-								Cambiar Imagen
-								<input type="file" class="btn btn-primary" accept="image/*" id="cambiar_foto"/>
-							</label>
-
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-8 col-lg-9 bg-info">
-                <div>
-                    <h3 style="font-weight:bold;">Información Personal</h3>
-                </div>
-                <form class="form-inline">
-                    <!-- se agruparan en linea -->
-                    <div class="form-group">
-                        <input class="form-control input_nombre" id="config_nombre" type="text" placeholder="Cambiar Nombre" required>
-
-                        <input class="form-control input_apellido" id="config_apellido" type="text" placeholder="Cambiar Apellidos" required>
-
-                        <button type="button" class="btn btn-info btn_datos pull-right" id="cambiar_datos">
-									<strong>Cambiar Datos</strong>
-								</button>
-                    </div>
-                    <!-- nombre centro -->
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input class="form-control input_centro" id="config_centro" type="text" placeholder="Nombre Centro" required>
-                        </div>
-                        <button type="button" class="btn btn-info pull-right" id="cambiar_centro">
-									<strong>Cambiar Centro</strong>
-								</button>
-                        <div style="height:10px;"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 </div>
