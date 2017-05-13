@@ -11,14 +11,14 @@
             AUTH.signInWithEmailAndPassword(vm.email, vm.pass).catch(function (error) {
                 switch (error.code) { //dependiendo del error ejecutara un alert u otro
                     case "auth/invalid-email":
-                        vm.error("El email no es valido");
+                        vm.error("El email no es válido");
                         
                         break;
                     case "auth/user-not-found":                        
-                        vm.error("El email o la contraseña no son validos");
+                        vm.error("El email o la contraseña no son válidos");
                         break;
                     case "auth/wrong-password":
-                        vm.error("El email o la contraseña no son validos");
+                        vm.error("El email o la contraseña no son válidos");
                         break;
                     default:
                         vm.error("Ha ocurrido un error");

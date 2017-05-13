@@ -337,7 +337,11 @@ div.btn-group {
 }
 
 
-/* INDEX */
+/* INDEX - MODALES - */
+div>img.imagen-error{
+    margin-left:  10px;
+    margin-top: 5px;
+}
 
 
 /*boton ENTRAR */
