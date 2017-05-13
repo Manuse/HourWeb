@@ -248,10 +248,27 @@ div>a.navbar-text.titulo-web:hover {
 }
 
 
-/* BOTON RESERVAR */
+/* BOTON RESERVAR home.html*/
 
 a.btn-reservar {
     font-weight: bold;
+}
+
+@media only screen and (min-width: 366px) and (max-width:426px) {
+    a.btn-reservar {
+        position: relative;
+        top: 10px;
+        left: 130px;
+    }
+}
+
+@media only screen and (min-width: 328px) and (max-width:371px) {
+    a.btn-reservar {
+        position: relative;
+        top: 20px;
+        margin-bottom: 10px;
+        float: none;
+    }
 }
 
 
@@ -440,8 +457,8 @@ th {
 /*tabla horario HOME */
 
 table.tabla-mi-horario>thead,
-tbody>tr,
-td {
+tbody.tabla-horarios>tr,
+td.tabla-horarios {
     color: black;
     border: 1px solid rgb(238, 120, 120);
     max-width: 100px;
@@ -560,19 +577,22 @@ article.foto_izquierda {
     border: 1px solid grey;
 }
 
+
+/* rgb(5, 4, 41)*/
+
 h3.listas.sombra {
-    text-shadow: 1px 1px 1px rgb(5, 4, 41);
-    color: rgb(1, 5, 19);
+    font-family: 'Verdana', sans-serif;
+    color: black;
+    text-shadow: 1px 1px 1px skyblue;
     font-weight: bold;
-    font-family: 'Arial', sans-serif;
     margin-left: 77px;
 }
 
 h3.listas.sombra-miercoles {
-    text-shadow: 1px 1px 1px rgb(5, 4, 41);
-    color: rgb(1, 5, 19);
+    font-family: 'Verdana', sans-serif;
+    text-shadow: 1px 1px 1px skyblue;
+    color: black;
     font-weight: bold;
-    font-family: 'Arial', sans-serif;
     margin-left: 60px;
 }
 
@@ -843,14 +863,16 @@ input.input_centro {
         box-shadow: 5px 5px 5px #888888;
     }
     /* Dias de la semana, encabezado del HOME*/
-    h3.listas.sombra-miercoles {
-        margin-top: 40px;
-        margin-left: 270px;
-        font-size: 24px;
-    }
     h3.listas.sombra {
         margin-top: 40px;
-        margin-left: 290px;
+        text-align-last: center;
+        margin-right: 59px;
+        font-size: 24px;
+    }
+    h3.listas.sombra-miercoles {
+        margin-top: 45px;
+        text-align-last: center;
+        margin-right: 45px;
         font-size: 24px;
     }
     .btn-reservar {
@@ -1342,9 +1364,7 @@ a.btn-editar-foto {
 }
 
 
-/* imagen principal de configuracion */
-
-img.imagen-config {}
+/* imagen principal de configuracion y boton de edicion de foto */
 
 @media only screen and (min-width:992px) and (max-width:999px) {
     /* Imagen boton editar foto -plus-  */
@@ -1380,27 +1400,67 @@ img.imagen-config {}
     }
 }
 
-@media(max-width: 768px) {
+
+/* para i-Pad */
+
+@media(width: 769px) {
     /* Imagen editar foto */
     img.imagen-editar-foto {
-        width: 22px;
-        height: 22px;
+        width: 25px;
+        height: 25px;
     }
-    
-     /* boton con foto */
+    /* boton con foto */
     a.btn-editar-foto {
         position: relative;
         top: 25px;
-        left: 150px;
-        width: 120px;
-        height: 120px;
+        left: 70px;
+        width: 100px;
+        height: 100px;
     }
     /* imagen principal*/
     img.imagen-config {
         position: relative;
-        left: 60px;
+        left: 0px;
         width: 120px;
         height: 120px;
+    }
+}
+
+@media only screen and (min-width:300px) and (max-width:768px) {
+    /* Imagen editar foto */
+    img.imagen-editar-foto {
+        width: 20px;
+        height: 20px;
+    }
+    /* contenedor boton editar -plus- */
+    a.btn-editar-foto {
+        position: relative;
+        top: 25px;
+        left: 80px;
+        width: 100px;
+        height: 100px;
+    }
+    /* imagen principal*/
+    img.imagen-config {
+        position: relative;
+        left: 0px;
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+/* fondo azul */
+
+@media(max-width: 362px) {
+    p.cod-centro-config {
+        background-color: white;
+    }
+}
+
+@media only screen and (min-width:200px) and (max-width:328px) {
+    p.cod-centro-config {
+        font-size: 10px;
     }
 }
 
