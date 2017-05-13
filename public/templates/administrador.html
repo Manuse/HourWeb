@@ -23,7 +23,15 @@
                                         <span class="badge pull-right">14</span> Objeto
                                         <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
                                     </li>
-                                    
+                                    <li class="list-group-item">
+                                        <span class="badge pull-right">14</span> Objeto
+                                        <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="badge pull-right">14</span> Objeto
+                                        <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
+                                    </li>
+
 
                                 </ul>
 
@@ -63,57 +71,59 @@
                 <!--    Empieza el segundo tab-->
 
                 <uib-tab index="1" heading="Reservas Permanentes" classes="estilo-tab">
-                    <div class="row" style="margin-bottom:20px;">
-                        <div class="col-xs-9 col-md-10">
-                            <h3 class="listas_administrador">Recursos Permanentes</h3>
+                    <div class="row">
+                       <div class="col-lg-9">
+                        <h3 class="listas_administrador">Recursos Permanentes</h3>
                         </div>
-                        <!-- Boton hidden-sm las letras del boton-->
-                        <div class="col-xs-3 col-md-2">
-                            <button type="button" class="btn btn-success btn-lg" id="guardar_reserva" style="margin-top:7px;">
+
+                        <div class="col-lg-3">
+                        <button type="button" class="btn btn-success btn-lg pull-right" id="guardar_reserva" style="margin-top:7px;">
                                                 <span class="glyphicon glyphicon-floppy-save"></span>
                                                 <span class="hidden-xs hidden-sm">
                                                     Guardar</span>
                                             </button>
-                        </div>
+                                            </div>
                     </div>
-                    <div class="row" style="border:1px  groove #beb6c3; background-color:#d8dde2; padding-bottom:10px;">
-                        <div class="col-md-3">
-                            <br>
-                            <h3 class="listas" style="font-weight:bold;">USUARIO</h3>
-                            <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_usuario">
-                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
-                                            </select>
-                        </div>
+                    <div style="border:1px  groove #beb6c3; background-color:#d8dde2; padding-bottom:10px;">
+                        <br>
 
-                        <div class="col-md-3">
-                            <br>
-                            <h3 class="listas" style="font-weight:bold;">RECURSOS</h3>
-                            <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_recurso">
-                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
-                                               
-                                            </select>
-                        </div>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-lg-2" style="margin-left:250px"> Usuario</label>
+                                <div class="col-lg-3">
+                                    <select class="form-control btn-info" name="combo_fecha" id="combo_usuario">
+                                 </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2" style="margin-left:250px"> Recurso</label>
+                                <div class="col-lg-3">
+                                    <select class="form-control btn-info" name="combo_fecha" id="combo_usuario">
+                                 </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2" style="margin-left:250px"> Dias</label>
+                                <div class="col-lg-3">
+                                    <select class="form-control btn-info" name="combo_fecha" id="combo_usuario">
+                                 </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2" style="margin-left:250px"> Horas</label>
+                                <div class="col-lg-3">
+                                    <select class="form-control btn-info" name="combo_fecha" id="combo_usuario">
+                                 </select>
+                                </div>
+                            </div>
 
-                        <div class="col-md-3">
-                            <br>
-                            <h3 class="listas" style="font-weight:bold;">DÍAS</h3>
-                            <select class="form-control pull-right btn-info" name="combo_dia" id="combo_dia">
-                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
-                                                <option class="opcion_combo" value="1">Lunes</option>
-                                                <option class="opcion_combo" value="2">Martes</option>
-                                                <option class="opcion_combo" value="3">Miércoles</option>
-                                                <option class="opcion_combo" value="4">Jueves</option>
-                                                <option class="opcion_combo" value="5">Viernes</option>
-                                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <br>
-                            <h3 class="listas" style="font-weight:bold;">HORAS</h3>
-                            <select class="form-control pull-right btn-info" name="combo_horas" id="combo_horas">
-                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->                                               
-                                            </select>
-                        </div>
+
+                        </form>
                     </div>
+
+
+
+
 
                 </uib-tab>
                 <!--    Termina el segunda tab-->
