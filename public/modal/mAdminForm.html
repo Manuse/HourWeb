@@ -16,35 +16,41 @@
 
             <!-- se agruparan en linea -->
             <div class="form-group">
-                <input class="form-control form_login" autofocus type="text" placeholder="Nombre" required ng-model="vmm.nombre">
+                <input class="form-control form-login" autofocus type="text" placeholder="Nombre" required ng-model="vmm.nombre">
                 <br><br>
-                <input class="form-control form_login" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
+                <input class="form-control form-login" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
             </div>
-            <br><br>
+            <br class="separador-nombres"><br>
             <div class="form-group">
                 <div class="input-group">
-                    <input class="form-control form_login" type="email" placeholder="Correo" required ng-model="vmm.email">
+                    <input class="form-control form-login" type="email" placeholder="Correo" required ng-model="vmm.email">
                 </div>
             </div>
-            <br><br>
+            <br class="separador-nombres">
             <div class="form-group">
                 <div class="input-group">
-                    <input class="form-control form_login" type="password" placeholder="Password" required ng-model="vmm.pass1">
+                    <input class="form-control form-login" type="password" placeholder="Password" required ng-model="vmm.pass1">
                     <br><br>
-                    <input class="form-control form_login" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
+                    <input class="form-control form-login" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
                 </div>
             </div>
-            <br><br>
+            <br class="separador-nombres"><br>
 
 
             <div class="form-group">
                 <div class="input-group">
-                    <input class="form-control form_login" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
+                    <input class="form-control form-login" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
                     <br><br>
-                                     <!-- preguntar q coño es el operador | -->
-
-                    
+                    <!-- preguntar q coño es el operador | -->
                 </div>
+            </div>
+            <br>
+            <label class="horas">Establecer Horario:</label>
+            <p><strong>INCIO</strong></p>
+            <div uib-timepicker ng-model="vmm.inicioHora" hour-step="vmm.horaup" minute-step="vmm.minutoup" show-meridian="false" class="timepicker-admin-login"></div>
+            <p><strong>FIN</strong></p>
+            <div class="mi-timepicker" uib-timepicker ng-model="vmm.finHora" hour-step="vmm.horaup" minute-step="vmm.minutoup" show-meridian="false" class="timepicker-admin-login">
+
             </div>
         </div>
 
@@ -55,11 +61,5 @@
 			</button>
         </div>
     </form>
-    <label class="horas">
-					    Horario
-					</label>
-                    <p>INCIO</p>
-                    <div uib-timepicker ng-model="vmm.inicioHora" hour-step="vmm.horaup" minute-step="vmm.minutoup" show-meridian="false"></div> 
-                    <p>FIN</p>
-                    <div class="mi-timepicker" uib-timepicker ng-model="vmm.finHora" hour-step="vmm.horaup" minute-step="vmm.minutoup" show-meridian="false"></div>
+
 </div>

@@ -338,8 +338,9 @@ div.btn-group {
 
 
 /* INDEX - MODALES - */
-div>img.imagen-error{
-    margin-left:  10px;
+
+div>img.imagen-error {
+    margin-left: 10px;
     margin-top: 5px;
 }
 
@@ -496,14 +497,37 @@ table.tabla-reservar>tbody>tr>td {
 }
 
 
-/* hacemos referencia a inputs de los ids de los pass */
+/* hacemos referencia a inputs de login.html */
 
-.form_login {
+input.form-control.form-login {
     border: 1px solid #0641f1;
     background-color: #b3e3e3;
-    width: 230px;
+    width: 500px;
     font-family: "Verdana", Georgia, sans-serif;
-    font-weight: 600;
+    font-weight: bolder;
+    margin-bottom: 7px;
+}
+
+@media only screen and (min-width:360px) and (max-width:770px) {
+    input.form-control.form-login {
+        width: 340px;
+    }
+    br.separador-nombres {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:280px) and (max-width:360px) {
+    input.form-control.form-login {
+        width: 250px;
+    }
+}
+
+
+/* timepicker login admin */
+
+div.timepicker-admin-login {
+    font-weight: bold;
 }
 
 #id_centro {
@@ -514,12 +538,12 @@ table.tabla-reservar>tbody>tr>td {
 
 /* login admin asignar horas */
 
-.horas {
-    margin-top: 5px;
-    margin-bottom: 5px;
+label.horas {
+    margin-top: 15px;
+    margin-bottom: 15px;
     margin-left: 5px;
     font-family: "Tahoma", Georgia, sans-serif;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 
@@ -757,13 +781,21 @@ input.input_nombre,
     margin-bottom: 10px;
 }
 
-input.input_centro {
+input.form-control.input-centro {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
+    width: 305px;
+}
+
+@media (max-width: 413px) {
+    input.form-control.input-centro, input.input-nombre-config {
+        font-size: 9px;
+        width: 215px;
+    }
 }
 
 
-/*AÑADIR 5 COLUMNAS EXACTAS DENTRO DEL TAB Mis Reservas */
+/*AÑADIR 5 COLUMNAS EXACTAS DENTRO DEL TAB Mis Reservas home.html */
 
 
 /* xs -768px // sm +768px-992px // md +992px-1200px // lg +1200px*/
@@ -1091,7 +1123,7 @@ input.input_centro {
     .input_nombre,
     .input_apellido,
     .btn_datos,
-    .input_centro {
+    .input-centro {
         margin-bottom: 10px;
     }
 }
