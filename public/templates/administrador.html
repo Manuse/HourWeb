@@ -18,19 +18,43 @@
                                         <span class="badge pull-right">14</span> Clase
                                         <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
                                     </li>
+                                    <uib-accordion close-others="oneAtATime">
+                                        
+                                        <br><br>
 
-                                    <li class="list-group-item">
-                                        <span class="badge pull-right">14</span> Objeto
-                                        <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="badge pull-right">14</span> Objeto
-                                        <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span class="badge pull-right">14</span> Objeto
-                                        <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
-                                    </li>
+                                        <div uib-accordion-group class="panel-default" is-open="status.open">
+                                            <uib-accordion-heading>
+                                                I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                            </uib-accordion-heading>
+                                            This is just some content to illustrate fancy headings.
+                                        </div>
+                                        <br><br>
+
+
+                                        <div uib-accordion-group class="panel-default" is-open="status.open">
+                                            <uib-accordion-heading>
+                                                I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                            </uib-accordion-heading>
+                                            This is just some content to illustrate fancy headings.
+                                        </div>
+                                        <br><br>
+
+
+                                        <div uib-accordion-group class="panel-default" is-open="status.open">
+                                            <uib-accordion-heading>
+                                                I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                            </uib-accordion-heading>
+                                            This is just some content to illustrate fancy headings.
+                                        </div>
+                                        <br><br>
+
+
+
+                                    </uib-accordion>
+
+
+
+
 
 
                                 </ul>
@@ -72,40 +96,40 @@
 
                 <uib-tab index="1" heading="Reservas Permanentes" classes="estilo-tab">
                     <div class="row" style="margin-bottom:20px;">
-                                        <div class="col-xs-9 col-md-10">
-                                            <h3 class="listas_administrador">Recursos Permanentes</h3>
-                                        </div>
-                                        <!-- Boton hidden-sm las letras del boton-->
-                                        <div class="col-xs-3 col-md-2">
-                                            <button type="button" class="btn btn-info btn-lg" id="guardar_reserva" style="margin-top:7px;">
+                        <div class="col-xs-9 col-md-10">
+                            <h3 class="listas_administrador">Recursos Permanentes</h3>
+                        </div>
+                        <!-- Boton hidden-sm las letras del boton-->
+                        <div class="col-xs-3 col-md-2">
+                            <button type="button" class="btn btn-info btn-lg" id="guardar_reserva" style="margin-top:7px;">
                                                 <span class="glyphicon glyphicon-floppy-save"></span>
                                                 <span class="hidden-xs hidden-sm">
                                                     Guardar</span>
                                             </button>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="border:1px  groove #beb6c3; background-color:#d8dde2; padding-bottom:10px;">
-                                        <div class="col-md-3">
-                                            <br>
-                                            <h3 class="listas" style="font-weight:bold;">USUARIO</h3>
-                                            <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_usuario">
+                        </div>
+                    </div>
+                    <div class="row" style="border:1px  groove #beb6c3; background-color:#d8dde2; padding-bottom:10px;">
+                        <div class="col-md-3">
+                            <br>
+                            <h3 class="listas" style="font-weight:bold;">USUARIO</h3>
+                            <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_usuario">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                             </select>
-                                        </div>
+                        </div>
 
-                                        <div class="col-md-3">
-                                            <br>
-                                            <h3 class="listas" style="font-weight:bold;">RECURSOS</h3>
-                                            <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_recurso">
+                        <div class="col-md-3">
+                            <br>
+                            <h3 class="listas" style="font-weight:bold;">RECURSOS</h3>
+                            <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_recurso">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
                                             </select>
-                                        </div>
+                        </div>
 
-                                        <div class="col-md-3">
-                                            <br>
-                                            <h3 class="listas" style="font-weight:bold;">DÍAS</h3>
-                                            <select class="form-control pull-right btn-info" name="combo_dia" id="combo_dia">
+                        <div class="col-md-3">
+                            <br>
+                            <h3 class="listas" style="font-weight:bold;">DÍAS</h3>
+                            <select class="form-control pull-right btn-info" name="combo_dia" id="combo_dia">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                 <option class="opcion_combo" value="1">Lunes</option>
                                                 <option class="opcion_combo" value="2">Martes</option>
@@ -113,26 +137,26 @@
                                                 <option class="opcion_combo" value="4">Jueves</option>
                                                 <option class="opcion_combo" value="5">Viernes</option>
                                             </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <br>
-                                            <h3 class="listas" style="font-weight:bold;">HORAS</h3>
-                                            <div uib-timepicker ng-model="vm.mytime" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>  
-                                            
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                        
-                                                                                                  
-                            
+                        </div>
+                        <div class="col-md-3">
+                            <br>
+                            <h3 class="listas" style="font-weight:bold;">HORAS</h3>
+                            <div uib-timepicker ng-model="vm.mytime" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>
+
+                        </div>
+                    </div>
+
+
+
+
+
 
 
 
 
 
                 </uib-tab>
-                
+
                 <!--    Termina el segunda tab-->
 
                 <!--    Empieza el tercer tab-->
