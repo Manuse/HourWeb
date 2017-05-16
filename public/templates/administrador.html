@@ -1,6 +1,6 @@
-<div class="row">
+
     <div class="container">
-        <div class="tab-content">
+       
             <!--           Empieza el contenido tab-->
             <uib-tabset>
                 <!--                Empieza el primer tab-->
@@ -19,12 +19,13 @@
                                         <button class="btn btn-link pull-right" style="margin-top:-10px;margin-right:10px">Recurso</button>
                                     </li>
                                     <uib-accordion close-others="vm.oneAtATime">
-                                        
+
                                         <br><br>
+                                        
 
                                         <div uib-accordion-group class="panel-default" is-open="vm.status.open1">
                                             <uib-accordion-heading>
-                                                I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open1, 'glyphicon-chevron-right': !vm.status.open1}"></i>
+                                                <span class="pinocho">I can have markup, too!</span> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open1, 'glyphicon-chevron-right': !vm.status.open1}"></i>
                                             </uib-accordion-heading>
                                             This is just some content to illustrate fancy headings.
                                         </div>
@@ -33,7 +34,7 @@
 
                                         <div uib-accordion-group class="panel-default" is-open="vm.status.open2">
                                             <uib-accordion-heading>
-                                                I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open2, 'glyphicon-chevron-right': !vm.status.open2}"></i>
+                                                span can have markup, too!<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open2, 'glyphicon-chevron-right': !vm.status.open2}"></i>
                                             </uib-accordion-heading>
                                             This is just some content to illustrate fancy headings.
                                         </div>
@@ -46,16 +47,11 @@
                                             </uib-accordion-heading>
                                             This is just some content to illustrate fancy headings.
                                         </div>
-                                        <br><br>
+                                       
 
 
 
                                     </uib-accordion>
-
-
-
-
-
 
                                 </ul>
 
@@ -68,9 +64,23 @@
 
 
                         <div class="col-lg-6">
+                           <div class="row">
+                            <div class="col-lg-6">
 
                             <div class="input-group-addon addon_recurso" style="background-color:skyblue;">
                                 <h3>Crea tipologia</h3>
+
+                                <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
+                               
+                                <button type="button" class="btn btn-lg btn-success" name="guardar_recurso" id="guardar_recurso">
+                        <span class="glyphicon glyphicon-floppy-save"></span>
+                                                            Guardar</span>
+                        </button>
+
+                            </div>
+                            </div>
+                            <div class="input-group-addon addon_recurso" style="background-color:skyblue;">
+                                <h3>Crea Recurso</h3>
 
                                 <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
                                 <select class="btn btn-lg btn-info" name="combo_fecha" id="combo_tipo">
@@ -83,10 +93,17 @@
                         </button>
 
                             </div>
+                            </div>
+                            <br><br><br>
+                            
+                            
+
+
                         </div>
 
 
                     </div>
+                  
 
 
                 </uib-tab>
@@ -187,7 +204,7 @@
                 <!--   Termina el tercer tab-->
             </uib-tabset>
             <!--    Termina contenido tab-->
-        </div>
+      
 
     </div>
-</div>
+
