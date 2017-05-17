@@ -17,6 +17,12 @@ td.td-home {
     font-size: 12px;
     padding: 0;
 }
+td.td-config{
+    
+    text-align: left;
+    
+    font-size: 12px;
+}
 
 td.td-datos-home {
     border: 0;
@@ -36,6 +42,20 @@ h4.panel-title {
     font-family: 'Verdana', sans-serif;
     font-weight: 600;
     color: azure;
+}
+
+
+/* Datos en tamanio pequeño en home.html */
+
+div.hidden-sm>a.nombre-xs-home,
+a.centro-xs-home {
+    padding: 1px;
+    text-align: left;
+    font-weight: 600;
+}
+
+a.centro-xs-home {
+    font-weight: 600;
 }
 
 
@@ -269,6 +289,7 @@ a.btn-reservar {
         margin-bottom: 10px;
         float: none;
     }
+    
 }
 
 
@@ -508,6 +529,11 @@ input.form-control.form-login {
     margin-bottom: 7px;
 }
 
+@media only screen and (min-width:769px) and (max-width:800px) {
+    div>a.navbar-text.titulo-web{
+        font-size: 1.5em;
+    }
+}
 @media only screen and (min-width:360px) and (max-width:770px) {
     input.form-control.form-login {
         width: 340px;
@@ -774,8 +800,7 @@ li.list-group-item.dias:hover {
 /* INPUTS DE CONFIGURACION DE PERFIL */
 
 input.input_nombre,
-.input_apellido,
-.btn_datos {
+.input_apellido {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
     margin-bottom: 10px;
@@ -788,9 +813,15 @@ input.form-control.input-centro {
 }
 
 @media (max-width: 413px) {
-    input.form-control.input-centro, input.input-nombre-config {
+    input.form-control.input-centro,
+    input.input-nombre-config {
         font-size: 9px;
-        width: 215px;
+        width: 100%;
+    }
+    p.codigo-xs-home1 {
+        font-size: 9px;
+        font-weight: 700;
+        
     }
 }
 
@@ -1122,7 +1153,6 @@ input.form-control.input-centro {
     }
     .input_nombre,
     .input_apellido,
-    .btn_datos,
     .input-centro {
         margin-bottom: 10px;
     }
@@ -1351,7 +1381,7 @@ hr.linea-configuracion {
 .input-nombre-config {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 
@@ -1359,7 +1389,7 @@ hr.linea-configuracion {
 
 @media only screen and (min-width:767px) and (max-width:989px) {
     div.form-group>input.input-nombre-config {
-        width: 190px;
+        width: 100%;
     }
 }
 
@@ -1492,6 +1522,7 @@ a.btn-editar-foto {
     p.cod-centro-config {
         background-color: white;
     }
+    
 }
 
 @media only screen and (min-width:200px) and (max-width:328px) {
@@ -1500,8 +1531,17 @@ a.btn-editar-foto {
     }
 }
 
-.pinocho{
+.pinocho {
     color: #f00;
+}
+
+p.codigo-xs-home {
+    font-weight: bold;
+    font-size: 13px;
+}
+p.codigo-xs-home1 {
+    font-weight: bold;
+    font-size: 12px;
 }
 
 

@@ -17,12 +17,12 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-xs-12 col-sm-2 div-foto-config">
-                       <!-- Imagen Editar Foto -->
-                       <a href="#" class="btn-editar-foto" id="">
-                           <img src="imagenes/boton-plus-svg1.svg" class="imagen-editar-foto img-circle" alt="no foto">
-						   
-						</a>
-                        <img class="img-circle img-responsive imagen-config" alt="Usuario Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" />                      
+                        <!-- Imagen Editar Foto -->
+                        <a href="#" class="btn-editar-foto" id="">
+                            <img src="imagenes/boton-plus-svg1.svg" class="imagen-editar-foto img-circle" alt="no foto">
+
+                        </a>
+                        <img class="img-circle img-responsive imagen-config" alt="Usuario Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" />
                     </div>
                     <div class="col-xs-12 col-sm-10">
                         <table class="table table-responsive tabla-home">
@@ -37,42 +37,61 @@
 
                                                 <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Cambiar Apellidos" required>
 
-                                                <button type="button" class="btn btn-info btn_datos pull-right" id="cambiar_datos" style="margin-left:5px;">
-									            <strong>Cambiar Datos</strong>
-								                </button>
                                             </div>
                                         </form>
 
                                     </td>
                                 </tr>
-                                
-                                
-                                <!-- CAMBIAR CENTRO -->
+
                                 <tr class="tr-home">
 
-                                    <td colspan="3" class="td-datos-home">
+                                    <td colspan="2" class="td-datos-home">
+                                        <form class="form-inline">
+                                            <!-- se agruparan en linea -->
+                                            <div class="form-group">
+                                               <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Móvil: 678454557" required>
+                                               
+                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Fijo: 957547893" required>                                               
+
+                                            </div>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                                <tr class="tr-home">
+                                    <td colspan="1" class="td-btn-datos">
+                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-right" id="cambiar_datos">
+									            <strong>Cambiar Datos</strong>
+								        </button>
+                                    </td>
+                                </tr>
+                                <!-- CAMBIAR CENTRO -->
+                                <tr class="tr-home">
+                                    <td colspan="2" class="td-datos-home">
                                         <form class="form-inline">
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
                                                 <input class="form-control input-centro" id="config_centro" type="text" placeholder="-wedfgkjsiusajklisañkdjAMLOUHSK-" required>
 
-                                                <button type="button" class="btn btn-info pull-right" style="margin-left:5px;" id="cambiar_centro">
+                                                <button type="button" class="btn btn-info btn-sm pull-right" style="margin-left:5px;" id="cambiar_centro">
 									                <strong>Cambiar Código del Centro</strong>
 								                </button>
                                             </div>
                                         </form>
                                     </td>
                                 </tr>
-                                
+
+
                                 <tr class="tr-home">
                                     <td class="td-home">
-                                        <label class="nomenclatura">email:</label>
+                                        <label class="nomenclatura" style="margin:9px;">email:</label>
                                     </td>
                                     <td class="td-datos-home">
-                                        <span><a href="#">usuario@gmail.com</a></span>
+                                        <span><button type="button" class="btn btn-link" disabled>usuario@gmail.com</button></span>
                                     </td>
                                 </tr>
                                 
+
                             </tbody>
                         </table>
                     </div>
