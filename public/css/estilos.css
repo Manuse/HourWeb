@@ -874,7 +874,7 @@ input.form-control.input-centro {
 @media (max-width: 413px) {
     input.input-pass-config {
         font-size: 9px;
-        width: 190px;
+        width: 150px !important;
     }
     input.form-control.input-centro,
     input.input-nombre-config {

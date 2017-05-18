@@ -70,11 +70,12 @@
                                                     <div class="input-group">
                                                         <input class="form-control input-pass-config" id="" type="password" placeholder="Nuevo password" required>
                                                     </div>
-                                                       <div class="input-group">
+                                                    <div class="input-group">
                                                         <input class="form-control input-pass-config" id="" type="password" placeholder="Confirmar password" required>
                                                         <div class="input-group">
                                                             <button type="button" class="form-control btn-ojo">
                                                             <span class="glyphicon glyphicon-eye-open icono-ojo">                                              </span>
+                                                            <!-- glyphicon glyphicon-eye-close -->
                                                         </button>
                                                         </div>
                                                     </div>
@@ -92,22 +93,6 @@
 								        </button>
                                     </td>
                                 </tr>
-                                <!-- CAMBIAR CENTRO -->
-                                <tr class="tr-home">
-                                    <td colspan="2" class="td-datos-home">
-                                        <form class="form-inline">
-                                            <!-- se agruparan en linea -->
-                                            <div class="form-group">
-                                                <input class="form-control input-centro" id="config_centro" type="text" placeholder="-wedfgkjsiusajklisañkdjAMLOUHSK-" required>
-
-                                                <button type="button" class="btn btn-info btn-sm pull-right" style="margin-left:5px;" id="cambiar_centro">
-									                <strong>Cambiar Código del Centro</strong>
-								                </button>
-                                            </div>
-                                        </form>
-                                    </td>
-                                </tr>
-
 
                                 <tr class="tr-home">
                                     <td class="td-home">
@@ -118,7 +103,32 @@
                                     </td>
                                 </tr>
 
+                                <!-- CAMBIAR CENTRO SI EL USER ES ADMIN -->
+                                <tr class="tr-home">
+                                    <!-- ng-if="uc.getUser.tipo == 'administrador'" -->
+                                    <td colspan="2" class="td-datos-home">
+                                        <form class="form-inline">
+                                            <!-- se agruparan en linea -->
+                                            <div class="form-group">
 
+                                                <div class="input-group-btn">
+                                                    <div class="input-group">
+                                                        <input class="form-control input-centro" id="config_centro" type="password" placeholder="Nuevo código del Centro" required>
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <button type="button" class="form-control btn-ojo">
+                                                            <span class="glyphicon glyphicon-eye-open icono-ojo">                                              </span>
+                                                            <!-- glyphicon glyphicon-eye-close -->
+                                                        </button>
+                                                        <button type="button" class="btn btn-info btn-sm pull-right" style="margin-left:5px;" id="cambiar_centro">
+									                <strong>Guardar Código</strong>
+								                </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
