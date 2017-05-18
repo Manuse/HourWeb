@@ -17,8 +17,8 @@
                 }).state("configuracion", {
                     url: "/configuracion",
                     templateUrl: "templates/configuracion.html",
-                    //controller:'Controller',
-                    //controllerAs:"ctrl"
+                    controller:'ConfiguracionController',
+                    controllerAs:"vm"
                 }).state("administrador", {
                     url: "/administrador",
                     templateUrl: "templates/administrador.html",

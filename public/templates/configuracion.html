@@ -68,13 +68,13 @@
                                             <div class="form-group">
                                                 <div class="input-group-btn">
                                                     <div class="input-group">
-                                                        <input class="form-control input-pass-config" id="" type="password" placeholder="Nuevo password" required>
+                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password">
                                                     </div>
                                                     <div class="input-group">
-                                                        <input class="form-control input-pass-config" id="" type="password" placeholder="Confirmar password" required>
+                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password">
                                                         <div class="input-group">
-                                                            <button type="button" class="form-control btn-ojo">
-                                                            <span class="glyphicon glyphicon-eye-open icono-ojo">                                              </span>
+                                                            <button type="button" class="form-control btn-ojo" ng-click="vm.eye = !vm.eye">
+                                                            <span ng-class="{'glyphicon glyphicon-eye-open icono-ojo': vm.eye, 'glyphicon glyphicon-eye-close icono-ojo': !vm.eye}">                                              </span>
                                                             <!-- glyphicon glyphicon-eye-close -->
                                                         </button>
                                                         </div>
@@ -86,10 +86,17 @@
                                     </td>
                                 </tr>
 
-                                <tr class="tr-home">
+                                <tr class="tr-home" ng-if="!vm.datos">
                                     <td colspan="1" class="td-btn-datos">
-                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-right" id="cambiar_datos">
+                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-right" ng-click="vm.datos=!vm.datos" id="cambiar_datos">
 									            <strong>Cambiar Datos</strong>
+								        </button>
+                                    </td>
+                                </tr>
+                                <tr class="tr-home" ng-if="vm.datos">
+                                    <td colspan="1" class="td-btn-datos">
+                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-right" ng-click="vm.datos=!vm.datos" id="cambiar_datos">
+									            <strong>Guardar Datos</strong>
 								        </button>
                                     </td>
                                 </tr>
