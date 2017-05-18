@@ -1,4 +1,16 @@
 /* PERFIL home.html */
+div.input-group>div.input-group-addon>a.btn-ver-config{
+    width: 20px;
+    height: 20px;
+   
+    
+}
+img.imagen-btn-config{
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    
+}
 
 table.tabla-home {
     height: 50%;
@@ -194,6 +206,15 @@ img.imagen-user-dropdown {
         width: 18px;
         height: 18px;
         margin-bottom: 2px;
+    }
+}
+
+
+/* 'eliminamos' perfil  para resoluciones < 769px del usuario en home en screen superior a 769px */
+
+@media(min-width: 769px) {
+    div.div-xs-acordeon {
+        display: none;
     }
 }
 
