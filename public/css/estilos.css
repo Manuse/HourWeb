@@ -6,11 +6,10 @@ span.icono-ojo {
     border: 0;
 }
 
-span.icono-sin-ojo {
-    color: dodgerblue;
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
+/* icono de en medio para Nuevo Centro */
+span.icono-ojo-centro {
+    color: dodgerblue;    
+    font-size: 19px;
 }
 
 table.tabla-home {
@@ -868,7 +867,7 @@ input.input_nombre,
 input.form-control.input-centro {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
-    width: 305px;
+    width: 280px !important;
 }
 
 @media (max-width: 413px) {
@@ -876,7 +875,7 @@ input.form-control.input-centro {
         font-size: 9px;
         width: 150px !important;
     }
-    input.form-control.input-centro,
+    
     input.input-nombre-config {
         font-size: 9px;
         width: 100%;
@@ -1219,8 +1218,7 @@ div.acordeon:hover {
         background-color: skyblue;
     }
     .input_nombre,
-    .input_apellido,
-    .input-centro {
+    .input_apellido{
         margin-bottom: 10px;
     }
 }

@@ -33,9 +33,9 @@
                                         <form class="form-inline">
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
-                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Cambiar Nombre" required>
+                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Cambiar Nombre" ng-disabled="!vm.datos">
 
-                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Cambiar Apellidos" required>
+                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Cambiar Apellidos" ng-disabled="!vm.datos">
 
                                             </div>
                                         </form>
@@ -50,32 +50,31 @@
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
 
-                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Móvil: 678454557" required>
+                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Móvil: 678454557" ng-disabled="!vm.datos">
 
 
-                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Fijo: 957547893" required>
+                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Fijo: 957547893" ng-disabled="!vm.datos">
 
                                             </div>
                                         </form>
 
                                     </td>
                                 </tr>
-                                <!-- modificar passwors del login -->
+                                <!-- modificar passwords del perfil de usuario -->
                                 <tr class="tr-home">
-
                                     <td colspan="2" class="td-pass-config">
                                         <form class="form-inline">
                                             <div class="form-group">
                                                 <div class="input-group-btn">
                                                     <div class="input-group">
-                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password">
+                                                        <!-- cambia tipo del input de text a password-->
+                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password" ng-disabled="!vm.datos">
                                                     </div>
                                                     <div class="input-group">
-                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password">
+                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password" ng-disabled="!vm.datos">
                                                         <div class="input-group">
                                                             <button type="button" class="form-control btn-ojo" ng-click="vm.eye = !vm.eye">
-                                                            <span ng-class="{'glyphicon glyphicon-eye-open icono-ojo': vm.eye, 'glyphicon glyphicon-eye-close icono-ojo': !vm.eye}">                                              </span>
-                                                            <!-- glyphicon glyphicon-eye-close -->
+                                                            <span ng-class="{'glyphicon glyphicon-eye-close icono-ojo': vm.eye, 'glyphicon glyphicon-eye-open icono-ojo': !vm.eye}">                   </span>                                                            
                                                         </button>
                                                         </div>
                                                     </div>
@@ -101,39 +100,35 @@
                                     </td>
                                 </tr>
 
+                                <!-- CAMBIAR CENTRO SI EL USER ES ADMIN -->
+                                <tr class="tr-home">
+                                    <!-- ng-if="uc.getUser.tipo == 'administrador'" -->
+                                    <td colspan="2" class="td-datos-home">
+                                        <!-- se agruparan en linea -->
+                                        <form action="" class="form-inline">
+                                            <div class="input-group">
+                                                <input class="form-control input-centro" id="config_centro" type="password" placeholder="Nuevo código del Centro" ng-disabled="!vm.datos">
+
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="form-control" ng-click="vm.eye = !vm.eye">
+                                                        <span ng-class="{'glyphicon glyphicon-eye-close icono-ojo-centro': vm.eye, 'glyphicon glyphicon-eye-open icono-ojo-centro': !vm.eye}">     
+                                                        </span>                                                            
+                                                    </button>
+                                                    <button type="button" class="form-control btn btn-info btn-sm" id="cambiar_centro">
+									                    <strong>Guardar Código</strong>
+								                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+
                                 <tr class="tr-home">
                                     <td class="td-home">
                                         <label class="nomenclatura" style="margin:9px;">email:</label>
                                     </td>
                                     <td class="td-datos-home">
                                         <span><button type="button" class="btn btn-link" disabled>usuario@gmail.com</button></span>
-                                    </td>
-                                </tr>
-
-                                <!-- CAMBIAR CENTRO SI EL USER ES ADMIN -->
-                                <tr class="tr-home">
-                                    <!-- ng-if="uc.getUser.tipo == 'administrador'" -->
-                                    <td colspan="2" class="td-datos-home">
-                                        <form class="form-inline">
-                                            <!-- se agruparan en linea -->
-                                            <div class="form-group">
-
-                                                <div class="input-group-btn">
-                                                    <div class="input-group">
-                                                        <input class="form-control input-centro" id="config_centro" type="password" placeholder="Nuevo código del Centro" required>
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <button type="button" class="form-control btn-ojo">
-                                                            <span class="glyphicon glyphicon-eye-open icono-ojo">                                              </span>
-                                                            <!-- glyphicon glyphicon-eye-close -->
-                                                        </button>
-                                                        <button type="button" class="btn btn-info btn-sm pull-right" style="margin-left:5px;" id="cambiar_centro">
-									                <strong>Guardar Código</strong>
-								                </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
                                     </td>
                                 </tr>
                             </tbody>
