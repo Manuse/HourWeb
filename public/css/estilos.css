@@ -1,15 +1,16 @@
 /* PERFIL home.html */
-div.input-group>div.input-group-addon>a.btn-ver-config{
-    width: 20px;
-    height: 20px;
-   
-    
+
+span.icono-ojo {
+    color: dodgerblue;
+    font-size: 20px;
+    border: 0;
 }
-img.imagen-btn-config{
+
+span.icono-sin-ojo {
+    color: dodgerblue;
     width: 20px;
     height: 20px;
-    margin: 0;
-    
+    font-size: 20px;
 }
 
 table.tabla-home {
@@ -36,6 +37,12 @@ td.td-config {
 }
 
 td.td-datos-home {
+    border: 0;
+    text-align: left;
+    padding: 0;
+}
+
+td.td-pass-config {
     border: 0;
     text-align: left;
     font-size: 13px;
@@ -865,6 +872,10 @@ input.form-control.input-centro {
 }
 
 @media (max-width: 413px) {
+    input.input-pass-config {
+        font-size: 9px;
+        width: 190px;
+    }
     input.form-control.input-centro,
     input.input-nombre-config {
         font-size: 9px;
@@ -1440,6 +1451,13 @@ hr.linea-configuracion {
     margin-bottom: 5px;
 }
 
+input.input-pass-config {
+    font-weight: bold;
+    font-family: 'Tahoma', sans-serif;
+    margin-bottom: 5px;
+    width: 200px !important;
+}
+
 
 /* inputs nombre y apellidos en configuracion.html */
 
@@ -1447,6 +1465,7 @@ hr.linea-configuracion {
     div.form-group>input.input-nombre-config {
         width: 100%;
     }
+    
 }
 
 
