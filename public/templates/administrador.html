@@ -12,73 +12,27 @@
 
                     <div class="input-group-addon accord addon_recurso">
                         <uib-accordion close-others="vm.oneAtATime">
-
                             <br>
-
-                            <div uib-accordion-group class="panel-default" is-open="vm.status.open1">
+                            <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
                                 <uib-accordion-heading>
-                                    <div class="pinocho"><small><span class="badge pull-left">14</span> </small>I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open1, 'glyphicon-chevron-right': !vm.status.open1}"></i></div>
+                                    <div class="pinocho"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)">14</span></small><span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                 </uib-accordion-heading>
                                 <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info">Hola Socio<span class="glyphicon glyphicon-remove pull-right"></span>
-                                    </li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-
-                                </ul>
+                                    <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
+                                        <span ng-bind="recurso.recurso"></span>
+                                        <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarRecurso(recurso.recurso)"></span>
+                                        </li>
+                                </ul>    
                             </div>
-                            <br>
-
-                            <div uib-accordion-group class="panel-default" is-open="vm.status.open2">
-                                <uib-accordion-heading>
-                                    <div class="pinocho"><small><span class="badge pull-left">14</span> </small> span can have markup, too!<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open2, 'glyphicon-chevron-right': !vm.status.open2}"></i></div>
-                                </uib-accordion-heading>
-                                <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info">Hola Socio<span class="glyphicon glyphicon-remove pull-right"></span>
-                                    </li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-
-                                </ul>
-                            </div>
-                            <br>
-
-
-                            <div uib-accordion-group class="panel-default" is-open="vm.status.open3">
-                                <uib-accordion-heading>
-                                    <div class="pinocho"><small><span aria-grabbed=""class="badge pull-left">14</span> </small> I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open3, 'glyphicon-chevron-right': !vm.status.open3}"></i></div>
-                                </uib-accordion-heading>
-                                <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info">Hola Socio<span class="glyphicon glyphicon-remove pull-right"></span>
-                                    </li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                    <li class="list-group-item list-group-item-info">Hola Socio <span class="glyphicon glyphicon-remove pull-right"></span></li>
-
-                                </ul>
-                            </div>
-
-
-
 
                         </uib-accordion>
-
-
-
                     </div>
-
-
-
                 </div>
-
-
 
                 <div class="col-lg-6">
 
                     <div class="input-group-addon recur addon_recurso">
-                        <h3>Crea tipologia</h3>
+                        <h3>Crea tipo</h3>
 
                         <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
 

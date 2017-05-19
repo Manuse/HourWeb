@@ -7,7 +7,7 @@
     /* primer select de pruebaReservas.html*/
     function reservarController(userFactory, DATABASE, $timeout) {
         var vm = this;
-        var interval = setInterval(recarga, 1000);
+        var interval = function(){$timeout(recarga, 1000)};
         vm.recursos = [];
         vm.tabla = [];
         vm.tipos = [{
@@ -30,8 +30,9 @@
                     vm.getUser = userFactory.getUser();
                     vm.cargarFechaRecursos();
                     cargarCursos();
-                    clearInterval(interval);
-                });
+                },0);
+            }else{
+                interval();
             }
         }
         
