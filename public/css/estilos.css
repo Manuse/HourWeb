@@ -1,27 +1,15 @@
 /* PERFIL home.html */
-
-span.icono-ojo {
-    color: dodgerblue;
-    font-size: 20px;
-    border: 0;
-}
-
-/* icono de en medio para Nuevo Centro */
-span.icono-ojo-centro {
-    color: dodgerblue;    
-    font-size: 19px;
-}
-
+/* vale para home y configuracion */
 table.tabla-home {
     height: 50%;
     border: 0;
     margin-top: 15px;
 }
-
+/* vale para home y configuracion */
 tr.tr-home {
     border: 0;
 }
-
+/* vale para home y configuracion */
 td.td-home {
     border: 0;
     text-align: left;
@@ -30,29 +18,16 @@ td.td-home {
     padding: 0;
 }
 
-td.td-config {
-    text-align: left;
-    font-size: 12px;
-}
-
+/* vale para home y configuracion */
 td.td-datos-home {
     border: 0;
     text-align: left;
     padding: 0;
 }
 
-td.td-pass-config {
-    border: 0;
-    text-align: left;
-    font-size: 13px;
-    padding: 0;
-}
 
-td.td-cod-centro-home {
-    border: 0;
-    font-weight: bold;
-}
 
+/* vale para home y configuracion */
 h4.panel-title {
     font-size: 11px;
     font-weight: bold;
@@ -62,13 +37,13 @@ h4.panel-title {
 }
 
 
-/* codigo del centro en acordeon */
-
+/* codigo del centro en acordeon, afectado por display:none */
+/* para screen > 769px */
 p.codigo-xs-home {
     font-weight: bold;
     font-size: 13px;
 }
-
+/* para screen < 769px */
 p.codigo-xs-home1 {
     font-weight: bold;
     font-size: 12px;
@@ -854,44 +829,6 @@ li.list-group-item.dias:hover {
     box-shadow: 1px 2px 2px #888888;
 }
 
-
-/* INPUTS DE CONFIGURACION DE PERFIL */
-
-input.input_nombre,
-.input_apellido {
-    font-weight: bold;
-    font-family: 'Tahoma', sans-serif;
-    margin-bottom: 10px;
-}
-
-input.form-control.input-centro {
-    font-weight: bold;
-    font-family: 'Tahoma', sans-serif;
-    width: 280px !important;
-}
-
-@media (max-width: 413px) {
-    input.input-pass-config {
-        font-size: 9px;
-        width: 150px !important;
-    }
-    
-    input.input-nombre-config {
-        font-size: 9px;
-        width: 100%;
-    }
-    /* cod de centro en acordeon del home.html */
-    p.codigo-xs-home1 {
-        font-size: 9px;
-        font-weight: 700;
-    }
-}
-
-div.acordeon:hover {
-    text-decoration: none !important;
-}
-
-
 /*AÑADIR 5 COLUMNAS EXACTAS DENTRO DEL TAB Mis Reservas home.html */
 
 
@@ -1424,51 +1361,13 @@ body.mi-body {
     min-height: 64%;
 }
 
-
-/* CONFIGURACION DEL PERFIL DE USUARIO configuracion.html */
-
-
-/* titulo Edicion de Perfil */
-
-h2.titulo-perfil {
-    margin-bottom: 3px;
-}
-
-
-/* hr bajo el titulo Edicion de Perfil */
-
-hr.linea-configuracion {
-    margin-top: 0px;
-    color: rgb(53, 113, 150);
-    border: 1px solid rgb(53, 113, 150);
-}
-
-.input-nombre-config {
-    font-weight: bold;
-    font-family: 'Tahoma', sans-serif;
-    margin-bottom: 5px;
-}
-
 input.input-pass-config {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
     margin-bottom: 5px;
     width: 200px !important;
 }
-
-
-/* inputs nombre y apellidos en configuracion.html */
-
-@media only screen and (min-width:767px) and (max-width:989px) {
-    div.form-group>input.input-nombre-config {
-        width: 100%;
-    }
-    
-}
-
-
 /* boton consultar codigo configuracion.html */
-
 td.td-datos-home-config {
     border: 0;
     text-align: center;
@@ -1487,108 +1386,6 @@ button.btn-consultar-cod-centro {
     margin-top: 7px;
     margin-bottom: 7px;
 }
-
-
-/* Imagen editar foto */
-
-img.imagen-editar-foto {
-    width: 30px;
-    height: 30px;
-}
-
-a.btn-editar-foto {
-    position: relative;
-    top: 30px;
-    left: 110px;
-}
-
-
-/* imagen principal de configuracion y boton de edicion de foto */
-
-@media only screen and (min-width:992px) and (max-width:999px) {
-    /* Imagen boton editar foto -plus-  */
-    img.imagen-editar-foto {
-        width: 25px;
-        height: 25px;
-    }
-    a.btn-editar-foto {
-        position: relative;
-        top: 30px;
-        left: 90px;
-    }
-}
-
-@media only screen and (min-width:769px) and (max-width:991px) {
-    /* Imagen editar foto */
-    img.imagen-editar-foto {
-        width: 20px;
-        height: 20px;
-    }
-    /* boton con foto */
-    a.btn-editar-foto {
-        position: relative;
-        top: 25px;
-        left: 60px;
-        width: 120px;
-        height: 120px;
-    }
-    /* imagen principal*/
-    img.imagen-config {
-        width: 100px;
-        height: 100px;
-    }
-}
-
-
-/* para i-Pad , medida exacta */
-
-@media(width: 769px) {
-    /* Imagen editar foto */
-    img.imagen-editar-foto {
-        width: 25px;
-        height: 25px;
-    }
-    /* boton con foto */
-    a.btn-editar-foto {
-        position: relative;
-        top: 25px;
-        left: 70px;
-        width: 100px;
-        height: 100px;
-    }
-    /* imagen principal*/
-    img.imagen-config {
-        position: relative;
-        left: 0px;
-        width: 120px;
-        height: 120px;
-    }
-}
-
-@media only screen and (min-width:300px) and (max-width:768px) {
-    /* Imagen editar foto */
-    img.imagen-editar-foto {
-        width: 20px;
-        height: 20px;
-    }
-    /* contenedor boton editar -plus- */
-    a.btn-editar-foto {
-        position: relative;
-        top: 25px;
-        left: 80px;
-        width: 100px;
-        height: 100px;
-    }
-    /* imagen principal*/
-    img.imagen-config {
-        position: relative;
-        left: 0px;
-        width: 120px;
-        height: 120px;
-    }
-}
-
-
 /* fondo azul */
 
 @media(max-width: 362px) {

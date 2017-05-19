@@ -33,9 +33,9 @@
                                         <form class="form-inline">
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
-                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Cambiar Nombre" ng-disabled="!vm.datos">
+                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Cambiar Nombre">
 
-                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Cambiar Apellidos" ng-disabled="!vm.datos">
+                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Cambiar Apellidos">
 
                                             </div>
                                         </form>
@@ -50,10 +50,10 @@
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
 
-                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Móvil: 678454557" ng-disabled="!vm.datos">
+                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Móvil: 678454557">
 
 
-                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Fijo: 957547893" ng-disabled="!vm.datos">
+                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Fijo: 957547893">
 
                                             </div>
                                         </form>
@@ -68,13 +68,13 @@
                                                 <div class="input-group-btn">
                                                     <div class="input-group">
                                                         <!-- cambia tipo del input de text a password-->
-                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password" ng-disabled="!vm.datos">
+                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password">
                                                     </div>
                                                     <div class="input-group">
-                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password" ng-disabled="!vm.datos">
+                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password">
                                                         <div class="input-group">
-                                                            <button type="button" class="form-control btn-ojo" ng-click="vm.eye = !vm.eye">
-                                                            <span ng-class="{'glyphicon glyphicon-eye-close icono-ojo': vm.eye, 'glyphicon glyphicon-eye-open icono-ojo': !vm.eye}">                   </span>                                                            
+                                                            <button type="button" class="form-control" ng-click="vm.eye = !vm.eye">
+                                                            <span ng-class="{'glyphicon glyphicon-eye-close icono-ojo-centro': vm.eye, 'glyphicon glyphicon-eye-open icono-ojo-centro': !vm.eye}">                   </span>                                                            
                                                         </button>
                                                         </div>
                                                     </div>
@@ -107,7 +107,7 @@
                                         <!-- se agruparan en linea -->
                                         <form action="" class="form-inline">
                                             <div class="input-group">
-                                                <input class="form-control input-centro" id="config_centro" type="password" placeholder="Nuevo código del Centro" ng-disabled="!vm.datos">
+                                                <input class="form-control input-centro" id="config_centro" type="password" placeholder="Código del nuevo Centro" ng-disabled="!vm.datos">
 
                                                 <div class="input-group-btn">
                                                     <button type="button" class="form-control" ng-click="vm.eye = !vm.eye">
