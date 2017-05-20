@@ -1,4 +1,13 @@
 /* PERFIL home.html */
+
+/* 'eliminamos' perfil  para resoluciones < 769px del usuario en home en screen superior a 769px */
+
+@media(min-width: 769px) {
+    div.div-xs-acordeon {
+        display: none;
+    }
+}
+
 /* vale para home y configuracion */
 table.tabla-home {
     height: 50%;
@@ -194,13 +203,7 @@ img.imagen-user-dropdown {
 }
 
 
-/* 'eliminamos' perfil  para resoluciones < 769px del usuario en home en screen superior a 769px */
 
-@media(min-width: 769px) {
-    div.div-xs-acordeon {
-        display: none;
-    }
-}
 
 
 /* Imagen de perfil del navbar */
@@ -1350,12 +1353,6 @@ body.mi-body {
     min-height: 64%;
 }
 
-input.input-pass-config {
-    font-weight: bold;
-    font-family: 'Tahoma', sans-serif;
-    margin-bottom: 5px;
-    width: 200px !important;
-}
 /* boton consultar codigo configuracion.html */
 td.td-datos-home-config {
     border: 0;

@@ -7,6 +7,18 @@
     margin-bottom: 3px;
 }
 
+input.input-pass-config2{
+    margin-left: 5px;    
+}
+
+input.input-pass-config,
+input.input-pass-config2, .input-nombre-config {
+    font-weight: bold;
+    font-family: 'Tahoma', sans-serif;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
 
 /* hr bajo el titulo Edicion de Perfil */
 
@@ -25,6 +37,14 @@ span.icono-ojo-centro {
 }
 
 
+/* boton para visualizar passwords en el perfil y para visualizar cod del centro */
+
+button.btn-ojo1,
+button.btn-ojo {
+    border: 0;
+}
+
+
 /* INPUTS DE CONFIGURACION DE PERFIL */
 
 input.input_nombre,
@@ -34,10 +54,40 @@ input.input_nombre,
     margin-bottom: 10px;
 }
 
-input.form-control.input-centro {
+input.form-control.input-nombre-centro {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
-    width: 280px !important;
+}
+
+@media (max-width: 315px) {
+    input.input-nombre-config,
+    input.form-control.input-nombre-centro,
+    input.input-pass-config,
+    input.input-pass-config2{
+        font-size: 9px;
+        width: 130px;
+        margin-bottom: 5px;
+    }
+    
+    input.input-pass-config2{
+        margin-left: 0;
+        margin-top:5px;
+    }
+     
+    /* boton ojo */
+    span.icono-ojo-centro {
+        font-size: 14px !important;
+    }
+    button.btn-ojo {
+        width: 29px !important;
+        /* centramos en relacion a todas las posiciones el icono del ojo*/
+        padding: 0;
+    }
+    button.btn-guardar-centro {
+        width: 101px !important;
+        font-size: 9px;
+        display: list-item;
+    }
 }
 
 @media (max-width: 413px) {
@@ -45,47 +95,48 @@ input.form-control.input-centro {
     p.codigo-xs-home1 {
         font-size: 9px;
         font-weight: 700;
-    }
+    }   
 }
 
-@media (max-width: 315px) {
-    input.input-nombre-config {
-        font-size: 9px;
-        width: 130px;
-    }
-    input.input-pass-config {
-        font-size: 9px;
-        width: 120px !important;
-    }
-    /* boton ojo */
-    span.icono-ojo-centro {
-        font-size: 12px !important;
-    }
-    button.btn-ojo {
-        border: 0;
-    }
-}
+
 
 @media only screen and (min-width:316px) and (max-width:413px) {
-    input.input-nombre-config {
+    input.input-nombre-config,
+    input.form-control.input-nombre-centro,
+    input.input-pass-config,
+    input.input-pass-config2{
         font-size: 10px;
         width: 160px;
+        margin-bottom: 5px;
     }
-    input.input-pass-config {
-        font-size: 10px;
-        width: 150px;
-    }
+    
+    input.input-pass-config2{
+    margin-left: 0px; 
+    margin-top: 5px;
+}
     span.icono-ojo-centro {
-        font-size: 12px !important;
+        font-size: 15px !important;
     }
-    button.btn-ojo {
-        border: 0;
-    }
+    
+    
 }
 
 @media only screen and (min-width:512px) and (max-width:769px) {
-    input.input-nombre-config {
-        width: 100%;
+    /* input donde insertamos el Nuevo Codigo de Centro */
+    input.form-control.input-nombre-centro {
+        display: table-column-group !important;
+        width: 59%;
+    }
+    /* boton para descodificar nuevo codigo del centro */
+    button.btn-ojo {
+        border: 0;
+        display: table-column-group !important;
+        width: 11% !important;
+    }
+    button.btn-guardar-centro {
+        display: table-column-group !important;
+        width: 30% !important;
+        ;
     }
 }
 
@@ -107,7 +158,6 @@ a.btn-editar-foto {
     top: 30px;
     left: 110px;
 }
-
 
 /* imagen principal de configuracion y boton de edicion de foto */
 
@@ -193,7 +243,6 @@ a.btn-editar-foto {
         height: 120px;
     }
 }
-
 
 /* Imagen editar foto */
 
