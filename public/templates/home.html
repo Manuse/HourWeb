@@ -3,22 +3,22 @@
     <!-- perfil screen < 769px -->
     <div class="row well well-sm div-xs-acordeon">
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-            <a href="#" class="nombre-xs-home">Francisco José Mariscal Vázquez</a>
+            <a href="#" class="nombre-xs-home" ng-bind="vm.getUser.nombre+' '+vm.getUser.apellido"></a>
             <hr>
-            <a href="#" class="centro-xs-home">Salesianas Mª Auxiliadora</a>
+            <a href="#" class="centro-xs-home" ng-bind="vm.centro"></a>
             <hr>
-            <uib-accordion close-others="vm.oneAtATime">
-                <div uib-accordion-group class="panel-default" is-open="vm.status.open1">
+            <uib-accordion close-others="vm.oneAtATime" ng-if="vm.getUser.tipo == 'administrador'">
+                <div uib-accordion-group class="panel-default" is-open="vm.open">
                     <uib-accordion-heading>
                         <div class="text-primary">
                               <span class="texto">Consultar/Ocultar código del Centro</span>                        
                                                           
-                            <i class="glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open1, 'glyphicon-chevron-right': !vm.status.open1}">
+                            <i class="glyphicon" ng-class="{'glyphicon-chevron-down': vm.open, 'glyphicon-chevron-right': !vm.open}">
                             </i>
 
                         </div>
                     </uib-accordion-heading>
-                    <p class="text-center codigo-xs-home1">-wedfgkjsiusajklisañkdjAMLOUHSK-</p>
+                    <p class="text-center codigo-xs-home1" ng-bind="vm.getUser.codcentro"></p>
                 </div>
             </uib-accordion>
         </div>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-sm-2">
-                        <img class="img-circle img-responsive imagen-home" alt="Usuario Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" />
+                        <img class="img-circle img-responsive imagen-home" alt="No image" ng-src="{{vm.photo}}" />
                     </div>
                     <div class="col-sm-10">
                         <table class="table table-responsive tabla-home">
@@ -42,7 +42,7 @@
                                         <label class="nomenclatura">Nombre:</label>
                                     </td>
                                     <td class="td-datos-home">
-                                        <span>Francisco Mariscal Vázquez</span>
+                                        <span ng-bind="vm.getUser.nombre+' '+vm.getUser.apellido"></span>
 
                                     </td>
                                 </tr>
@@ -51,30 +51,20 @@
                                         <label class="nomenclatura">Centro:</label>
                                     </td>
                                     <td class="td-datos-home">
-                                        <span style="color:black;">salesianas Mª Auxiliadora</span>
-                                    </td>
-                                </tr>
-
-                                <tr class="tr-home">
-                                    <td class="td-home">
-                                        <label class="nomenclatura">email:</label>
-                                    </td>
-                                    <td class="td-datos-home">
-                                        <span style="color:black;"><a href="#">usuario@gmail.com</a></span>
+                                        <span style="color:black;" ng-bind="vm.centro"></span>
                                     </td>
                                 </tr>
 
                                 <tr class="tr-home">
                                     <td colspan="3" class="td-config">
-                                        <uib-accordion close-others="vm.oneAtATime">
+                                        <uib-accordion close-others="vm.oneAtATime" ng-if="vm.getUser.tipo == 'administrador'">
                                             <div uib-accordion-group class="panel-default" is-open="vm.status.open1">
                                                 <uib-accordion-heading class="acordeon-home">
                                                     <div class="text-primary">Consultar/Ocultar código del Centro<i class="glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open1, 'glyphicon-chevron-right': !vm.status.open1}"></i>
                                                     </div>
                                                 </uib-accordion-heading>
 
-                                                <p class="text-center codigo-xs-home">
-                                                    -wedfgkjsiusajklisañkdjAMLOUHSK-</p>
+                                                <p class="text-center codigo-xs-home" ng-bind="vm.getUser.codcentro"></p>
                                             </div>
                                         </uib-accordion>
                                     </td>
@@ -100,8 +90,8 @@
                     <uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
                         <div class="btn-group pull-right btn-semana12">
                             <!-- 2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina -->
-                            <label class="btn btn-info btn-md" ng-model="vm.radioModel" uib-btn-radio="'Left'">Semana 1</label>
-                            <label class="btn btn-warning btn-md" ng-model="vm.radioModel" uib-btn-radio="'Right'">Semana 2</label>
+                            <label class="btn btn-info btn-md" ng-model="vm.semana" uib-btn-radio="0">Semana 1</label>
+                            <label class="btn btn-warning btn-md" ng-model="vm.semana" uib-btn-radio="1">Semana 2</label>
 
                         </div>
                         <a ui-sref="reservar" name="button" id="ir_reserva" class="btn btn-info btn-reservar btn-md">RESERVAR</a>

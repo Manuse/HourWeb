@@ -6,7 +6,8 @@
 
     function homeController(userFactory, $timeout, DATABASE, $log) {
         var vm = this;
-        var interval = setInterval(recarga, 1000);
+        var interval = function(){$timeout(recarga, 1000)};
+        interval();
         vm.lunes = [];
         vm.martes = [];
         vm.miercoles = [];
@@ -14,20 +15,27 @@
         vm.viernes = [];
         vm.semana=0;
         function recarga() {
-            console.log('t')
             if (userFactory.getUser() != null) {
                 $timeout(function () {
                     vm.getUser = userFactory.getUser();
                     vm.photo = userFactory.getPhoto();
                     recogerMisReservas();
-                    clearInterval(interval);
+                    recogerCentro();
                 }, 0);
+            }else{
+                interval();
             }
         }
 
         vm.refrecarCalendario = function () {
             recogerMisReservas();
         };
+
+        function recogerCentro(){
+            DATABASE.ref("centros/" + vm.getUser.codcentro + "/nombre").once("value", function (snapshot) {
+                $timeout(function(){vm.centro=snapshot.val()},0);
+            });
+        }
 
 
         function recogerMisReservas() {
@@ -165,9 +173,6 @@
                 });
             });
         }
-        //        2 BOTONES UI-BOOTSTRAP
-        vm.radioModel = 'Left';
-
     }
 })();
 

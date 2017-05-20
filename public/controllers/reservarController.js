@@ -8,6 +8,7 @@
     function reservarController(userFactory, DATABASE, $timeout) {
         var vm = this;
         var interval = function(){$timeout(recarga, 1000)};
+        interval();
         vm.recursos = [];
         vm.tabla = [];
         vm.tipos = [{

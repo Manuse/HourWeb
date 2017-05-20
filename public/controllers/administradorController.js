@@ -4,22 +4,27 @@
         .module('app')
         .controller('AdministradorController', administradorController);
 
-    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location) {
+    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, $uibModal) {
         var vm = this;
 
         // Timepicker reservas permanentes       
-        vm.mytime = new Date("1/1/1 12:00");
         vm.hstep = 1;
         vm.mstep = 30;
 
         //Accordion
         vm.oneAtATime = true;
-        vm.open=[];
+        vm.open = [];
         var interval = function () {
             $timeout(recarga, 1000)
         };
 
         interval();
+
+        function horaCentro(){
+            DATABASE.ref("centros/" + vm.getUser.codcentro + "/hora").once("value", function (snapshot) {
+                $timeout(function(){vm.mytime = new Date("1/1/1 "+snapshot.val().split("-")[0]);},0);
+            });
+        }
 
         function recarga() {
             if (userFactory.getUser() != null) {
@@ -27,6 +32,7 @@
                     vm.getUser = userFactory.getUser();
                     cargarRecursos();
                     getTipologias();
+                    horaCentro();
                 }, 0);
             } else {
                 interval();
@@ -42,22 +48,22 @@
                         });
                         vm.recursos.push(vm.recurso)
                     } else {
-                        alert("El recurso ya existe");
+                        vm.error("El recurso ya existe");
                     }
                 });
             } else {
-                alert("El campo esta vacio");
+                vm.error("El campo esta vacio");
             }
         };
 
         function getTipologias() {
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").once("value", function (snapshot) {
-                $timeout(function(){
+                $timeout(function () {
                     vm.tipologias = snapshot.val();
-                    $log.log( vm.tipologias)
+                    $log.log(vm.tipologias)
                     vm.open.fill(false, 0, vm.tipologias.length);
-                },0);
-                
+                }, 0);
+
             });
         }
 
@@ -73,16 +79,16 @@
                     vm.tipologias.push(vm.ntipo);
                     DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").set(vm.tipologias);
                 } else {
-                    alert("El tipo ya existe");
+                    vm.error("El tipo ya existe");
                 }
             } else {
-                alert("El campo esta vacio");
+                vm.error("El campo esta vacio");
             }
         };
 
         vm.borrarRecurso = function (recurso) {
             console.log($location.absUrl())
-          //  DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/" + recurso).remove();
+            //  DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/" + recurso).remove();
         };
 
         function cargarRecursos() {
@@ -98,9 +104,31 @@
             });
         }
 
-        vm.filtrar=function(tip){
-            return vm.recursos.filter(function(x){return x.tipo==tip}).length;
-        }
+        vm.filtrar = function (tip) {
+            return vm.recursos.filter(function (x) {
+                return x.tipo == tip
+            }).length;
+        };
+
+        vm.error = function (err) {
+            var modalInstance = $uibModal.open({
+                animation: false,
+                templateUrl: 'modal/mError.html',
+                controller: 'ErrorController',
+                controllerAs: 'vmmm',
+                resolve: {
+                    item: function () {
+                        return err;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function () {
+     
+            }, function () {
+      
+            });
+        };
 
     }
 
@@ -122,7 +150,7 @@ function crearRecurso(nom, tip) {
                 });
                 montarComboboxes();//actualizacion de los combobox
             } else {
-                alert("El recurso ya existe");
+                vm.error("El recurso ya existe");
             }
         });
     });
