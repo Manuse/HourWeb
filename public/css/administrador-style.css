@@ -48,7 +48,7 @@ ul.list-group>li.list-group-item-info>span{
 
 @media(max-width: 1000px) {
     .input_recurso {
-        max-width: 230px;
+        
         margin-bottom: 10px;
         padding-left: 2px;
         padding-right: 2px;
