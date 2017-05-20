@@ -4,7 +4,7 @@
         .module('app')
         .controller('AdministradorController', administradorController);
 
-    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout) {
+    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location) {
         var vm = this;
 
         // Timepicker reservas permanentes       
@@ -81,7 +81,7 @@
         };
 
         vm.borrarRecurso = function (recurso) {
-            console.log(recurso)
+            console.log($location.absUrl())
           //  DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/" + recurso).remove();
         };
 

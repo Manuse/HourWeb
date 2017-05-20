@@ -1,7 +1,12 @@
 (function () {
     angular.module('app', ['ngAnimate', 'ngSanitize', 'ui.router', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider) {
 
-        //$urlRouterProvider.otherwise("/home");
+        $urlRouterProvider.otherwise(function($injector ,$location){
+            if(!$location.absUrl().includes("login.html")){
+                return "/home";
+            }
+            return "";
+        });
         
             $stateProvider.state("home", {
                     url: "/home",
