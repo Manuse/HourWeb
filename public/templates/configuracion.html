@@ -86,15 +86,15 @@
                                 </tr>
 
                                 <tr class="tr-home" ng-if="!vm.datos">
-                                    <td colspan="1" class="td-btn-datos">
-                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-right" ng-click="vm.datos=!vm.datos" id="cambiar_datos">
+                                    <td colspan="2" class="td-btn-datos">
+                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos" id="cambiar_datos">
 									            <strong>Cambiar Datos</strong>
 								        </button>
                                     </td>
                                 </tr>
                                 <tr class="tr-home" ng-if="vm.datos">
                                     <td colspan="1" class="td-btn-datos">
-                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-right" ng-click="vm.datos=!vm.datos" id="cambiar_datos">
+                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos" id="cambiar_datos">
 									            <strong>Guardar Datos</strong>
 								        </button>
                                     </td>
@@ -124,12 +124,11 @@
                                 </tr>
 
                                 <tr class="tr-home">
-                                    <td class="td-home">
-                                        <label class="nomenclatura" style="margin:9px;">email:</label>
+                                    <td colspan="2" class="td-home">
+                                        <label class="nom-mail-config">email:</label>
+                                        <span ><button type="button" class="btn btn-link" disabled>usuario@gmail.com</button></span>
                                     </td>
-                                    <td class="td-datos-home">
-                                        <span><button type="button" class="btn btn-link" disabled>usuario@gmail.com</button></span>
-                                    </td>
+                                    
                                 </tr>
                             </tbody>
                         </table>

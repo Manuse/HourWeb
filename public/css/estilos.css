@@ -36,6 +36,10 @@ h4.panel-title {
     color: azure;
 }
 
+/* texto principal acordeon */
+div.acordeon-home{
+    text-align: left;
+}
 
 /* codigo del centro en acordeon, afectado por display:none */
 /* para screen > 769px */
@@ -43,12 +47,11 @@ p.codigo-xs-home {
     font-weight: bold;
     font-size: 13px;
 }
-/* para screen < 769px */
+/* contenido acordeon para screen < 769px */
 p.codigo-xs-home1 {
     font-weight: bold;
     font-size: 12px;
 }
-
 
 /* Datos en tamanio pequeño en home.html */
 

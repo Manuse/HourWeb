@@ -16,11 +16,14 @@
     border: 1px solid rgb(53, 113, 150);
 }
 
+
 /* icono del ojo para visualizar pass y centro en el perfil de usuario */
+
 span.icono-ojo-centro {
-    color: dodgerblue;    
+    color: dodgerblue;
     font-size: 19px;
 }
+
 
 /* INPUTS DE CONFIGURACION DE PERFIL */
 
@@ -38,14 +41,6 @@ input.form-control.input-centro {
 }
 
 @media (max-width: 413px) {
-    input.input-pass-config {
-        font-size: 9px;
-        width: 150px !important;
-    }
-    input.input-nombre-config {
-        font-size: 9px;
-        width: 100%;
-    }
     /* cod de centro en acordeon del home.html */
     p.codigo-xs-home1 {
         font-size: 9px;
@@ -53,12 +48,45 @@ input.form-control.input-centro {
     }
 }
 
-/* inputs nombre y apellidos en configuracion.html */
+@media (max-width: 315px) {
+    input.input-nombre-config {
+        font-size: 9px;
+        width: 130px;
+    }
+    input.input-pass-config {
+        font-size: 9px;
+        width: 120px !important;
+    }
+    /* boton ojo */
+    span.icono-ojo-centro {
+        font-size: 12px !important;
+    }
+    button.btn-ojo {
+        border: 0;
+    }
+}
 
-@media only screen and (min-width:767px) and (max-width:989px) {
-    div.form-group>input.input-nombre-config {
+@media only screen and (min-width:316px) and (max-width:413px) {
+    input.input-nombre-config {
+        font-size: 10px;
+        width: 160px;
+    }
+    input.input-pass-config {
+        font-size: 10px;
+        width: 150px;
+    }
+    span.icono-ojo-centro {
+        font-size: 12px !important;
+    }
+    button.btn-ojo {
+        border: 0;
+    }
+}
+
+@media only screen and (min-width:512px) and (max-width:769px) {
+    input.input-nombre-config {
         width: 100%;
-    }    
+    }
 }
 
 
@@ -80,7 +108,9 @@ a.btn-editar-foto {
     left: 110px;
 }
 
+
 /* imagen principal de configuracion y boton de edicion de foto */
+
 @media only screen and (min-width:992px) and (max-width:999px) {
     a.btn-editar-foto {
         position: relative;
@@ -91,7 +121,7 @@ a.btn-editar-foto {
     img.imagen-editar-foto {
         width: 25px;
         height: 25px;
-    } 
+    }
 }
 
 @media only screen and (min-width:769px) and (max-width:991px) {
@@ -103,13 +133,11 @@ a.btn-editar-foto {
         width: 120px;
         height: 120px;
     }
-    
     /* Imagen editar foto */
     img.imagen-editar-foto {
         width: 20px;
         height: 20px;
     }
-       
     /* imagen principal*/
     img.imagen-config {
         width: 100px;
@@ -117,7 +145,9 @@ a.btn-editar-foto {
     }
 }
 
+
 /* para i-Pad , medida exacta */
+
 @media(width: 769px) {
     /* boton con foto */
     a.btn-editar-foto {
@@ -127,14 +157,12 @@ a.btn-editar-foto {
         width: 100px;
         height: 100px;
     }
-    
     /* Imagen editar foto */
     img.imagen-editar-foto {
         width: 25px;
         height: 25px;
     }
-    
-     /* imagen principal*/
+    /* imagen principal*/
     img.imagen-config {
         position: relative;
         left: 0px;
@@ -152,13 +180,11 @@ a.btn-editar-foto {
         width: 100px;
         height: 100px;
     }
-    
     /* Imagen editar foto */
     img.imagen-editar-foto {
         width: 20px;
         height: 20px;
     }
-    
     /* imagen principal*/
     img.imagen-config {
         position: relative;
@@ -168,7 +194,9 @@ a.btn-editar-foto {
     }
 }
 
+
 /* Imagen editar foto */
+
 img.imagen-editar-foto {
     width: 30px;
     height: 30px;
