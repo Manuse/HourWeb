@@ -8,40 +8,7 @@
             <br>
             <div class="row">
 
-                <div class="col-lg-6 col-md-5">
-                   
-                   
-                    <div class="input-group-addon recur addon_recurso">
-                        <h3>Crear tipo</h3>
-
-                        <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
-
-                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
-                        <span class="glyphicon glyphicon-floppy-save"></span>
-                                                            Guardar
-                        </button>
-
-                    </div>
-                    
-                    <div></div>
-
-                    <div class="input-group-addon recur addon_recurso">
-                        <h3>Crear Recurso</h3>
-
-                        <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
-                        <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
-                            </select>
-                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
-                        <span class="glyphicon glyphicon-floppy-save"></span>
-                                                            Guardar
-                        </button>
-
-                    </div>
-              
-                </div>
-
-                <div class="col-lg-6 col-md-5">
-
+                <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="input-group-addon accord addon_recurso">
                         <uib-accordion close-others="vm.oneAtATime">
                             <br>
@@ -60,19 +27,58 @@
 
                         </uib-accordion>
                     </div>
-                </div>
-
-
-
-                    <br><br><br>
-
-
 
 
                 </div>
 
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="row">
 
-            
+                        <div class="col-lg-6 col-md-6 col-sm-5">
+                            <div class="input-group-addon recur addon_recurso">
+                                <h3>Crear tipo</h3>
+
+                                <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
+
+                                <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
+                        <span class="glyphicon glyphicon-floppy-save"></span>
+                                                            Guardar
+                        </button>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-7">
+
+                        <div class="input-group-addon recur addon_recurso">
+                            <h3>Crear Recurso</h3>
+
+                            <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
+                            <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
+                            </select>
+                            <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
+                        <span class="glyphicon glyphicon-floppy-save"></span>
+                                                            Guardar
+                        </button>
+
+                        </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <br><br><br>
+
+
+
+
+            </div>
+
+
+
 
 
 
@@ -180,8 +186,7 @@
                             <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
                                 <uib-accordion-heading>
                                     <div class="pinocho"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)">14</span></small>
-                                        <span
-                                            ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
+                                        <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                 </uib-accordion-heading>
                                 <ul class="list-group">
                                     <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
