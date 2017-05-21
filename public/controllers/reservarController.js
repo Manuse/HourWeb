@@ -5,23 +5,15 @@
         .controller('ReservarController', reservarController);
 
     /* primer select de pruebaReservas.html*/
-    function reservarController(userFactory, DATABASE, $timeout) {
+    function reservarController(userFactory, DATABASE, $timeout, $log) {
         var vm = this;
-        var interval = function(){$timeout(recarga, 1000)};
+        var interval = function () {
+            $timeout(recarga, 1000)
+        };
         interval();
         vm.recursos = [];
         vm.tabla = [];
-        vm.tipos = [{
-            name: 'Selecciones un tipo de recurso',
-            value: null
-        }, {
-            name: 'clase',
-            value: 'clase'
-        }, {
-            name: 'objeto',
-            value: 'objeto'
-        }];
-        vm.tipo = vm.tipos[0].value;
+        vm.tipos = [];
         vm.semana = '0';
         vm.cursos = [];
 
@@ -30,13 +22,14 @@
                 $timeout(function () {
                     vm.getUser = userFactory.getUser();
                     vm.cargarFechaRecursos();
+                    cargarTipos();
                     cargarCursos();
-                },0);
-            }else{
+                }, 0);
+            } else {
                 interval();
             }
         }
-        
+
         function cargarCursos() {
             DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
                 var cursos = snapshot.val();
@@ -52,7 +45,7 @@
 
             });
         }
-        
+
         function cargarFecha() {
             var dia = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
             vm.dias = [];
@@ -63,7 +56,6 @@
                 }
                 vm.dias.push(new Date(dia));
             }
-            console.log(vm.dias)
         }
 
         vm.cargarFechaRecursos = function () {
@@ -73,58 +65,60 @@
         }
 
         vm.hacerReserva = function (celda, ncelda) {
+           
             var reserva = {
                 nombre: vm.getUser.nombre + ' ' + vm.getUser.apellido,
-                curso: 'xxx',
+                curso: vm.curso,
                 fecha: celda.fecha.getTime(),
                 recurso: vm.recurso,
-                usuario:vm.getUser.id
+                usuario: vm.getUser.id
             };
-            if (celda.activo && ncelda == null) {
+            if (celda.activo && ncelda == null || ncelda.activo && celda.activo) {
                 DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
-            } else if (celda.activo && ncelda.activo) {
-                DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
-            }
+            } //else if (celda.activo && ) {
+            //  DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
+            //}
         };
-        
+
         /* select de pruebaReservas.html que se carga al seleccionar opcion del select anterior */
         vm.cargarRecursos = function () {
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/").orderByChild("tipo").equalTo(vm.tipo).on("value", function (snapshot) {
-                var recurso = snapshot.val();
-                vm.recursos = [{
-                    name: 'Indique el recurso a consultar',
-                    value: null
-                }];
                 vm.tabla = [];
                 $timeout(function () {
-                    for (var data in recurso) {
-                        vm.recursos.push({
-                            name: data,
-                            value: data
+                    if (snapshot.exists()) {
+                        vm.recursos = Object.keys(snapshot.val()).map(function (key) {
+                            return {
+                                name: key,
+                                value: key
+                            };
                         });
+                        vm.recursos.unshift({
+                            name: 'Indique el recurso a consultar',
+                            value: null
+                        })
+                        try {
+                            vm.recurso = vm.recursos[0].value;
+                        } catch (err) {}
+                    }else{
+                        vm.recursos=[];
                     }
-                    try {
-                        vm.recurso = vm.recursos[0].value;
-                        console.log(vm.recurso)
-                    } catch (err) {}
                 }, 0);
             });
         };
 
-        
-        function cargarTipo() {
-            DATABASE.ref("centro/" + vm.getUser.codcentro + "/tipos").once("value", function (snapshot) {
+        /*
+         * Carga los tipos
+         */
+        function cargarTipos() {
+            DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.tipos = snapshot.val();
-                    vm.tipos.unshift({
-                        name: 'Selecciones un recurso',
-                        value: null
-                    });
-                    vm.tipo = vm.tipos[0].value;
+                    vm.tipos.unshift('Seleccione un recurso');
+                    vm.tipo = vm.tipos[0];
                 }, 0);
             });
         }
-        
+
         /* carga recursos disponibles en la tabla de pruebaReservas.html*/
         vm.cargarDisponible = function () {
             if (vm.recurso == null) {

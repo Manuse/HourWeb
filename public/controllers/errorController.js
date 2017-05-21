@@ -9,11 +9,11 @@
         vm.error = item;
         vm.close = function () {
             $uibModalInstance.close();
-        }
+        };
 
-        var interval = $timeout(function(){
+       $timeout(function(){
              $uibModalInstance.close();
         }, 2000);
-        interval();
+       // interval();
     }
 })();

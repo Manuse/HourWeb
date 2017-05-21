@@ -20,12 +20,6 @@
 
         interval();
 
-        function horaCentro(){
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/hora").once("value", function (snapshot) {
-                $timeout(function(){vm.mytime = new Date("1/1/1 "+snapshot.val().split("-")[0]);},0);
-            });
-        }
-
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
@@ -38,6 +32,16 @@
                 interval();
             }
         }
+
+        function horaCentro() {
+            DATABASE.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (snapshot) {
+                $timeout(function () {
+                    vm.mytime = new Date("1/1/1 " + snapshot.val().split("-")[0]);
+                }, 0);
+            });
+        }
+
+
         vm.crearRecurso = function () {
             var re = DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/" + vm.recurso); //decimos el nodo del recurso
             if (vm.recurso != 0) {
@@ -46,7 +50,10 @@
                         re.set({
                             tipo: vm.tipo
                         });
-                        vm.recursos.push(vm.recurso)
+                        vm.recursos.push({
+                            recurso: vm.recurso,
+                            tipo: vm.tipo
+                        });
                     } else {
                         vm.error("El recurso ya existe");
                     }
@@ -60,8 +67,8 @@
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.tipologias = snapshot.val();
-                    $log.log(vm.tipologias)
                     vm.open.fill(false, 0, vm.tipologias.length);
+                    vm.tipo = vm.tipologias[0];
                 }, 0);
 
             });
@@ -69,14 +76,20 @@
 
 
         vm.borrarTipo = function (index) {
-            vm.tipologias.splice(index, 1);
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").set(vm.tipologias);
+            var funcion = function () {
+                vm.tipologias.splice(index, 1);
+                vm.open.splice(index, 1);
+                DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").set(vm.tipologias);
+            }
+
+            vm.confirmacion("¿Borrar este tipo?", funcion);
         };
 
-        vm.añadirTipo = function () {
+        vm.crearTipo = function () {
             if (vm.ntipo != 0) {
                 if (!vm.tipologias.includes(vm.ntipo)) {
                     vm.tipologias.push(vm.ntipo);
+                    vm.open.push(false);
                     DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").set(vm.tipologias);
                 } else {
                     vm.error("El tipo ya existe");
@@ -87,8 +100,10 @@
         };
 
         vm.borrarRecurso = function (recurso) {
-            console.log($location.absUrl())
-            //  DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/" + recurso).remove();
+            var funcion = function () {
+                DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/" + recurso).remove();
+            };
+            vm.confirmacion("¿Borrar el recurso " + recurso + "?", funcion);
         };
 
         function cargarRecursos() {
@@ -104,11 +119,17 @@
             });
         }
 
+        /*
+         *devuelve el numero de recursos segun el tipo
+         * tip: tipo
+         * return numero
+         */
         vm.filtrar = function (tip) {
             return vm.recursos.filter(function (x) {
                 return x.tipo == tip
             }).length;
         };
+
 
         vm.error = function (err) {
             var modalInstance = $uibModal.open({
@@ -124,9 +145,33 @@
             });
 
             modalInstance.result.then(function () {
-     
+
             }, function () {
-      
+
+            });
+        };
+
+        vm.confirmacion = function (msg, funcion) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'modal/mConfirmacion.html',
+                controller: 'ConfirmacionController',
+                controllerAs: 'vmmm',
+                resolve: {
+                    item: function () {
+                        return msg;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (resul) {
+                if (resul) {
+                    console.log(resul)
+                    funcion();
+                }
+
+            }, function () {
+
             });
         };
 

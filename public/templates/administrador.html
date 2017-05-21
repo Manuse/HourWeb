@@ -15,14 +15,15 @@
                             <br>
                             <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
                                 <uib-accordion-heading>
-                                    <div class="pinocho"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)">14</span></small><span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
+                                    <div class="pinocho"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span></small>
+                                        <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                 </uib-accordion-heading>
                                 <ul class="list-group">
                                     <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
                                         <span ng-bind="recurso.recurso"></span>
                                         <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarRecurso(recurso.recurso)"></span>
-                                        </li>
-                                </ul>    
+                                    </li>
+                                </ul>
                             </div>
 
                         </uib-accordion>
@@ -34,27 +35,22 @@
                     <div class="input-group-addon recur addon_recurso">
                         <h3>Crear tipo</h3>
 
-                        <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
+                        <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
 
-                        <button type="button" class="btn btn-lg btn-success" name="guardar_recurso" id="guardar_recurso">
+                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
 
                     </div>
-                    
-                  
-
 
                     <div class="input-group-addon recur addon_recurso">
                         <h3>Crear Recurso</h3>
 
-                        <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
-                        <select class="btn btn-lg btn-info" name="combo_fecha" id="combo_tipo">
-                                <option class="opcion_combo" value="clase">CLASE</option>
-                                <option class="opcion_combo" value="objeto">OBJETO</option>
+                        <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
+                        <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
                             </select>
-                        <button type="button" class="btn btn-lg btn-success" name="guardar_recurso" id="guardar_recurso">
+                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
@@ -90,7 +86,7 @@
                                                 <span class="glyphicon glyphicon-floppy-save"></span>
                                                 <span class="hidden-xs hidden-sm">
                                                     Guardar</span>
-                                            </button>
+                    </button>
                 </div>
             </div>
             <div class="row permanente">
@@ -167,7 +163,7 @@
 
         </uib-tab>
         <uib-tab index="4" heading="Cursos" classes="estilo-tab">
-        <br>
+            <br>
             <div class="row">
 
                 <div class="col-lg-6 col-md-5 col-sm-4 col-xs-3">
@@ -177,14 +173,16 @@
                             <br>
                             <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
                                 <uib-accordion-heading>
-                                    <div class="pinocho"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)">14</span></small><span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
+                                    <div class="pinocho"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)">14</span></small>
+                                        <span
+                                            ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                 </uib-accordion-heading>
                                 <ul class="list-group">
                                     <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
                                         <span ng-bind="recurso.recurso"></span>
                                         <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarRecurso(recurso.recurso)"></span>
-                                        </li>
-                                </ul>    
+                                    </li>
+                                </ul>
                             </div>
 
                         </uib-accordion>
@@ -204,8 +202,8 @@
                         </button>
 
                     </div>
-                    
-                  
+
+
 
 
                     <div class="input-group-addon recur addon_recurso">

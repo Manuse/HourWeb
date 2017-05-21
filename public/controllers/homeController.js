@@ -47,11 +47,14 @@
                 vm.jueves = [];
                 vm.viernes = [];
                 var semana1 = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
-                var fsemana1 = new Date().setDate(semana1.getDate() + 6);
+                var fsemana1 = new Date(new Date().setDate(semana1.getDate() + 6));
+                semana1.setHours(0,0);
+                fsemana1.setHours(0,0);
                 if (vm.semana == 1) {
                     semana1.setDate(semana1.getDate() + 7);
                     fsemana1.setDate(fsemana1.getDate() + 7);
-                }             
+                } 
+                            
                 $timeout(function () {
                     for (var data in reser) {
                         if (reser[data].fecha > 10) {                         
@@ -96,10 +99,11 @@
                             if (new Date('1/1/1 ' + new Date().getHours() + ':' + new Date().getMinutes()) < new Date('1/1/1 ' + reser[data].hora) && new Date('1/1/1 ' + new Date(new Date() + 3600000).getHours() + ':' + new Date(new Date() + 3600000).getMinutes()) > new Date('1/1/1 ' + reser[data].hora)) {
                                 actu = true;
                             }
+                            var date = new Date('1/1/1 '+ reser[data].hora);
                             var reserva = {
                                 code: data,
                                 recurso: reser[data].recurso,
-                                hora: reser[data].hora,
+                                hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
                                 fecha: "Permanente",
                                 activo: true,
                                 actual: actu
