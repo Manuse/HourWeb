@@ -16,7 +16,10 @@
         vm.tipos = [];
         vm.semana = '0';
         vm.cursos = [];
-
+		
+		/*
+		carga datos cuando carga al usuario
+		*/
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
