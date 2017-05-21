@@ -8,7 +8,39 @@
             <br>
             <div class="row">
 
-                <div class="col-lg-6 col-md-5 col-sm-4 col-xs-3">
+                <div class="col-lg-6 col-md-5">
+                   
+                   
+                    <div class="input-group-addon recur addon_recurso">
+                        <h3>Crear tipo</h3>
+
+                        <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
+
+                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
+                        <span class="glyphicon glyphicon-floppy-save"></span>
+                                                            Guardar
+                        </button>
+
+                    </div>
+                    
+                    <div></div>
+
+                    <div class="input-group-addon recur addon_recurso">
+                        <h3>Crear Recurso</h3>
+
+                        <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
+                        <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
+                            </select>
+                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
+                        <span class="glyphicon glyphicon-floppy-save"></span>
+                                                            Guardar
+                        </button>
+
+                    </div>
+              
+                </div>
+
+                <div class="col-lg-6 col-md-5">
 
                     <div class="input-group-addon accord addon_recurso">
                         <uib-accordion close-others="vm.oneAtATime">
@@ -30,32 +62,6 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-5 col-sm-4 col-xs-3">
-
-                    <div class="input-group-addon recur addon_recurso">
-                        <h3>Crear tipo</h3>
-
-                        <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
-
-                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
-                        <span class="glyphicon glyphicon-floppy-save"></span>
-                                                            Guardar
-                        </button>
-
-                    </div>
-
-                    <div class="input-group-addon recur addon_recurso">
-                        <h3>Crear Recurso</h3>
-
-                        <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
-                        <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
-                            </select>
-                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
-                        <span class="glyphicon glyphicon-floppy-save"></span>
-                                                            Guardar
-                        </button>
-
-                    </div>
 
 
                     <br><br><br>
@@ -66,7 +72,7 @@
                 </div>
 
 
-            </div>
+            
 
 
 
