@@ -7,18 +7,18 @@
     margin-bottom: 3px;
 }
 
-input.input-pass-config2{
-    margin-left: 5px;    
-}
-
-input.input-pass-config,
-input.input-pass-config2, .input-nombre-config {
+.input-nombre-config {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
     margin-bottom: 5px;
     width: 100%;
 }
 
+input.input-pass-config, input.input-pass-config2{
+    font-weight: bold;
+    font-family: 'Tahoma', sans-serif;   
+    margin-bottom: 5px !important;
+}
 
 /* hr bajo el titulo Edicion de Perfil */
 
@@ -44,16 +44,7 @@ button.btn-ojo {
     border: 0;
 }
 
-
 /* INPUTS DE CONFIGURACION DE PERFIL */
-
-input.input_nombre,
-.input_apellido {
-    font-weight: bold;
-    font-family: 'Tahoma', sans-serif;
-    margin-bottom: 10px;
-}
-
 input.form-control.input-nombre-centro {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
@@ -62,18 +53,17 @@ input.form-control.input-nombre-centro {
 @media (max-width: 315px) {
     input.input-nombre-config,
     input.form-control.input-nombre-centro,
-    input.input-pass-config,
-    input.input-pass-config2{
+    input.input-pass-config {
         font-size: 9px;
-        width: 130px;
+        width: 150px;
         margin-bottom: 5px;
     }
-    
-    input.input-pass-config2{
+    input.input-pass-config2 {
         margin-left: 0;
-        margin-top:5px;
+        margin-top: 5px;
+        font-size: 9px;
+        width: 150px;
     }
-     
     /* boton ojo */
     span.icono-ojo-centro {
         font-size: 14px !important;
@@ -95,30 +85,42 @@ input.form-control.input-nombre-centro {
     p.codigo-xs-home1 {
         font-size: 9px;
         font-weight: 700;
-    }   
+    }
 }
-
-
 
 @media only screen and (min-width:316px) and (max-width:413px) {
     input.input-nombre-config,
-    input.form-control.input-nombre-centro,
-    input.input-pass-config,
-    input.input-pass-config2{
+    input.form-control.input-nombre-centro{
         font-size: 10px;
-        width: 160px;
+        width: 170px;
         margin-bottom: 5px;
     }
+    input.input-pass-config{
+        font-size: 10px;
+        width: 170px !important;
+    }
     
-    input.input-pass-config2{
-    margin-left: 0px; 
-    margin-top: 5px;
-}
+    input.input-pass-config2 {
+        margin-left: 0px;
+        margin-top: 5px;
+        font-size: 10px;
+        width: 170px !important;
+    }
     span.icono-ojo-centro {
         font-size: 15px !important;
     }
+}
+
+@media only screen and (min-width:414px) and (max-width:769px) {
+    input.input-pass-config{
+        width: 300px !important;
+    }
     
-    
+    input.input-pass-config2 {
+        margin-left: 0px;
+        margin-top: 5px;
+        width: 300px !important;
+    }
 }
 
 @media only screen and (min-width:512px) and (max-width:769px) {
@@ -136,7 +138,7 @@ input.form-control.input-nombre-centro {
     button.btn-guardar-centro {
         display: table-column-group !important;
         width: 30% !important;
-        ;
+        
     }
 }
 
@@ -158,6 +160,7 @@ a.btn-editar-foto {
     top: 30px;
     left: 110px;
 }
+
 
 /* imagen principal de configuracion y boton de edicion de foto */
 
@@ -243,6 +246,7 @@ a.btn-editar-foto {
         height: 120px;
     }
 }
+
 
 /* Imagen editar foto */
 
