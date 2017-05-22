@@ -14,11 +14,13 @@
     width: 100%;
 }
 
-input.input-pass-config, input.input-pass-config2{
+input.input-pass-config,
+input.input-pass-config2 {
     font-weight: bold;
-    font-family: 'Tahoma', sans-serif;   
+    font-family: 'Tahoma', sans-serif;
     margin-bottom: 5px !important;
 }
+
 
 /* hr bajo el titulo Edicion de Perfil */
 
@@ -30,15 +32,12 @@ input.input-pass-config, input.input-pass-config2{
 
 
 /* icono del ojo para visualizar pass y centro en el perfil de usuario */
-
 span.icono-ojo-centro {
     color: dodgerblue;
     font-size: 19px;
 }
 
-
 /* boton para visualizar passwords en el perfil y para visualizar cod del centro */
-
 button.btn-ojo1,
 button.btn-ojo {
     border: 0;
@@ -60,7 +59,6 @@ input.form-control.input-nombre-centro {
     }
     input.input-pass-config2 {
         margin-left: 0;
-        margin-top: 5px;
         font-size: 9px;
         width: 150px;
     }
@@ -73,8 +71,9 @@ input.form-control.input-nombre-centro {
         /* centramos en relacion a todas las posiciones el icono del ojo*/
         padding: 0;
     }
+    /* boton guardar codigo centro */
     button.btn-guardar-centro {
-        width: 101px !important;
+        width: 120px !important;
         font-size: 9px;
         display: list-item;
     }
@@ -90,32 +89,39 @@ input.form-control.input-nombre-centro {
 
 @media only screen and (min-width:316px) and (max-width:413px) {
     input.input-nombre-config,
-    input.form-control.input-nombre-centro{
+    input.form-control.input-nombre-centro {
         font-size: 10px;
         width: 170px;
         margin-bottom: 5px;
     }
-    input.input-pass-config{
+    input.input-pass-config {
         font-size: 10px;
-        width: 170px !important;
+        width: 160px !important;
     }
-    
     input.input-pass-config2 {
         margin-left: 0px;
         margin-top: 5px;
         font-size: 10px;
+        width: 160px !important;
+    }
+    
+    span.icono-ojo-centro {
+        font-size: 14px !important;
+    }
+    /* boton guardar codigo centro */
+    .btn-guardar-centro{
+        font-size: 9px;
         width: 170px !important;
     }
-    span.icono-ojo-centro {
-        font-size: 15px !important;
+    button.btn-ojo{
+        width: 170px !important;
     }
 }
 
 @media only screen and (min-width:414px) and (max-width:769px) {
-    input.input-pass-config{
+    input.input-pass-config {
         width: 300px !important;
     }
-    
     input.input-pass-config2 {
         margin-left: 0px;
         margin-top: 5px;
@@ -135,10 +141,10 @@ input.form-control.input-nombre-centro {
         display: table-column-group !important;
         width: 11% !important;
     }
+    /* boton guardar codigo centro */
     button.btn-guardar-centro {
         display: table-column-group !important;
         width: 30% !important;
-        
     }
 }
 
@@ -149,7 +155,7 @@ td.td-pass-config {
     border: 0;
     text-align: left;
     font-size: 13px;
-    padding: 0;
+    max-height: 300px !important;
 }
 
 
@@ -247,10 +253,15 @@ a.btn-editar-foto {
     }
 }
 
-
 /* Imagen editar foto */
-
 img.imagen-editar-foto {
     width: 30px;
     height: 30px;
 }
+
+/* label email */
+label.nom-mail-config{    
+    position: relative;
+    top: 1px;
+}
+
