@@ -5,35 +5,47 @@
 .pinocho {
     color: #f00;
 }
+
+
 /* Color Contenido Accordion*/
 
-.panel-default{
+.panel-default {
     color: #f00 !impotant;
 }
 
+
 /*Color Fondo Div de Accordion*/
-div.row>div.col-lg-6>div.accord{
+
+div.row>div.col-lg-6>div.accord {
     background-color: skyblue;
 }
+
+/*Color Fondo Div Accordion SegundResponsive*/
+div.azulsegundo{
+    background-color: skyblue;
+}
+
 
 /*Color Fondo Div de Crear Tipologia y Recurso*/
 
-div.row>div.col-lg-6>div.recur{
+div.row>div.col-lg-6>div.recur {
     background-color: skyblue;
 }
 
+
 /*badge de los Accordion*/
 
-div.pinocho>small>span{
+div.pinocho>small>span {
     margin-top: -3px;
 }
 
+
 /*glyphicon de los Accordion*/
 
-ul.list-group>li.list-group-item-info>span{
+ul.list-group>li.list-group-item-info>span {
     margin-top: -1px;
-    
 }
+
 
 /*Inputs para crear Tipologías y Recursos*/
 
@@ -48,48 +60,47 @@ ul.list-group>li.list-group-item-info>span{
 
 @media(max-width: 1000px) {
     .input_recurso {
-        
         margin-bottom: 10px;
         padding-left: 2px;
         padding-right: 2px;
     }
 }
 
+
 /*-------------------------------------------SEGUNGO TAB------------------------------------*/
 
 
 /*Boton Guardar*/
 
-div.row>div.col-xs-3.col-md-2>button{
+div.row>div.col-xs-3.col-md-2>button {
     margin-top: 7px;
 }
 
+
 /* Fila que contiene Usuario, Recursos, Dias, y Horas*/
 
-div.permanente{
+div.permanente {
     border: 1px groove #beb6c3;
     background-color: #d8dde2;
     padding-bottom: 10px;
 }
 
+
 /*letras Usuario, Recursos, Dias*/
 
-div.permanente>div.col-md-3>h3{
+div.permanente>div.col-md-3>h3 {
     font-weight: bold;
+    text-align: center;
 }
-div.permanente>div.col-md-3>select{
+
+div.permanente>div.col-md-3>select {
     margin-top: 35px;
-    
 }
 
-
+div.permanente>div.col-md-3>div{
+    margin-left: 80px;
+}
 
 
 
 /*--------------------------------------------TERCER TAB-------------------------------------*/
-
-
-
-
-
-
