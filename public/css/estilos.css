@@ -73,6 +73,11 @@ a.centro-xs-home {
     font-weight: 600;
 }
 
+@media only screen and (min-width:250px) and (max-width:400px) {
+    span.nombre-home{
+        font-size: 12px;
+    }
+}
 
 /* NAV sobreescribimos focus y hover sobre enlaces en el nav -- librería bootstrap.css, línea 4006 */
 
@@ -200,10 +205,6 @@ img.imagen-user-dropdown {
     }
 }
 
-
-
-
-
 /* Imagen de perfil del navbar */
 
 div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
@@ -212,14 +213,12 @@ div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
     margin-bottom: 5px;
 }
 
-
 /* ICONO AYUDA PERFIL */
 
 .span-ayuda {
     font-size: 15px;
     margin-left: 4px;
 }
-
 
 /*ICONO CERRAR SESION PERFIL*/
 
@@ -311,27 +310,62 @@ a.btn-reservar {
     font-weight: bold;
 }
 
-@media only screen and (min-width: 366px) and (max-width:426px) {
+@media only screen and (min-width: 376px) and (max-width:426px) {
     a.btn-reservar {
         position: relative;
-        top: 10px;
-        left: 130px;
+        left: 0;
+        font-size: 10px;
+    }
+    label.btn-semana12{        
+        font-size: 10px;        
+    }
+    
+}
+
+@media only screen and (min-width: 200px) and (max-width:319px){
+    a.btn-reservar {
+        position: relative;
+        top: 0px;
+        margin-left: 0;       
+        font-size: 10px;
+    }
+    /* botones agrupados semana1/semana2 */
+    label.btn-semana12{        
+        font-size: 10px;              
     }
 }
 
-@media only screen and (min-width: 328px) and (max-width:371px) {
+/* screen exacto 320px */
+@media (width: 320px) {
     a.btn-reservar {
         position: relative;
-        top: 20px;
-        margin-bottom: 10px;
-        float: none;
+        top: 0px;
+        left: 78px ;      
+        font-size: 10px;
+    }
+    /* botones agrupados semana1/semana2 */
+    label.btn-semana12{        
+        font-size: 10px;              
+    }        
+}
+
+@media only screen and (min-width: 321px) and (max-width:375px){
+    a.btn-reservar {
+        position: relative;
+        top: 0px;
+        margin-left: 0;       
+        font-size: 10px;
+    }
+    /* botones agrupados semana1/semana2 */
+    label.btn-semana12{        
+        font-size: 10px;              
     }
 }
 
 
 /* DIAS DE LA SEMANA*/
 
-div.border>h2 {
+div.border>h2 {@
     text-align: center;
 }
 
@@ -944,7 +978,7 @@ li.list-group-item.dias:hover {
     }
     .btn-reservar {
         margin-left: 5px;
-        margin-top: 13px;
+        margin-top: 12px;
         font-weight: bold;
     }
     td.td-cod-centro-home {
@@ -1298,17 +1332,30 @@ input:checked+.slider:before {
 
 .estilo-tab {
     font-family: 'Verdana', sans-serif;
-    color: blue;
     font-weight: bold;
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 6px;
+    margin-left: 4px;
     font-size: 14px;
-    -webkit-box-shadow: 1px 3px 0px 0px skyblue;
-    -moz-box-shadow: 1px 3px 0px 0px skyblue;
-    -ms-box-shadow: 1px 3px 0px 0px skyblue;
-    -o-box-shadow: 1px 3px 0px 0px skyblue;
-    box-shadow: 1px 3px 0px 0px skyblue;
+    -webkit-box-shadow: 1px 3px 1px 0px skyblue;
+    -moz-box-shadow: 1px 3px 1px 0px skyblue;
+    -ms-box-shadow: 1px 3px 1px 0px skyblue;
+    -o-box-shadow: 1px 3px 1px 0px skyblue;
+    box-shadow: 1px 3px 1px 0px skyblue;
+}
+.estilo-tab:hover{
+    background-color: #bee5f4;
+}
+
+@media only screen and (min-width:375px) and (max-width:445px) {
+    .estilo-tab{
+        font-size: 10px;
+    }
+}
+@media only screen and (min-width:200px) and (max-width:374px) {
+    .estilo-tab{
+        font-size: 8px;
+    }
 }
 
 
@@ -1318,7 +1365,6 @@ modificar listas home en tamaño mediano y xs, tabla, no se ven bien los colores
 .margen {
     margin-top: 10px;
 }
-
 
 /* FOOTER */
 
