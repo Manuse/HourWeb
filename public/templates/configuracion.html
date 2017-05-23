@@ -25,7 +25,7 @@
                         <img class="img-circle img-responsive imagen-config" alt="Usuario Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" />
                     </div>
                     <div class="col-xs-12 col-sm-10">
-                        <table class="table table-responsive tabla-home">
+                        <table class="table table-responsive">
                             <tbody>
                                 <tr class="tr-home">
 
@@ -84,14 +84,17 @@
                                         </form>
 
                                     </td>
+                                    
                                 </tr>
 
                                 <tr class="tr-home" ng-if="!vm.datos">
                                     <td colspan="2" class="td-btn-datos">
-                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos" id="cambiar_datos">
+                                        <button type="button" class="btn btn-info btn-xs btn-datos pull-left
+                                        " ng-click="vm.datos=!vm.datos" id="cambiar_datos">
 									            <strong>Cambiar Datos</strong>
 								        </button>
                                     </td>
+                                    
                                 </tr>
                                 <tr class="tr-home" ng-if="vm.datos">
                                     <td colspan="1" class="td-btn-datos">
@@ -112,7 +115,7 @@
                                                     <button type="button" class="form-control btn-ojo" ng-click="vm.eye = !vm.eye">
                                                         <span ng-class="{'glyphicon glyphicon-eye-close icono-ojo-centro': vm.eye, 'glyphicon glyphicon-eye-open icono-ojo-centro': !vm.eye}">     
                                                         </span>                                               </button>
-                                                    <button type="button" class="form-control btn btn-info btn-sm btn-guardar-centro" id="cambiar_centro">
+                                                    <button type="button" class="form-control btn btn-info btn-xs btn-guardar-centro" id="cambiar_centro">
 									                    <strong>Guardar Código</strong>
 								                    </button>
                                                 </div>

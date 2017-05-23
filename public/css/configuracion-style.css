@@ -6,6 +6,13 @@
 .titulo-perfil {
     margin-bottom: 3px;
 }
+@media only screen and (min-width:200px) and (max-width:379px) {
+    .titulo-perfil{
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 0;
+    }
+}
 
 .input-nombre-config {
     font-weight: bold;
@@ -32,18 +39,23 @@ input.input-pass-config2 {
 
 
 /* icono del ojo para visualizar pass y centro en el perfil de usuario */
+
 span.icono-ojo-centro {
     color: dodgerblue;
     font-size: 19px;
 }
 
+
 /* boton para visualizar passwords en el perfil y para visualizar cod del centro */
+
 button.btn-ojo1,
 button.btn-ojo {
     border: 0;
 }
 
+
 /* INPUTS DE CONFIGURACION DE PERFIL */
+
 input.form-control.input-nombre-centro {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
@@ -104,28 +116,27 @@ input.form-control.input-nombre-centro {
         font-size: 10px;
         width: 160px !important;
     }
-    
     span.icono-ojo-centro {
         font-size: 14px !important;
     }
     /* boton guardar codigo centro */
-    .btn-guardar-centro{
+    .btn-guardar-centro {
         font-size: 9px;
         width: 170px !important;
     }
-    button.btn-ojo{
+    button.btn-ojo {
         width: 170px !important;
     }
 }
 
 @media only screen and (min-width:414px) and (max-width:769px) {
     input.input-pass-config {
-        width: 300px !important;
+        width: 290px !important;
     }
     input.input-pass-config2 {
         margin-left: 0px;
         margin-top: 5px;
-        width: 300px !important;
+        width: 290px !important;
     }
 }
 
@@ -155,7 +166,6 @@ td.td-pass-config {
     border: 0;
     text-align: left;
     font-size: 13px;
-    max-height: 300px !important;
 }
 
 
@@ -253,15 +263,18 @@ a.btn-editar-foto {
     }
 }
 
+
 /* Imagen editar foto */
+
 img.imagen-editar-foto {
     width: 30px;
     height: 30px;
 }
 
+
 /* label email */
-label.nom-mail-config{    
+
+label.nom-mail-config {
     position: relative;
     top: 1px;
 }
-
