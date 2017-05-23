@@ -21,13 +21,17 @@
     width: 100%;
 }
 
-input.input-pass-config,
-input.input-pass-config2 {
+input.input-pass-config
+ {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
-    margin-bottom: 5px !important;
 }
 
+input.input-pass-config2{
+    font-weight: bold;
+    font-family: 'Tahoma', sans-serif;
+    margin-left: 3px;
+}
 
 /* hr bajo el titulo Edicion de Perfil */
 
@@ -59,6 +63,7 @@ button.btn-ojo {
 input.form-control.input-nombre-centro {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
+    background-color: azure;
 }
 
 @media (max-width: 315px) {
@@ -111,7 +116,7 @@ input.form-control.input-nombre-centro {
         width: 160px !important;
     }
     input.input-pass-config2 {
-        margin-left: 0px;
+        margin-left: 0;
         margin-top: 5px;
         font-size: 10px;
         width: 160px !important;
