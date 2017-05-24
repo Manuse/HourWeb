@@ -48,7 +48,8 @@
 
             });
         }
-
+        
+        /* carga los dias de la semana en el home y en reservar.html */
         function cargarFecha() {
             var dia = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
             vm.dias = [];

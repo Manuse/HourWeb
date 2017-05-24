@@ -733,7 +733,7 @@ article.foto_izquierda {
 
 /* rgb(5, 4, 41)*/
 
-h3.sombra {
+h6.sombra {
     font-family: 'Verdana', sans-serif;
     color: black;
     text-shadow: 1px 1px 1px skyblue;
@@ -741,7 +741,7 @@ h3.sombra {
     margin-left: 77px;
 }
 
-h3.sombra-lunes {
+h6.sombra-lunes {
     font-family: 'Verdana', sans-serif;
     text-shadow: 1px 1px 1px skyblue;
     color: black;
@@ -749,7 +749,7 @@ h3.sombra-lunes {
     margin-left: 90px;
 }
 
-h3.sombra-miercoles {
+h6.sombra-miercoles {
     font-family: 'Verdana', sans-serif;
     text-shadow: 1px 1px 1px skyblue;
     color: black;
@@ -757,7 +757,7 @@ h3.sombra-miercoles {
     margin-left: 60px;
 }
 
-h3.sombra-jueves {
+h6.sombra-jueves {
     font-family: 'Verdana', sans-serif;
     text-shadow: 1px 1px 1px skyblue;
     color: black;
@@ -984,10 +984,10 @@ li.list-group-item.dias:hover {
 
 @media only screen and (min-width:200px) and (max-width:425px) {
     /* Dias de la semana, encabezado del HOME*/
-    h3.sombra,
-    h3.sombra-lunes,
-    h3.sombra-miercoles,
-    h3.sombra-jueves
+    h6.sombra,
+    h6.sombra-lunes,
+    h6.sombra-miercoles,
+    h6.sombra-jueves
     {
         margin-top: 20px;        
         margin: 0 auto; /* auto es toda la anchura disponible de du padre */
@@ -1000,26 +1000,28 @@ li.list-group-item.dias:hover {
 
 @media only screen and (min-width:426px) and (max-width:1200px) {
     /* Dias de la semana, encabezado del HOME*/
-    h3.sombra {
+    h6.sombra {
         margin-top: 40px;
         text-align-last: center;
         margin-right: 59px;
         font-size: 24px;
     }
-    h3.sombra-lunes {
+    
+    h6.sombra-lunes {
         margin-top: 40px;
         text-align-last: center;
         margin-right: 67px;
         font-size: 24px;
     }
-    h3.sombra-miercoles {
+    
+    h6.sombra-miercoles {
         margin-top: 40px;
         text-align-last: center;
         margin-right: 45px;
         font-size: 24px;
     }
     
-    h3.sombra-jueves {
+    h6.sombra-jueves {
         margin-top: 40px;
         text-align-last: center;
         margin-right: 70px;
