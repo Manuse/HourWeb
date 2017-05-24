@@ -71,12 +71,14 @@
            
             var reserva = {
                 nombre: vm.getUser.nombre + ' ' + vm.getUser.apellido,
-                curso: vm.curso,
+                curso: vm.curso==null ? '':vm.curso,
                 fecha: celda.fecha.getTime(),
                 recurso: vm.recurso,
                 usuario: vm.getUser.id
             };
+            $log.log(reserva)
             if (celda.activo && ncelda == null || ncelda.activo && celda.activo) {
+                $log.log("entra")
                 DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
             } //else if (celda.activo && ) {
             //  DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
