@@ -1,5 +1,6 @@
 /* PERFIL home.html */
 
+
 /* 'eliminamos' perfil  para resoluciones < 769px del usuario en home en screen superior a 769px */
 
 @media(min-width: 769px) {
@@ -8,17 +9,25 @@
     }
 }
 
+
 /* vale para home y configuracion */
+
 table.tabla-home {
     height: 50%;
     border: 0;
     margin-top: 15px;
 }
+
+
 /* vale para home y configuracion */
+
 tr.tr-home {
     border: 0;
 }
+
+
 /* vale para home y configuracion */
+
 td.td-home {
     border: 0;
     text-align: left;
@@ -27,14 +36,18 @@ td.td-home {
     padding: 0;
 }
 
+
 /* vale para home y configuracion */
+
 td.td-datos-home {
     border: 0;
     text-align: left;
     padding: 0;
 }
 
+
 /* vale para home y configuracion */
+
 h4.panel-title {
     font-size: 11px;
     font-weight: bold;
@@ -43,22 +56,32 @@ h4.panel-title {
     color: azure;
 }
 
+
 /* texto principal acordeon */
-div.acordeon-home{
+
+div.acordeon-home {
     text-align: left;
 }
 
+
 /* codigo del centro en acordeon, afectado por display:none */
+
+
 /* para screen > 769px */
+
 p.codigo-xs-home {
     font-weight: bold;
     font-size: 13px;
 }
+
+
 /* contenido acordeon para screen < 769px */
+
 p.codigo-xs-home1 {
     font-weight: bold;
     font-size: 12px;
 }
+
 
 /* Datos en tamanio pequeño en home.html */
 
@@ -74,10 +97,11 @@ a.centro-xs-home {
 }
 
 @media only screen and (min-width:250px) and (max-width:400px) {
-    span.nombre-home{
+    span.nombre-home {
         font-size: 12px;
     }
 }
+
 
 /* NAV sobreescribimos focus y hover sobre enlaces en el nav -- librería bootstrap.css, línea 4006 */
 
@@ -205,6 +229,7 @@ img.imagen-user-dropdown {
     }
 }
 
+
 /* Imagen de perfil del navbar */
 
 div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
@@ -213,12 +238,14 @@ div.navbar-collapse>ul.navbar-right>li>div.imagen-navbar>a>img.img-profile {
     margin-bottom: 5px;
 }
 
+
 /* ICONO AYUDA PERFIL */
 
 .span-ayuda {
     font-size: 15px;
     margin-left: 4px;
 }
+
 
 /*ICONO CERRAR SESION PERFIL*/
 
@@ -316,57 +343,58 @@ a.btn-reservar {
         left: 0;
         font-size: 10px;
     }
-    label.btn-semana12{        
-        font-size: 10px;        
+    label.btn-semana12 {
+        font-size: 10px;
     }
-    
 }
 
-@media only screen and (min-width: 200px) and (max-width:319px){
+@media only screen and (min-width: 200px) and (max-width:319px) {
     a.btn-reservar {
         position: relative;
         top: 0px;
-        margin-left: 0;       
+        margin-left: 0;
         font-size: 10px;
     }
     /* botones agrupados semana1/semana2 */
-    label.btn-semana12{        
-        font-size: 10px;              
+    label.btn-semana12 {
+        font-size: 10px;
     }
 }
 
+
 /* screen exacto 320px */
+
 @media (width: 320px) {
     a.btn-reservar {
         position: relative;
         top: 0px;
-        left: 78px ;      
+        left: 78px;
         font-size: 10px;
     }
     /* botones agrupados semana1/semana2 */
-    label.btn-semana12{        
-        font-size: 10px;              
-    }        
+    label.btn-semana12 {
+        font-size: 10px;
+    }
 }
 
-@media only screen and (min-width: 321px) and (max-width:375px){
+@media only screen and (min-width: 321px) and (max-width:375px) {
     a.btn-reservar {
         position: relative;
         top: 0px;
-        margin-left: 0;       
+        margin-left: 0;
         font-size: 10px;
     }
     /* botones agrupados semana1/semana2 */
-    label.btn-semana12{        
-        font-size: 10px;              
+    label.btn-semana12 {
+        font-size: 10px;
     }
 }
 
 
 /* DIAS DE LA SEMANA*/
 
-div.border>h2 {@
-    text-align: center;
+div.border>h2 {
+    @ text-align: center;
 }
 
 
@@ -705,7 +733,7 @@ article.foto_izquierda {
 
 /* rgb(5, 4, 41)*/
 
-h3.listas.sombra {
+h3.sombra {
     font-family: 'Verdana', sans-serif;
     color: black;
     text-shadow: 1px 1px 1px skyblue;
@@ -713,12 +741,28 @@ h3.listas.sombra {
     margin-left: 77px;
 }
 
-h3.listas.sombra-miercoles {
+h3.sombra-lunes {
+    font-family: 'Verdana', sans-serif;
+    text-shadow: 1px 1px 1px skyblue;
+    color: black;
+    font-weight: bold;
+    margin-left: 90px;
+}
+
+h3.sombra-miercoles {
     font-family: 'Verdana', sans-serif;
     text-shadow: 1px 1px 1px skyblue;
     color: black;
     font-weight: bold;
     margin-left: 60px;
+}
+
+h3.sombra-jueves {
+    font-family: 'Verdana', sans-serif;
+    text-shadow: 1px 1px 1px skyblue;
+    color: black;
+    font-weight: bold;
+    margin-left: 85px;
 }
 
 .titulo_reservas {
@@ -802,8 +846,6 @@ ul.list-group>li.list-group-item.titulo_lista_hora {
     background-color: skyblue;
 }
 
-
-
 ul.list-group>li.list-group-item.lista_administrador {
     background-color: #015b63;
     color: white;
@@ -859,6 +901,7 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
 li.list-group-item.dias:hover {
     box-shadow: 1px 2px 2px #888888;
 }
+
 
 /*AÑADIR 5 COLUMNAS EXACTAS DENTRO DEL TAB Mis Reservas home.html */
 
@@ -939,6 +982,51 @@ li.list-group-item.dias:hover {
 }
 
 
+@media only screen and (min-width:200px) and (max-width:425px) {
+    /* Dias de la semana, encabezado del HOME*/
+    h3.sombra,
+    h3.sombra-lunes,
+    h3.sombra-miercoles,
+    h3.sombra-jueves
+    {
+        margin-top: 20px;        
+        margin: 0 auto; /* auto es toda la anchura disponible de du padre */
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+     
+}
+
+@media only screen and (min-width:426px) and (max-width:1200px) {
+    /* Dias de la semana, encabezado del HOME*/
+    h3.sombra {
+        margin-top: 40px;
+        text-align-last: center;
+        margin-right: 59px;
+        font-size: 24px;
+    }
+    h3.sombra-lunes {
+        margin-top: 40px;
+        text-align-last: center;
+        margin-right: 67px;
+        font-size: 24px;
+    }
+    h3.sombra-miercoles {
+        margin-top: 40px;
+        text-align-last: center;
+        margin-right: 45px;
+        font-size: 24px;
+    }
+    
+    h3.sombra-jueves {
+        margin-top: 40px;
+        text-align-last: center;
+        margin-right: 70px;
+        font-size: 24px;
+    }
+}
+
 /* para dispositivos hasta 1200px listas html home*/
 
 @media (max-width: 1200px) {
@@ -963,19 +1051,7 @@ li.list-group-item.dias:hover {
     ul.list-group>li.dias:hover {
         box-shadow: 5px 5px 5px #888888;
     }
-    /* Dias de la semana, encabezado del HOME*/
-    h3.listas.sombra {
-        margin-top: 40px;
-        text-align-last: center;
-        margin-right: 59px;
-        font-size: 24px;
-    }
-    h3.listas.sombra-miercoles {
-        margin-top: 45px;
-        text-align-last: center;
-        margin-right: 45px;
-        font-size: 24px;
-    }
+    
     .btn-reservar {
         margin-left: 5px;
         margin-top: 12px;
@@ -1186,12 +1262,10 @@ li.list-group-item.dias:hover {
         background-color: skyblue;
     }
     .input_nombre,
-    .input_apellido{
+    .input_apellido {
         margin-bottom: 10px;
     }
 }
-
-
 
 
 /* SWITCH */
@@ -1343,17 +1417,19 @@ input:checked+.slider:before {
     -o-box-shadow: 1px 3px 1px 0px skyblue;
     box-shadow: 1px 3px 1px 0px skyblue;
 }
-.estilo-tab:hover{
+
+.estilo-tab:hover {
     background-color: #bee5f4;
 }
 
 @media only screen and (min-width:375px) and (max-width:445px) {
-    .estilo-tab{
+    .estilo-tab {
         font-size: 10px;
     }
 }
+
 @media only screen and (min-width:200px) and (max-width:374px) {
-    .estilo-tab{
+    .estilo-tab {
         font-size: 8px;
     }
 }
@@ -1365,6 +1441,7 @@ modificar listas home en tamaño mediano y xs, tabla, no se ven bien los colores
 .margen {
     margin-top: 10px;
 }
+
 
 /* FOOTER */
 
@@ -1397,7 +1474,9 @@ body.mi-body {
     min-height: 64%;
 }
 
+
 /* boton consultar codigo configuracion.html */
+
 td.td-datos-home-config {
     border: 0;
     text-align: center;
@@ -1416,6 +1495,8 @@ button.btn-consultar-cod-centro {
     margin-top: 7px;
     margin-bottom: 7px;
 }
+
+
 /* fondo azul */
 
 @media(max-width: 362px) {
@@ -1429,8 +1510,6 @@ button.btn-consultar-cod-centro {
         font-size: 10px;
     }
 }
-
-
 
 
 /*colores*/
