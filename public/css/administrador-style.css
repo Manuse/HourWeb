@@ -104,3 +104,20 @@ div.permanente>div.col-md-3>div{
 
 
 /*--------------------------------------------TERCER TAB-------------------------------------*/
+
+/*--------------------------------------------CUARTO TAB-------------------------------------*/
+
+/*--------------------------------------------QUINTO TAB-------------------------------------*/
+
+/* glyhicon de la lista*/
+div.row>div.col-lg-6>div.cent>ul.list-group>li>span{
+    margin-top: 2px;
+}
+
+/*Texto centrado en los li*/
+div.row>div.col-lg-6>div.cent>ul.list-group>li{
+    text-align: center;
+}
+    
+
+

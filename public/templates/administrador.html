@@ -206,9 +206,6 @@
 
 
 
-
-
-
         </uib-tab>
 
         <!--    Termina el segunda tab-->
@@ -234,80 +231,61 @@
                 </div>
             </div>
         </uib-tab>
+<!--        Termina el tercer tab-->
+
+<!--       Empieza el cuarto tab-->
         <uib-tab index="3" heading="Centros" classes="estilo-tab">
 
         </uib-tab>
+<!--        Termina el cuarto tab-->
+
+<!--       Empieza el quinto tab-->
         <uib-tab index="4" heading="Cursos" classes="estilo-tab">
             <br>
-            <div class="row">
-
-                <div class="col-lg-6 col-md-5 col-sm-4 col-xs-3">
-
-                    <div class="input-group-addon accord addon_recurso">
-                        <uib-accordion close-others="vm.oneAtATime">
-                            <br>
-                            <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
-                                <uib-accordion-heading>
-                                    <div class="pinocho"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)">14</span></small>
-                                        <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
-                                </uib-accordion-heading>
-                                <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
-                                        <span ng-bind="recurso.recurso"></span>
-                                        <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarRecurso(recurso.recurso)"></span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </uib-accordion>
+            <div class="container">
+               
+               <div class="row">
+                   <div class="">
+                       <div class="col-lg-6 col-lg-offset-4">
+                          <form class="form-horizontal">
+                              
+                              <div class="form-group">
+                                 <div class="col-lg-6">
+                                  <input class="form-control" id="txtAñadirCurso" type="text" placeholder="Curso:">
+                                  </div>
+                                  <button class="btn btn-success col-lg-2">Añadir</button>
+                              </div>
+                          </form>
+                           
+                       </div>
+                       
+                   </div>
+               </div>
+               
+                <div class="row">
+                    
+                        <div class="col-lg-6 col-lg-offset-3">
+<!--                           <div class="input-group-addon  addon_recurso">-->
+                           <div class="cent">
+                            <ul class="list-group">
+                               <li class="list-group-item list-group-item-info">Hola
+                               <span class="glyphicon glyphicon-remove pull-right"></span></li>
+                               <li class="list-group-item list-group-item-info">Hola
+                               <span class="glyphicon glyphicon-remove pull-right"></span></li>
+                               <li class="list-group-item list-group-item-info">Hola
+                               <span class="glyphicon glyphicon-remove pull-right"></span></li>
+                                
+                            </ul>
+                        </div>
+                        
                     </div>
                 </div>
-
-                <div class="col-lg-6 col-md-5 col-sm-4 col-xs-3">
-
-                    <div class="input-group-addon recur addon_recurso">
-                        <h3>Crear tipo</h3>
-
-                        <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
-
-                        <button type="button" class="btn btn-lg btn-success" name="guardar_recurso" id="guardar_recurso">
-                        <span class="glyphicon glyphicon-floppy-save"></span>
-                                                            Guardar
-                        </button>
-
-                    </div>
-
-
-
-
-                    <div class="input-group-addon recur addon_recurso">
-                        <h3>Crear Recurso</h3>
-
-                        <input class="form-control input_recurso" id="nombre_recurso" type="text" placeholder="Nuevo recurso:">
-                        <select class="btn btn-lg btn-info" name="combo_fecha" id="combo_tipo">
-                                <option class="opcion_combo" value="clase">CLASE</option>
-                                <option class="opcion_combo" value="objeto">OBJETO</option>
-                            </select>
-                        <button type="button" class="btn btn-lg btn-success" name="guardar_recurso" id="guardar_recurso">
-                        <span class="glyphicon glyphicon-floppy-save"></span>
-                                                            Guardar
-                        </button>
-
-                    </div>
-
-
-                    <br><br><br>
-
-
-
-
-                </div>
-
-
             </div>
+            
 
         </uib-tab>
-        <!--   Termina el tercer tab-->
+<!--        termina el quinto tab-->
+        
     </uib-tabset>
     <!--    Termina contenido tab-->
 
