@@ -733,36 +733,15 @@ article.foto_izquierda {
 
 /* rgb(5, 4, 41)*/
 
-h6.sombra {
+h6.sombra,
+h6.sombra-lunes, 
+h6.sombra-miercoles,
+h6.sombra-jueves {
     font-family: 'Verdana', sans-serif;
     color: black;
     text-shadow: 1px 1px 1px skyblue;
     font-weight: bold;
     margin-left: 77px;
-}
-
-h6.sombra-lunes {
-    font-family: 'Verdana', sans-serif;
-    text-shadow: 1px 1px 1px skyblue;
-    color: black;
-    font-weight: bold;
-    margin-left: 90px;
-}
-
-h6.sombra-miercoles {
-    font-family: 'Verdana', sans-serif;
-    text-shadow: 1px 1px 1px skyblue;
-    color: black;
-    font-weight: bold;
-    margin-left: 60px;
-}
-
-h6.sombra-jueves {
-    font-family: 'Verdana', sans-serif;
-    text-shadow: 1px 1px 1px skyblue;
-    color: black;
-    font-weight: bold;
-    margin-left: 85px;
 }
 
 .titulo_reservas {
