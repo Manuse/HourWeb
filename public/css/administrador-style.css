@@ -80,17 +80,15 @@ div.row>div.col-xs-3.col-md-2>button {
 /* Fila que contiene Usuario, Recursos, Dias, y Horas*/
 
 div.permanente {
-    border: 1px groove #beb6c3;
-    background-color: #d8dde2;
-    padding-bottom: 10px;
+    
 }
 
 
 /*letras Usuario, Recursos, Dias*/
 
 div.permanente>div.col-md-3>h3 {
-    font-weight: bold;
-    text-align: center;
+    
+    
 }
 
 div.permanente>div.col-md-3>select {
@@ -99,6 +97,9 @@ div.permanente>div.col-md-3>select {
 
 div.permanente>div.col-md-3>div{
     margin-left: 80px;
+}
+div.permanente>div.col-md-3>h3.pra>div {
+   
 }
 
 
