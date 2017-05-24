@@ -14,6 +14,7 @@
         vm.jueves = [];
         vm.viernes = [];
         vm.semana=0;
+        vm.dias=[new Date(),new Date(),new Date(),new Date(),new Date()]
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
