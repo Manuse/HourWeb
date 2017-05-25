@@ -1492,6 +1492,19 @@ button.btn-consultar-cod-centro {
     }
 }
 
+/* tamaño input asunto del mensaje*/
+form>div.form-group>input.pilar{
+    width: 300px;
+}
+@media(max-width: 769px) {
+   form>div.form-group>input.pilar{
+    width: 170px;
+}
+}
+
+
+/*fondo color del mensaje*/
+
 
 /*colores*/
 
