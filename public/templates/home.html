@@ -1,7 +1,6 @@
-
-  <div class="container">
+<div class="container">
     <!-- perfil screen < 769px -->
-   <!-- <div class="row well well-sm div-xs-acordeon">
+    <!-- <div class="row well well-sm div-xs-acordeon">
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
             <a href="#" class="nombre-xs-home" ng-bind="vm.getUser.nombre+' '+vm.getUser.apellido"></a>
             <hr>
@@ -100,7 +99,7 @@
                         <div class="">
                             <!--lunes-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra-lunes" ng-bind="vm.dias[0] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">LUNES</h6>
+                                <h6 class="sombra-lunes" ng-bind="vm.dias[0] | date:'EEEE, dd/MMM'">LUNES</h6>
                                 <ul class="list-group d_semana" id="lunes">
                                     <li ng-repeat="lunes in vm.lunes | orderBy: 'hora'" ng-class="lunes.activo ? 'list-group-item dias lista-verde' : lunes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(lunes, vm.lunes, $index)">
                                         <div>
@@ -153,7 +152,7 @@
 
                             <!-- viernes-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra"  ng-bind="vm.dias[4] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">VIERNES</h6>
+                                <h6 class="sombra" ng-bind="vm.dias[4] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">VIERNES</h6>
                                 <ul id="viernes" class="list-group d_semana">
                                     <li ng-repeat="viernes in vm.viernes | orderBy: 'hora'" ng-class="viernes.activo ? 'list-group-item dias  lista-verde' : viernes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(viernes, vm.viernes, $index)">
                                         <div>
