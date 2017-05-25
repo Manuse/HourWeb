@@ -22,22 +22,44 @@
                     vm.photo = userFactory.getPhoto();
                     recogerMisReservas();
                     recogerCentro();
+                    //cargarFecha();
                 }, 0);
             }else{
                 interval();
             }
         }
 
+        /**
+         * 
+         */
         vm.refrecarCalendario = function () {
             recogerMisReservas();
+           // cargarFecha()
         };
 
+        /**
+         * 
+         */
         function recogerCentro(){
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/nombre").once("value", function (snapshot) {
                 $timeout(function(){vm.centro=snapshot.val()},0);
             });
         }
 
+        /**
+         * 
+         */
+        function cargarFecha() {
+            var dia = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
+            vm.dias = [];
+            for (var j = 0; j < 5; j++) {
+                dia.setDate(dia.getDate() + (j == 0 ? 0 : 1));
+                if (vm.semana == 1 && j == 0) {
+                    dia.setDate(dia.getDate() + 7);
+                }
+                vm.dias.push(new Date(dia));
+            }
+        }
 
         function recogerMisReservas() {
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {

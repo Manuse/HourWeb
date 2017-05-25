@@ -8,7 +8,14 @@
     function mayusFilter() {
         return function (text) {
             if (text != null) {
-                return text.substring(0, 1).toUpperCase() + text.substring(1);
+                var i=0;
+                while(i < text.length){
+                   // console.log(text.substring(i, i+1))
+                    if(text.substring(i, i+1) != ' ' && text.substring(i, i+1) != '\xa0'){
+                      return text.substring(0, i+1).toUpperCase() + text.substring(i+1);
+                    }
+                    i++;
+                }
             }
         }
     }

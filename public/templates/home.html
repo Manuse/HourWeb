@@ -99,7 +99,7 @@
                         <div class="">
                             <!--lunes-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra-lunes" ng-bind="vm.dias[0] | date:'EEEE, dd/MMM'">LUNES</h6>
+                                <h6 class="sombra-lunes" ng-bind="vm.dias[0] | date:'EEEE, dd/MMM' | mayus">LUNES</h6>
                                 <ul class="list-group d_semana" id="lunes">
                                     <li ng-repeat="lunes in vm.lunes | orderBy: 'hora'" ng-class="lunes.activo ? 'list-group-item dias lista-verde' : lunes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(lunes, vm.lunes, $index)">
                                         <div>
@@ -112,7 +112,7 @@
 
                             <!--martes-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra" ng-bind="vm.dias[1] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">MARTES</h6>
+                                <h6 class="sombra" ng-bind="vm.dias[1] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;' | mayus">MARTES</h6>
                                 <ul class="list-group d_semana" id="martes">
                                     <li ng-repeat="martes in vm.martes | orderBy: 'hora'" ng-class="martes.activo ? 'list-group-item dias lista-verde' : martes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(martes, vm.martes, $index)">
                                         <div>
@@ -125,7 +125,7 @@
 
                             <!--miercoles-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra-miercoles" ng-bind="vm.dias[2] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">MIÉRCOLES</h6>
+                                <h6 class="sombra-miercoles" ng-bind="vm.dias[2] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;' | mayus">MIÉRCOLES</h6>
                                 <ul id="miercoles" class="list-group d_semana">
                                     <li ng-repeat="miercoles in vm.miercoles | orderBy: 'hora'" ng-class="miercoles.activo ? 'list-group-item dias lista-verde' : miercoles.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(miercoles, vm.miercoles, $index)">
                                         <div>
@@ -139,7 +139,7 @@
 
                             <!--jueves-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra-jueves" ng-bind="vm.dias[3] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">JUEVES</h6>
+                                <h6 class="sombra-jueves" ng-bind="vm.dias[3] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;' | mayus">JUEVES</h6>
                                 <ul id="jueves" class="list-group d_semana">
                                     <li ng-repeat="jueves in vm.jueves | orderBy: 'hora'" ng-class="jueves.activo ? 'list-group-item dias lista-verde' : jueves.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(jueves, vm.jueves, $index)">
                                         <div>
@@ -152,7 +152,7 @@
 
                             <!-- viernes-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra" ng-bind="vm.dias[4] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">VIERNES</h6>
+                                <h6 class="sombra" ng-bind="vm.dias[4] | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;' | mayus">VIERNES</h6>
                                 <ul id="viernes" class="list-group d_semana">
                                     <li ng-repeat="viernes in vm.viernes | orderBy: 'hora'" ng-class="viernes.activo ? 'list-group-item dias  lista-verde' : viernes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(viernes, vm.viernes, $index)">
                                         <div>
