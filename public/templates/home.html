@@ -195,9 +195,9 @@
                     <!-- TAB 3 -->
                     <uib-tab index="2" heading="Mensajes" classes="estilo-tab">
                         <br>
-                        
-                            <div class="row">
-                               <div class="col-lg-12 col-md-12 col-sm-12">
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
                                 <form>
 
                                     <div class="form-group">
@@ -212,28 +212,51 @@
 
 
                                 </form>
-                                
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <div style="border-top:1px solid;"></div>
+                        <br>
+                        <div class="row">
+
+                             <uib-accordion close-others="vm.oneAtATime">
+                             
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div uib-accordion-group class="panel-default" is-open="vm.open1">
+                                    <uib-accordion-heading>
+                                       <div class="pinocha">
+                                      
+                                        Asunto del Mensaje<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open1, 'glyphicon-chevron-right': !vm.open1}"></i></div>
+                                    </uib-accordion-heading>
+                                    Contenido del mensaje
                                 </div>
                                 
-                            </div>
-                            <br>
-                            <div style="border-top:1px solid;"></div>
-                            <br>
-                            <div class="row">
-                              
-                               
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <ul class="list-group">
-                                        <li class="list-group-item list-group-item-info">Prueba
-                                        <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                        <li class="list-group-item list-group-item-info">Prueba
-                                        <span class="glyphicon glyphicon-remove pull-right"></li>
-                                        <li class="list-group-item list-group-item-info">Prueba
-                                        <span class="glyphicon glyphicon-remove pull-right"></li>
-                                    </ul>
+                                <div uib-accordion-group class="panel-default" is-open="vm.open2">
+                                    <uib-accordion-heading>
+                                       <div class="pinocha">
+                                        Asunto del Mensaje
+                                        <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open2, 'glyphicon-chevron-right': !vm.open2}"></i></div>
+                                    </uib-accordion-heading>
+                                    <div style="border:1px solid;border-radius:3px;">
+                                       <center>
+                                       <p>
+                                       Contenido del mensaje eeeeeeeeeeeeeeeeeeeeeeeeee
+                                       eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                       eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                       eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                       eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                       </p>
+                                       </center> 
+                                    </div>
+                                    
+                                    
                                 </div>
                             </div>
-                      </uib-tab>
+                            </uib-accordion>
+                        </div>
+                    </uib-tab>
                 </uib-tabset>
             </div>
         </div>

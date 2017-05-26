@@ -6,6 +6,12 @@
 
     function homeController(userFactory, $timeout, DATABASE, $log) {
         var vm = this;
+        
+        
+        /*Accordion*/
+        vm.oneAtATime = true;
+        vm.open = [];
+        
         var interval = function(){$timeout(recarga, 1000)};
         interval();
         vm.lunes = [];
