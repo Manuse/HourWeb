@@ -7,12 +7,10 @@
         var vm = this;
 
          vm.iniciarSesion = function() {
-             console.log('entra')
             AUTH.signInWithEmailAndPassword(vm.email, vm.pass).catch(function (error) {
                 switch (error.code) { //dependiendo del error ejecutara un alert u otro
                     case "auth/invalid-email":
-                        vm.error("El email no es válido");
-                        
+                        vm.error("El email no es válido");                 
                         break;
                     case "auth/user-not-found":                        
                         vm.error("El email o la contraseña no son válidos");

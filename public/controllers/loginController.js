@@ -52,7 +52,7 @@
          firebase.auth().onAuthStateChanged(function(user) {
             if (user) {//el usuario esta logueao 
 				if(firebase.auth().currentUser.emailVerified){
-                window.location = "index.html"
+                window.location = "index.html";
 				}else{
 					 firebase.auth().signOut();
 				}

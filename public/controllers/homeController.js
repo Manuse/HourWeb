@@ -20,7 +20,7 @@
         vm.jueves = [];
         vm.viernes = [];
         vm.semana=0;
-        vm.dias=[new Date(),new Date(),new Date(),new Date(),new Date()]
+        vm.dias=[new Date('11/1/2019'),new Date('10/1/2019'),new Date('12/1/2019'),new Date('7/1/2019'),new Date('1/1/2019')]
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
@@ -161,6 +161,9 @@
             });
         }
 
+        /**
+         * 
+         */
         vm.borrarReserva = function (reserva, array, index) {
             if(reserva.activo){
             var reser = DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva.code);

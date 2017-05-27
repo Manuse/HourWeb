@@ -18,11 +18,10 @@
                 <div class="panel-body">
                     <div class="col-xs-12 col-sm-2 div-foto-config">
                         <!-- Imagen Editar Foto -->
-                        <a href="#" class="btn-editar-foto" id="">
+                        <a href="#" class="btn-editar-foto"> <!--ng-show="vm.cambiarImagen"-->
                             <img src="imagenes/boton-plus-svg1.svg" class="imagen-editar-foto img-circle" alt="no foto">
-
                         </a>
-                        <img class="img-circle img-responsive imagen-config" alt="Usuario Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" />
+                        <img class="img-responsive imagen-config" alt="Usuario Pic" ng-src="{{vm.photo}}" ng-mouseenter="vm.cambiarImagen=!vm.cambiarImagen" ng-mouseleave="vm.cambiarImagen=!vm.cambiarImagen"/>
                     </div>
                     <div class="col-xs-12 col-sm-10">
                         <table class="table table-responsive">
@@ -33,9 +32,9 @@
                                         <form class="form-inline">
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
-                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Cambiar Nombre">
+                                                <input class="form-control input-nombre-config"  type="text" placeholder="Cambiar Nombre" ng-disabled="!vm.datos">
 
-                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Cambiar Apellidos">
+                                                <input class="form-control input-nombre-config"  type="text" placeholder="Cambiar Apellidos" ng-disabled="!vm.datos">
 
                                             </div>
                                         </form>
@@ -50,17 +49,33 @@
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
 
-                                                <input class="form-control input-nombre-config" id="config_apellido" type="text" placeholder="Móvil: 678454557">
+                                                <input class="form-control input-nombre-config"  type="text" placeholder="Móvil(Opcional)" ng-disabled="!vm.datos">
 
 
-                                                <input class="form-control input-nombre-config" id="config_nombre" type="text" placeholder="Fijo: 957547893">
+                                                <input class="form-control input-nombre-config" type="text" placeholder="Fijo(Opcional)" ng-disabled="!vm.datos">
 
                                             </div>
                                         </form>
 
                                     </td>
                                 </tr>
-                                
+
+                                <tr class="tr-home" ng-if="!vm.datos">
+                                    <td colspan="2" class="td-btn-datos">
+                                        <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos">
+									            <strong>Editar</strong>
+								        </button>
+                                    </td>
+                                    
+                                </tr>
+                                <tr class="tr-home" ng-if="vm.datos">
+                                    <td colspan="1" class="td-btn-datos">
+                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos">
+									            <strong>Guardar</strong>
+								        </button>
+                                    </td>
+                                </tr>
+
                                 <!-- modificar passwords del perfil de usuario -->
                                 <tr class="tr-home">
                                     <td colspan="2" class="td-pass-config">
@@ -69,12 +84,12 @@
                                                 <div class="input-group-btn">
                                                     <div class="input-group">
                                                         <!-- cambia tipo del input de text a password-->
-                                                        <input class="form-control input-pass-config" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password">
+                                                        <input class="form-control input-pass-config"  type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password">
                                                     </div>
                                                     <div class="input-group">
-                                                        <input class="form-control input-pass-config2" id="" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password">
+                                                        <input class="form-control input-pass-config2"  type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password">
                                                         <div class="input-group">
-                                                            <button type="button" class="form-control btn-ojo1" ng-click="vm.eye = !vm.eye">
+                                                            <button type="button" class="form-control btn-ojo1" ng-click="vm.visualizar(vm.eye)">
                                                             <span ng-class="{'glyphicon glyphicon-eye-close icono-ojo-centro': vm.eye, 'glyphicon glyphicon-eye-open icono-ojo-centro': !vm.eye}">                   </span>                                                            
                                                         </button>
                                                         </div>
@@ -86,23 +101,23 @@
                                     </td>
                                     
                                 </tr>
-
+                                
                                 <tr class="tr-home" ng-if="!vm.datos">
                                     <td colspan="2" class="td-btn-datos">
-                                        <button type="button" class="btn btn-success btn-xs btn-datos pull-left
-                                        " ng-click="vm.datos=!vm.datos" id="cambiar_datos">
-									            <strong>Cambiar Datos</strong>
+                                        <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos">
+									            <strong>Cambiar Contraseña</strong>
 								        </button>
                                     </td>
                                     
                                 </tr>
                                 <tr class="tr-home" ng-if="vm.datos">
                                     <td colspan="1" class="td-btn-datos">
-                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos" id="cambiar_datos">
-									            <strong>Guardar Datos</strong>
+                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos">
+									            <strong>Guardar</strong>
 								        </button>
                                     </td>
                                 </tr>
+                                
 
                                 <!-- CAMBIAR CENTRO SI EL USER ES ADMIN -->
                                 <tr class="tr-home">
