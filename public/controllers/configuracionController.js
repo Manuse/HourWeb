@@ -89,14 +89,39 @@
                         tel_fijo: vm.fijo,
                         tel_movil: vm.movil
                     });
-                    
+                    $timeout(function () {
+                        vm.datos = !vm.datos;
+                    }, 0);
+
+                } else {
+                    vm.error("El nombre y el apellidos son obligatorios");
                 }
                 /*A.updateProfile({
                     displayName: nom
                 });*/
             });
-            vm.datos = !vm.datos;
+
         }
+
+        vm.error = function (err) {
+            var modalInstance = $uibModal.open({
+                animation: false,
+                templateUrl: 'modal/mError.html',
+                controller: 'ErrorController',
+                controllerAs: 'vmmm',
+                resolve: {
+                    item: function () {
+                        return err;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function () {
+
+            }, function () {
+
+            });
+        };
     }
 })();
 
