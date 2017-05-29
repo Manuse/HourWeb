@@ -18,11 +18,12 @@
                 <div class="panel-body">
                     <div class="col-xs-12 col-sm-2 div-foto-config">
                         <!-- Imagen Editar Foto -->
-                        <a class="btn-editar-foto" > <!--ng-show="vm.cambiarImagen"-->
+                        <a class="btn-editar-foto">
+                            <!--ng-show="vm.cambiarImagen"-->
                             <img src="imagenes/boton-plus-svg1.svg" class="imagen-editar-foto img-circle" alt="no foto">
                         </a>
                         <!--<input type="file" class="btn btn-primary" accept="image/*" id="cambiar_foto" ng-change=""/>-->
-                        <img class="img-responsive imagen-config" alt="Usuario Pic" ng-src="{{vm.photo}}" ng-mouseenter="vm.cambiarImagen=!vm.cambiarImagen" ng-mouseleave="vm.cambiarImagen=!vm.cambiarImagen"/>
+                        <img class="img-responsive imagen-config" alt="Usuario Pic" ng-src="{{vm.photo}}" ng-mouseenter="vm.cambiarImagen=!vm.cambiarImagen" ng-mouseleave="vm.cambiarImagen=!vm.cambiarImagen" />
                     </div>
                     <div class="col-xs-12 col-sm-10">
                         <table class="table table-responsive">
@@ -33,9 +34,9 @@
                                         <form class="form-inline">
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
-                                                <input class="form-control input-nombre-config"  type="text" placeholder="Cambiar Nombre" ng-disabled="!vm.datos" ng-model="vm.nombre">
+                                                <input class="form-control input-nombre-config" type="text" placeholder="Cambiar Nombre" ng-disabled="!vm.datos" ng-model="vm.nombre">
 
-                                                <input class="form-control input-nombre-config"  type="text" placeholder="Cambiar Apellidos" ng-disabled="!vm.datos" ng-model="vm.apellido">
+                                                <input class="form-control input-nombre-config" type="text" placeholder="Cambiar Apellidos" ng-disabled="!vm.datos" ng-model="vm.apellido">
 
                                             </div>
                                         </form>
@@ -50,7 +51,7 @@
                                             <!-- se agruparan en linea -->
                                             <div class="form-group">
 
-                                                <input class="form-control input-nombre-config"  type="text" placeholder="Móvil(Opcional)" ng-disabled="!vm.datos" ng-model="vm.movil">
+                                                <input class="form-control input-nombre-config" type="text" placeholder="Móvil(Opcional)" ng-disabled="!vm.datos" ng-model="vm.movil">
 
 
                                                 <input class="form-control input-nombre-config" type="text" placeholder="Fijo(Opcional)" ng-disabled="!vm.datos" ng-model="vm.fijo">
@@ -67,13 +68,18 @@
 									            <strong>Editar</strong>
 								        </button>
                                     </td>
-                                    
+
                                 </tr>
                                 <tr class="tr-home" ng-if="vm.datos">
                                     <td colspan="1" class="td-btn-datos">
-                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.updateUser()">
+                                        <div class="btn-group pull-left">
+                                            <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.updateUser()">
 									            <strong>Guardar</strong>
 								        </button>
+                                            <button type="button" class="btn btn-default btn-sm btn-datos" ng-click="vm.updateUser()">
+									            <strong>Cancelar</strong>
+								        </button>
+                                        </div>
                                     </td>
                                 </tr>
 
@@ -85,10 +91,10 @@
                                                 <div class="input-group-btn">
                                                     <div class="input-group">
                                                         <!-- cambia tipo del input de text a password-->
-                                                        <input class="form-control input-pass-config"  type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password">
+                                                        <input class="form-control input-pass-config" type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password">
                                                     </div>
                                                     <div class="input-group">
-                                                        <input class="form-control input-pass-config2"  type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password">
+                                                        <input class="form-control input-pass-config2" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password">
                                                         <div class="input-group">
                                                             <button type="button" class="form-control btn-ojo1" ng-click="vm.visualizar()">
                                                             <span ng-class="{'glyphicon glyphicon-eye-close icono-ojo-centro': vm.eye, 'glyphicon glyphicon-eye-open icono-ojo-centro': !vm.eye}">                   </span>                                                            
@@ -98,16 +104,16 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </td>                            
+                                    </td>
                                 </tr>
-                                
+
                                 <tr class="tr-home" ng-if="!vm.bContrasena">
                                     <td colspan="2" class="td-btn-datos">
                                         <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.bContrasena=!vm.bContrasena">
 									            <strong>Cambiar Contraseña</strong>
 								        </button>
                                     </td>
-                                    
+
                                 </tr>
                                 <tr class="tr-home" ng-if="vm.bContrasena">
                                     <td colspan="1" class="td-btn-datos">
@@ -116,16 +122,17 @@
 								        </button>
                                     </td>
                                 </tr>
-                                
+
 
                                 <!-- CAMBIAR CENTRO SI EL USER ES ADMIN -->
                                 <tr class="tr-home">
-           
+
                                     <td colspan="2" class="td-datos-home">
                                         <!-- se agruparan en linea -->
                                         <form action="" class="form-inline">
-                                            <div class="input-group">                                             <div class="input-group-btn">
-                                                   <input class="form-control input-nombre-centro" type="text" placeholder="Código nuevo Centro">
+                                            <div class="input-group">
+                                                <div class="input-group-btn">
+                                                    <input class="form-control input-nombre-centro" type="text" placeholder="Código nuevo Centro">
                                                     <button type="button" class="form-control btn btn-info btn-xs btn-guardar-centro">
 									                    <strong>Guardar Código</strong>
 								                    </button>
@@ -138,9 +145,9 @@
                                 <tr class="tr-home">
                                     <td colspan="2" class="td-home">
                                         <label class="nom-mail-config">email:</label>
-                                        <span ><button type="button" class="btn btn-link" disabled ng-bind="vm.email"></button></span>
+                                        <span><button type="button" class="btn btn-link" disabled ng-bind="vm.email"></button></span>
                                     </td>
-                                    
+
                                 </tr>
                             </tbody>
                         </table>

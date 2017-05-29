@@ -8,11 +8,10 @@
         display: none;
     }
 }
+
 .pinocha {
     color: #5bc0de;
 }
-
-
 
 /* vale para home y configuracion */
 
@@ -122,48 +121,87 @@ nav.navbar-color {
     padding-top: 1px;
     width: 100%;
 }
+/* encabezado de dias de las listas */
 
+/* rgb(5, 4, 41)*/
 
-/* Colores listas home actual, pasada futura */
-
+div.col-md-25>h6.sombra,
+h6.sombra-lunes, 
+h6.sombra-miercoles,
+h6.sombra-jueves {
+    font-family: 'Verdana', sans-serif;
+    color: black;
+    text-shadow: 1px 1px 1px skyblue;
+    font-weight: bold;
+    margin-left: 100px;
+}
 
 /* color de la lista para recursos asignados en el futuro */
 
-li.lista-verde {
+ul.list-group>li.lista-verde {
     background-color: #D6F6CB;
-    border: 4px gold;
-    border-style: ridge;
-    border-bottom-width: 7px;
-    border-bottom-color: #ECAC25;
+    border-color: #428bca;
+    border-style: groove;
+    border-width: 3px;
+    border-top-style: solid;
+    border-top-width: 40px;
+   /* border-top-left-radius: 15px;
+    border-top-right-radius: 15px;*/
+    border-radius: 10px 10px 10px;
+    border-bottom-width: 7px;    
 }
-
 
 /* color lista presente, que coincide con la hora actual */
 
-li.lista-azul {
+ul.list-group>li.lista-azul {
     background-color: #00CDCD;
-    border: 4px steelblue;
-    border-style: ridge;
+    border-color: #428bca;
+    border-style: groove;
+    border-width: 3px;
+    border-top-style: solid;
+    border-top-width: 40px;
+   /* border-top-left-radius: 15px;
+    border-top-right-radius: 15px;*/
+    border-radius: 10px 10px 10px;
     border-bottom-width: 7px;
-    border-bottom-color: steelblue;
-    border-bottom-width: thick;
 }
-
 
 /* color lista pasadas */
-
-li.lista-roja {
+ul.list-group>li.lista-roja {
     background-color: #FCAE9E;
-    border: 4px steelblue;
-    border-style: ridge;
+    border-color: darkgray;
+    border-style: groove;
+    border-width: 3px;
+    border-top-style: solid;
+    border-top-width: 40px;
+   /* border-top-left-radius: 15px;
+    border-top-right-radius: 15px;*/
+    border-radius: 10px 10px 10px;
     border-bottom-width: 7px;
-    border-bottom-color: steelblue;
-    border-bottom-width: thick;
 }
 
+/* un puntero con una flecha */
+div.div-verde{
+    cursor: alias;
+}
 
-/* Nombre de Usuario en navbar */
+/* situamos imagen en el borde de la lista del home*/
+a.btn-eliminar-lista>img.img-eliminar-lista{
+    cursor: pointer; 
+    position: absolute;
 
+    top: -35px;
+    left: 164px;
+    width: 30px;
+    height: 30px;
+    border: 0;       
+}
+
+/* hover color verde un poco mas vistoso */
+ul.list-group>li.dias.lista-verde:hover {
+    box-shadow: 3px 1px 2px skyblue;
+    background-color:#bfff80;    
+}
 
 /* caret --> glyphicon flecha hacia abajo desplegar dropdown Usuario*/
 
@@ -394,13 +432,11 @@ a.btn-reservar {
     }
 }
 
-
 /* DIAS DE LA SEMANA*/
 
 div.border>h2 {
     @ text-align: center;
 }
-
 
 /* BOTON CAMBIAR PESTAÑA HORARIO EN home.html */
 
@@ -408,7 +444,6 @@ div.border>h2 {
     float: right;
     padding-right: 10px;
 }
-
 
 /*PERFIL IZQUIERDA */
 
@@ -734,20 +769,6 @@ article.foto_izquierda {
     border: 1px solid grey;
 }
 
-
-/* rgb(5, 4, 41)*/
-
-h6.sombra,
-h6.sombra-lunes, 
-h6.sombra-miercoles,
-h6.sombra-jueves {
-    font-family: 'Verdana', sans-serif;
-    color: black;
-    text-shadow: 1px 1px 1px skyblue;
-    font-weight: bold;
-    margin-left: 77px;
-}
-
 .titulo_reservas {
     text-shadow: 1px 1px 2px rgb(5, 4, 41);
     color: rgb(1, 5, 19);
@@ -877,15 +898,6 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
     box-shadow: 10px 10px 5px #888888;
 }
 
-
-/* pseudoclase hover que tachara el texto cuando pasemos el cursor por la lista
- , cambiara la fuente y el color, tambien mostrara una imagen de fondo*/
-
-li.list-group-item.dias:hover {
-    box-shadow: 1px 2px 2px #888888;
-}
-
-
 /*AÑADIR 5 COLUMNAS EXACTAS DENTRO DEL TAB Mis Reservas home.html */
 
 
@@ -905,7 +917,7 @@ li.list-group-item.dias:hover {
         text-align: center;
         font-weight: bold;
         height: 190px;
-        width: 190px;
+        width: 200px;
         margin-bottom: 7px;
     }
     ul.list-group.d_semana {

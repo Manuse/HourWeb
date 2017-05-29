@@ -99,10 +99,14 @@
                         <div class="">
                             <!--lunes-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra-lunes"><span ng-bind="vm.dias[0] | date:'EEEE' | mayus"></span><p></p><span ng-bind="vm.dias[0] | date:'dd/MMM'"></span></h6>
+                                <h6 class="sombra-lunes"><span ng-bind="vm.dias[0] | date:'EEEE' | mayus"></span>
+                                    <p></p><span ng-bind="vm.dias[0] | date:'dd/MMM'"></span></h6>
                                 <ul class="list-group d_semana" id="lunes">
                                     <li ng-repeat="lunes in vm.lunes | orderBy: 'hora'" ng-class="lunes.activo ? 'list-group-item dias lista-verde' : lunes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(lunes, vm.lunes, $index)">
-                                        <div>
+                                        <a type="button" class="btn-eliminar-lista" id="">
+                                            <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto">
+                                        </a>
+                                        <div class="div-verde">
                                             <p ng-bind="lunes.recurso"></p>
                                             <p ng-bind="lunes.fecha+'-'+lunes.hora"></p>
                                         </div>
@@ -112,10 +116,14 @@
 
                             <!--martes-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra"><span ng-bind="vm.dias[1] | date:'EEEE' | mayus"></span><p></p><span ng-bind="vm.dias[1] | date:'dd/MMM'"></span></h6>
+                                <h6 class="sombra"><span ng-bind="vm.dias[1] | date:'EEEE' | mayus"></span>
+                                    <p></p><span ng-bind="vm.dias[1] | date:'dd/MMM'"></span></h6>
                                 <ul class="list-group d_semana" id="martes">
                                     <li ng-repeat="martes in vm.martes | orderBy: 'hora'" ng-class="martes.activo ? 'list-group-item dias lista-verde' : martes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(martes, vm.martes, $index)">
-                                        <div>
+                                        <a type="button" class="btn-eliminar-lista" id="">
+                                            <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto">
+                                        </a>
+                                        <div class="div-verde">
                                             <p ng-bind="martes.recurso"></p>
                                             <p ng-bind="martes.fecha+'-'+martes.hora"></p>
                                         </div>
@@ -125,10 +133,14 @@
 
                             <!--miercoles-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra-miercoles" ><span ng-bind="vm.dias[2] | date:'EEEE' | mayus"></span><p></p><span ng-bind="vm.dias[2] | date:'dd/MMM'"></span></h6>
+                                <h6 class="sombra-miercoles"><span ng-bind="vm.dias[2] | date:'EEEE' | mayus"></span>
+                                    <p></p><span ng-bind="vm.dias[2] | date:'dd/MMM'"></span></h6>
                                 <ul id="miercoles" class="list-group d_semana">
                                     <li ng-repeat="miercoles in vm.miercoles | orderBy: 'hora'" ng-class="miercoles.activo ? 'list-group-item dias lista-verde' : miercoles.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(miercoles, vm.miercoles, $index)">
-                                        <div>
+                                        <a type="button" class="btn-eliminar-lista" id="">
+                                            <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto">
+                                        </a>
+                                        <div class="div-verde">
                                             <p ng-bind="miercoles.recurso"></p>
                                             <p ng-bind="miercoles.fecha+'-'+miercoles.hora"></p>
                                         </div>
@@ -139,10 +151,14 @@
 
                             <!--jueves-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra-jueves" ><span ng-bind="vm.dias[3] | date:'EEEE' | mayus"></span><p></p><span ng-bind="vm.dias[3] | date:'dd/MMM'"></span></h6>
+                                <h6 class="sombra-jueves"><span ng-bind="vm.dias[3] | date:'EEEE' | mayus"></span>
+                                    <p></p><span ng-bind="vm.dias[3] | date:'dd/MMM'"></span></h6>
                                 <ul id="jueves" class="list-group d_semana">
                                     <li ng-repeat="jueves in vm.jueves | orderBy: 'hora'" ng-class="jueves.activo ? 'list-group-item dias lista-verde' : jueves.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(jueves, vm.jueves, $index)">
-                                        <div>
+                                        <div class="div-verde">
+                                            <a type="button" class="btn-eliminar-lista" id="">
+                                                <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto">
+                                            </a>
                                             <p ng-bind="jueves.recurso"></p>
                                             <p ng-bind="jueves.fecha+'-'+jueves.hora"></p>
                                         </div>
@@ -152,10 +168,14 @@
 
                             <!-- viernes-->
                             <div class="col-md-25 col-lg-5">
-                                <h6 class="sombra"><span ng-bind="vm.dias[4] | date:'EEEE' | mayus"></span><p></p><span ng-bind="vm.dias[4] | date:'dd/MMM'"></span></h6>
+                                <h6 class="sombra"><span ng-bind="vm.dias[4] | date:'EEEE' | mayus"></span>
+                                    <p></p><span ng-bind="vm.dias[4] | date:'dd/MMM'"></span></h6>
                                 <ul id="viernes" class="list-group d_semana">
                                     <li ng-repeat="viernes in vm.viernes | orderBy: 'hora'" ng-class="viernes.activo ? 'list-group-item dias  lista-verde' : viernes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" ng-click="vm.borrarReserva(viernes, vm.viernes, $index)">
-                                        <div>
+                                        <a type="button" class="btn-eliminar-lista" id="">
+                                            <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto">
+                                        </a>
+                                        <div class="div-verde">
                                             <p ng-bind="viernes.recurso"></p>
                                             <p ng-bind="viernes.fecha+'-'+viernes.hora"></p>
                                         </div>

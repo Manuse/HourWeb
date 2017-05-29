@@ -149,18 +149,14 @@ input.form-control.input-nombre-centro {
     /* input donde insertamos el Nuevo Codigo de Centro */
     input.form-control.input-nombre-centro {
         display: table-column-group !important;
-        width: 59%;
+        width: 60%;
+        font-size: 13px;
     }
-    /* boton para descodificar nuevo codigo del centro */
-    button.btn-ojo {
-        border: 0;
-        display: table-column-group !important;
-        width: 11% !important;
-    }
+   
     /* boton guardar codigo centro */
     button.btn-guardar-centro {
         display: table-column-group !important;
-        width: 30% !important;
+        width: 40% !important;
     }
 }
 
