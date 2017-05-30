@@ -18,12 +18,18 @@
                 <div class="panel-body">
                     <div class="col-xs-12 col-sm-2 div-foto-config">
                         <!-- Imagen Editar Foto -->
-                        <a class="btn-editar-foto">
-                            <!--ng-show="vm.cambiarImagen"-->
-                            <img src="imagenes/boton-plus-svg1.svg" class="imagen-editar-foto img-circle" alt="no foto">
-                        </a>
+                        
                         <!--<input type="file" class="btn btn-primary" accept="image/*" id="cambiar_foto" ng-change=""/>-->
-                        <img class="img-responsive imagen-config" alt="Usuario Pic" ng-src="{{vm.photo}}" ng-mouseenter="vm.cambiarImagen=!vm.cambiarImagen" ng-mouseleave="vm.cambiarImagen=!vm.cambiarImagen" />
+                        <div class="efecto1">
+                            <img class="img-responsive image imagen-config" alt="Usuario Pic" ng-src="{{vm.photo}}" ng-mouseenter="vm.cambiarImagen=!vm.cambiarImagen" ng-mouseleave="vm.cambiarImagen=!vm.cambiarImagen" />
+                            <div class="image2">
+                                <label class="glyphicon glyphicon-pencil">
+                                <input type="file" style="display: none;">
+                                </label>
+
+                            </div>
+                        </div>
+                        
                     </div>
                     <div class="col-xs-12 col-sm-10">
                         <table class="table table-responsive">
