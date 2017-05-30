@@ -4,7 +4,7 @@
         .module('app')
         .controller('AdministradorController', administradorController);
 
-    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, $uibModal) {
+    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, $uibModal, errorFactory) {
         var vm = this;
 
         // Timepicker reservas permanentes       
@@ -55,11 +55,11 @@
                             tipo: vm.tipo
                         });
                     } else {
-                        vm.error("El recurso ya existe");
+                        vm.error(errorFactory.getError("noRecurso"));
                     }
                 });
             } else {
-                vm.error("El campo esta vacio");
+                vm.error(errorFactory.getError("campoVacio"));
             }
         };
 
@@ -92,10 +92,10 @@
                     vm.open.push(false);
                     DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").set(vm.tipologias);
                 } else {
-                    vm.error("El tipo ya existe");
+                    vm.error(errorFactory.getError("campoVacio"));
                 }
             } else {
-                vm.error("El campo esta vacio");
+                vm.error(errorFactory.getError("noTipo"));
             }
         };
 

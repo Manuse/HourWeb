@@ -6,7 +6,7 @@
         .factory('registerFactory', registerFactory);
 
 
-    function registerFactory(AUTH, DATABASE, $uibModal) {
+    function registerFactory(AUTH, DATABASE, $uibModal, errorFactory) {
 
         var factory = {
             registrarUser: function (dataUser, dataCenter, email, pass) {
@@ -19,19 +19,7 @@
                     AUTH.currentUser.sendEmailVerification();
                     error("Se ha enviado un email de verificacion a su correo");
                 }, function (err) { //crea el usuario
-                    switch (err.code) { //dependiendo del error ejecutara un error u otro
-                        case "auth/email-already-in-use":
-                            error("El email es usado");
-                            break;
-                        case "auth/operation-not-allowed":
-                            error("Operacion no permitida");
-                            break;
-                        case "auth/invalid-email":
-                            error("Email invalido");
-                            break;
-                        default:
-                            error("Ha ocurrido un error");
-                    }
+                    error(errorFactory.getError(err));
                 });
             }
         };

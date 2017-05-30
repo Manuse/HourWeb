@@ -9,11 +9,11 @@
 
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0 || vm.horas == 0) {
-                vm.error(errorFactory.getError({}));
+                vm.error(errorFactory.getError("campoVacio"));
             } else if (vm.inicioHora >= vm.finHora || vm.finHora-vm.inicioHora < 7200000) {
-                vm.error("El inicio debe ser menor que el final y haber un minimo de 2 horas de diferencia");
+                vm.error(errorFactory.getError("errorHoraRegistro"));
             } else if (vm.pass1 != vm.pass2) {
-                vm.error("Las contraseñas no son iguales");
+                vm.error(errorFactory.getError("contraseñaDistinta"));
             } else {
                 vm.registrarAdmin();
             }

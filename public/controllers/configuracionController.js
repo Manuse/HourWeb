@@ -5,7 +5,7 @@
         .module('app')
         .controller('ConfiguracionController', configuracionController);
 
-    function configuracionController($timeout, userFactory, DATABASE, AUTH, STORAGE, $log) {
+    function configuracionController($timeout, userFactory, DATABASE, AUTH, STORAGE, $log, errorFactory) {
         var vm = this;
 
         var interval = function () {
@@ -37,7 +37,7 @@
             $timeout(function () {
                 vm.eye = false;
             }, 800);
-            // vm.updateUser();
+           
         }
 
         /**
@@ -53,11 +53,10 @@
                 user.updatePassword(vm.nPass2).then(function(){
 
                 }, function(err){
-                    vm.error(err)
+                    vm.error(errorFactory.getError(err))
                 });
-                $log.log("exito")
             }, function (err) {
-                $log.log(err)
+                vm.error(errorFactory.getError(err))
             });
             }
         };
@@ -71,8 +70,8 @@
             uploadTask.on("state_changed", function (snapshot) { //mientras se ejecuta la subida
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100; //obtencion del progreso
                 console.log("subida al " + progress); //muestra el progreso de subida
-            }, function (error) { //en caso de error
-                alert("Ha ocurrido un error");
+            }, function (err) { //en caso de error
+                vm.error(errorFactory.getError(err);
             }, function () { //cuando finaliza
                 getCurrentUser().updateProfile({ //actualizamos la url de la foto de perfil del usuario por si tuviera otra distinta
                     photoURL: uploadTask.snapshot.downloadURL
@@ -101,7 +100,7 @@
                     }, 0);
 
                 } else {
-                    vm.error("El nombre y el apellidos son obligatorios");
+                    vm.error(errorFactory.getUser("nombre/apellido"));
                 }
                 /*AUTH.currentUser.updateProfile({
                     displayName: nom
