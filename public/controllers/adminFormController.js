@@ -2,14 +2,14 @@
 
     angular.module('app').controller('AdminFormController', adminFormController);
 
-    function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, $uibModal,$log) {
+    function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, $uibModal,$log, errorFactory) {
         var vm = this;
         vm.inicioHora = new Date('1/1/1 12:00');
         vm.finHora = new Date('1/1/1 13:00');
 
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0 || vm.horas == 0) {
-                vm.error("Rellene todos los campos");
+                vm.error(errorFactory.getError({}));
             } else if (vm.inicioHora >= vm.finHora || vm.finHora-vm.inicioHora < 7200000) {
                 vm.error("El inicio debe ser menor que el final y haber un minimo de 2 horas de diferencia");
             } else if (vm.pass1 != vm.pass2) {

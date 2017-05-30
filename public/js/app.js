@@ -32,5 +32,6 @@
                 });
         }).constant("DATABASE", firebase.database())
         .constant("AUTH", firebase.auth())
-        .constant("STORAGE", firebase.storage().ref());
+        .constant("STORAGE", firebase.storage().ref())
+        .constant("ERROR", {});
 })();

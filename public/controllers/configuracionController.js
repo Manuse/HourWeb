@@ -44,23 +44,30 @@
          * 
          */
         vm.cambiarContraseña = function () {
+            if(vm.nPass1 == vm.nPass2){
             var credential = firebase.auth.EmailAuthProvider.credential(
                 AUTH.currentUser.email,
                 vm.oldPass
             );
             AUTH.currentUser.reauthenticate(credential).then(function () {
-                // User re-authenticated.
+                user.updatePassword(vm.nPass2).then(function(){
+
+                }, function(err){
+                    vm.error(err)
+                });
                 $log.log("exito")
-            }, function (error) {
-                $log.log(error)
+            }, function (err) {
+                $log.log(err)
             });
+            }
         };
 
         /**
          * 
          */
         vm.cambiarFoto = function () {
-            var uploadTask = STORAGE.child("imgperfil/" + getCurrentUser().uid + ".jpeg").put(vm.file); //añadimos el archivo a la carpeta de imgperfil de firebase y el archivo tendra el id del usuario 
+
+           /* var uploadTask = STORAGE.child("imgperfil/" + getCurrentUser().uid + ".jpeg").put(vm.file); //añadimos el archivo a la carpeta de imgperfil de firebase y el archivo tendra el id del usuario 
             uploadTask.on("state_changed", function (snapshot) { //mientras se ejecuta la subida
                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100; //obtencion del progreso
                 console.log("subida al " + progress); //muestra el progreso de subida
@@ -73,7 +80,7 @@
                 setTimeout(function () {
                     vm.photo = AUTH.currentUser.photoURL;
                 }, 1000); //refresca  la foto de la configuracion
-            });
+            });*/
         };
 
         /**
@@ -96,7 +103,7 @@
                 } else {
                     vm.error("El nombre y el apellidos son obligatorios");
                 }
-                /*A.updateProfile({
+                /*AUTH.currentUser.updateProfile({
                     displayName: nom
                 });*/
             });

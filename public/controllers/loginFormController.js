@@ -3,24 +3,12 @@
         .module('app')
         .controller('LoginFormController', loginFormController);
 
-    function loginFormController(AUTH, $uibModalInstance, $uibModal) {
+    function loginFormController(AUTH, $uibModalInstance, $uibModal, errorFactory) {
         var vm = this;
 
          vm.iniciarSesion = function() {
-            AUTH.signInWithEmailAndPassword(vm.email, vm.pass).catch(function (error) {
-                switch (error.code) { //dependiendo del error ejecutara un alert u otro
-                    case "auth/invalid-email":
-                        vm.error("El email no es válido");                 
-                        break;
-                    case "auth/user-not-found":                        
-                        vm.error("El email o la contraseña no son válidos");
-                        break;
-                    case "auth/wrong-password":
-                        vm.error("El email o la contraseña no son válidos");
-                        break;
-                    default:
-                        vm.error("Ha ocurrido un error");
-                }
+            AUTH.signInWithEmailAndPassword(vm.email, vm.pass).catch(function (err) {
+                vm.error(errorFactory.getError(err));
             });
         }
 
