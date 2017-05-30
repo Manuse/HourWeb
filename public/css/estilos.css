@@ -13,6 +13,7 @@
     color: #5bc0de;
 }
 
+
 /* vale para home y configuracion */
 
 table.tabla-home {
@@ -121,12 +122,13 @@ nav.navbar-color {
     padding-top: 1px;
     width: 100%;
 }
-/* encabezado de dias de las listas */
 
+
+/* encabezado de dias de las listas */
 /* rgb(5, 4, 41)*/
 
 div.col-md-25>h6.sombra,
-h6.sombra-lunes, 
+h6.sombra-lunes,
 h6.sombra-miercoles,
 h6.sombra-jueves {
     font-family: 'Verdana', sans-serif;
@@ -136,6 +138,7 @@ h6.sombra-jueves {
     margin-left: 100px;
 }
 
+
 /* color de la lista para recursos asignados en el futuro */
 
 ul.list-group>li.lista-verde {
@@ -144,64 +147,87 @@ ul.list-group>li.lista-verde {
     border-style: groove;
     border-width: 3px;
     border-top-style: solid;
-    border-top-width: 40px;
-   /* border-top-left-radius: 15px;
-    border-top-right-radius: 15px;*/
+    border-top-width: 35px;
     border-radius: 10px 10px 10px;
-    border-bottom-width: 7px;    
+    border-bottom-width: 7px;
 }
+
 
 /* color lista presente, que coincide con la hora actual */
 
+
+/* #00CDCD */
+
 ul.list-group>li.lista-azul {
-    background-color: #00CDCD;
+    background-color: #a8dcf0;
     border-color: #428bca;
     border-style: groove;
     border-width: 3px;
     border-top-style: solid;
-    border-top-width: 40px;
-   /* border-top-left-radius: 15px;
-    border-top-right-radius: 15px;*/
+    border-top-width: 35px;
     border-radius: 10px 10px 10px;
     border-bottom-width: 7px;
 }
 
+
 /* color lista pasadas */
+
 ul.list-group>li.lista-roja {
-    background-color: #FCAE9E;
+    background-color: #fdc1b5;
     border-color: darkgray;
     border-style: groove;
     border-width: 3px;
     border-top-style: solid;
-    border-top-width: 40px;
-   /* border-top-left-radius: 15px;
-    border-top-right-radius: 15px;*/
+    border-top-width: 35px;
     border-radius: 10px 10px 10px;
     border-bottom-width: 7px;
 }
 
+
 /* un puntero con una flecha */
-div.div-verde{
+
+div.div-verde {
     cursor: alias;
 }
 
-/* situamos imagen en el borde de la lista del home*/
-a.btn-eliminar-lista>img.img-eliminar-lista{
-    cursor: pointer; 
-    position: absolute;
 
-    top: -35px;
+/* situamos IMAGEN X en el borde de la lista del home */
+
+a.btn-eliminar-lista>img.img-eliminar-lista {
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    top: -32px;
     left: 164px;
-    width: 30px;
-    height: 30px;
-    border: 0;       
+    width: 27px;
+    height: 27px;
+    border: 0;
 }
+
 
 /* hover color verde un poco mas vistoso */
+
 ul.list-group>li.dias.lista-verde:hover {
     box-shadow: 3px 1px 2px skyblue;
-    background-color:#bfff80;    
+    background-color: #ccff99;
 }
+
+
+/* hover color azul un poco mas vistoso */
+
+ul.list-group>li.dias.lista-azul:hover {
+    box-shadow: 3px 1px 2px skyblue;
+    background-color: skyblue;
+}
+
+
+/* hover color rojo un poco mas vistoso */
+
+ul.list-group>li.dias.lista-roja:hover {
+    box-shadow: 3px 1px 2px skyblue;
+    background-color: #FCAE9E;
+}
+
 
 /* caret --> glyphicon flecha hacia abajo desplegar dropdown Usuario*/
 
@@ -432,11 +458,13 @@ a.btn-reservar {
     }
 }
 
+
 /* DIAS DE LA SEMANA*/
 
 div.border>h2 {
     @ text-align: center;
 }
+
 
 /* BOTON CAMBIAR PESTAÑA HORARIO EN home.html */
 
@@ -444,6 +472,7 @@ div.border>h2 {
     float: right;
     padding-right: 10px;
 }
+
 
 /*PERFIL IZQUIERDA */
 
@@ -898,6 +927,7 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
     box-shadow: 10px 10px 5px #888888;
 }
 
+
 /*AÑADIR 5 COLUMNAS EXACTAS DENTRO DEL TAB Mis Reservas home.html */
 
 
@@ -976,21 +1006,19 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
     }
 }
 
-
 @media only screen and (min-width:200px) and (max-width:425px) {
     /* Dias de la semana, encabezado del HOME*/
     h6.sombra,
     h6.sombra-lunes,
     h6.sombra-miercoles,
-    h6.sombra-jueves
-    {
-        margin-top: 20px;        
-        margin: 0 auto; /* auto es toda la anchura disponible de du padre */
+    h6.sombra-jueves {
+        margin-top: 20px;
+        margin: 0 auto;
+        /* auto es toda la anchura disponible de du padre */
         text-align: center;
         margin-bottom: 10px;
         font-size: 20px;
     }
-     
 }
 
 @media only screen and (min-width:426px) and (max-width:1200px) {
@@ -1001,21 +1029,18 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
         margin-right: 59px;
         font-size: 24px;
     }
-    
     h6.sombra-lunes {
         margin-top: 40px;
         text-align-last: center;
         margin-right: 67px;
         font-size: 24px;
     }
-    
     h6.sombra-miercoles {
         margin-top: 40px;
         text-align-last: center;
         margin-right: 45px;
         font-size: 24px;
     }
-    
     h6.sombra-jueves {
         margin-top: 40px;
         text-align-last: center;
@@ -1023,6 +1048,7 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
         font-size: 24px;
     }
 }
+
 
 /* para dispositivos hasta 1200px listas html home*/
 
@@ -1035,7 +1061,7 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
         font-family: 'Tahoma', sans-serif;
         text-align: center;
         font-weight: 700;
-        height: 100px;
+        height: 120px;
         width: 70%;
         margin: 0 auto;
         align-content: center;
@@ -1044,9 +1070,6 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
         border-style: solid;
         border-bottom-color: steelblue;
         border-bottom-width: thick;
-    }
-    ul.list-group>li.dias:hover {
-        box-shadow: 5px 5px 5px #888888;
     }
     
     .btn-reservar {
@@ -1057,8 +1080,37 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
     td.td-cod-centro-home {
         text-align: right;
     }
+    
 }
 
+/* posicionamos la IMAGEN X  en las listas */
+@media only screen and (min-width:768px) and (max-width:1200px) {
+    /* situamos IMAGEN X en el borde de la lista del home */
+    a.btn-eliminar-lista>img.img-eliminar-lista {        
+        left: 94%;
+    }
+}
+/* posicionamos la IMAGEN X  en las listas */
+@media only screen and (min-width:500px) and (max-width:767px) {
+    
+    a.btn-eliminar-lista>img.img-eliminar-lista {
+        left: 90%;        
+    }
+}
+
+/* posicionamos la IMAGEN X  en las listas */
+@media only screen and (min-width:200px) and (max-width:499px) {
+    
+    a.btn-eliminar-lista>img.img-eliminar-lista {        
+        left: 85%;
+        
+    }
+    li.dias{
+        height: 150px;
+    }
+}
+
+/* posicionamos la IMAGEN USUARIO en las HOME */
 @media (max-width:359px) {
     article.foto_izquierda {
         border-right: 1px solid #ffffff;
@@ -1508,14 +1560,17 @@ button.btn-consultar-cod-centro {
     }
 }
 
+
 /* tamaño input asunto del mensaje*/
-form>div.form-group>input.pilar{
+
+form>div.form-group>input.pilar {
     width: 300px;
 }
+
 @media(max-width: 769px) {
-   form>div.form-group>input.pilar{
-    width: 170px;
-}
+    form>div.form-group>input.pilar {
+        width: 170px;
+    }
 }
 
 
