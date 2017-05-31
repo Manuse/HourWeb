@@ -81,12 +81,14 @@
     </div>
     <br>
     <div class="row">
-        <div class="container-fluid">
+        <div class="container-fluid" >
+            
             <div class="tab-content">
                 <!-- TAB indice y titulo de la pestaña en iu-bootstrap, no hace falta controller-->
                 <uib-tabset>
-
+                    
                     <uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
+                        
                         <div class="btn-group pull-right">
                             <!-- 2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina -->
                             <label class="btn btn-info btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</label>
@@ -95,7 +97,7 @@
                         </div>
                         <a ui-sref="reservar" name="button" id="ir_reserva" class="btn btn-info btn-reservar btn-sm">RESERVAR</a>
                         <br><br>
-
+                        <div class="panel panel-primary">
                         <div class="">
                             <!--lunes-->
                             <div class="col-md-25 col-lg-5">
@@ -183,7 +185,7 @@
                                 </ul>
                             </div>
                         </div>
-
+                        </div>
                         <!-- TAB 2 -->
                     </uib-tab>
                     <!--<div class="tab-pane" role="tabpanel" id="seccion2">-->
