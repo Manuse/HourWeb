@@ -225,6 +225,7 @@ a.btn-editar-foto {
         left: 70px;
         width: 100px;
         height: 100px;
+    
     }
     /* Imagen editar foto */
     img.imagen-editar-foto {
@@ -279,11 +280,12 @@ label.nom-mail-config {
     top: 1px;
 }
 
-/*foto perfil*/
-.efecto1{
+/*foto perfil esto hace q el elemento se quede estatico si no se fijan las coordenadas, ademas
+no obedece a las librerias de bootstrap */
+/*.efecto1{
    position: absolute;
      
-}
+}*/
 
 .image{
   opacity: 1;
@@ -295,7 +297,7 @@ label.nom-mail-config {
 }
 
 .efecto1:hover .image {
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 
@@ -305,8 +307,19 @@ label.nom-mail-config {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  transform: translate(-40%, -40%);
+  -ms-transform: translate(-40%, -40%);
+}
+
+.icon-camara{
+    color: azure;
+    font-size: 23px;
+}
+
+@media only screen and (min-width:200px) and (max-width:767px) {
+    .image2{
+        left: 73px;
+    }
 }
 
 .efecto1:hover .image2{
