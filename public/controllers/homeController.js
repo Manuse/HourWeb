@@ -6,21 +6,23 @@
 
     function homeController(userFactory, $timeout, DATABASE, $log) {
         var vm = this;
-        
-        
+
+
         /*Accordion*/
         vm.oneAtATime = true;
         vm.open = [];
-        
-        var interval = function(){$timeout(recarga, 1000)};
+
+        var interval = function () {
+            $timeout(recarga, 500)
+        };
         interval();
         vm.lunes = [];
         vm.martes = [];
         vm.miercoles = [];
         vm.jueves = [];
         vm.viernes = [];
-        vm.semana=0;
-        vm.dias=[new Date('11/1/2019'),new Date('10/1/2019'),new Date('12/1/2019'),new Date('7/1/2019'),new Date('1/1/2019')]
+        vm.semana = 0;
+
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
@@ -28,9 +30,9 @@
                     vm.photo = userFactory.getPhoto();
                     recogerMisReservas();
                     recogerCentro();
-                    //cargarFecha();
+                    cargarFecha();
                 }, 0);
-            }else{
+            } else {
                 interval();
             }
         }
@@ -40,15 +42,17 @@
          */
         vm.refrecarCalendario = function () {
             recogerMisReservas();
-           // cargarFecha()
+            cargarFecha();
         };
 
         /**
          * 
          */
-        function recogerCentro(){
+        function recogerCentro() {
             DATABASE.ref("centros/" + vm.getUser.codcentro + "/nombre").once("value", function (snapshot) {
-                $timeout(function(){vm.centro=snapshot.val()},0);
+                $timeout(function () {
+                    vm.centro = snapshot.val()
+                }, 0);
             });
         }
 
@@ -56,38 +60,39 @@
          * 
          */
         function cargarFecha() {
-            var dia = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
+            var dia = new Date(new Date().getTime() -(82800000*(new Date().getDay() - 1)));
             vm.dias = [];
             for (var j = 0; j < 5; j++) {
-                dia.setDate(dia.getDate() + (j == 0 ? 0 : 1));
+                dia.setTime(dia.getTime() + (j == 0 ? 0 : 82800000));
                 if (vm.semana == 1 && j == 0) {
-                    dia.setDate(dia.getDate() + 7);
+                    dia.setTime(dia.getTime() + (7 * 82800000));
                 }
                 vm.dias.push(new Date(dia));
             }
         }
 
         function recogerMisReservas() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).on("value", function (snapshot) {
                 var reser = snapshot.val();
-                vm.lunes = [];
-                vm.martes = [];
-                vm.miercoles = [];
-                vm.jueves = [];
-                vm.viernes = [];
-                var semana1 = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
-                var fsemana1 = new Date(new Date().setDate(semana1.getDate() + 6));
-                semana1.setHours(0,0);
-                fsemana1.setHours(0,0);
+                lunes = [];
+                martes = [];
+                miercoles = [];
+                jueves = [];
+                viernes = [];
+                var semana1 = new Date(new Date().getTime() -(82800000*(new Date().getDay() - 1)));
+                var fsemana1 = new Date(semana1.getTime() + (6 * 82800000));
+                semana1.setHours(0, 0, 0);
+                fsemana1.setHours(0, 0, 0);
                 if (vm.semana == 1) {
-                    semana1.setDate(semana1.getDate() + 7);
-                    fsemana1.setDate(fsemana1.getDate() + 7);
-                } 
-                            
+                    semana1.setTime(semana1.getTime() + (8 * 82800000));
+                    fsemana1.setTime(fsemana1.getTime() + (8 * 82800000));
+                }
+                $log.log(semana1)
+                $log.log(fsemana1)
                 $timeout(function () {
                     for (var data in reser) {
-                        if (reser[data].fecha > 10) {                         
-                            var date = new Date(reser[data].fecha);                          
+                        if (reser[data].fecha > 10) {
+                            var date = new Date(reser[data].fecha);
                             if (semana1 < date && date < fsemana1) {
                                 var activ = true;
                                 var actu = false;
@@ -107,19 +112,19 @@
                                 };
                                 switch (parseInt(date.getDay())) {
                                     case 1:
-                                        vm.lunes.push(reserva);
+                                        lunes.push(reserva);
                                         break;
                                     case 2:
-                                        vm.martes.push(reserva);
+                                        martes.push(reserva);
                                         break;
                                     case 3:
-                                        vm.miercoles.push(reserva);
+                                        miercoles.push(reserva);
                                         break;
                                     case 4:
-                                        vm.jueves.push(reserva);
+                                        jueves.push(reserva);
                                         break;
                                     case 5:
-                                        vm.viernes.push(reserva);
+                                        viernes.push(reserva);
                                         break;
                                 }
                             }
@@ -128,7 +133,7 @@
                             if (new Date('1/1/1 ' + new Date().getHours() + ':' + new Date().getMinutes()) < new Date('1/1/1 ' + reser[data].hora) && new Date('1/1/1 ' + new Date(new Date() + 3600000).getHours() + ':' + new Date(new Date() + 3600000).getMinutes()) > new Date('1/1/1 ' + reser[data].hora)) {
                                 actu = true;
                             }
-                            var date = new Date('1/1/1 '+ reser[data].hora);
+                            var date = new Date('1/1/1 ' + reser[data].hora);
                             var reserva = {
                                 code: data,
                                 recurso: reser[data].recurso,
@@ -139,24 +144,28 @@
                             };
                             switch (parseInt(reser[data].fecha)) {
                                 case 1:
-                                    vm.lunes.push(reserva);
+                                    lunes.push(reserva);
                                     break;
                                 case 2:
-                                    vm.martes.push(reserva);
+                                    martes.push(reserva);
                                     break;
                                 case 3:
-                                    vm.miercoles.push(reserva);
+                                    miercoles.push(reserva);
                                     break;
                                 case 4:
-                                    vm.jueves.push(reserva);
+                                    jueves.push(reserva);
                                     break;
                                 case 5:
-                                    vm.viernes.push(reserva);
+                                    viernes.push(reserva);
                                     break;
-
                             }
                         }
                     }
+                    vm.lunes = lunes;
+                    vm.martes = martes;
+                    vm.miercoles = miercoles;
+                    vm.jueves = jueves;
+                    vm.viernes = viernes;
                 }, 0);
             });
         }
@@ -165,17 +174,16 @@
          * 
          */
         vm.borrarReserva = function (reserva, array, index) {
-            if(reserva.activo){
-            var reser = DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva.code);
-            reser.once("value", function (datos) {               
-                var a = datos.val();
-                if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
-                    reser.remove();
-                    $timeout(function(){array.splice(index,1);},0)
-                } else {
-                    alert("No puedes borrar las asignaciones permanentes"); //futuro modal
-                }
-            });
+            if (reserva.activo) {
+                var reser = DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva.code);
+                reser.once("value", function (datos) {
+                    var a = datos.val();
+                    if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
+                        reser.remove();
+                    } else {
+                        alert("No puedes borrar las asignaciones permanentes"); //futuro modal
+                    }
+                });
             }
         };
 

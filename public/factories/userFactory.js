@@ -36,6 +36,12 @@
             getPhoto: function () {
                 return photo;
             },
+            setPhoto:function(url){
+                photo=url;
+            },
+            setUser:function(user){
+                users=user;
+            },
             actualizarFactory: function () {
                 getData();
             }

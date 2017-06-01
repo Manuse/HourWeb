@@ -21,18 +21,21 @@
                         
                         <!--<input type="file" class="btn btn-primary" accept="image/*" id="cambiar_foto" ng-change=""/>-->
                         <div class="efecto1">
-                            <img class="img-responsive image imagen-config" alt="Usuario Pic" ng-src="{{vm.photo}}" ng-mouseenter="vm.cambiarImagen=!vm.cambiarImagen" ng-mouseleave="vm.cambiarImagen=!vm.cambiarImagen" />
+                            <label>
+                            <img class="img-responsive image imagen-config" alt="Usuario Pic" ng-src="{{vm.photo}}" />
                             
                             <div class="image2">                               
                                 
                                 <label class="glyphicon glyphicon-camera icon-camara">
-                                    <input type="file" style="display: none;">                                
+                                       <input type="file" filedirective file="vm.cambiarFoto" style="display: none;">                            
                                 </label>
-
+                                 
                             </div>
+                            </label>
                         </div>
                         
                     </div>
+                    <span>{{vm.file}}</span>
                     <div class="col-xs-12 col-sm-10">
                         <table class="table table-responsive">
                             <tbody>
@@ -84,7 +87,7 @@
                                             <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.updateUser()">
 									            <strong>Guardar</strong>
 								        </button>
-                                            <button type="button" class="btn btn-default btn-sm btn-datos" ng-click="vm.updateUser()">
+                                            <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="">
 									            <strong>Cancelar</strong>
 								        </button>
                                         </div>
@@ -99,10 +102,14 @@
                                                 <div class="input-group-btn">
                                                     <div class="input-group">
                                                         <!-- cambia tipo del input de text a password-->
-                                                        <input class="form-control input-pass-config" type="{{vm.eye ? 'text':'password'}}" placeholder="Nuevo password">
+                                                        <input class="form-control input-pass-config" type="{{vm.eye ? 'text':'password'}}" placeholder="Antigua Contraseña" ng-model="vm.oldPass">
                                                     </div>
                                                     <div class="input-group">
-                                                        <input class="form-control input-pass-config2" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar password">
+                                                        <!-- cambia tipo del input de text a password-->
+                                                        <input class="form-control input-pass-config" type="{{vm.eye ? 'text':'password'}}" placeholder="Nueva Contraseña" ng-model="vm.nPass1">
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <input class="form-control input-pass-config2" type="{{vm.eye ? 'text':'password'}}" placeholder="Confirmar Contraseña" ng-model="vm.nPass2">
                                                         <div class="input-group">
                                                             <button type="button" class="form-control btn-ojo1" ng-click="vm.visualizar()">
                                                             <span ng-class="{'glyphicon glyphicon-eye-close icono-ojo-centro': vm.eye, 'glyphicon glyphicon-eye-open icono-ojo-centro': !vm.eye}">     </span>                                                            
@@ -124,8 +131,13 @@
                                 </tr>
                                 <tr class="tr-home" ng-if="vm.bContrasena">
                                     <td colspan="1" class="td-btn-datos">
-                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.bContrasena=!vm.bContrasena">
+                                        <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.cambiarPass()">
 									            <strong>Guardar</strong>
+								        </button>
+                                    </td>
+                                    <td colspan="1" class="td-btn-datos">
+                                        <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.cancelarPass()">
+									            <strong>Cancelar</strong>
 								        </button>
                                     </td>
                                 </tr>

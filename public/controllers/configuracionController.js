@@ -5,11 +5,14 @@
         .module('app')
         .controller('ConfiguracionController', configuracionController);
 
-    function configuracionController($timeout, userFactory, DATABASE, AUTH, STORAGE, $log, errorFactory) {
+    function configuracionController($scope,$timeout, userFactory, DATABASE, AUTH, STORAGE, $log, errorFactory, $uibModal) {
         var vm = this;
-
+        vm.nPass1 = "";
+        vm.nPass2 = "";
+        vm.oldPass = "";
+        $scope.fil={};
         var interval = function () {
-            $timeout(recarga, 1000);
+            $timeout(recarga, 500);
         };
         interval();
 
@@ -37,49 +40,81 @@
             $timeout(function () {
                 vm.eye = false;
             }, 800);
-           
+
         }
 
         /**
          * 
          */
-        vm.cambiarContraseña = function () {
-            if(vm.nPass1 == vm.nPass2){
-            var credential = firebase.auth.EmailAuthProvider.credential(
-                AUTH.currentUser.email,
-                vm.oldPass
-            );
-            AUTH.currentUser.reauthenticate(credential).then(function () {
-                user.updatePassword(vm.nPass2).then(function(){
+        vm.cambiarPass = function () {
+            if (vm.nPass1 != 0 && vm.nPass2 != 0 && vm.oldPass != 0) {
+                if (vm.nPass1 == vm.nPass2) {
+                    var credential = firebase.auth.EmailAuthProvider.credential(
+                        AUTH.currentUser.email,
+                        vm.oldPass
+                    );
+                    AUTH.currentUser.reauthenticate(credential).then(function () {
+                        AUTH.currentUser.updatePassword(vm.nPass2).then(function () {
+                            $timeout(function () {
+                                vm.bContrasena = !vm.bContrasena;
+                                vm.nPass1 = "";
+                                vm.nPass2 = "";
+                                vm.oldPass = "";
+                            });
+                        }, function (err) {
+                            $timeout(function () {
+                                vm.error(errorFactory.getError(err));
+                            })
+                        });
+                    }, function (err) {
+                        $timeout(function () {
+                            vm.error(errorFactory.getError(err));
+                        })
 
-                }, function(err){
-                    vm.error(errorFactory.getError(err))
-                });
-            }, function (err) {
-                vm.error(errorFactory.getError(err))
-            });
+                    });
+                } else {
+                    vm.error(errorFactory.getError("contraseñaDistinta"));
+                }
+            } else {
+                $log.log(errorFactory.getError("campoVacio"))
+                vm.error(errorFactory.getError("campoVacio"));
             }
         };
 
         /**
          * 
          */
-        vm.cambiarFoto = function () {
-
-           /* var uploadTask = STORAGE.child("imgperfil/" + getCurrentUser().uid + ".jpeg").put(vm.file); //añadimos el archivo a la carpeta de imgperfil de firebase y el archivo tendra el id del usuario 
-            uploadTask.on("state_changed", function (snapshot) { //mientras se ejecuta la subida
-                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100; //obtencion del progreso
-                console.log("subida al " + progress); //muestra el progreso de subida
-            }, function (err) { //en caso de error
-                vm.error(errorFactory.getError(err);
-            }, function () { //cuando finaliza
-                getCurrentUser().updateProfile({ //actualizamos la url de la foto de perfil del usuario por si tuviera otra distinta
-                    photoURL: uploadTask.snapshot.downloadURL
-                });
-                setTimeout(function () {
-                    vm.photo = AUTH.currentUser.photoURL;
-                }, 1000); //refresca  la foto de la configuracion
-            });*/
+        vm.cancelarPass = function () {
+            vm.nPass1 = "";
+            vm.nPass2 = "";
+            vm.oldPass = "";
+            vm.bContrasena = !vm.bContrasena;
+        }
+        /**
+         * 
+         */
+        vm.cambiarFoto = function (file) {
+            $log.log(file.size)
+            $log.log(file)
+            if(file.size<300000){
+             var uploadTask = STORAGE.child("imgperfil/" + vm.getUser.id + ".jpeg").put(file); //añadimos el archivo a la carpeta de imgperfil de firebase y el archivo tendra el id del usuario 
+             uploadTask.on("state_changed", function (snapshot) { //mientras se ejecuta la subida
+                 var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100; //obtencion del progreso
+                 console.log("subida al " + progress); //muestra el progreso de subida
+             }, function (err) { //en caso de error
+                 vm.error(errorFactory.getError(err));
+             }, function () { //cuando finaliza
+                 AUTH.currentUser.updateProfile({ //actualizamos la url de la foto de perfil del usuario por si tuviera otra distinta
+                     photoURL: uploadTask.snapshot.downloadURL
+                 });
+                 $timeout(function () {
+                     vm.photo = AUTH.currentUser.photoURL;
+                     userFactory.setPhoto(AUTH.currentUser.photoURL);
+                 }, 1000); //refresca  la foto de la configuracion
+             });
+            }else{
+                vm.error(errorFactory.getError("bigImg"));
+            }
         };
 
         /**
@@ -102,9 +137,9 @@
                 } else {
                     vm.error(errorFactory.getUser("nombre/apellido"));
                 }
-                /*AUTH.currentUser.updateProfile({
-                    displayName: nom
-                });*/
+                AUTH.currentUser.updateProfile({
+                    displayName: vm.nombre
+                });
             });
 
         }

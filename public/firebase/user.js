@@ -7,7 +7,6 @@ const AUTH = firebase.auth(); // constante de autentificacion
 function getCurrentUser() {
     return AUTH.currentUser;
 }
-
 var newuser, newcentro;//variables donde se guardaran los datos del registro
 //observador del estado de la sesion, si el usuario esta logueado enteramente user es true sino es false
 //el observador es para no trabajar con currentUser sin que el inicio de sesion este completado

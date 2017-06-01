@@ -51,12 +51,12 @@
         
         /* carga los dias de la semana en el home y en reservar.html */
         function cargarFecha() {
-            var dia = new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() - 1)));
+            var dia = new Date(new Date().getTime() -(82800000*(new Date().getDay() - 1)));
             vm.dias = [];
             for (var j = 0; j < 5; j++) {
-                dia.setDate(dia.getDate() + (j == 0 ? 0 : 1));
+                dia.setTime(dia.getTime() + (j == 0 ? 0 : 82800000));
                 if (vm.semana == 1 && j == 0) {
-                    dia.setDate(dia.getDate() + 7);
+                    dia.setTime(dia.getTime() + (7*82800000));
                 }
                 vm.dias.push(new Date(dia));
             }
@@ -140,9 +140,7 @@
                                 var fila = {};
                                 fila.hora = new Date(i).getHours() + ':' + (new Date(i).getMinutes() != 0 ? new Date(i).getMinutes() : new Date(i).getMinutes() + '0') + ' - ' + new Date(i + 1800000).getHours() + ':' + (new Date(i + 1800000).getMinutes() != 0 ? new Date(i + 1800000).getMinutes() : new Date(i + 1800000).getMinutes() + '0');
                                 for (var j = 0; j < 5; j++) { //columnas
-                                    vm.dias[j].setHours(new Date(i).getHours());
-                                    vm.dias[j].setMinutes(new Date(i).getMinutes());
-                                    vm.dias[j].setSeconds(0);
+                                    vm.dias[j].setHours(new Date(i).getHours(),new Date(i).getMinutes(),0);
                                     var celda = {};
                                     celda.activo = true;
                                     celda.fecha = new Date(vm.dias[j]);

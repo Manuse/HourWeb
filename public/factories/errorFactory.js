@@ -13,13 +13,13 @@
                     case "auth/invalid-email":
                         return "El email no es válido";
                     case "auth/user-not-found":
-                        return "El email o la contraseña no son válidos";
+                        return "El email o la contraseña no son correctos";
                     case "auth/wrong-password":
-                        return "El email o la contraseña no son válidos";
+                        return "La contraseña no es correcta";
                     case "campoVacio":
                         return "No puede haber campos vacios";
                     case "contraseñaDistinta":
-                        return "Las contraseñas no son iguales iguales";
+                        return "Las contraseñas no son iguales";
                     case "errorHoraRegistro":
                         return "El inicio debe ser menor que el final y haber un minimo de 2 horas de diferencia";
                     case "centroInexistente":
@@ -30,6 +30,8 @@
                         return "El recurso ya existe";
                     case "noTipo":
                         return "El tipo ya existe";
+                    case "bigImg":
+                        return "La imagen no puede pesar mas de 300 Kb";
                     default:
                         return "Ha ocurrido un error";
                 }
