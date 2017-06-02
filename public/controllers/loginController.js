@@ -1,10 +1,10 @@
 (function () {
     angular.module('app').controller('LoginController', loginController);
 
-    function loginController($uibModal, $location) {
+    function loginController(AUTH, DATABASE, $uibModal, $location) {
         var vm = this;
         vm.animationsEnabled = true;
-        vm.loginForm = function() {
+        vm.loginForm = function () {
             var modalInstance = $uibModal.open({
                 animation: vm.animationsEnabled,
                 templateUrl: 'modal/mLoginForm.html',
@@ -13,14 +13,14 @@
             });
 
             modalInstance.result.then(function () {
-     
+
             }, function () {
-      
-             });
+
+            });
         }
 
-        vm.adminForm = function() {
-           var modalInstance = $uibModal.open({
+        vm.adminForm = function () {
+            var modalInstance = $uibModal.open({
                 animation: vm.animationsEnabled,
                 templateUrl: 'modal/mAdminForm.html',
                 controller: 'AdminFormController',
@@ -28,13 +28,13 @@
             });
 
             modalInstance.result.then(function () {
-     
+
             }, function () {
-      
-             });
+
+            });
         }
 
-        vm.standarForm = function() {
+        vm.standarForm = function () {
             var modalInstance = $uibModal.open({
                 animation: vm.animationsEnabled,
                 templateUrl: 'modal/mStandarForm.html',
@@ -43,20 +43,32 @@
             });
 
             modalInstance.result.then(function () {
-     
+
             }, function () {
-                
-             });
+
+            });
         };
 
-         firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {//el usuario esta logueao 
-				if(firebase.auth().currentUser.emailVerified){
-                window.location = "index.html";
-				}else{
-					 firebase.auth().signOut();
-				}
-            } else {//si no esta logueado te redirigira al login
+        AUTH.onAuthStateChanged(function (user) {
+            if (user) { //el usuario esta logueao 
+                if (AUTH.currentUser.emailVerified) {
+                    DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).once("value", function (snapshot) {
+                       if(!snapshot.val()[Object.keys(snapshot.val())[0]].verificado){
+                        DATABASE.ref("user/" + Object.keys(snapshot.val())[0]).update({
+                            verificado: true
+                        }).then(function () {
+                            window.location = "index.html";
+                        });
+                       }else{
+                           window.location = "index.html";
+                       }
+                    });
+
+
+                } else {
+                    AUTH.signOut();
+                }
+            } else { //si no esta logueado te redirigira al login
                 // window.location = "login.html"; // si se desloguea que sea enviado a este otro html
                 //firebase.auth().signOut() para desloguearme
             }

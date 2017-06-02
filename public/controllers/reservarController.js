@@ -8,7 +8,7 @@
     function reservarController(userFactory, DATABASE, $timeout, $log) {
         var vm = this;
         var interval = function () {
-            $timeout(recarga, 1000)
+            $timeout(recarga, 100);
         };
         interval();
         vm.recursos = [];
@@ -23,7 +23,7 @@
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
-                    vm.getUser = userFactory.getUser();
+                    vm.getUser = userFactory.getUser;
                     vm.cargarFechaRecursos();
                     cargarTipos();
                     cargarCursos();
@@ -34,7 +34,7 @@
         }
 
         function cargarCursos() {
-            DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
+            DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
                 var cursos = snapshot.val();
                 $timeout(function () {
                     for (var data in cursos) {
@@ -71,24 +71,22 @@
         vm.hacerReserva = function (celda, ncelda) {
            
             var reserva = {
-                nombre: vm.getUser.nombre + ' ' + vm.getUser.apellido,
+                nombre: vm.getUser().nombre + ' ' + vm.getUser().apellido,
                 curso: vm.curso==null ? '':vm.curso,
                 fecha: celda.fecha.getTime(),
                 recurso: vm.recurso,
-                usuario: vm.getUser.id
+                usuario: vm.getUser().id
             };
             $log.log(reserva)
             if (celda.activo && ncelda == null || ncelda.activo && celda.activo) {
                 $log.log("entra")
-                DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
-            } //else if (celda.activo && ) {
-            //  DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").push(reserva);
-            //}
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(reserva);
+            } 
         };
 
         /* select de pruebaReservas.html que se carga al seleccionar opcion del select anterior */
         vm.cargarRecursos = function () {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/").orderByChild("tipo").equalTo(vm.tipo).on("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").orderByChild("tipo").equalTo(vm.tipo).on("value", function (snapshot) {
                 vm.tabla = [];
                 $timeout(function () {
                     if (snapshot.exists()) {
@@ -116,7 +114,7 @@
          * Carga los tipos
          */
         function cargarTipos() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos").once("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.tipos = snapshot.val();
                     vm.tipos.unshift('Seleccione un recurso');
@@ -130,9 +128,9 @@
             if (vm.recurso == null) {
                 vm.tabla = [];
             } else {
-                DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso).on("value", function (snapshot) {
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso).on("value", function (snapshot) {
                     var reservas = snapshot.val();
-                    DATABASE.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (hor) {
+                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (hor) {
                         var horas = hor.val().split("-");
                         $timeout(function () {
                             vm.tabla = [];

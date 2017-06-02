@@ -41,9 +41,6 @@
             },
             setUser:function(user){
                 users=user;
-            },
-            actualizarFactory: function () {
-                getData();
             }
         };
         return factory;

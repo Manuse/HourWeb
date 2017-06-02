@@ -14,6 +14,6 @@
        $timeout(function(){
              $uibModalInstance.close();
         }, 2000);
-       // interval();
+       
     }
 })();

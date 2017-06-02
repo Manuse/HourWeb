@@ -15,15 +15,14 @@
         vm.oneAtATime = true;
         vm.open = [];
         var interval = function () {
-            $timeout(recarga, 1000)
+            $timeout(recarga, 100)
         };
-
         interval();
 
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
-                    vm.getUser = userFactory.getUser();
+                    vm.getUser = userFactory.getUser;
                     cargarRecursos();
                     getTipologias();
                     horaCentro();
@@ -34,7 +33,7 @@
         }
 
         function horaCentro() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.mytime = new Date("1/1/1 " + snapshot.val().split("-")[0]);
                 }, 0);
@@ -43,7 +42,7 @@
 
 
         vm.crearRecurso = function () {
-            var re = DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/" + vm.recurso); //decimos el nodo del recurso
+            var re = DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + vm.recurso); //decimos el nodo del recurso
             if (vm.recurso != 0) {
                 re.once("value", function (snapshot) {
                     if (!snapshot.exists()) { //sino existe lo creamos
@@ -64,7 +63,7 @@
         };
 
         function getTipologias() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").once("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.tipologias = snapshot.val();
                     vm.open.fill(false, 0, vm.tipologias.length);
@@ -79,7 +78,7 @@
             var funcion = function () {
                 vm.tipologias.splice(index, 1);
                 vm.open.splice(index, 1);
-                DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").set(vm.tipologias);
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").set(vm.tipologias);
             }
 
             vm.confirmacion("¿Borrar este tipo?", funcion);
@@ -90,7 +89,7 @@
                 if (!vm.tipologias.includes(vm.ntipo)) {
                     vm.tipologias.push(vm.ntipo);
                     vm.open.push(false);
-                    DATABASE.ref("centros/" + vm.getUser.codcentro + "/tipos/").set(vm.tipologias);
+                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").set(vm.tipologias);
                 } else {
                     vm.error(errorFactory.getError("campoVacio"));
                 }
@@ -101,13 +100,13 @@
 
         vm.borrarRecurso = function (recurso) {
             var funcion = function () {
-                DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/" + recurso).remove();
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + recurso).remove();
             };
             vm.confirmacion("¿Borrar el recurso " + recurso + "?", funcion);
         };
 
         function cargarRecursos() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/recursos/").on("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").on("value", function (snapshot) {
                 $timeout(function () {
                     vm.recursos = Object.keys(snapshot.val()).map(function (key) {
                         return {

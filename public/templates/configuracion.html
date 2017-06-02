@@ -22,7 +22,7 @@
                         <!--<input type="file" class="btn btn-primary" accept="image/*" id="cambiar_foto" ng-change=""/>-->
                         <div class="efecto1">
                             <label>
-                            <img class="img-responsive image imagen-config" alt="Usuario Pic" ng-src="{{vm.photo}}" />
+                            <img class="img-responsive image imagen-config" alt="Usuario Pic" ng-src="{{vm.photo()}}" />
                             
                             <div class="image2">                               
                                 
@@ -35,7 +35,6 @@
                         </div>
                         
                     </div>
-                    <span>{{vm.file}}</span>
                     <div class="col-xs-12 col-sm-10">
                         <table class="table table-responsive">
                             <tbody>
@@ -87,7 +86,7 @@
                                             <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.updateUser()">
 									            <strong>Guardar</strong>
 								        </button>
-                                            <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="">
+                                            <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.cancelarUser()">
 									            <strong>Cancelar</strong>
 								        </button>
                                         </div>

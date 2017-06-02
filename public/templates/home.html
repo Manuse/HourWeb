@@ -31,7 +31,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="col-sm-2">
-                        <img class="img-circle img-responsive imagen-home hidden-xs" alt="No image" ng-src="{{vm.photo}}" />
+                        <img class="img-circle img-responsive imagen-home hidden-xs" alt="No image" ng-src="{{vm.photo()}}" />
                     </div>
                     <div class="col-sm-10">
                         <table class="table table-responsive tabla-home">
@@ -41,8 +41,8 @@
                                         <label class="nomenclatura">Nombre:</label>
                                     </td>
                                     <td class="td-datos-home">
-                                        <span class="nombre-home" ng-bind="vm.getUser.nombre+' ' | mayus"></span>
-                                        <span class="nombre-home" ng-bind="vm.getUser.apellido | mayus"></span>
+                                        <span class="nombre-home" ng-bind="vm.getUser().nombre+' ' | mayus"></span>
+                                        <span class="nombre-home" ng-bind="vm.getUser().apellido | mayus"></span>
                                     </td>
                                 </tr>
                                 <tr class="tr-home">
@@ -56,14 +56,14 @@
 
                                 <tr class="tr-home">
                                     <td colspan="3" class="td-config">
-                                        <uib-accordion close-others="vm.oneAtATime" ng-if="vm.getUser.tipo == 'administrador'">
+                                        <uib-accordion close-others="vm.oneAtATime" ng-if="vm.getUser().tipo == 'administrador'">
                                             <div uib-accordion-group class="panel-default" is-open="vm.status.open1">
                                                 <uib-accordion-heading class="acordeon-home">
                                                     <div class="text-primary">Consultar/Ocultar código del Centro<i class="glyphicon" ng-class="{'glyphicon-chevron-down': vm.status.open1, 'glyphicon-chevron-right': !vm.status.open1}"></i>
                                                     </div>
                                                 </uib-accordion-heading>
 
-                                                <p class="text-center codigo-xs-home" ng-bind="vm.getUser.codcentro"></p>
+                                                <p class="text-center codigo-xs-home" ng-bind="vm.getUser().codcentro"></p>
                                             </div>
                                         </uib-accordion>
                                     </td>

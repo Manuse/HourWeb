@@ -32,6 +32,10 @@
                         return "El tipo ya existe";
                     case "bigImg":
                         return "La imagen no puede pesar mas de 300 Kb";
+                    case "telefono/largo":
+                        return "El telefono es demasiado largo";
+                    case "telefono/formato":
+                        return "El telefono no tiene el formato correcto";
                     default:
                         return "Ha ocurrido un error";
                 }

@@ -13,7 +13,7 @@
         vm.open = [];
 
         var interval = function () {
-            $timeout(recarga, 500)
+            $timeout(recarga, 100);
         };
         interval();
         vm.lunes = [];
@@ -26,8 +26,8 @@
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
-                    vm.getUser = userFactory.getUser();
-                    vm.photo = userFactory.getPhoto();
+                    vm.getUser = userFactory.getUser;
+                    vm.photo = userFactory.getPhoto;
                     recogerMisReservas();
                     recogerCentro();
                     cargarFecha();
@@ -49,9 +49,9 @@
          * 
          */
         function recogerCentro() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/nombre").once("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/nombre").once("value", function (snapshot) {
                 $timeout(function () {
-                    vm.centro = snapshot.val()
+                    vm.centro = snapshot.val();
                 }, 0);
             });
         }
@@ -72,7 +72,7 @@
         }
 
         function recogerMisReservas() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser.id).on("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser().id).on("value", function (snapshot) {
                 var reser = snapshot.val();
                 lunes = [];
                 martes = [];
@@ -175,7 +175,7 @@
          */
         vm.borrarReserva = function (reserva, array, index) {
             if (reserva.activo) {
-                var reser = DATABASE.ref("centros/" + vm.getUser.codcentro + "/reservas/" + reserva.code);
+                var reser = DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + reserva.code);
                 reser.once("value", function (datos) {
                     var a = datos.val();
                     if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
@@ -189,8 +189,8 @@
 
         //CAMBIAR
         function rellenarTablaHorarios() {
-            DATABASE.ref("centros/" + vm.getUser.codcentro + "/horas").once("value", function (horas) {
-                DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser.id).once("value", function (snapshot) {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (horas) {
+                DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
                     vm.filas = [];
                     var data = snapshot.val();
                     for (var i = 1; i <= horas.val(); i++) { //filas                                     
