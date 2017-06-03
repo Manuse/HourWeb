@@ -36,6 +36,8 @@
                         return "El telefono es demasiado largo";
                     case "telefono/formato":
                         return "El telefono no tiene el formato correcto";
+                    case "cambioCentro":
+                        return "El centro nuevo no existe o ya perteneces a ese centro";
                     default:
                         return "Ha ocurrido un error";
                 }

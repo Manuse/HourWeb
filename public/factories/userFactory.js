@@ -6,6 +6,7 @@
     function userFactory(DATABASE, AUTH, $timeout) {
         var users;
         var photo;
+        var code;
         AUTH.onAuthStateChanged(function (user) {
             if (user) { //el usuario esta logueao 
                 if (AUTH.currentUser.emailVerified) {
@@ -25,6 +26,7 @@
                 $timeout(function () {
                     users = snapshot.val()[Object.keys(snapshot.val())[0]];
                     photo = AUTH.currentUser.photoURL;
+                    code = Object.keys(snapshot.val())[0];
                 }, 0);
             });
         }
@@ -41,6 +43,12 @@
             },
             setUser:function(user){
                 users=user;
+            },
+            getCode: function(){
+                return code;
+            },
+            getData : function(){
+                getData();
             }
         };
         return factory;
