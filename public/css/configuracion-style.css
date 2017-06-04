@@ -1,12 +1,14 @@
 /* CONFIGURACION DEL PERFIL DE USUARIO configuracion.html */
 
+
 /* titulo Edicion de Perfil */
 
 .titulo-perfil {
     margin-bottom: 3px;
 }
+
 @media only screen and (min-width:200px) and (max-width:379px) {
-    .titulo-perfil{
+    .titulo-perfil {
         font-size: 1.5em;
         font-weight: bold;
         margin-top: 0;
@@ -20,16 +22,21 @@
     width: 100%;
 }
 
-input.input-pass-config
- {
+input.input-pass-config {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
 }
 
-input.input-pass-config2{
+input.input-pass-config2 {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
     margin-left: 3px;
+}
+
+input.input-pass-config3 {
+    font-weight: bold;
+    font-family: 'Tahoma', sans-serif;
+    margin-bottom: 5px;    
 }
 
 /* hr bajo el titulo Edicion de Perfil */
@@ -73,7 +80,8 @@ input.form-control.input-nombre-centro {
         width: 150px;
         margin-bottom: 5px;
     }
-    input.input-pass-config2 {
+    input.input-pass-config2, 
+    input.input-pass-config3 {
         margin-left: 0;
         font-size: 9px;
         width: 150px;
@@ -110,8 +118,13 @@ input.form-control.input-nombre-centro {
         width: 170px;
         margin-bottom: 5px;
     }
+    input.input-pass-config3{
+        font-size: 10px;
+        width: 160px !important;            
+    }
     input.input-pass-config {
         font-size: 10px;
+        margin-top: 5px;
         width: 160px !important;
     }
     input.input-pass-config2 {
@@ -119,7 +132,8 @@ input.form-control.input-nombre-centro {
         margin-top: 5px;
         font-size: 10px;
         width: 160px !important;
-    }
+    }       
+    
     span.icono-ojo-centro {
         font-size: 14px !important;
     }
@@ -136,11 +150,22 @@ input.form-control.input-nombre-centro {
 @media only screen and (min-width:414px) and (max-width:769px) {
     input.input-pass-config {
         width: 290px !important;
+        margin-top: 5px;
     }
-    input.input-pass-config2 {
+    input.input-pass-config2,input.input-pass-config3 {
         margin-left: 0px;
         margin-top: 5px;
         width: 290px !important;
+    }
+}
+
+@media (min-width: 770px) {
+    input.input-pass-config,
+    input.input-pass-config2{
+        margin-top: 5px;
+    }
+    button.btn-ojo1{
+        padding: 10px;
     }
 }
 
@@ -151,14 +176,12 @@ input.form-control.input-nombre-centro {
         width: 60%;
         font-size: 13px;
     }
-   
     /* boton guardar codigo centro */
     button.btn-guardar-centro {
         display: table-column-group !important;
         width: 40% !important;
     }
 }
-
 
 /* estilo de tabla de configuracion de perfil */
 
@@ -207,13 +230,8 @@ a.btn-editar-foto {
         width: 20px;
         height: 20px;
     }
-    /* imagen principal*/
-    img.imagen-config {
-        width: 100px;
-        height: 100px;
-    }
+    
 }
-
 
 /* para i-Pad , medida exacta */
 
@@ -225,20 +243,13 @@ a.btn-editar-foto {
         left: 70px;
         width: 100px;
         height: 100px;
-    
     }
     /* Imagen editar foto */
     img.imagen-editar-foto {
         width: 25px;
         height: 25px;
     }
-    /* imagen principal*/
-    img.imagen-config {
-        position: relative;
-        left: 0px;
-        width: 120px;
-        height: 120px;
-    }
+    
 }
 
 @media only screen and (min-width:300px) and (max-width:768px) {
@@ -254,13 +265,6 @@ a.btn-editar-foto {
     img.imagen-editar-foto {
         width: 20px;
         height: 20px;
-    }
-    /* imagen principal*/
-    img.imagen-config {
-        position: relative;
-        left: 0px;
-        width: 120px;
-        height: 120px;
     }
 }
 
@@ -280,48 +284,64 @@ label.nom-mail-config {
     top: 1px;
 }
 
+
 /*foto perfil esto hace q el elemento se quede estatico si no se fijan las coordenadas, ademas
 no obedece a las librerias de bootstrap */
+
+
 /*.efecto1{
    position: absolute;
      
 }*/
 
-.image{
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: .5s ease;
-  backface-visibility: hidden;
+.imagen-config {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
 }
 
-.efecto1:hover .image {
+@media only screen and (min-width:200px) and (max-width:991px) {
+    /* div contenedor de la imagen de la configuaracion */
+    div.efecto1 {
+        width: 110px !important;
+        height: 110px !important;
+    }
+}
+
+
+/* damos opacidad a imagen */
+
+.efecto1:hover .imagen-config {
     opacity: 0.7;
 }
 
+/* hacemos visible la camara dentro de la imagen */
 
-.image2{
-  transition: .5s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-40%, -40%);
-  -ms-transform: translate(-40%, -40%);
+.efecto1:hover .image2 {
+    opacity: 1;
 }
 
-.icon-camara{
+.image2 {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-42%, -42%);
+    -ms-transform: translate(-42%, -42%);
+}
+
+.icon-camara {
     color: azure;
     font-size: 23px;
 }
 
-@media only screen and (min-width:200px) and (max-width:767px) {
-    .image2{
-        left: 73px;
+@media only screen and (min-width:200px) and (max-width:991px) {
+    .image2 {
+        left: 70px;
+        top: 43%;
     }
-}
-
-.efecto1:hover .image2{
-    opacity: 1;
 }
