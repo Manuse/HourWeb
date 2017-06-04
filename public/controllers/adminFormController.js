@@ -2,10 +2,11 @@
 
     angular.module('app').controller('AdminFormController', adminFormController);
 
-    function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, $uibModal,$log, errorFactory) {
+    function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory,$log, errorFactory) {
         var vm = this;
         vm.inicioHora = new Date('1/1/1 12:00');
         vm.finHora = new Date('1/1/1 13:00');
+        vm.error = modalFactory.error;
 
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0 || vm.horas == 0) {
@@ -42,25 +43,6 @@
             $uibModalInstance.close();
         }
         
-        vm.error = function(err){
-            var modalInstance = $uibModal.open({
-                animation: false,
-                templateUrl: 'modal/mError.html',
-                controller: 'ErrorController',
-                controllerAs: 'vmmm',
-                resolve:{
-                    item: function(){
-                        return err;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function () {
-     
-            }, function () {
-      
-            });
-        };
 
         /* variables para cambiar hora según rango */
         vm.horaup = 1;

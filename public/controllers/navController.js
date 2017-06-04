@@ -2,7 +2,7 @@
 
     angular.module('app').controller('NavController', navController);
 
-    function navController(userFactory, AUTH, $timeout, $scope) {
+    function navController(userFactory, AUTH, $timeout) {
         var vm = this;
         var interval = function () {
             $timeout(recarga, 100);
@@ -14,9 +14,6 @@
             AUTH.signOut();
         };
 
-        /*vm.getUser = userFactory.getUser();
-        vm.photo = userFactory.getPhoto();*/
-
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
@@ -27,15 +24,5 @@
                 interval();
             }
         }
-       /* $scope.$watch(function () {
-            return userFactory.getUser();
-        }, function (value) {
-            vm.getUser = value;
-        });
-         $scope.$watch(function () {
-            return userFactory.getPhoto();
-        }, function (value) {
-            vm.photo = value;
-        });*/
     }
 })();

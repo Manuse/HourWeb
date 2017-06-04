@@ -1,5 +1,4 @@
-(function() {
-
+(function () {
 
     angular
         .module('app')
@@ -12,10 +11,9 @@
             $uibModalInstance.close(false);
         }
 
-        vm.ok=function(){
+        vm.ok = function () {
             $uibModalInstance.close(true);
         }
-
         
     }
 })();

@@ -4,12 +4,15 @@
         .module('app')
         .controller('AdministradorController', administradorController);
 
-    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, $uibModal, errorFactory) {
+    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, modalFactory, errorFactory) {
         var vm = this;
 
         // Timepicker reservas permanentes       
         vm.hstep = 1;
         vm.mstep = 30;
+
+        vm.error = modalFactory.error;
+        vm.confirmacion = modalFactory.confirmacion;
 
         //Accordion
         vm.oneAtATime = true;
@@ -125,55 +128,9 @@
          */
         vm.filtrar = function (tip) {
             return vm.recursos.filter(function (x) {
-                return x.tipo == tip
+                return x.tipo == tip;
             }).length;
         };
-
-
-        vm.error = function (err) {
-            var modalInstance = $uibModal.open({
-                animation: false,
-                templateUrl: 'modal/mError.html',
-                controller: 'ErrorController',
-                controllerAs: 'vmmm',
-                resolve: {
-                    item: function () {
-                        return err;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function () {
-
-            }, function () {
-
-            });
-        };
-
-        vm.confirmacion = function (msg, funcion) {
-            var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'modal/mConfirmacion.html',
-                controller: 'ConfirmacionController',
-                controllerAs: 'vmmm',
-                resolve: {
-                    item: function () {
-                        return msg;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function (resul) {
-                if (resul) {
-                    console.log(resul)
-                    funcion();
-                }
-
-            }, function () {
-
-            });
-        };
-
     }
 
 })();

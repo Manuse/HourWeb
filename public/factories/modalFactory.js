@@ -50,15 +50,15 @@
 
                 });
             },
-            progressBar:function () {
+            progressBar: function () {
                 var modalInstance = $uibModal.open({
                     animation: true,
-                    backdrop:false,
-                    keyboard:false,
+                    backdrop: false,
+                    keyboard: false,
                     templateUrl: 'modal/mProgressBar.html',
                     controller: 'ProgressBarController',
                     controllerAs: 'vmm',
-                    
+
                 });
 
                 modalInstance.result.then(function () {
@@ -67,6 +67,48 @@
 
                 });
             },
+            loginForm: function () {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'modal/mLoginForm.html',
+                    controller: 'LoginFormController',
+                    controllerAs: 'vmm'
+                });
+
+                modalInstance.result.then(function () {
+
+                }, function () {
+
+                });
+            },
+            adminForm: function () {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'modal/mAdminForm.html',
+                    controller: 'AdminFormController',
+                    controllerAs: 'vmm'
+                });
+
+                modalInstance.result.then(function () {
+
+                }, function () {
+
+                });
+            },
+            standarForm: function () {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'modal/mStandarForm.html',
+                    controller: 'StandarFormController',
+                    controllerAs: 'vmm'
+                });
+
+                modalInstance.result.then(function () {
+
+                }, function () {
+
+                });
+            }
         };
 
         return factory;

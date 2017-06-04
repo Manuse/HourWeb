@@ -2,9 +2,10 @@
 
     angular.module('app').controller('StandarFormController', standarFormController);
 
-    function standarFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, $uibModal, errorFactory) {
+    function standarFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory, errorFactory) {
         var vm = this;
-
+        vm.error = modalFactory.error;
+        
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0) {
                 vm.error(errorFactory.getError("campoVacio"));
@@ -31,26 +32,6 @@
                 } else {
                     vm.error(errorFactory.getError("centroInexistente"));
                 }
-            });
-        };
-
-        vm.error = function(err){
-            var modalInstance = $uibModal.open({
-                animation: false,
-                templateUrl: 'modal/mError.html',
-                controller: 'ErrorController',
-                controllerAs: 'vmmm',
-                resolve:{
-                    item: function(){
-                        return err;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function () {
-     
-            }, function () {
-      
             });
         };
 

@@ -96,11 +96,13 @@
          */
         vm.cambiarFoto = function (file) {
             if (file.size < 300000) {
+                progressBarFactory.initProgress(); //muestra el progreso de subida
+                    vm.progressBar();
                 var uploadTask = STORAGE.child("imgperfil/" + vm.getUser().id + ".jpeg").put(file); //añadimos el archivo a la carpeta de imgperfil de firebase y el archivo tendra el id del usuario 
-                uploadTask.on("state_changed", function (snapshot) { //mientras se ejecuta la subida
-                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100; //obtencion del progreso
-                    console.log("subida al " + progress); //muestra el progreso de subida
+                uploadTask.on("state_changed", function (snapshot) { //mientras se ejecuta la subida                  
+                    progressBarFactory.setProgress((snapshot.bytesTransferred / snapshot.totalBytes)*100-1);
                 }, function (err) { //en caso de error
+                    progressBarFactory.setProgress(100);
                     vm.error(errorFactory.getError(err));
                 }, function () { //cuando finaliza
                     AUTH.currentUser.updateProfile({ //actualizamos la url de la foto de perfil del usuario por si tuviera otra distinta
@@ -108,8 +110,10 @@
                     }).then(function (value) {
                         $timeout(function () {
                             userFactory.setPhoto(AUTH.currentUser.photoURL);
+                            progressBarFactory.setProgress(100);
                         }, 0);
                     }, function (err) {
+                        progressBarFactory.setProgress(100);
                         vm.error(errorFactory.getError(err));
                     });
                     //refresca  la foto de la configuracion
