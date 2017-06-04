@@ -22,6 +22,7 @@
     }
 }
 
+/* cambia esto diego */
 .pinocha {
     color: #5bc0de;
 }
@@ -136,7 +137,10 @@ nav.navbar-color {
 
 /* encabezado de dias de las listas */
 
-
+/* padding necesario para el contenido y panel de los tabs del HOME */
+div.panel-home{
+    padding:10px;
+}
 /* rgb(5, 4, 41)*/
 
 div.col-md-25>h6.sombra,
@@ -159,9 +163,10 @@ ul.list-group>li.lista-verde {
     border-style: groove;
     border-width: 3px;
     border-top-style: solid;
+    border-bottom-style: inset;
+    border-bottom-width: 3px;
     border-top-width: 35px;
     border-radius: 10px 10px 10px;
-    border-bottom-width: 7px;
 }
 
 
@@ -176,9 +181,10 @@ ul.list-group>li.lista-azul {
     border-style: groove;
     border-width: 3px;
     border-top-style: solid;
+    border-bottom-style: inset;
+    border-bottom-width: 3px;
     border-top-width: 35px;
     border-radius: 10px 10px 10px;
-    border-bottom-width: 7px;
 }
 
 
@@ -190,9 +196,10 @@ ul.list-group>li.lista-roja {
     border-style: groove;
     border-width: 3px;
     border-top-style: solid;
+    border-bottom-style: inset;
+    border-bottom-width: 3px;
     border-top-width: 35px;
     border-radius: 10px 10px 10px;
-    border-bottom-width: 7px;
 }
 
 
@@ -220,7 +227,7 @@ a.btn-eliminar-lista>img.img-eliminar-lista {
 /* hover color verde un poco mas vistoso */
 
 ul.list-group>li.dias.lista-verde:hover {
-    box-shadow: 3px 1px 2px skyblue;
+    box-shadow: 2px 0px 5px skyblue;
     background-color: #ccff99;
 }
 
@@ -228,7 +235,7 @@ ul.list-group>li.dias.lista-verde:hover {
 /* hover color azul un poco mas vistoso */
 
 ul.list-group>li.dias.lista-azul:hover {
-    box-shadow: 3px 1px 2px skyblue;
+    box-shadow: 2px 0px 5px skyblue;
     background-color: skyblue;
 }
 
@@ -236,7 +243,7 @@ ul.list-group>li.dias.lista-azul:hover {
 /* hover color rojo un poco mas vistoso */
 
 ul.list-group>li.dias.lista-roja:hover {
-    box-shadow: 3px 1px 2px skyblue;
+    box-shadow: 2px 0px 5px skyblue;
     background-color: #FCAE9E;
 }
 
@@ -1062,13 +1069,9 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
         font-weight: 700;
         height: 120px;
         width: 70%;
-        margin: 0 auto;
-        align-content: center;
-        margin-bottom: 12px;
-        border: 3px steelblue;
-        border-style: solid;
-        border-bottom-color: steelblue;
-        border-bottom-width: thick;
+        margin: 0 auto;       
+        margin-bottom: 12px;       
+        
     }
     .btn-reservar {
         margin-left: 5px;
