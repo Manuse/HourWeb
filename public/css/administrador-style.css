@@ -2,8 +2,15 @@
 
 /* Color Encabezado Accordion*/
 
-.pinocho {
+div.panelrecursotipologia>div.panel-heading{
+    text-align: center;
+    font-size: 18px;
+    
+}
+
+.accordcolor {
     color: #f00;
+    
 }
 
 
@@ -35,7 +42,7 @@ div.row>div.col-lg-6>div.recur {
 
 /*badge de los Accordion*/
 
-div.pinocho>small>span {
+div.accordcolor>small>span {
     margin-top: -3px;
 }
 
@@ -69,38 +76,39 @@ ul.list-group>li.list-group-item-info>span {
 
 /*-------------------------------------------SEGUNGO TAB------------------------------------*/
 
+/*Encabezado del tab*/
+div.panel-heading>div.row>div.col-xs-9.col-md-10{
+    
+    text-align: center;
+    font-size: 18px;
+    margin-top: 3px;
+}
 
 /*Boton Guardar*/
 
 div.row>div.col-xs-3.col-md-2>button {
-    margin-top: 7px;
-}
-
-
-/* Fila que contiene Usuario, Recursos, Dias, y Horas*/
-
-div.permanente {
     
 }
 
 
-/*letras Usuario, Recursos, Dias*/
-
-div.permanente>div.col-md-3>h3 {
-    
-    
-}
-
-div.permanente>div.col-md-3>select {
+/* select de usuario, recurso y dias*/
+div.panel-body>div.col-md-3>select.selectpermanente{
     margin-top: 35px;
 }
 
-div.permanente>div.col-md-3>div{
-    margin-left: 80px;
+/* letras Usuarios, Recursos, Dias*/
+
+div.panel-body>div.col-md-3>h3.listas{
+    text-align: center;
 }
-div.permanente>div.col-md-3>h3.pra>div {
-   
+
+/* distancia de select dias al de horas*/
+
+div.panel-body>div.col-md-3>div.horaspermanente{
+    margin-left: 75px;
 }
+
+
 
 
 
@@ -118,6 +126,12 @@ div.row>div.col-lg-6>div.cent>ul.list-group>li>span{
 /*Texto centrado en los li*/
 div.row>div.col-lg-6>div.cent>ul.list-group>li{
     text-align: center;
+}
+
+/*letras panel-heading de cursos*/
+div.panelcurso>div.panel-heading{
+    text-align: center;
+    font-size: 18px;
 }
     
 
