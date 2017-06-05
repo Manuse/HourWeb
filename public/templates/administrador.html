@@ -9,151 +9,152 @@
 
             <div class=" panelrecursotipologia panel panel-info">
                 <div class="panel-heading">
-                Agrege un Recurso o una Tipología
+                    Agrege un Recurso o una Tipología
                 </div>
                 <div class="panel-body">
+                    
                 
-             
-            <div class="row">
 
-                <div class="col-lg-6 col-md-6 hidden-sm hidden-xs">
-                    <div class="input-group-addon accord addon_recurso">
-                        <uib-accordion close-others="vm.oneAtATime">
-                            <br>
-                            <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
-                                <uib-accordion-heading>
-                                    <div class="accordcolor"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span></small>
-                                        <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
-                                </uib-accordion-heading>
-                                <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
-                                        <span ng-bind="recurso.recurso"></span>
-                                        <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarRecurso(recurso.recurso)"></span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </uib-accordion>
-                    </div>
-
-
-                </div>
-
-                <div class="col-lg-6 col-md-6 hidden-sm hidden-xs">
+<!--PRIMER RESPONSIVE-->
                     <div class="row">
 
-                        <div class="col-lg-6 col-md-6 col-sm-5">
-                            <div class="input-group-addon recur addon_recurso">
-                                <h3>Crear tipo</h3>
+                        <div class="col-lg-6 col-md-5 hidden-sm hidden-xs">
+                            <div class="input-group-addon accord addon_recurso">
+                                <uib-accordion close-others="vm.oneAtATime">
+                                    <br>
+                                    <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
+                                        <uib-accordion-heading>
+                                            <div class="accordcolor"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span></small>
+                                                <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
+                                        </uib-accordion-heading>
+                                        <ul class="list-group">
+                                            <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
+                                                <span ng-bind="recurso.recurso"></span>
+                                                <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarRecurso(recurso.recurso)"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
+                                </uib-accordion>
+                            </div>
 
-                                <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-5 hidden-sm hidden-xs">
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-8">
+                                    <div class="input-group-addon recur addon_recurso">
+                                        <h3>Crear tipo</h3>
+
+                                        <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
+
+                                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
 
-                            </div>
+                                    </div>
 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-7">
+                                </div>
+                                <div class="col-lg-6 col-md-4">
 
-                            <div class="input-group-addon recur addon_recurso">
-                                <h3>Crear Recurso</h3>
+                                    <div class="input-group-addon recur addon_recurso">
+                                        <h3>Crear Recurso</h3>
 
-                                <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
-                                <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
+                                        <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
+                                        <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
                             </select>
-                                <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
+                                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
 
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
-                    </div>
+                        
+<!--                        TERMINA PRIMER RESPONSIVE-->
 
 
-                </div>
+                        <!--                SEGUNDO RESPONSIVE-->
+                        <div class="hidden-lg hidden-md visible-sm visible-xs">
+                            <div class="row">
 
-                <!--                Segundo Responsive-->
-                <div class="hidden-lg hidden-md visible-sm visible-xs">
-                    <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="recur2 input-group-addon  addon_recurso">
+                                        <h3>Crear tipo</h3>
 
-                        <div class="col-lg-6 col-md-6 col-sm-5">
-                            <div class="input-group-addon recur addon_recurso">
-                                <h3>Crear tipo</h3>
+                                        <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
 
-                                <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
-
-                                <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
+                                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
 
-                            </div>
+                                    </div>
 
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-7">
+                                </div>
+                                <div class="col-sm-7">
 
-                            <div class="input-group-addon recur addon_recurso">
-                                <h3>Crear Recurso</h3>
+                                    <div class="recur2 input-group-addon addon_recurso">
+                                        <h3>Crear Recurso</h3>
 
-                                <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
-                                <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
+                                        <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
+                                        <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
                             </select>
-                                <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
+                                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
 
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
-                    </div>
 
+                        <div class="hidden-lg hidden-md visible-sm visible-xs">
+                            <div class="accord2 input-group-addon addon_recurso">
+                                <uib-accordion close-others="vm.oneAtATime">
+                                    <br>
+                                    <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
+                                        <uib-accordion-heading>
+                                            <div class="accordcolor"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span></small>
+                                                <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
+                                        </uib-accordion-heading>
+                                        <ul class="list-group">
+                                            <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
+                                                <span ng-bind="recurso.recurso"></span>
+                                                <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarRecurso(recurso.recurso)"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                </div>
-
-                <div class="hidden-lg hidden-md visible-sm visible-xs">
-                   <div class="panel panel-primary">
-      <div class="panel-heading">
-      Lista de Tipologías con sus recursos
-      </div>
-      <div class="panel-body">Panel Content</div>
-    </div>
-                    
-                        <uib-accordion close-others="vm.oneAtATime">
-                            <br>
-                            <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
-                                <uib-accordion-heading>
-                                    <div class="accordcolor"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span></small>
-                                        <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
-                                </uib-accordion-heading>
-                                <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info" ng-repeat="recurso in vm.recursos | filter : {tipo : tip} : true">
-                                        <span ng-bind="recurso.recurso"></span>
-                                        <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarRecurso(recurso.recurso)"></span>
-                                    </li>
-                                </ul>
+                                </uib-accordion>
                             </div>
 
-                        </uib-accordion>
-                    
 
-
-                </div>
+                        </div>
 
 
 
-                <br><br><br>
+                        <br><br><br>
 
 
 
 
+                    </div>
+                    </div>
+                
             </div>
-               </div>
-            </div>
-            
+<!--            TERMINA SEGUNDO RESPONSIVE-->
+
 
 
 
