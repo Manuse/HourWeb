@@ -13,7 +13,6 @@
             },
             link: function (scope, element, attrs) {
                 element.bind('change', function (event) {
-                    console.log("pene")
                     var files = event.target.files;
                     var file = files[0];
                     //scope.file = file ? file.name : undefined; 
