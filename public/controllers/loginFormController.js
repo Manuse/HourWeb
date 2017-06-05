@@ -8,7 +8,10 @@
         vm.error = modalFactory.error;
 
          vm.iniciarSesion = function() {
-            AUTH.signInWithEmailAndPassword(vm.email, vm.pass).catch(function (err) {
+            AUTH.signInWithEmailAndPassword(vm.email, vm.pass).then(function(){
+               $uibModalInstance.close(); 
+            },
+            function (err) {
                 vm.error(errorFactory.getError(err));
             });
         }

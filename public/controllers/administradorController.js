@@ -27,6 +27,7 @@
                 $timeout(function () {
                     vm.getUser = userFactory.getUser;
                     cargarRecursos();
+                    cargarUsuarios()
                     getTipologias();
                     horaCentro();
                 }, 0);
@@ -117,10 +118,27 @@
                             tipo: snapshot.val()[key].tipo
                         };
                     });
+                    vm.recursoRS = vm.recursos[0].recurso;
                 }, 0);
             });
         }
 
+        function cargarUsuarios(){
+            DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).on("value", function (snapshot) {
+                $timeout(function () {
+                    vm.usuarios = Object.keys(snapshot.val()).map(function (key) {
+                        return {
+                            id: snapshot.val()[key].id,
+                            nombre: snapshot.val()[key].nombre+' '+snapshot.val()[key].apellido,
+                            verificado:snapshot.val()[key].verificado,
+                            tel_fijo:snapshot.val()[key].tel_fijo,
+                            tel_movil:snapshot.val()[key].tel_movil
+                        };
+                    });
+                    vm.usuarioRS = vm.usuarios[0].id;
+                }, 0);
+            });
+        }
         /*
          *devuelve el numero de recursos segun el tipo
          * tip: tipo

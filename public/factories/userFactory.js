@@ -7,19 +7,6 @@
         var users;
         var photo;
         var code;
-        AUTH.onAuthStateChanged(function (user) {
-            if (user) { //el usuario esta logueao 
-                if (AUTH.currentUser.emailVerified) {
-                    //window.location = "index.html"
-                } else {
-                    AUTH.signOut();
-                }
-                getData();
-            } else { //si no esta logueado te redirigira al login
-                window.location = "login.html"; // si se desloguea que sea enviado a este otro html
-                //firebase.auth().signOut() para desloguearme
-            }
-        });
 
         function getData() {
             DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).once("value", function (snapshot) {

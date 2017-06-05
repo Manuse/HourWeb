@@ -20,116 +20,12 @@
     <script src="firebase/config.js" charset="utf-8"></script>
 </head>
 
-<body class="mi-body" style="background-color:#FFFFF0;">
+<body ng-controller="GeneralController as gc" ng-class="gc.location.path()=='/login' ? 'fondo-login':'fondo-principal'">
     <!-- navbar-inverse pinta nav de negro y navbar-static-top la fijamos arriba
 			    role navigation mejora la accesibilidad a las aplicaciones y mis sitios -->
-
-    <nav class="navbar navbar-default navbar-color" role="navigation" ng-controller="NavController as uc">
-        <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle well well-md" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
-								<!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
-								de nuestras etiquetas Kinddle x ej -->
-								<span class="sr-only">
-									Desplegar / ocultar Menú
-								</span>
-								<!-- triplicamos el icono dentro del boton para reproducir las 3 lineas al'colapsar' el contenido del navbar-->
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-            </button>
-            <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
-            <div class="navbar-brand">
-                <a class="navbar-text titulo-web" ui-sref="home">HOURWEB</a>
-            </div>
-        </div>
-
-        <!-- Inicia menu -->
-        <div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <div class="icono-home estilo-home">
-                        <a ui-sref="home">
-                            <span class="glyphicon glyphicon-home"></span>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="imagen-navbar">
-                        <a>
-                            <img class="img-responsive img-rounded profile-image img-profile" ng-src="{{uc.photo()}}" alt="no image">
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <span class="span-main-dropdown" uib-dropdown>
-                            <!-- Navbar nombre user y glyphicon desplegar -->
-						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" uib-dropdown-toggle>				    						
-							    <strong ng-bind="uc.getUser().nombre+' '+uc.getUser().apellido"></strong>
-								<span class="glyphicon glyphicon-triangle-bottom"></span>
-                    </a>
-                    <hr class="dropdown-separador">
-                    <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
-                        <li role="menuitem">
-                            <a ui-sref="configuracion" class="editar-perfil">Editar Perfil
-                                <span><img src="imagenes/users.png" class="imagen-user-dropdown" alt="no foto"></span>
-                                </a>
-                        </li>
-                        <li role="menuitem" ng-if="uc.getUser().tipo == 'administrador'">
-                            <a ui-sref="administrador" class="editar-perfil">Administrador
-                                <span><img src="imagenes/tools-svg1.svg" class="imagen-tool-dropdown" alt="no foto">
-                                </span>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li role="menuitem">
-                            <a href="#" class="editar-perfil">Ayuda
-                                    <span><img src="imagenes/ayuda_svg1.svg" class="imagen-ayuda-dropdown" alt="no foto"></span>
-                                </a>
-                        </li>
-                        <li role="menuitem" id="salir" ng-click="uc.signOut()">
-                            <a href="#" class="editar-perfil">Cerrar Sesión
-								    <span><img src="imagenes/turn_off_svg1.svg" class="imagen-off-dropdown" alt="no foto"></span>
-								</a>
-                        </li>
-                    </ul>
-                    </span>
-                </li>
-                <!-- fin dropdown -->
-
-            </ul>
-        </div>
-    </nav>
-
-
-    <!-- fin nav-->
-
-    <div class="container-fluid mi-div" ui-view>
-
-    </div>
-
-    <footer class="mi-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-sm-12" style="margin-top:10px;">
-                    <h5 class="">Sobre la Web</h5>
-                    <p class="">Sitio web dedicado a: <br> - Gestión de reservas de los diferentes recursos existentes en todo Centro de Enseñanza.
-                    <br>
-                    Hourweb facilita a los docentes y empleados del centro conocer en tiempo real....
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-lg-offset-l2 col-sm-12">
-                <h5>Enlaces de interés</h5>
-                <ul>
-                    <li><a class="" href="#">Contacto</a></li>
-                    <li><a class="" href="#">Twitter</a></li>
-                </ul>
-            </div>
-        </div>
-
-
-    </footer>
+<div ui-view>
+    
+</div>
 
     <!--<script src="https://code.jquery.com/jquery-latest.js"></script>
 		<script src="js/bootstrap.min.js"></script>-->
@@ -145,7 +41,9 @@
     <script src="factories/errorFactory.js"></script>
     <script src="factories/userFactory.js"></script>
     <script src="factories/modalFactory.js"></script>
+    <script src="factories/registerFactory.js"></script>
     <script src="factories/progressBarFactory.js"></script>
+    <script src="controllers/generalController.js"></script>
     <script src="controllers/navController.js"></script>
     <script src="controllers/homeController.js"></script>
     <script src="controllers/reservarController.js"></script>
@@ -153,7 +51,11 @@
     <script src="controllers/configuracionController.js"></script>    
     <script src="controllers/confirmacionController.js"></script>
     <script src="controllers/progressBarController.js"></script>
+    <script src="controllers/loginController.js"></script>
+    <script src="controllers/loginFormController.js"></script>
+    <script src="controllers/standarFormController.js"></script>
     <script src="controllers/errorController.js"></script>
+    <script src="controllers/adminFormController.js"></script>
     <!--<script src="firebase/database.js" charset="utf-8"></script>
 		<script src="firebase/user.js" charset="utf-8"></script>
 		<script src="firebase/controlador.js" charset="utf-8"></script>-->

@@ -2,13 +2,20 @@
 
     angular.module('app').controller('NavController', navController);
 
-    function navController(userFactory, AUTH, $timeout) {
+    function navController(userFactory, AUTH, $timeout, $location, $log) {
         var vm = this;
         var interval = function () {
-            $timeout(recarga, 100);
+            $timeout(recarga, 50);
         };
         interval();
         vm.isNavCollapsed = true;
+
+
+        $timeout(function () {
+            if (AUTH.currentUser == null) {
+                $location.path("/login");
+            }
+        }, 350);
 
         vm.signOut = function () {
             AUTH.signOut();
@@ -20,7 +27,7 @@
                     vm.getUser = userFactory.getUser;
                     vm.photo = userFactory.getPhoto;
                 }, 0);
-            }else{
+            } else {
                 interval();
             }
         }

@@ -168,7 +168,7 @@
                 <div class="col-md-3">
                     <br>
                     <h3 class="listas">USUARIO</h3>
-                    <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_usuario">
+                    <select class="form-control pull-right btn-info" ng-options="item.id as item.nombre for item in vm.usuarios" ng-model="vm.usuarioRS">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                             </select>
                 </div>
@@ -176,7 +176,7 @@
                 <div class="col-md-3">
                     <br>
                     <h3 class="listas">RECURSOS</h3>
-                    <select class="form-control pull-right btn-info" name="combo_fecha" id="combo_recurso">
+                    <select class="form-control pull-right btn-info" ng-options="item.recurso as item.recurso for item in vm.recursos" ng-model="vm.recursoRS">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
                                             </select>

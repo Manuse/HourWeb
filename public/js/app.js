@@ -1,34 +1,41 @@
 (function () {
     angular.module('app', ['ngAnimate', 'ngSanitize', 'ui.router', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise(function($injector ,$location){
-            if(!$location.absUrl().includes("login.html")){
-                return "/home";
-            }
-            return "";
-        });
-        
-            $stateProvider.state("home", {
+            $urlRouterProvider.otherwise("login");
+
+            $stateProvider.state("login", {
+                    url: "/login",
+                    templateUrl: "templates/login.html",
+                    controller: 'LoginController',
+                    controllerAs: "vm"
+                })
+                .state("normal", {
                     url: "/home",
+                    templateUrl: "templates/principal.html",
+                })
+                .state("normal.home", {
+                    url: "/principal",
                     templateUrl: "templates/home.html",
                     controller: 'HomeController',
                     controllerAs: "vm"
                 })
-                .state("reservar", {
+                .state("normal.reservar", {
                     url: "/reservar",
                     templateUrl: "templates/reservar.html",
                     controller: 'ReservarController',
                     controllerAs: "vm"
-                }).state("configuracion", {
-                    url: "/configuracion",
+                }).state("normal.configuracion", {
+                    url: "/perfil",
                     templateUrl: "templates/configuracion.html",
-                    controller:'ConfiguracionController',
-                    controllerAs:"vm"
-                }).state("administrador", {
+                    controller: 'ConfiguracionController',
+                    controllerAs: "vm"
+
+
+                }).state("normal.administrador", {
                     url: "/administrador",
                     templateUrl: "templates/administrador.html",
-                    controller:'AdministradorController',
-                    controllerAs:"vm"
+                    controller: 'AdministradorController',
+                    controllerAs: "vm"
                 });
         }).constant("DATABASE", firebase.database())
         .constant("AUTH", firebase.auth())

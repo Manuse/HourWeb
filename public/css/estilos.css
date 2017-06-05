@@ -1587,3 +1587,11 @@ form>div.form-group>input.pilar {
 
 
 /* aside #c0392b */
+
+.fondo-principal{
+    background-color:#FFFFF0
+}
+
+.fondo-login{
+    background-image: url('../imagenes/azul.jpg')
+}
