@@ -1500,35 +1500,24 @@ modificar listas home en tamaño mediano y xs, tabla, no se ven bien los colores
 
 /* FOOTER */
 
+
+div.mi-div1 {
+    height: 100%;
+}
+div.mi-div{
+    min-height: 100%;    
+    margin-bottom: 138px;
+}
+
 footer {
     text-align: justify;
     font-weight: bold;
     font-size: 12px;
-    width: auto;
-    height: 230px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    width: 100%;    
     /* el elemento ocupa la dimension real 100% */
-    background: skyblue;
-    clear: both;
-    margin-top: 21px;
+    background: skyblue;        
+    height: 223px;/* Altura del footer */    
 }
-
-html {
-    height: 100%;
-    margin: 0;
-}
-
-body.mi-body {
-    height: 100%;
-    margin: 0;
-}
-
-.mi-div {
-    min-height: 64%;
-}
-
 
 /* boton consultar codigo configuracion.html */
 
