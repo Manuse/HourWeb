@@ -14,6 +14,7 @@
     }
 }
 
+
 /* 'eliminamos' perfil  para resoluciones < 769px del usuario en home en screen superior a 769px */
 
 @media(min-width: 769px) {
@@ -22,10 +23,13 @@
     }
 }
 
+
 /* cambia esto diego */
+
 .pinocha {
     color: #5bc0de;
 }
+
 
 /* vale para home y configuracion */
 
@@ -35,11 +39,13 @@ table.tabla-home {
     margin-top: 15px;
 }
 
+
 /* vale para home y configuracion */
 
 tr.tr-home {
     border: 0;
 }
+
 
 /* vale para home y configuracion */
 
@@ -137,10 +143,14 @@ nav.navbar-color {
 
 /* encabezado de dias de las listas */
 
+
 /* padding necesario para el contenido y panel de los tabs del HOME */
-div.panel-home{
-    padding:10px;
+
+div.panel-home {
+    padding: 10px;
 }
+
+
 /* rgb(5, 4, 41)*/
 
 div.col-md-25>h6.sombra,
@@ -545,6 +555,16 @@ div.btn-group {
 
 /* INDEX - MODALES - */
 
+div.modal-dialog {
+    
+    
+}
+div.m-login{
+    margin: 30px auto;
+    max-width: 300px;
+    height: 270px;
+    padding: 0;
+}
 div>img.imagen-error {
     margin-left: 10px;
     margin-top: 5px;
@@ -704,6 +724,16 @@ table.tabla-reservar>tbody>tr>td {
 
 
 /* hacemos referencia a inputs de login.html */
+
+
+/* inputs de mLoginForm */
+
+input.form-control.form-login1 {
+    width: 247px;
+    background-color: #b3e3e3;
+    font-family: "Verdana", Georgia, sans-serif;
+    font-weight: bolder;
+}
 
 input.form-control.form-login {
     border: 1px solid #0641f1;
@@ -1069,9 +1099,8 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
         font-weight: 700;
         height: 120px;
         width: 70%;
-        margin: 0 auto;       
-        margin-bottom: 12px;       
-        
+        margin: 0 auto;
+        margin-bottom: 12px;
     }
     .btn-reservar {
         margin-left: 5px;
@@ -1500,12 +1529,12 @@ modificar listas home en tamaño mediano y xs, tabla, no se ven bien los colores
 
 /* FOOTER */
 
-
 div.mi-div1 {
     height: 100%;
 }
-div.mi-div{
-    min-height: 100%;    
+
+div.mi-div {
+    min-height: 100%;
     margin-bottom: 138px;
 }
 
@@ -1513,11 +1542,13 @@ footer {
     text-align: justify;
     font-weight: bold;
     font-size: 12px;
-    width: 100%;    
+    width: 100%;
     /* el elemento ocupa la dimension real 100% */
-    background: skyblue;        
-    height: 223px;/* Altura del footer */    
+    background: skyblue;
+    height: 223px;
+    /* Altura del footer */
 }
+
 
 /* boton consultar codigo configuracion.html */
 
@@ -1580,10 +1611,10 @@ form>div.form-group>input.pilar {
 
 /* aside #c0392b */
 
-.fondo-principal{
-    background-color:#FFFFF0
+.fondo-principal {
+    background-color: #FFFFF0
 }
 
-.fondo-login{
+.fondo-login {
     background-image: url('../imagenes/azul.jpg')
 }

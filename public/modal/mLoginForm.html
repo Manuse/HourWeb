@@ -1,37 +1,36 @@
-<div class="modal-content">
-	<!-- Header de la ventana -->
-	<div class="modal-header">
-		<button type="button" class="close btn-info" ng-click="vmm.close()" aria-hidden="true">
-		    <span>Cancelar</span>&times;
+<div class="m-login">
+    <div>
+        <button type="button" class="close" ng-click="vmm.close()" aria-hidden="true" style="margin-right:9px;">
+		    <span style="font-size:13px;">Cancelar</span><strong>&times;</strong>  
         </button>
-		<h4 class="modal-title">
-		    <span>
-			    <strong>Entrar en HourWeb</strong>
-            </span>
-		</h4>
-	</div>
-	<form class="form-inline" ng-submit="vmm.iniciarSesion()">
-		<div class="modal-body">
-			<!-- se agruparan en linea -->
-			<br>
-			<fieldset>
-			<div class="form-group">
-			    
-				<div class="input-group">
-					<input class="form-control form-login" autofocus type="email" placeholder="Correo" required ng-model="vmm.email">
-					<br><br>
-					<input class="form-control form-login" type="password" placeholder="Password" required ng-model="vmm.pass">
-				</div>
-			</div>
-			</fieldset>
-			<br><br>
-		</div>
-		<br>
-		<div class="modal-footer">
-			<p ng-if="vm.error != ''"></p>
-			<button type="submit" class="btn btn-lg btn-info" name="boton_entrar">
+        <br>
+        <h4 style="margin-left:15px;">
+            <strong>Entrar en HourWeb</strong>
+
+        </h4>
+    </div>
+    <form class="form-inline" ng-submit="vmm.iniciarSesion()">
+        <div class="">
+            <!-- se agruparan en linea -->
+
+            <fieldset>
+                <div class="form-group">
+
+                    <div class="input-group">
+                        <input class="form-control form-login1" autofocus type="email" placeholder="Correo" required ng-model="vmm.email">
+                        <br><br>
+                        <input class="form-control form-login1" type="password" placeholder="Password" required ng-model="vmm.pass">
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+
+        <div class="">
+            <p ng-if="vm.error != ''"></p>
+            <button type="submit" class="btn btn-md btn-info" name="boton_entrar">
 			    <strong>Entrar</strong>
 			</button>
-		</div>
-	</form>
+        </div>
+    </form>
 </div>
