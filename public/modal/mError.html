@@ -1,21 +1,14 @@
+<div class="modal-content">
+    <div>
+        <img class="img-responsive imagen-error" alt="Usuario Pic" src="imagenes/warning-icon-svg1.svg" />
+    </div>
 
-    
-        <div class="modal-content">
-           <div>
-                <img class="img-responsive imagen-error" alt="Usuario Pic" 
-                src="imagenes/warning-icon-svg1.svg"/>
-           </div>
-            
-            <br>
-            <div class="modal-body">
-                <h3 class="modal-title" style="color:red;" ng-bind="vmmm.error"></h3>
-            </div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-lg btn-danger" ng-click="vmmm.close()">
-                <strong>OK</strong>
-                </button>
-            </div>
-        </div>
-    
-
+    <div class="modal-body">
+        <h5 class="modal-title" style="color:red;" ng-bind="vmmm.error"></h5>
+    </div>
+    <div class="">
+        <button type="button" class="btn btn-xs btn-danger boton-error" ng-click="vmmm.close()">
+                <strong>De Acuerdo</strong>
+        </button>
+    </div>
+</div>

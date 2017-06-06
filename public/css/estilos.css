@@ -555,22 +555,23 @@ div.btn-group {
 
 /* INDEX - MODALES - */
 
-div.modal-dialog {
-    
-    
-}
-div.m-login{
+/*div.m-login{
     margin: 30px auto;
     max-width: 300px;
     height: 270px;
     padding: 0;
-}
+}*/
 div>img.imagen-error {
     margin-left: 10px;
     margin-top: 5px;
+    width: 35px;
+    height: 35px;
 }
 
-
+button.boton-error{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 /*boton ENTRAR */
 
 
@@ -730,9 +731,10 @@ table.tabla-reservar>tbody>tr>td {
 
 input.form-control.form-login1 {
     width: 247px;
-    background-color: #b3e3e3;
+    background-color: #daf1f1;
     font-family: "Verdana", Georgia, sans-serif;
     font-weight: bolder;
+    margin-left: 15px;
 }
 
 input.form-control.form-login {

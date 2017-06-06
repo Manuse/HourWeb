@@ -14,7 +14,7 @@
                     templateUrl: 'modal/mError.html',
                     controller: 'ErrorController',
                     controllerAs: 'vmmm',
-                    //size:
+                    size:'sm',
                     resolve: {
                         item: function () {
                             return err;
@@ -34,7 +34,7 @@
                     templateUrl: 'modal/mConfirmacion.html',
                     controller: 'ConfirmacionController',
                     controllerAs: 'vmmm',
-                    size:"sm",
+                    size:'sm',
                     resolve: {
                         item: function () {
                             return msg;
@@ -52,6 +52,34 @@
 
                 });
             },
+            
+            
+            login: function (msg, funcion) {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'modal/mLoginForm.html',
+                    controller: 'loginController',
+                    controllerAs: 'vmmm',
+                    size:'sm',
+                    resolve: {
+                        item: function () {
+                            return msg;
+                        }
+                    }
+                });
+                modalInstance.result.then(function (resul) {
+                    if (resul) {
+                        console.log(resul);
+                        funcion();
+                    }
+
+                }, function () {
+
+                });
+            },
+            
+            
+            
             progressBar: function () {
                 var modalInstance = $uibModal.open({
                     animation: true,
