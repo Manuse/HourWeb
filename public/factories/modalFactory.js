@@ -14,6 +14,7 @@
                     templateUrl: 'modal/mError.html',
                     controller: 'ErrorController',
                     controllerAs: 'vmmm',
+                    //size:
                     resolve: {
                         item: function () {
                             return err;
@@ -33,6 +34,7 @@
                     templateUrl: 'modal/mConfirmacion.html',
                     controller: 'ConfirmacionController',
                     controllerAs: 'vmmm',
+                    size:"sm",
                     resolve: {
                         item: function () {
                             return msg;
