@@ -561,6 +561,10 @@ div.btn-group {
     height: 270px;
     padding: 0;
 }*/
+.modal-error{
+    color:firebrick;    
+}
+
 div>img.imagen-error {
     margin-left: 10px;
     margin-top: 5px;
