@@ -216,7 +216,7 @@ ul.list-group>li.lista-roja {
 /* un puntero con una flecha */
 
 div.div-verde {
-    cursor: alias;
+    cursor: default;
 }
 
 

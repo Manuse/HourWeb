@@ -5,18 +5,20 @@
         .controller('ReservarController', reservarController);
 
     /* primer select de pruebaReservas.html*/
-    function reservarController(userFactory, DATABASE, $timeout, $log) {
+    function reservarController(userFactory, DATABASE, $timeout, $log, modalFactory, progressBarFactory) {
         var vm = this;
         var interval = function () {
             $timeout(recarga, 100);
         };
         interval();
+        vm.progress = modalFactory.progressBar;
         vm.recursos = [];
         vm.tabla = [];
         vm.tipos = [];
         vm.semana = '0';
         vm.cursos = [];
-		
+		var q;
+
 		/*
 		carga datos cuando carga al usuario
 		*/
@@ -68,8 +70,7 @@
                 vm.cargarDisponible();
         }
 
-        vm.hacerReserva = function (celda, ncelda) {
-           
+        vm.hacerReserva = function (celda, ncelda) {          
             var reserva = {
                 nombre: vm.getUser().nombre + ' ' + vm.getUser().apellido,
                 curso: vm.curso==null ? '':vm.curso,
@@ -77,10 +78,10 @@
                 recurso: vm.recurso,
                 usuario: vm.getUser().id
             };
-            $log.log(reserva)
             if (celda.activo && ncelda == null || ncelda.activo && celda.activo) {
-                $log.log("entra")
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(reserva);
+                vm.progress();
+                progressBarFactory.initProgress();
             } 
         };
 
@@ -125,18 +126,24 @@
 
         /* carga recursos disponibles en la tabla de pruebaReservas.html*/
         vm.cargarDisponible = function () {
+            try{
+                q.off()
+            }catch(err){}
+            q =  DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso);
             if (vm.recurso == null) {
                 vm.tabla = [];
             } else {
-                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso).on("value", function (snapshot) {
+                q.on("value", function (snapshot) {
                     var reservas = snapshot.val();
                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (hor) {
                         var horas = hor.val().split("-");
+                        progressBarFactory.setProgress(20);
                         $timeout(function () {
                             vm.tabla = [];
                             for (var i = new Date('1/1/1 ' + horas[0]).getTime(); i < new Date('1/1/1 ' + horas[1]); i += 1800000) { //fila
                                 var fila = {};
                                 fila.hora = new Date(i).getHours() + ':' + (new Date(i).getMinutes() != 0 ? new Date(i).getMinutes() : new Date(i).getMinutes() + '0') + ' - ' + new Date(i + 1800000).getHours() + ':' + (new Date(i + 1800000).getMinutes() != 0 ? new Date(i + 1800000).getMinutes() : new Date(i + 1800000).getMinutes() + '0');
+                                progressBarFactory.setProgress(20);
                                 for (var j = 0; j < 5; j++) { //columnas
                                     vm.dias[j].setHours(new Date(i).getHours(),new Date(i).getMinutes(),0);
                                     var celda = {};
@@ -147,12 +154,15 @@
                                         celda.activo = false;
                                     }
                                     for (var data in reservas) {
-                                        console.log(vm.dias[j] - new Date(reservas[data].fecha));
+                                        console.log("muh");
                                         if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000 || reservas[data].perm) {
                                             celda.activo = false;
                                             celda.nombre = reservas[data].nombre;
                                             celda.curso = reservas[data].curso;
                                         }
+                                    }
+                                    if(progressBarFactory.getProgress()<90){
+                                         progressBarFactory.sumProgress(5);
                                     }
                                     switch (j) {
                                         case 0:
@@ -175,6 +185,7 @@
                                 }
                                 vm.tabla.push(fila);
                             }
+                            progressBarFactory.setProgress(100);
                         }, 0);
                     });
                 });

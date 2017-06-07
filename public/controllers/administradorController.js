@@ -27,7 +27,7 @@
                 $timeout(function () {
                     vm.getUser = userFactory.getUser;
                     cargarRecursos();
-                    cargarUsuarios()
+                    cargarUsuarios();
                     getTipologias();
                     horaCentro();
                 }, 0);
@@ -39,7 +39,9 @@
         function horaCentro() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (snapshot) {
                 $timeout(function () {
-                    vm.mytime = new Date("1/1/1 " + snapshot.val().split("-")[0]);
+                    vm.mytimeRP = new Date("1/1/3000 " + snapshot.val().split("-")[0]);
+                    vm.max=new Date("1/1/3000 " + snapshot.val().split("-")[1])-1800000;
+                    vm.min=new Date("1/1/3000 " + snapshot.val().split("-")[0]);
                 }, 0);
             });
         }
@@ -118,7 +120,7 @@
                             tipo: snapshot.val()[key].tipo
                         };
                     });
-                    vm.recursoRS = vm.recursos[0].recurso;
+                    vm.recursoRP = vm.recursos[0].recurso;
                 }, 0);
             });
         }
@@ -135,10 +137,11 @@
                             tel_movil:snapshot.val()[key].tel_movil
                         };
                     });
-                    vm.usuarioRS = vm.usuarios[0].id;
+                    vm.usuarioRP = vm.usuarios[0];
                 }, 0);
             });
         }
+
         /*
          *devuelve el numero de recursos segun el tipo
          * tip: tipo
@@ -149,6 +152,19 @@
                 return x.tipo == tip;
             }).length;
         };
+
+        function hacerReservaPermanente(){
+            vm.mytimeRP.setDate(vm.dayRP);
+            var rp = {
+                fecha:vm.mytimeRP.getTime(),
+                recurso:vm.recursoRP,
+                usuario:vm.usuarioRP.id,
+                nombre:vm.usuarioRP.nombre,
+                curso:vm.cursoRP==null ? '':vm.cursoRP,
+                perm:true
+            };
+            DATABASE.ref("centros/"+vm.getUser().codcentro+"reservas").push(rp);
+        }
     }
 
 })();
