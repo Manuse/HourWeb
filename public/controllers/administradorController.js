@@ -17,6 +17,9 @@
         //Accordion
         vm.oneAtATime = true;
         vm.open = [];
+        vm.cursos = [];
+        vm.RP = [];
+        vm.dayRP="6";
         var interval = function () {
             $timeout(recarga, 100)
         };
@@ -30,6 +33,8 @@
                     cargarUsuarios();
                     getTipologias();
                     horaCentro();
+                    cargarCursos();
+                    cargarRP();
                 }, 0);
             } else {
                 interval();
@@ -39,9 +44,9 @@
         function horaCentro() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (snapshot) {
                 $timeout(function () {
-                    vm.mytimeRP = new Date("1/1/3000 " + snapshot.val().split("-")[0]);
-                    vm.max=new Date("1/1/3000 " + snapshot.val().split("-")[1])-1800000;
-                    vm.min=new Date("1/1/3000 " + snapshot.val().split("-")[0]);
+                    vm.mytimeRP = new Date("1/1/3000 " + snapshot.val().split("-")[0] + ":00");
+                    vm.max = new Date("1/1/3000 " + snapshot.val().split("-")[1] + ":00") - 1800000;
+                    vm.min = new Date("1/1/3000 " + snapshot.val().split("-")[0] + ":00");
                 }, 0);
             });
         }
@@ -90,6 +95,7 @@
             vm.confirmacion("¿Borrar este tipo?", funcion);
         };
 
+
         vm.crearTipo = function () {
             if (vm.ntipo != 0) {
                 if (!vm.tipologias.includes(vm.ntipo)) {
@@ -125,16 +131,16 @@
             });
         }
 
-        function cargarUsuarios(){
+        function cargarUsuarios() {
             DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).on("value", function (snapshot) {
                 $timeout(function () {
                     vm.usuarios = Object.keys(snapshot.val()).map(function (key) {
                         return {
                             id: snapshot.val()[key].id,
-                            nombre: snapshot.val()[key].nombre+' '+snapshot.val()[key].apellido,
-                            verificado:snapshot.val()[key].verificado,
-                            tel_fijo:snapshot.val()[key].tel_fijo,
-                            tel_movil:snapshot.val()[key].tel_movil
+                            nombre: snapshot.val()[key].nombre + ' ' + snapshot.val()[key].apellido,
+                            verificado: snapshot.val()[key].verificado,
+                            tel_fijo: snapshot.val()[key].tel_fijo,
+                            tel_movil: snapshot.val()[key].tel_movil
                         };
                     });
                     vm.usuarioRP = vm.usuarios[0];
@@ -153,17 +159,75 @@
             }).length;
         };
 
-        function hacerReservaPermanente(){
-            vm.mytimeRP.setDate(vm.dayRP);
-            var rp = {
-                fecha:vm.mytimeRP.getTime(),
-                recurso:vm.recursoRP,
-                usuario:vm.usuarioRP.id,
-                nombre:vm.usuarioRP.nombre,
-                curso:vm.cursoRP==null ? '':vm.cursoRP,
-                perm:true
-            };
-            DATABASE.ref("centros/"+vm.getUser().codcentro+"reservas").push(rp);
+
+        vm.hacerReservaPermanente = function () {
+            $log.log(vm.dayRP)
+            vm.mytimeRP.setDate(parseInt(vm.dayRP));
+            var existe = false,
+                i = 0;
+
+            while (i < vm.RP.length && !existe) {
+                if (vm.RP[i].recurso == vm.recursoRP && vm.RP[i].fecha.getDay() == vm.mytimeRP.getDay() && vm.RP[i].fecha.getHours() == vm.mytimeRP.getHours() && vm.RP[i].fecha.getMinutes() == vm.mytimeRP.getMinutes()) {
+                    existe = true;
+                }
+                i++;
+            }
+
+            if (vm.recursoRP != null) {
+                if (!existe) {
+                    var funcion = function () {
+                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recursoRP).once("value", function (snapshot) {
+
+                            for (var data in snapshot.val()) {
+                                if (new Date(snapshot.val()[data].fecha).getDay() == vm.mytimeRP.getDay() && new Date(snapshot.val()[data].fecha).getHours() == vm.mytimeRP.getHours() && new Date(snapshot.val()[data].fecha).getMinutes() == vm.mytimeRP.getMinutes()) {
+                                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data).remove();
+                                }
+                            }
+                            $log.log(vm.mytimeRP)
+                            var rp = {
+                                fecha: vm.mytimeRP.getTime(),
+                                recurso: vm.recursoRP,
+                                usuario: vm.usuarioRP.id,
+                                nombre: vm.usuarioRP.nombre,
+                                curso: vm.cursoRP == null || vm.cursoRP == vm.cursos[0] ? '' : vm.cursoRP,
+                                perm: true
+                            };
+                            DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(rp);
+                        })
+
+                    }
+                    vm.confirmacion("Se borraran todas las reservas normales que coincidan con esta reserva ¿Está seguro?", funcion);
+                } else {
+                    vm.error(errorFactory.getError("existeRP"));
+                }
+            } else {
+                vm.error(errorFactory.getError("debeRecurso"));
+            }
+        };
+
+
+        function cargarCursos() {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").once("value", function (snapshot) {
+                vm.cursos = snapshot.val();
+                vm.cursos.unshift('Seleccione el curso si desea')
+                vm.cursoRP = vm.cursos[0];
+            });
+        }
+
+        function cargarRP() {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("perm").equalTo(true).once("value", function (snapshot) {
+                vm.RP = Object.keys(snapshot.val()).map(function (key) {
+                    var date = new Date(snapshot.val()[key].fecha);
+                    return {
+                        fecha: date,
+                        code: key,
+                        recurso: snapshot.val()[key].recurso,
+                        hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
+                        perm: true,
+                        curso: snapshot.val()[key]
+                    }
+                });
+            });
         }
     }
 

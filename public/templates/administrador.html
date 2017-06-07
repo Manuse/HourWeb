@@ -181,7 +181,7 @@
 
 
                         <div class="col-xs-3 col-md-2">
-                            <button type="button" class="btn btn-info btn-md" id="guardar_reserva">
+                            <button type="button" class="btn btn-info btn-md" ng-click="vm.hacerReservaPermanente()">
                                                 <span class="glyphicon glyphicon-floppy-save"></span>
                                                 <span class="hidden-xs hidden-sm">
                                                     Guardar</span>
@@ -218,13 +218,22 @@
                     <div class="col-md-3">
                         <br>
                         <h3 class="listas">DÍAS</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng.model="vm.dayRP">
+                        <select class="selectpermanente form-control pull-right btn-info" ng-model="vm.dayRP">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                 <option class="opcion_combo" value="6">Lunes</option>
                                                 <option class="opcion_combo" value="7">Martes</option>
                                                 <option class="opcion_combo" value="8">Miércoles</option>
                                                 <option class="opcion_combo" value="9">Jueves</option>
                                                 <option class="opcion_combo" value="10">Viernes</option>
+                                            </select>
+                    </div>
+                    <div class="col-md-3" ng-if="vm.cursos.length > 1">
+                        <br>
+                        <h3 class="listas">CURSOS</h3>
+                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item as item for item in vm.cursos" ng-model="vm.cursoRP">
+
+                                                <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
+                                               
                                             </select>
                     </div>
                     <div class="col-md-3">
@@ -234,6 +243,11 @@
 
                     </div>
                 </div>
+                <ul>
+                    <li ng-repeat="item in vm.RP">
+                        <p ng-bind="item.nombre+' '+item.recurso+' '+item.hora+ (item.curso!=0 ? ' curso:'+item.curso:'')"></p>
+                    </li>
+                </ul>
             </div>
 
 

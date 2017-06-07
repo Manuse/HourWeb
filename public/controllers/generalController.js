@@ -45,7 +45,6 @@
             DATABASE.ref("centros/" + cod + "/reservas/").once("value", function(snapshot){
                 var dia = new Date(new Date().getTime() - (82800000 * (new Date().getDay()+1)));
                 for(var reserva in snapshot.val()){
-                    $log.log(new Date(snapshot.val()[reserva].fecha))
                     if(snapshot.val()[reserva].perm==null && new Date(snapshot.val()[reserva].fecha)<dia){    
                          DATABASE.ref("centros/" + cod + "/reservas/"+reserva).remove();
                     }

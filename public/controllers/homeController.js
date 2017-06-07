@@ -60,12 +60,12 @@
          * 
          */
         function cargarFecha() {
-            var dia = new Date(new Date().getTime() - (82800000 * (new Date().getDay() - 1)));
+            var dia = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
             vm.dias = [];
             for (var j = 0; j < 5; j++) {
-                dia.setTime(dia.getTime() + (j == 0 ? 0 : 82800000));
+                dia.setTime(dia.getTime() + (j == 0 ? 0 : 86400000));
                 if (vm.semana == 1 && j == 0) {
-                    dia.setTime(dia.getTime() + (7 * 82800000));
+                    dia.setTime(dia.getTime() + (7 * 86400000));
                 }
                 vm.dias.push(new Date(dia));
             }
@@ -79,13 +79,13 @@
                 vm.miercoles = [];
                 vm.jueves = [];
                 vm.viernes = [];
-                var semana1 = new Date(new Date().getTime() - (82800000 * (new Date().getDay() - 1)));
-                var fsemana1 = new Date(semana1.getTime() + (6 * 82800000));
+                var semana1 = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
+                var fsemana1 = new Date(semana1.getTime() + (6 * 86400000));
                 semana1.setHours(0, 0, 0);
                 fsemana1.setHours(0, 0, 0);
                 if (vm.semana == 1) {
-                    semana1.setTime(semana1.getTime() + (8 * 82800000));
-                    fsemana1.setTime(fsemana1.getTime() + (8 * 82800000));
+                    semana1.setTime(semana1.getTime() + (8 * 86400000));
+                    fsemana1.setTime(fsemana1.getTime() + (8 * 86400000));
                 }
                 $log.log(semana1)
                 $log.log(fsemana1)
