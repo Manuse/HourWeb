@@ -14,6 +14,7 @@
                     templateUrl: 'modal/mError.html',
                     controller: 'ErrorController',
                     controllerAs: 'vmmm',
+                    // si >10 letras sm, en caso contrario md
                     size: err.length > 10 ? 'sm':'md',
                     resolve: {
                         item: function () {
@@ -34,6 +35,7 @@
                     templateUrl: 'modal/mConfirmacion.html',
                     controller: 'ConfirmacionController',
                     controllerAs: 'vmmm',
+                    // si < 40 letras sm, en caso contrario md
                     size: msg.length < 40 ? 'sm':'md',
                     resolve: {
                         item: function () {
@@ -52,6 +54,7 @@
 
                 });
             },
+            // barra de progreso mientras se carga la nueva foto en configuracion.html
             progressBar: function () {
                 var modalInstance = $uibModal.open({
                     animation: true,

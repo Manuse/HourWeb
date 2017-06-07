@@ -555,14 +555,17 @@ div.btn-group {
 
 /* INDEX - MODALES - */
 
-/*div.m-login{
-    margin: 30px auto;
-    max-width: 300px;
-    height: 270px;
-    padding: 0;
-}*/
-.modal-error{
-    color:firebrick;    
+@media only screen and (min-width:300px) and (max-width:769px) {
+    div.mi-modal {
+        background-color: red;
+    }
+    input.form-control.form-login1 {
+        margin: 0 auto;
+    }
+}
+
+.modal-error {
+    color: firebrick;
 }
 
 div>img.imagen-error {
@@ -572,10 +575,12 @@ div>img.imagen-error {
     height: 35px;
 }
 
-button.boton-error{
+button.boton-error {
     margin-left: 10px;
     margin-bottom: 10px;
 }
+
+
 /*boton ENTRAR */
 
 
@@ -734,11 +739,13 @@ table.tabla-reservar>tbody>tr>td {
 /* inputs de mLoginForm */
 
 input.form-control.form-login1 {
-    width: 247px;
-    background-color: #daf1f1;
+    width: 267px !important;
+    background-color: #e6f2ff;
     font-family: "Verdana", Georgia, sans-serif;
-    font-weight: bolder;
+    font-size: 14px;
+    font-weight: 400;
     margin-left: 15px;
+    /*border: none;*/
 }
 
 input.form-control.form-login {
