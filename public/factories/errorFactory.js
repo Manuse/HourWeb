@@ -42,6 +42,8 @@
                         return "Debe crear un recurso para poder asignar una reserva";
                     case "existeRP":
                         return "La reserva permanente ya existe";
+                    case "noCurso":
+                        return "El curso ya existe";
                     default:
                         return "Ha ocurrido un error";
                 }

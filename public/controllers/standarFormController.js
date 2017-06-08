@@ -24,6 +24,7 @@
                 apellido: vm.apellido,
                 codcentro: vm.centro,
                 tipo: "estandar",
+                email:vm.email,
                 verificado: false
             };
             DATABASE.ref("centros/" + vm.centro).once("value", function (snapshot) {
