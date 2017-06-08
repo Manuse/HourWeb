@@ -553,34 +553,6 @@ div.btn-group {
 }
 
 
-/* INDEX - MODALES - */
-
-@media only screen and (min-width:300px) and (max-width:769px) {
-    div.mi-modal {
-        background-color: red;
-    }
-    input.form-control.form-login1 {
-        margin: 0 auto;
-    }
-}
-
-.modal-error {
-    color: firebrick;
-}
-
-div>img.imagen-error {
-    margin-left: 10px;
-    margin-top: 5px;
-    width: 35px;
-    height: 35px;
-}
-
-button.boton-error {
-    margin-left: 10px;
-    margin-bottom: 10px;
-}
-
-
 /*boton ENTRAR */
 
 
@@ -733,11 +705,37 @@ table.tabla-reservar>tbody>tr>td {
 }
 
 
-/* hacemos referencia a inputs de login.html */
+/* INDEX - MODALES - */
+
+p.clase-error {
+    text-align: center;
+    color: firebrick;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+p.clase-notificacion {
+    text-align: center;
+    color: cadetblue;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+div>img.imagen-error {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    width: 31px;
+    height: 31px;
+}
 
 
 /* inputs de mLoginForm */
-
+/* encabezado del login*/
+    h4.entrar-hw{
+        margin-left: 16px;
+    }
 input.form-control.form-login1 {
     width: 267px !important;
     background-color: #e6f2ff;
@@ -745,12 +743,60 @@ input.form-control.form-login1 {
     font-size: 14px;
     font-weight: 400;
     margin-left: 15px;
-    /*border: none;*/
 }
 
+@media only screen and (min-width:601px) and (max-width:767px) {
+    input.form-control.form-login1 {
+        width: 540px !important;
+        margin-left: 40px !important;        
+    }
+    h4.entrar-hw{
+        margin-left: 40px !important;
+    }
+}
+@media only screen and (min-width:500px) and (max-width:600px) {
+    input.form-control.form-login1 {
+        width: 430px !important;
+        margin-left: 30px !important;        
+    }
+    h4.entrar-hw{
+        margin-left: 30px !important;
+    }
+}
+
+@media only screen and (min-width:400px) and (max-width:499px) {
+    input.form-control.form-login1 {
+        width: 335px !important;
+        margin-left: 30px !important;        
+    }
+    /* encabezado del login*/
+    h4.entrar-hw{
+        margin-left: 30px !important;
+    }
+}
+@media only screen and (min-width:351px) and (max-width:399px) {
+    input.form-control.form-login1 {
+        width: 260px !important;
+        margin-left: 20px !important;
+        font-size: 12px;
+    }
+    h4.entrar-hw{
+        margin-left: 20px !important;
+    }
+}
+@media only screen and (min-width:200px) and (max-width:350px) {
+    input.form-control.form-login1 {
+        width: 190px !important;
+        margin-left: 8px !important;
+        font-size: 12px;
+    }
+    h4.entrar-hw{
+        margin-left: 8px !important;
+    }
+}
+/*#e6f2ff*/
 input.form-control.form-login {
-    border: 1px solid #0641f1;
-    background-color: #b3e3e3;
+    background-color: #e6f2ff;
     width: 500px;
     font-family: "Verdana", Georgia, sans-serif;
     font-weight: bolder;
@@ -763,9 +809,10 @@ input.form-control.form-login {
     }
 }
 
-@media only screen and (min-width:360px) and (max-width:770px) {
+@media only screen and (min-width:361px) and (max-width:768px) {
     input.form-control.form-login {
         width: 340px;
+        margin-left: 19px;
     }
     br.separador-nombres {
         display: none;
@@ -774,7 +821,8 @@ input.form-control.form-login {
 
 @media only screen and (min-width:280px) and (max-width:360px) {
     input.form-control.form-login {
-        width: 250px;
+        width: 240px;
+        margin-left: 15px;
     }
 }
 

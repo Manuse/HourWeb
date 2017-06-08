@@ -1,17 +1,17 @@
-<div class="mi-modal">
-    <div class="modal-content">
-        <div>
-            <img class="img-responsive imagen-error" alt="Usuario Pic" src="imagenes/warning-icon-svg1.svg" />
-        </div>
+<div class="modal-content">
+    <div class="">
+        <img class="img-responsive imagen-error" alt="Usuario Pic" src="imagenes/warning-icon-svg1.svg" />
+    </div>
 
-        <div class="modal-body">
-            <!-- vmmm.notificacion==true ng-class-->
-            <h5 class="modal-title modal-error" style="color:red;" ng-bind="vmmm.error"></h5>
-        </div>
-        <div class="">
-            <button type="button" class="btn btn-xs btn-danger boton-error" ng-click="vmmm.close()">
+    <div class="modal-body">
+        <!-- vmmm.notificacion==true ng-class-->
+        <p class="modal-title clase-notificacion" ng-bind="vmmm.error"></p>
+    </div>
+    <div class="modal-footer">
+        <div class="div-boton-error">
+            <button type="button" class="btn btn-xs btn-info center-block boton-error" ng-click="vmmm.close()">
                 <strong>De Acuerdo</strong>
-        </button>
+            </button>
         </div>
     </div>
 </div>
