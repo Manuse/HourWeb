@@ -13,41 +13,35 @@
 		<div class="modal-body">
 			<!-- se agruparan en linea -->
 			<div class="form-group">
-				<input class="form-control form-login" autofocus type="text" placeholder="Nombre" required ng-model="vmm.nombre">
+				<input class="form-control form-login-user" autofocus type="text" placeholder="Nombre" required ng-model="vmm.nombre">
 				
-				<input class="form-control form-login" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
+				<input class="form-control form-login-user" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
 			</div>
-			<br class="separador-nombres"><br>
+			<br>
 			<div class="form-group">
 				<div class="input-group">
-					<input class="form-control form-login" type="email" placeholder="Correo electrónico" required ng-model="vmm.email">
-				</div>
-			</div>
-			<br class="separador-nombres">
-			<div class="form-group">
-				<div class="input-group">
-					<input class="form-control form-login" id="pass1_u" type="password" placeholder="Password" required ng-model="vmm.pass1">
+					<input class="form-control form-login-user" type="email" placeholder="Correo electrónico" required ng-model="vmm.email">
+				    <br>
+					<input class="form-control form-login-user" id="pass1_u" type="password" placeholder="Password" required ng-model="vmm.pass1">
 					<br>
-					<input class="form-control form-login" id="pass2_u" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
+					<input class="form-control form-login-user" id="pass2_u" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
 				</div>
 			</div>
-			<br class="separador-nombres"><br>
+			<br><br class="hidden-xs hidden-sm hidden-lg">
 			<!-- nombre centro -->
 			<div class="form-group">
 				<div class="input-group">
-					<label style="font-family:Verdana,arial,sans-serif;">
+					<label class="entrar-hw">
 					Código del Centro :
 					</label>
 					<br>
-					<input class="form-control form-login" type="text" required ng-model="vmm.centro">
+					<input class="form-control form-login-user" type="text" required ng-model="vmm.centro">
 				</div>
 			</div>
-
-
 		</div>
-		<br>
+		
 		<div class="modal-footer">
-			<button type="submit" class="btn btn-lg btn-info"><strong>Registrar</strong></button>
+			<button type="submit" class="btn btn-md btn-info center-block"><strong>Registrar como Usuario</strong></button>
 		</div>
 	</form>
 </div>

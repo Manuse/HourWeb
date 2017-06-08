@@ -732,10 +732,35 @@ div>img.imagen-error {
 
 
 /* inputs de mLoginForm */
+
+
 /* encabezado del login*/
-    h4.entrar-hw{
-        margin-left: 16px;
+
+h4.entrar-hw {
+    margin-left: 16px;
+}
+
+/*#e6f2ff*/
+input.form-control.form-login,
+input.form-control.form-login-user{
+    background-color: #e6f2ff;
+    width: 500px;
+    font-family: "Verdana", Georgia, sans-serif;
+    font-weight: bolder;
+    margin-bottom: 7px;
+}
+@media (min-width: 769px) {
+    input.form-control.form-login-user{
+        margin-left: 17px;
     }
+    
+}
+/*encabezado-cod-centro formulario usuario standard */
+label.entrar-hw{
+    font-family:Verdana,arial,sans-serif;
+    margin-left:17px;    
+}
+
 input.form-control.form-login1 {
     width: 267px !important;
     background-color: #e6f2ff;
@@ -748,32 +773,36 @@ input.form-control.form-login1 {
 @media only screen and (min-width:601px) and (max-width:767px) {
     input.form-control.form-login1 {
         width: 540px !important;
-        margin-left: 40px !important;        
+        margin-left: 40px !important;
     }
     h4.entrar-hw{
         margin-left: 40px !important;
     }
+    /* encabezado cod de centro en formulario de usuario standar */
+    
 }
+
 @media only screen and (min-width:500px) and (max-width:600px) {
     input.form-control.form-login1 {
-        width: 430px !important;
-        margin-left: 30px !important;        
+        width: 423px !important;
+        margin-left: 25px !important;
     }
     h4.entrar-hw{
-        margin-left: 30px !important;
+        margin-left: 25px !important;
     }
 }
 
 @media only screen and (min-width:400px) and (max-width:499px) {
     input.form-control.form-login1 {
         width: 335px !important;
-        margin-left: 30px !important;        
+        margin-left: 30px !important;
     }
     /* encabezado del login*/
     h4.entrar-hw{
         margin-left: 30px !important;
     }
 }
+
 @media only screen and (min-width:351px) and (max-width:399px) {
     input.form-control.form-login1 {
         width: 260px !important;
@@ -784,6 +813,7 @@ input.form-control.form-login1 {
         margin-left: 20px !important;
     }
 }
+
 @media only screen and (min-width:200px) and (max-width:350px) {
     input.form-control.form-login1 {
         width: 190px !important;
@@ -793,14 +823,7 @@ input.form-control.form-login1 {
     h4.entrar-hw{
         margin-left: 8px !important;
     }
-}
-/*#e6f2ff*/
-input.form-control.form-login {
-    background-color: #e6f2ff;
-    width: 500px;
-    font-family: "Verdana", Georgia, sans-serif;
-    font-weight: bolder;
-    margin-bottom: 7px;
+    
 }
 
 @media only screen and (min-width:769px) and (max-width:800px) {
@@ -809,19 +832,46 @@ input.form-control.form-login {
     }
 }
 
-@media only screen and (min-width:361px) and (max-width:768px) {
-    input.form-control.form-login {
-        width: 340px;
-        margin-left: 19px;
+@media only screen and (min-width:601px) and (max-width:768px) {
+    input.form-control.form-login,
+    input.form-control.form-login-user {
+        width: 427px;
+        margin-left: 45px;
     }
-    br.separador-nombres {
-        display: none;
+    label.entrar-hw{
+        margin-left: 45px;
     }
 }
 
-@media only screen and (min-width:280px) and (max-width:360px) {
-    input.form-control.form-login {
+@media only screen and (min-width:501px) and (max-width:600px) {
+    input.form-control.form-login,
+    input.form-control.form-login-user {
+        width: 424px;
+        margin-left: 30px;
+    }
+    label.entrar-hw{
+        margin-left: 30px;
+    }
+}
+
+@media only screen and (min-width:397px) and (max-width:500px) {
+    input.form-control.form-login,
+    input.form-control.form-login-user {
+        width: 333px;
+        margin-left: 19px;
+    }
+    label.entrar-hw{
+        margin-left: 19px;
+    }
+}
+
+@media only screen and (min-width:280px) and (max-width:396px) {
+    input.form-control.form-login,
+    input.form-control.form-login-user {
         width: 240px;
+        margin-left: 15px;
+    }
+    label.entrar-hw{
         margin-left: 15px;
     }
 }
@@ -829,7 +879,12 @@ input.form-control.form-login {
 
 /* timepicker login admin */
 
-div.timepicker-admin-login {
+
+/* contenedor de los timepickers*/
+
+.div-timepicker {
+    margin-left: 10%;
+    width: auto;
     font-weight: bold;
 }
 
