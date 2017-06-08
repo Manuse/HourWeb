@@ -34,6 +34,7 @@
                 apellido: vm.apellido,
                 codcentro: 0,
                 tipo: "administrador",
+                email:vm.email,
                 verificado: false
             };
             registerFactory.registrarUser(newuser, newcentro, vm.email, vm.pass1);

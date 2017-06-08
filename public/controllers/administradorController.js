@@ -17,7 +17,7 @@
         //Accordion
         vm.oneAtATime = true;
         vm.open = [];
-        vm.cursos;
+        vm.cursosRP;
         vm.RP = [];
         vm.dayRP = "6";
         var interval = function () {
@@ -64,6 +64,7 @@
                             recurso: vm.recurso,
                             tipo: vm.tipo
                         });
+                        vm.recurso = "";
                     } else {
                         vm.error(errorFactory.getError("noRecurso"));
                     }
@@ -87,9 +88,22 @@
 
         vm.borrarTipo = function (index) {
             var funcion = function () {
+                var tipo = vm.tipologias[index];
                 vm.tipologias.splice(index, 1);
                 vm.open.splice(index, 1);
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").set(vm.tipologias);
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").orderByChild("tipo").equalTo(tipo).once("value", function (snapshot) {
+                    var recursos = snapshot.val();
+                    for (var data in recursos) {
+                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").equalTo(data).once("value", function (data1) {
+                            var reserva = data1.val();
+                            for (var data2 in reserva) {
+                                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data2).remove();
+                            }
+                        })
+                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + data).remove();
+                    }
+                })
             }
 
             vm.confirmacion("¿Borrar este tipo?", funcion);
@@ -97,12 +111,13 @@
 
 
         vm.crearTipo = function () {
-            
+
             if (vm.ntipo != 0 && vm.ntipo != null) {
                 if (!vm.tipologias.includes(vm.ntipo)) {
                     vm.tipologias.push(vm.ntipo);
                     vm.open.push(false);
                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").set(vm.tipologias);
+                    vm.ntipo = "";
                 } else {
                     vm.error(errorFactory.getError("noTipo"));
                 }
@@ -141,6 +156,8 @@
                             nombre: snapshot.val()[key].nombre + ' ' + snapshot.val()[key].apellido,
                             verificado: snapshot.val()[key].verificado,
                             tel_fijo: snapshot.val()[key].tel_fijo,
+                            email: snapshot.val()[key].email,
+                            tipo: snapshot.val()[key].tipo,
                             tel_movil: snapshot.val()[key].tel_movil
                         };
                     });
@@ -162,7 +179,6 @@
 
 
         vm.hacerReservaPermanente = function () {
-            $log.log(vm.dayRP)
             vm.mytimeRP.setDate(parseInt(vm.dayRP));
             var existe = false,
                 i = 0;
@@ -184,7 +200,6 @@
                                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data).remove();
                                 }
                             }
-                            $log.log(vm.mytimeRP)
                             var rp = {
                                 fecha: vm.mytimeRP.getTime(),
                                 recurso: vm.recursoRP,
@@ -193,7 +208,12 @@
                                 curso: vm.cursoRP == null ? '' : vm.cursoRP,
                                 perm: true
                             };
-                            DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(rp);
+                            var key = DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(rp).key;
+                            rp.hora = (vm.mytimeRP.getHours() < 10 ? '0' + vm.mytimeRP.getHours() : vm.mytimeRP.getHours()) + ':' + (vm.mytimeRP.getMinutes() != 0 ? vm.mytimeRP.getMinutes() : vm.mytimeRP.getMinutes() + '0') + "-" + (new Date(vm.mytimeRP.getTime() + 3600000).getHours() < 10 ? '0' + new Date(vm.mytimeRP.getTime() + 3600000).getHours() : new Date(vm.mytimeRP.getTime() + 3600000).getHours()) + ':' + (vm.mytimeRP.getMinutes() != 0 ? vm.mytimeRP.getMinutes() : vm.mytimeRP.getMinutes() + '0')
+                            rp.code = key;
+                            $timeout(function () {
+                                vm.RP.push(rp)
+                            }, 0);
                         })
 
                     }
@@ -209,44 +229,98 @@
 
         function cargarCursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").once("value", function (snapshot) {
-                vm.cursos = snapshot.val().map(function (key) {
-                    return {
-                        label: key,
-                        value: key
-                    }
-                });
-                try{
-                vm.cursos.unshift({
-                    label: 'Seleccione el curso (Opcional)',
-                    value: null
-                });
-                vm.cursoRP = vm.cursos[0].value;
-                }catch(err){}
+                $timeout(function () {
+                    vm.cursos = snapshot.val();
+                    vm.cursosRP = snapshot.val().map(function (key) {
+                        return {
+                            label: key,
+                            value: key
+                        }
+                    });
+                    try {
+                        vm.cursosRP.unshift({
+                            label: 'Seleccione el curso (Opcional)',
+                            value: null
+                        });
+                        vm.cursoRP = vm.cursosRP[0].value;
+                    } catch (err) {}
+                }, 0)
             });
         }
 
-        vm.addCurso = function(){
-            if(!vm.cursos.includes(vm.nCurso)){
-
+        vm.addCurso = function () {
+            if (vm.nCurso != 0 && vm.nCurso != null) {
+                if (!vm.cursos.includes(vm.nCurso)) {
+                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").set(vm.cursos);
+                    vm.cursosRP.push({
+                        label: vm.nCurso,
+                        value: vm.nCurso
+                    });
+                    vm.cursos.push(vm.nCurso);
+                } else {
+                    vm.error(errorFactory.getError("noCurso"));
+                }
+            } else {
+                vm.error(errorFactory.getError("campoVacio"));
             }
+        }
+
+        vm.borrarCurso = function (index, curso) {
+            var funcion = function () {
+                vm.cursosRP.splice(index + 1, 1);
+                vm.cursos.splice(index, 1);
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos").set(vm.cursos);
+            }
+            vm.confirmacion("¿Borrar el curso " + curso + "?", funcion);
         }
 
         function cargarRP() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("perm").equalTo(true).once("value", function (snapshot) {
-                vm.RP = Object.keys(snapshot.val()).map(function (key) {
-                    var date = new Date(snapshot.val()[key].fecha);
-                    return {
-                        fecha: date,
-                        code: key,
-                        nombre: snapshot.val()[key].nombre,
-                        recurso: snapshot.val()[key].recurso,
-                        hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
-                        perm: true,
-                        curso: snapshot.val()[key].curso
-                    }
-                });
+                $timeout(function () {
+                    vm.RP = Object.keys(snapshot.val()).map(function (key) {
+                        var date = new Date(snapshot.val()[key].fecha);
+                        return {
+                            fecha: date,
+                            code: key,
+                            nombre: snapshot.val()[key].nombre,
+                            recurso: snapshot.val()[key].recurso,
+                            hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
+                            perm: true,
+                            curso: snapshot.val()[key].curso
+                        }
+                    });
+                }, 0)
             });
         }
+
+        vm.borrarRP = function (rp) {
+            funcion = function () {
+                vm.cursosRP.splice(vm.cursosRP.indexOn(rp), 0);
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + rp.code).remove();
+            }
+            vm.confirmacion("¿Borrar esta reserva permanente?", funcion);
+        };
+
+        vm.cambiarTipo = function (user) {
+            DATABASE.ref("user/").orderByChild("id").equalTo(user.id).once("value", function (codi) {
+                var data = codi.val();
+                for (var data1 in data) {
+                    if (user.tipo != 'administrador') {
+                        DATABASE.ref("user/" + data1).update({
+                            tipo: "administrador"
+                        });
+                       // vm.usuarios[vm.usuarios.indexOf(user)].tipo = "administrador";
+                    } else {
+                        DATABASE.ref("user/" + data1).update({
+                            tipo: "estandar"
+                        });
+                       // vm.usuarios[vm.usuarios.indexOf(user)].tipo = "estandar";
+                    }
+                }
+            });
+        }
+
+
     }
 
 })();

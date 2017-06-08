@@ -230,7 +230,7 @@
                     <div class="col-md-3" ng-if="vm.cursos.length > 1">
                         <br>
                         <h3 class="listas">CURSOS</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.value as item.label for item in vm.cursos" ng-model="vm.cursoRP">
+                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.value as item.label for item in vm.cursosRP" ng-model="vm.cursoRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
@@ -273,9 +273,29 @@
                          la clase table extiende la tabla y separa cada fila con una línea.
                               								 table-hover cambia el color o resalta cada la línea al pasar el mouse.
                               								 table-condensed comprime el tamanio de la tabla
-                              								 table-responsive hace responsive la tabla 
--->
-                        <tbody id="tabla_usuarios">
+                              								 table-responsive hace responsive la tabla-->
+                        <thead>
+                            <tr class="bg-primary">
+                                <th>Nombre</th>
+                                <th>Estandar/Administrador</th>
+                                <th>Telefono fijo</th>
+                                <th>Telefono movil</th>
+                                <th>e-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  ng-repeat="usuario in vm.usuarios">
+                                <td ng-bind="usuario.nombre"></td>
+                                <td>
+                                    <label class="switch">
+                                        <input type="checkbox" ng-checked="usuario.tipo=='administrador'" ng-click="vm.cambiarTipo(usuario)">
+                                        <div class="slider round"></div>
+                                    </label>
+                                </td>
+                                <td ng-bind="usuario.tel_fijo"></td>
+                                <td ng-bind="usuario.tel_movil"></td>
+                                <td ng-bind="usuario.email"></td>
+                            </tr>
 
                         </tbody>
                     </table>
@@ -312,9 +332,9 @@
 
                                     <div class="form-group">
                                         <div class="col-lg-6 col-md-6 col-sm-7 col-xs-9">
-                                            <input class="form-control" id="txtAñadirCurso" type="text" placeholder="Curso:">
+                                            <input class="form-control" id="txtAñadirCurso" ng-model="vm.nCurso" type="text" placeholder="Curso:">
                                         </div>
-                                        <button class="btn btn-success col-lg-2 col-md-2 col-sm-2 col-xs-2">Añadir</button>
+                                        <button class="btn btn-success col-lg-2 col-md-2 col-sm-2 col-xs-2" ng-click="vm.addCurso()">Añadir</button>
                                     </div>
                                 </form>
 
@@ -329,13 +349,9 @@
                             <!--                           <div class="input-group-addon  addon_recurso">-->
                             <div class="cent">
                                 <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info">Hola
-                                        <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                    <li class="list-group-item list-group-item-info">Hola
-                                        <span class="glyphicon glyphicon-remove pull-right"></span></li>
-                                    <li class="list-group-item list-group-item-info">Hola
-                                        <span class="glyphicon glyphicon-remove pull-right"></span></li>
-
+                                    <li class="list-group-item list-group-item-info" ng-repeat="curso in vm.cursos">
+                                        <span ng-bind="curso"></span>
+                                        <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarCurso(vm.cursos.indexOf(curso), curso)"></span></li>
                                 </ul>
                             </div>
 
