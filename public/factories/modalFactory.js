@@ -14,8 +14,8 @@
                     templateUrl: 'modal/mError.html',
                     controller: 'ErrorController',
                     controllerAs: 'vmmm',
-                    // si >10 letras sm, en caso contrario md
-                    size: err.length > 10 ? 'sm':'md',
+                    // si <10 letras sm, en caso contrario md
+                    size: err.length < 25 ? 'sm':'md',
                     resolve: {
                         item: function () {
                             return err;

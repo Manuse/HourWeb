@@ -17,9 +17,9 @@
         //Accordion
         vm.oneAtATime = true;
         vm.open = [];
-        vm.cursos = [];
+        vm.cursos;
         vm.RP = [];
-        vm.dayRP="6";
+        vm.dayRP = "6";
         var interval = function () {
             $timeout(recarga, 100)
         };
@@ -54,7 +54,7 @@
 
         vm.crearRecurso = function () {
             var re = DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + vm.recurso); //decimos el nodo del recurso
-            if (vm.recurso != 0) {
+            if (vm.recurso != 0 && vm.recurso != null) {
                 re.once("value", function (snapshot) {
                     if (!snapshot.exists()) { //sino existe lo creamos
                         re.set({
@@ -97,16 +97,17 @@
 
 
         vm.crearTipo = function () {
-            if (vm.ntipo != 0) {
+            
+            if (vm.ntipo != 0 && vm.ntipo != null) {
                 if (!vm.tipologias.includes(vm.ntipo)) {
                     vm.tipologias.push(vm.ntipo);
                     vm.open.push(false);
                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").set(vm.tipologias);
                 } else {
-                    vm.error(errorFactory.getError("campoVacio"));
+                    vm.error(errorFactory.getError("noTipo"));
                 }
             } else {
-                vm.error(errorFactory.getError("noTipo"));
+                vm.error(errorFactory.getError("campoVacio"));
             }
         };
 
@@ -189,7 +190,7 @@
                                 recurso: vm.recursoRP,
                                 usuario: vm.usuarioRP.id,
                                 nombre: vm.usuarioRP.nombre,
-                                curso: vm.cursoRP == null || vm.cursoRP == vm.cursos[0] ? '' : vm.cursoRP,
+                                curso: vm.cursoRP == null ? '' : vm.cursoRP,
                                 perm: true
                             };
                             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(rp);
@@ -208,10 +209,26 @@
 
         function cargarCursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").once("value", function (snapshot) {
-                vm.cursos = snapshot.val();
-                vm.cursos.unshift('Seleccione el curso si desea')
-                vm.cursoRP = vm.cursos[0];
+                vm.cursos = snapshot.val().map(function (key) {
+                    return {
+                        label: key,
+                        value: key
+                    }
+                });
+                try{
+                vm.cursos.unshift({
+                    label: 'Seleccione el curso (Opcional)',
+                    value: null
+                });
+                vm.cursoRP = vm.cursos[0].value;
+                }catch(err){}
             });
+        }
+
+        vm.addCurso = function(){
+            if(!vm.cursos.includes(vm.nCurso)){
+
+            }
         }
 
         function cargarRP() {
@@ -221,10 +238,11 @@
                     return {
                         fecha: date,
                         code: key,
+                        nombre: snapshot.val()[key].nombre,
                         recurso: snapshot.val()[key].recurso,
                         hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
                         perm: true,
-                        curso: snapshot.val()[key]
+                        curso: snapshot.val()[key].curso
                     }
                 });
             });

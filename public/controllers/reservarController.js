@@ -154,8 +154,11 @@
                                         celda.activo = false;
                                     }
                                     for (var data in reservas) {
-                                        console.log("muh");
-                                        if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000 || reservas[data].perm) {
+                                        if(reservas[data].perm && new Date(reservas[data].fecha).getDay()==vm.dias[j].getDay()){
+                                            var nf = new Date(vm.dias[j]);
+                                            reservas[data].fecha = nf.setHours(new Date(reservas[data].fecha).getHours(), new Date(reservas[data].fecha).getMinutes(),0);
+                                        }
+                                        if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000) {
                                             celda.activo = false;
                                             celda.nombre = reservas[data].nombre;
                                             celda.curso = reservas[data].curso;

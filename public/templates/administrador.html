@@ -230,7 +230,7 @@
                     <div class="col-md-3" ng-if="vm.cursos.length > 1">
                         <br>
                         <h3 class="listas">CURSOS</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item as item for item in vm.cursos" ng-model="vm.cursoRP">
+                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.value as item.label for item in vm.cursos" ng-model="vm.cursoRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
