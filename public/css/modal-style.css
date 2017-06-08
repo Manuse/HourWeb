@@ -1,0 +1,10 @@
+@media only screen and (min-width:280px) and (max-width:396px) {
+    input.form-control.form-login,
+    input.form-control.form-login-user {
+        width: 240px;
+        margin-left: 15px;
+    }
+    label.entrar-hw{
+        margin-left: 15px;
+    }
+}
