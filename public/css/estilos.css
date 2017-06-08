@@ -884,8 +884,8 @@ input.form-control.form-login1 {
 
 .div-timepicker {
     margin-left: 10%;
-    width: auto;
     font-weight: bold;
+    font-family: sans-serif;
 }
 
 #id_centro {

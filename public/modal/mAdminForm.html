@@ -16,30 +16,29 @@
 
             <!-- se agruparan en linea -->
             <div class="form-group">
-                <input class="form-control form-login" autofocus type="text" placeholder="Nombre" required ng-model="vmm.nombre">
-                <br>
-                <input class="form-control form-login" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
+                <input class="form-control form-login well" autofocus type="text" placeholder="Nombre" required ng-model="vmm.nombre">
+                
+                <input class="form-control form-login well" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
 
                 <!-- desaparece el espacio screens menores -->
                 
-                <br>
-                <input class="form-control form-login" type="email" placeholder="Correo" required ng-model="vmm.email">               
+                <br><br class="hidden-xs">
+                <input class="form-control form-login well" type="email" placeholder="Correo" required ng-model="vmm.email">               
 
-                <input class="form-control form-login" type="password" placeholder="Password" required ng-model="vmm.pass1">
-                <br>
-                <input class="form-control form-login" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
+                <input class="form-control form-login well" type="password" placeholder="Password" required ng-model="vmm.pass1">
+                <input class="form-control form-login well" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
 
-                <br>
+                <br><br class="hidden-xs">
                 <div class="input-group">
-                    <input class="form-control form-login" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
-                    <br><br>
+                    <input class="form-control form-login well" type="text" placeholder="Nombre Centro" required ng-model="vmm.centro">
+                    <br>
                     <!-- preguntar q coño es el operador | -->
                 </div>
             </div>
         </div>
         <br>
         <div class="div-timepicker">
-            <label class="horas">Establecer Horario:</label>
+            <label style="font-size:17px;"><u>Establecer Horario</u>:</label>
             <p><strong>INCIO</strong></p>
             <div uib-timepicker ng-model="vmm.inicioHora" hour-step="vmm.horaup" minute-step="vmm.minutoup" show-meridian="false">                
             </div>

@@ -2,7 +2,7 @@
 	<!-- Header de la ventana -->
 	<div class="modal-header">
 		<button type="button" class="close btn-info" ng-click="vmm.close()">
-		    <span>Cancelar</span>&times;
+		    <span style="font-size:13px;">Cancelar</span><strong>&#32;&times;</strong> 
 		</button>
 		<h4 class="modal-title">
             <span><strong>Registro Usuario</strong></span>
@@ -13,21 +13,21 @@
 		<div class="modal-body">
 			<!-- se agruparan en linea -->
 			<div class="form-group">
-				<input class="form-control form-login-user" autofocus type="text" placeholder="Nombre" required ng-model="vmm.nombre">
+				<input class="form-control form-login-user well" autofocus type="text" placeholder="Nombre" required ng-model="vmm.nombre">
 				
-				<input class="form-control form-login-user" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
+				<input class="form-control form-login-user well" type="text" placeholder="Apellidos" required ng-model="vmm.apellido">
 			</div>
-			<br>
+			<br><br class="hidden-xs">
 			<div class="form-group">
 				<div class="input-group">
-					<input class="form-control form-login-user" type="email" placeholder="Correo electrónico" required ng-model="vmm.email">
-				    <br>
-					<input class="form-control form-login-user" id="pass1_u" type="password" placeholder="Password" required ng-model="vmm.pass1">
+					<input class="form-control form-login-user well" type="email" placeholder="Correo electrónico" required ng-model="vmm.email">
+				    <br><br class="hidden-xs">
+					<input class="form-control form-login-user well" id="pass1_u" type="password" placeholder="Password" required ng-model="vmm.pass1">
 					<br>
-					<input class="form-control form-login-user" id="pass2_u" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
+					<input class="form-control form-login-user well" id="pass2_u" type="password" placeholder="Confirmar Password" required ng-model="vmm.pass2">
 				</div>
 			</div>
-			<br><br class="hidden-xs hidden-sm hidden-lg">
+			<br><br class="hidden-xs">
 			<!-- nombre centro -->
 			<div class="form-group">
 				<div class="input-group">
@@ -35,7 +35,7 @@
 					Código del Centro :
 					</label>
 					<br>
-					<input class="form-control form-login-user" type="text" required ng-model="vmm.centro">
+					<input class="form-control form-login-user well" type="text" required ng-model="vmm.centro">
 				</div>
 			</div>
 		</div>
