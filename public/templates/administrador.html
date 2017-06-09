@@ -25,12 +25,12 @@
                                     <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
                                         <uib-accordion-heading>
                                             <div class="accordcolor">
-                                               <small>
+                                                <small>
                                                <span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span>
                                                </small>
-                                               
-<!--                                               mismo glyphicon que recurso, cambialo-->
-                                               <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarRecurso(recurso.recurso)" style="margin-left:3px;"></span>
+
+                                                <!--                                               mismo glyphicon que recurso, cambialo-->
+                                                <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarRecurso(recurso.recurso)" style="margin-left:3px;"></span>
                                                 <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                         </uib-accordion-heading>
                                         <ul class="list-group">
@@ -169,7 +169,7 @@
         <!--    Empieza el segundo tab-->
 
         <uib-tab index="1" heading="Reservas Permanentes" classes="estilo-tab">
-<br>
+            <br>
 
             <div class="panelreserva panel panel-info">
                 <div class="panel-heading">
@@ -257,20 +257,30 @@
                         <!--                    segunda columna de 6-->
                         <div class="col-lg-6">
                             <div class="panel panel-info" style="padding:10px;">
-                                
+
+                                <div class="form-group">
                                     <center>
-                                    <div uib-alert ng-repeat="item in vm.RP" ng-class="'alert-' + (alert.type || 'info')" close="closeAlert($index)">{{item.nombre+' | '+item.recurso+' | '+item.hora+' | '+(item.curso!=0 ? 'curso:'+item.curso:'')}}</div>
+
+                                        <input class="form-control" id="txtAñadirCurso" ng-model="vm.nCurso" type="text" placeholder="Buscar:">
+
+
                                     </center>
-                                
-                                
-                                
-                                
+                                </div>
+
+
+                                <center>
+                                    <div uib-alert ng-repeat="item in vm.RP" ng-class="'alert-' + (alert.type || 'info')" close="closeAlert($index)">{{item.nombre+' | '+item.recurso+' | '+item.hora+' | '+(item.curso!=0 ? 'curso:'+item.curso:'')}}</div>
+                                </center>
+
+
+
+
 
                                 <!--                    prueba-->
-                                
-                                
-                                
-<!--
+
+
+
+                                <!--
                                 <uib-accordion close-others="vm.oneAtATime">
 
                                     <div uib-accordion-group class="panel-default" ng-repeat="item in vm.RP" is-open="vm.open[$index]">
@@ -337,7 +347,7 @@
         <uib-tab index="2" heading="Usuarios" classes="estilo-tab">
             <div class="row">
                 <div class="col-xs-12">
-                   <br>
+                    <br>
                     <table class="table table-bordered  table-responsive tabla_admin">
                         <!--
                          la clase table extiende la tabla y separa cada fila con una línea.
@@ -353,11 +363,11 @@
                                 <th>e-mail</th>
                             </tr>
                         </thead>
-                        
+
                         <tbody class="tablausuariosadmin">
-                           
+
                             <tr ng-repeat="usuario in vm.usuarios">
-                              <td ng-bind="usuario.nombre"></td>
+                                <td ng-bind="usuario.nombre"></td>
                                 <td>
                                     <label class="switch">
                                         <input type="checkbox" ng-checked="usuario.tipo=='administrador'" ng-click="vm.cambiarTipo(usuario)">
@@ -367,7 +377,7 @@
                                 <td ng-bind="usuario.tel_fijo"></td>
                                 <td ng-bind="usuario.tel_movil"></td>
                                 <td ng-bind="usuario.email"></td>
-                                
+
                             </tr>
 
                         </tbody>
@@ -474,15 +484,23 @@
 
                     <div class="row">
 
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-4">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-3">
                             <div class="">
                                 <form class="form-horizontal">
 
                                     <div class="form-group">
-                                        <div class="col-lg-6 col-md-6 col-sm-7 col-xs-9">
+                                        <div class="col-lg-6 col-md-6 col-sm-5 col-xs-5">
                                             <input class="form-control" id="txtAñadirCurso" ng-model="vm.nCurso" type="text" placeholder="Curso:">
                                         </div>
-                                        <button class="btn btn-success col-lg-2 col-md-2 col-sm-2 col-xs-2" ng-click="vm.addCurso()">Añadir</button>
+                                        <button class="btn btn-success col-lg-2 col-md-2 col-sm-2 col-xs-2" ng-click="vm.addCurso()">
+                                        <span class="glyphicon glyphicon-floppy-save"></span>
+                                                <span class="hidden-xs hidden-sm">
+                                                    Guardar</span>
+                                        </button>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5">
+                                            <input class="form-control" id="txtAñadirCurso" ng-model="vm.nCurso" type="text" placeholder="Buscar:">
+                                        </div>
                                     </div>
                                 </form>
 
