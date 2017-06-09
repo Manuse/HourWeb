@@ -10,14 +10,15 @@
         // Timepicker reservas permanentes       
         vm.hstep = 1;
         vm.mstep = 30;
-
+        vm.bRP = '';
         vm.error = modalFactory.error;
         vm.confirmacion = modalFactory.confirmacion;
 
         //Accordion
         vm.oneAtATime = true;
         vm.open = [];
-        vm.cursosRP;
+        //vm.mostrarX=[];
+        vm.cursosRP = [];
         vm.RP = [];
         vm.dayRP = "6";
         var interval = function () {
@@ -54,7 +55,7 @@
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/nombre").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.nCentro = snapshot.val();
-                    centro=snapshot.val();
+                    centro = snapshot.val();
                 }, 0);
             });
         }
@@ -87,6 +88,7 @@
                 $timeout(function () {
                     vm.tipologias = snapshot.val();
                     vm.open.fill(false, 0, vm.tipologias.length);
+                    // vm.mostrarX.fill(false, 0, vm.tipologias.length);
                     vm.tipo = vm.tipologias[0];
                 }, 0);
 
@@ -103,12 +105,14 @@
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").orderByChild("tipo").equalTo(tipo).once("value", function (snapshot) {
                     var recursos = snapshot.val();
                     for (var data in recursos) {
-                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").equalTo(data).once("value", function (data1) {
+                        $log.log(data);
+                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(data).once("value", function (data1) {
                             var reserva = data1.val();
                             for (var data2 in reserva) {
+                                $log.log(data2);
                                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data2).remove();
                             }
-                        })
+                        });
                         DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + data).remove();
                     }
                 })
@@ -192,7 +196,7 @@
                 i = 0;
 
             while (i < vm.RP.length && !existe) {
-                if (vm.RP[i].recurso == vm.recursoRP && vm.RP[i].fecha.getDay() == vm.mytimeRP.getDay() && vm.RP[i].fecha.getHours() == vm.mytimeRP.getHours() && vm.RP[i].fecha.getMinutes() == vm.mytimeRP.getMinutes()) {
+                if (vm.RP[i].recurso == vm.recursoRP && new Date(vm.RP[i].fecha).getDay() == vm.mytimeRP.getDay() && new Date(vm.RP[i].fecha).getHours() == vm.mytimeRP.getHours() && new Date(vm.RP[i].fecha).getMinutes() == vm.mytimeRP.getMinutes()) {
                     existe = true;
                 }
                 i++;
@@ -220,7 +224,7 @@
                             rp.hora = (vm.mytimeRP.getHours() < 10 ? '0' + vm.mytimeRP.getHours() : vm.mytimeRP.getHours()) + ':' + (vm.mytimeRP.getMinutes() != 0 ? vm.mytimeRP.getMinutes() : vm.mytimeRP.getMinutes() + '0') + "-" + (new Date(vm.mytimeRP.getTime() + 3600000).getHours() < 10 ? '0' + new Date(vm.mytimeRP.getTime() + 3600000).getHours() : new Date(vm.mytimeRP.getTime() + 3600000).getHours()) + ':' + (vm.mytimeRP.getMinutes() != 0 ? vm.mytimeRP.getMinutes() : vm.mytimeRP.getMinutes() + '0')
                             rp.code = key;
                             $timeout(function () {
-                                vm.RP.push(rp)
+                                vm.RP.push(rp);
                             }, 0);
                         })
 
@@ -298,14 +302,31 @@
             vm.confirmacion("¿Borrar el curso " + curso + "? eso también borrará el curso de las reservas y de los horarios", funcion);
         }
 
+
         function cargarRP() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("perm").equalTo(true).once("value", function (snapshot) {
                 $timeout(function () {
                     vm.RP = Object.keys(snapshot.val()).map(function (key) {
                         var date = new Date(snapshot.val()[key].fecha);
+
+                        function day(key) {
+                            switch (parseInt(key)) {
+                                case 1:
+                                    return "Lunes";
+                                case 2:
+                                    return "Martes";
+                                case 3:
+                                    return "Miercoles";
+                                case 4:
+                                    return "Jueves";
+                                case 5:
+                                    return "Viernes";
+                            }
+                        }
                         return {
                             fecha: date,
                             code: key,
+                            dia: day(date.getDay()),
                             nombre: snapshot.val()[key].nombre,
                             recurso: snapshot.val()[key].recurso,
                             hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
@@ -317,14 +338,22 @@
             });
         }
 
+        /**
+         * Borra una reserva permanente
+         * @param rp: reserva permanente
+         */
         vm.borrarRP = function (rp) {
             funcion = function () {
-                vm.cursosRP.splice(vm.cursosRP.indexOn(rp), 0);
+                vm.RP.splice(vm.RP.indexOf(rp), 1);
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + rp.code).remove();
             }
             vm.confirmacion("¿Borrar esta reserva permanente?", funcion);
         };
 
+        /**
+         * Cambia el tipo de usuario de administrador a estandar y viceversa
+         * @param user: usuario con los datos 
+         */
         vm.cambiarTipo = function (user) {
             DATABASE.ref("user/").orderByChild("id").equalTo(user.id).once("value", function (codi) {
                 var data = codi.val();
@@ -355,9 +384,47 @@
             }
         }
 
-        vm.cancelarNombreCentro=function(){
-            vm.nCentro=centro;
+        vm.cancelarNombreCentro = function () {
+            vm.nCentro = centro;
             vm.datos = !vm.datos;
+        }
+
+        vm.cambiarHora = function () {
+            if (vm.inicio >= vm.fin || vm.fin - vm.inicio < 7200000) {
+                vm.error(errorFactory.getError("errorHoraRegistro"));
+            } else {
+                var funcion = function () {
+                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").once("value", function (snapshot) {
+                        var reservas = snapshot.val();
+                        DATABASE.ref("centros/" + vm.getUser().codcentro).update({
+                            horas: vm.inicio.getHours() + ':' + (vm.inicio.getMinutes() != 0 ? vm.inicio.getMinutes() : vm.inicio.getMinutes() + '0') + '-' + vm.fin.getHours() + ':' + (vm.fin.getMinutes() != 0 ? vm.fin.getMinutes() : vm.fin.getMinutes() + '0'),
+                            rango_horas: vm.fin.getHours() - vm.inicio.getHours()
+                        })
+                        for (var data in reservas) {
+                            if (new Date(reservas[data].fecha).getHours() < vm.inicio.getHours() || new Date(reservas[data].fecha).getHours() >= vm.final.getHours() && new Date(reservas[data].fecha).getMinutes() >= vm.final.getMinutes()) {
+                                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data).remove();
+                            }
+                        }
+                        vm.hora = !vm.hora;
+                    });
+                    for (var i = 0; i < vm.usuarios.length; i++) {
+                        DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.usuarios[i].id).once("value", function (snapshot) {
+                            for (var data in snapshot.val()) {
+                                if (snapshot.val()[data].hora > vm.fin.getHours() - vm.inicio.getHours()) {
+                                    DATABASE.ref("horarios/" + data).remove();
+                                }
+                            }
+                        })
+                    }
+                }
+                vm.confirmacion("Se borraran los horarios y reservas fuera del horario¿Esta seguro?", funcion);
+            }
+        };
+
+        vm.cancelarCambiarHora = function () {
+            vm.hora = !vm.hora;
+            vm.inicio = vm.min;
+            vm.final = vm.max + 3600000;
         }
 
     }
@@ -544,19 +611,19 @@ function recogerListaReservasPermanentes(lista) {
                             switch (parseInt(data[data1].fecha)) { //segun el dia tomara un valor
                                 case 1:
                                     dia = "Lunes";
-                                    break;
+                                    return;
                                 case 2:
                                     dia = "Martes";
-                                    break;
+                                    return;
                                 case 3:
                                     dia = "Miercoles";
-                                    break;
+                                    return;
                                 case 4:
                                     dia = "Jueves";
-                                    break;
+                                    return;
                                 case 5:
                                     dia = "Viernes";
-                                    break;
+                                    return;
                             }
                             li.textContent = "Usuario: " + use[us].nombre + " " + use[us].apellido + ", Recurso: " + data[data1].recurso + ", Dia: " + dia + " y Hora: " + data[data1].hora;
                             li.addEventListener("click", function() {// asignamos funcion de borrar para cuando clickeas sobre el

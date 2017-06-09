@@ -23,14 +23,14 @@
                                 <uib-accordion close-others="vm.oneAtATime">
                                     <br>
                                     <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
-                                        <uib-accordion-heading>
-                                            <div class="accordcolor">
+                                        <uib-accordion-heading >
+                                            <div class="accordcolor" >
                                                 <small>
                                                <span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span>
                                                </small>
 
                                                 <!--                                               mismo glyphicon que recurso, cambialo-->
-                                                <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarRecurso(recurso.recurso)" style="margin-left:3px;"></span>
+                                                <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarTipo(vm.tipologias.indexOf(tip))" ng-if="vm.open[$index]" style="margin-left:3px;"></span>
                                                 <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                         </uib-accordion-heading>
                                         <ul class="list-group">
@@ -261,7 +261,7 @@
                                 <div class="form-group">
                                     <center>
 
-                                        <input class="form-control" id="txtAñadirCurso" ng-model="vm.nCurso" type="text" placeholder="Buscar:">
+                                        <input class="form-control" ng-model="vm.bRP" type="text" placeholder="Buscar:">
 
 
                                     </center>
@@ -269,7 +269,7 @@
 
 
                                 <center>
-                                    <div uib-alert ng-repeat="item in vm.RP" ng-class="'alert-' + (alert.type || 'info')" close="closeAlert($index)">{{item.nombre+' | '+item.recurso+' | '+item.hora+' | '+(item.curso!=0 ? 'curso:'+item.curso:'')}}</div>
+                                    <div uib-alert ng-repeat="item in vm.RP | buscarRPFilter : vm.bRP" class="alert-info" close="vm.borrarRP(item)">{{item.nombre+', Recurso: '+item.recurso+', Dia: '+item.dia+', Hora: '+item.hora+ (item.curso!=0 ? ', curso: '+item.curso:'')}}</div>
                                 </center>
 
 
@@ -366,7 +366,7 @@
 
                         <tbody class="tablausuariosadmin">
 
-                            <tr ng-repeat="usuario in vm.usuarios">
+                            <tr ng-repeat="usuario in vm.usuarios" ng-if="vm.getUser().id != usuario.id">
                                 <td ng-bind="usuario.nombre"></td>
                                 <td>
                                     <label class="switch">
@@ -446,10 +446,10 @@
                                         <tr class="tr-home" ng-if="vm.hora">
                                             <td colspan="1" class="td-btn-datos">
                                                 <div class="btn-group pull-left">
-                                                    <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.hora=!vm.hora">
+                                                    <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.cambiarHora()">
                                                         <strong>Guardar</strong>
                                                 </button>
-                                                    <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.hora=!vm.hora">
+                                                    <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.cancelarCambiarHora()">
                                                         <strong>Cancelar</strong>
                                                 </button>
                                                 </div>
@@ -499,7 +499,7 @@
                                         </button>
 
                                         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-5">
-                                            <input class="form-control" id="txtAñadirCurso" ng-model="vm.nCurso" type="text" placeholder="Buscar:">
+                                            <input class="form-control" ng-model="vm.bCurso" type="text" placeholder="Buscar:">
                                         </div>
                                     </div>
                                 </form>
@@ -515,7 +515,7 @@
                             <!--                           <div class="input-group-addon  addon_recurso">-->
                             <div class="cent">
                                 <ul class="list-group">
-                                    <li class="list-group-item list-group-item-info" ng-repeat="curso in vm.cursos">
+                                    <li class="list-group-item list-group-item-info" ng-repeat="curso in vm.cursos | filter : vm.bCurso">
                                         <span ng-bind="curso"></span>
                                         <span class="glyphicon glyphicon-remove pull-right" ng-click="vm.borrarCurso(vm.cursos.indexOf(curso), curso)"></span></li>
                                 </ul>
