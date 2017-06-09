@@ -212,14 +212,6 @@ ul.list-group>li.lista-roja {
     border-radius: 10px 10px 10px;
 }
 
-
-/* un puntero con una flecha */
-
-div.div-verde {
-    cursor: default;
-}
-
-
 /* situamos IMAGEN X en el borde de la lista del home */
 
 a.btn-eliminar-lista>img.img-eliminar-lista {
@@ -233,11 +225,37 @@ a.btn-eliminar-lista>img.img-eliminar-lista {
     border: 0;
 }
 
+/* reducimos el borde de arriba en resoluciones <= 1199*/
+@media(max-width: 1199px) {
+    ul.list-group>li.lista-azul,
+    ul.list-group>li.lista-verde,
+    ul.list-group>li.lista-roja{
+        border-top-width: 25px;
+            
+    }
+    /* boton X en lista verde no permanente*/
+   a.btn-eliminar-lista>img.img-eliminar-lista {
+        width: 18px !important;
+        height: 18px !important;
+        top:-21px;
+    }
+}
+
+p.curso-home{
+    font-size: 12px;
+    font-family: 'Monospace',sans-serif;
+}
+
+/* un puntero con una flecha */
+
+div.div-verde {
+    cursor: default;
+}
 
 /* hover color verde un poco mas vistoso */
 
 ul.list-group>li.dias.lista-verde:hover {
-    box-shadow: 2px 0px 5px skyblue;
+    /*box-shadow: 2px 0px 5px skyblue;*/
     background-color: #ccff99;
 }
 
@@ -245,7 +263,7 @@ ul.list-group>li.dias.lista-verde:hover {
 /* hover color azul un poco mas vistoso */
 
 ul.list-group>li.dias.lista-azul:hover {
-    box-shadow: 2px 0px 5px skyblue;
+    /*box-shadow: 2px 0px 5px skyblue;*/
     background-color: skyblue;
 }
 
@@ -253,7 +271,7 @@ ul.list-group>li.dias.lista-azul:hover {
 /* hover color rojo un poco mas vistoso */
 
 ul.list-group>li.dias.lista-roja:hover {
-    box-shadow: 2px 0px 5px skyblue;
+    /*box-shadow: 2px 0px 5px skyblue;*/
     background-color: #FCAE9E;
 }
 
@@ -1012,10 +1030,10 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
         font-family: 'Tahoma', sans-serif;
         text-align: center;
         font-weight: 700;
-        height: 120px;
-        width: 70%;
+        height: 150px;
+        width: 60%;
         margin: 0 auto;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
     .btn-reservar {
         margin-left: 5px;
@@ -1051,10 +1069,11 @@ ul.list-group>li.list-group-item.lista_permanente:hover {
 
 @media only screen and (min-width:200px) and (max-width:499px) {
     a.btn-eliminar-lista>img.img-eliminar-lista {
-        left: 85%;
+        left: 88%;
     }
     li.dias {
-        height: 150px;
+        height: 160px;
+        width: 100%;
     }
 }
 
