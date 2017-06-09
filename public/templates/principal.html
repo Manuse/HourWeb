@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-color" role="navigation" ng-controller="NavController as uc">
         <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle well well-md" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
+            <button type="button" class="navbar-toggle well-xs" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
 								<!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
 								de nuestras etiquetas Kinddle x ej -->
 								<span class="sr-only">
@@ -14,7 +14,7 @@
             </button>
             <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
             <div class="navbar-brand">
-                <a class="navbar-text titulo-web" ui-sref="normal.home">HOURWEB</a>
+                <p class="navbar-text titulo-web" ui-sref="normal.home">HOURWEB</p>
             </div>
         </div>
 
@@ -81,26 +81,4 @@
     <div class="container-fluid mi-div" ui-view>
 
     </div>
-    <div class="clear"></div>
-    <footer class="mi-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-sm-12" style="margin-top:10px;">
-                    <h5 class="">Sobre la Web</h5>
-                    <p class="">Sitio web dedicado a: <br> - Gestión de reservas de los diferentes recursos existentes en todo Centro de Enseñanza.
-                    <br>
-                    Hourweb facilita a los docentes y empleados del centro conocer en tiempo real....
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-lg-offset-l2 col-sm-12">
-                <h5>Enlaces de interés</h5>
-                <ul>
-                    <li><a class="" href="#">Contacto</a></li>
-                    <li><a class="" href="#">Twitter</a></li>
-                </ul>
-            </div>
-        </div>
-
-
-    </footer>
+    

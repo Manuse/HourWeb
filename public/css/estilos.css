@@ -393,15 +393,17 @@ div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home:hove
 
 /* TITULO de la web */
 
-div>a.navbar-text.titulo-web {
+div>p.navbar-text.titulo-web {
+    position: absolute;
+    top:5px;
     color: azure;
-    margin: auto;
-    font-size: 2.5em;
+    font-size: 40px;
     font-family: 'Times New Roman', sans-serif;
     font-weight: bolder;
+    cursor: pointer;
 }
 
-div>a.navbar-text.titulo-web:hover {
+div>p.navbar-text.titulo-web:hover {
     text-decoration: none;
 }
 
@@ -414,9 +416,9 @@ div>a.navbar-text.titulo-web:hover {
         margin-top: 5px;
     }
     /* elementos que eliminamos en esa resolucion del screen */
-    div.navbar-brand>a.navbar-text.titulo-web {
+    div.navbar-brand>p.navbar-text.titulo-web {
         color: white;
-        font-size: 28px;
+        font-size: 25px;
     }
     /* el elemento no genera ninguna caja. El elemento desaparece por completo de la página y no ocupa sitio, , los elementos adyacentes ocuparan su lugar
     */
