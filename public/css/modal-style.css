@@ -2,7 +2,7 @@
 
 p.clase-error {
     text-align: center;
-    color: firebrick;
+    color: red;
     font-size: 17px;
     font-weight: bold;
     margin-top: 10px;
@@ -122,7 +122,7 @@ input.form-control.form-login1 {
 
 @media only screen and (min-width:351px) and (max-width:399px) {
     input.form-control.form-login1 {
-        width: 260px !important;
+        width: 270px !important;
         margin-left: 20px !important;
         font-size: 12px;
     }
@@ -133,12 +133,12 @@ input.form-control.form-login1 {
 
 @media only screen and (min-width:301px) and (max-width:350px) {
     input.form-control.form-login1 {
-        width: 280px !important;
-        margin-left: 11px !important;
+        width: 250px !important;
+        margin-left: 10px;;
         font-size: 12px;
     }
     h4.entrar-hw {
-        margin-left: 11px !important;
+        margin-left: 10px !important;
     }
 }
 

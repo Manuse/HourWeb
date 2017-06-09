@@ -1,11 +1,12 @@
 <div class="modal-content">
     <div class="">
-        <img class="img-responsive imagen-error" alt="Usuario Pic" src="imagenes/warning-icon-svg1.svg" />
+       <!-- dependiendo del tipo de modal, se cargara el correspondiente archivo .svg -->
+        <img class="img-responsive imagen-error" alt="Usuario Pic"
+        src="{{vmmm.tipo===undefined ? 'imagenes/warning-icon-svg1.svg':'imagenes/interrogacion1.svg'}}"/>
     </div>
 
     <div class="modal-body">
-        <!-- vmmm.notificacion==true ng-class-->
-        <p class="modal-title clase-notificacion" ng-bind="vmmm.error"></p>
+        <p ng-class="vmmm.tipo===undefined ? 'clase-error':'clase-notificacion'" ng-bind="vmmm.error"></p>
     </div>
     <div class="modal-footer">
         <div class="div-boton-error">
