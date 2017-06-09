@@ -6,7 +6,7 @@
 
     function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, modalFactory, errorFactory) {
         var vm = this;
-
+        var centro;
         // Timepicker reservas permanentes       
         vm.hstep = 1;
         vm.mstep = 30;
@@ -32,7 +32,7 @@
                     cargarRecursos();
                     cargarUsuarios();
                     getTipologias();
-                    horaCentro();
+                    horaYNombreCentro()
                     cargarCursos();
                     cargarRP();
                 }, 0);
@@ -41,12 +41,20 @@
             }
         }
 
-        function horaCentro() {
+        function horaYNombreCentro() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.mytimeRP = new Date("1/1/3000 " + snapshot.val().split("-")[0] + ":00");
-                    vm.max = new Date("1/1/3000 " + snapshot.val().split("-")[1] + ":00") - 1800000;
-                    vm.min = new Date("1/1/3000 " + snapshot.val().split("-")[0] + ":00");
+                    vm.max = new Date("1/1/3000 " + snapshot.val().split("-")[1] + ":00") - 3600000;
+                    vm.min = vm.mytimeRP;
+                    vm.inicio = vm.min;
+                    vm.final = vm.max + 3600000;
+                }, 0);
+            });
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/nombre").once("value", function (snapshot) {
+                $timeout(function () {
+                    vm.nCentro = snapshot.val();
+                    centro=snapshot.val();
                 }, 0);
             });
         }
@@ -269,9 +277,25 @@
             var funcion = function () {
                 vm.cursosRP.splice(index + 1, 1);
                 vm.cursos.splice(index, 1);
-                DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos").set(vm.cursos);
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").set(vm.cursos);
+                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("curso").equalTo(curso).once("value", function (snapshot) {
+                    var reservas = snapshot.val();
+                    for (var data in reservas) {
+                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data).update({
+                            curso: ''
+                        })
+                    }
+                });
+                for (var i = 0; i < vm.usuarios; i++) {
+                    DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.usuarios[i].id).once("value", function (data) {
+                        var horarios = data.val();
+                        for (var data1 in horarios) {
+                            DATABASE.ref("horarios/" + data1).remove();
+                        }
+                    })
+                }
             }
-            vm.confirmacion("¿Borrar el curso " + curso + "?", funcion);
+            vm.confirmacion("¿Borrar el curso " + curso + "? eso también borrará el curso de las reservas y de los horarios", funcion);
         }
 
         function cargarRP() {
@@ -309,17 +333,32 @@
                         DATABASE.ref("user/" + data1).update({
                             tipo: "administrador"
                         });
-                       // vm.usuarios[vm.usuarios.indexOf(user)].tipo = "administrador";
+                        // vm.usuarios[vm.usuarios.indexOf(user)].tipo = "administrador";
                     } else {
                         DATABASE.ref("user/" + data1).update({
                             tipo: "estandar"
                         });
-                       // vm.usuarios[vm.usuarios.indexOf(user)].tipo = "estandar";
+                        // vm.usuarios[vm.usuarios.indexOf(user)].tipo = "estandar";
                     }
                 }
             });
         }
 
+        vm.cambiarNombreCentro = function () {
+            if (vm.nCentro != 0 && vm.nCentro != null) {
+                DATABASE.ref("centros/" + vm.getUser().codcentro).update({
+                    nombre: vm.nCentro
+                });
+                vm.datos = !vm.datos;
+            } else {
+                vm.error(errorFactory.getError("campoVacio"));
+            }
+        }
+
+        vm.cancelarNombreCentro=function(){
+            vm.nCentro=centro;
+            vm.datos = !vm.datos;
+        }
 
     }
 

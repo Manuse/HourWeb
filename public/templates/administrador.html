@@ -12,10 +12,10 @@
                     Agrege un Recurso o una Tipología
                 </div>
                 <div class="panel-body">
-                    
-                
 
-<!--PRIMER RESPONSIVE-->
+
+
+                    <!--PRIMER RESPONSIVE-->
                     <div class="row">
 
                         <div class="col-lg-6 col-md-5 hidden-sm hidden-xs">
@@ -77,8 +77,8 @@
 
 
                         </div>
-                        
-<!--                        TERMINA PRIMER RESPONSIVE-->
+
+                        <!--                        TERMINA PRIMER RESPONSIVE-->
 
 
                         <!--                SEGUNDO RESPONSIVE-->
@@ -150,10 +150,10 @@
 
 
                     </div>
-                    </div>
-                
+                </div>
+
             </div>
-<!--            TERMINA SEGUNDO RESPONSIVE-->
+            <!--            TERMINA SEGUNDO RESPONSIVE-->
 
 
 
@@ -196,7 +196,8 @@
                     <div class="col-md-3">
                         <br>
                         <h3 class="listas">USUARIO</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item as item.nombre for item in vm.usuarios" ng-model="vm.usuarioRP">
+                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item as item.nombre for item in vm.usuarios"
+                            ng-model="vm.usuarioRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                             </select>
@@ -208,7 +209,8 @@
                     <div class="col-md-3">
                         <br>
                         <h3 class="listas">RECURSOS</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.recurso as item.recurso for item in vm.recursos" ng-model="vm.recursoRP">
+                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.recurso as item.recurso for item in vm.recursos"
+                            ng-model="vm.recursoRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
@@ -230,7 +232,8 @@
                     <div class="col-md-3" ng-if="vm.cursos.length > 1">
                         <br>
                         <h3 class="listas">CURSOS</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.value as item.label for item in vm.cursosRP" ng-model="vm.cursoRP">
+                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.value as item.label for item in vm.cursosRP"
+                            ng-model="vm.cursoRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
@@ -239,7 +242,8 @@
                     <div class="col-md-3">
                         <br>
                         <h3 class="listas pra">HORA</h3>
-                        <div class="horaspermanente" uib-timepicker ng-model="vm.mytimeRP" hour-step="vm.hstep" minute-step="vm.mstep" max="vm.max" min="vm.min" show-meridian="false"></div>
+                        <div class="horaspermanente" uib-timepicker ng-model="vm.mytimeRP" hour-step="vm.hstep" minute-step="vm.mstep" max="vm.max"
+                            min="vm.min" show-meridian="false"></div>
 
                     </div>
                 </div>
@@ -284,7 +288,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr  ng-repeat="usuario in vm.usuarios">
+                            <tr ng-repeat="usuario in vm.usuarios">
                                 <td ng-bind="usuario.nombre"></td>
                                 <td>
                                     <label class="switch">
@@ -305,7 +309,82 @@
         <!--        Termina el tercer tab-->
 
         <!--       Empieza el cuarto tab-->
-        <uib-tab index="3" heading="Centros" classes="estilo-tab">
+        <uib-tab index="3" heading="Centro" classes="estilo-tab">
+            <div class="row">
+                <div class="col-sm-12 perfil-home">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">INFORMACIÓN DEL CENTRO</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-10">
+                                <table class="table table-responsive tabla-home">
+                                    <tbody>
+                                        <tr class="tr-home">
+                                            <td colspan="2" class="td-datos-home">
+                                                <form class="form-inline">
+                                                    <!-- se agruparan en linea -->
+                                                    <div class="form-group">
+                                                        <input class="form-control input-nombre-config" type="text" placeholder="Cambiar Nombre del Centro" ng-disabled="!vm.datos" ng-model="vm.nCentro">
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <tr class="tr-home" ng-if="!vm.datos">
+                                            <td colspan="2" class="td-btn-datos">
+                                                <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos">
+                                                        <strong>Editar nombre</strong>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="tr-home" ng-if="vm.datos">
+                                            <td colspan="1" class="td-btn-datos">
+                                                <div class="btn-group pull-left">
+                                                    <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.cambiarNombreCentro()">
+                                                        <strong>Guardar</strong>
+                                                </button>
+                                                    <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.cancelarNombreCentro()">
+                                                        <strong>Cancelar</strong>
+                                                </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="tr-home" ng-if="vm.hora">
+                                            <td class="td-btn-datos">Inicio 
+                                                <div class="horaspermanente" uib-timepicker ng-model="vm.inicio" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>
+                                            </td>
+                                            <td class="td-btn-datos">Fin 
+                                                <div class="horaspermanente" uib-timepicker ng-model="vm.final" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>
+                                            </td>
+                                        </tr>
+                                        <tr class="tr-home" ng-if="!vm.hora">
+                                            <td colspan="2" class="td-btn-datos">
+                                                <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.hora=!vm.hora">
+                                                        <strong>Cambiar Horario</strong>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr class="tr-home" ng-if="vm.hora">
+                                            <td colspan="1" class="td-btn-datos">
+                                                <div class="btn-group pull-left">
+                                                    <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.hora=!vm.hora">
+                                                        <strong>Guardar</strong>
+                                                </button>
+                                                    <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.hora=!vm.hora">
+                                                        <strong>Cancelar</strong>
+                                                </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- FIN PANEL-->
+                </div>
+            </div>
 
         </uib-tab>
         <!--        Termina el cuarto tab-->
