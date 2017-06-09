@@ -24,7 +24,13 @@
                                     <br>
                                     <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
                                         <uib-accordion-heading>
-                                            <div class="accordcolor"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span></small>
+                                            <div class="accordcolor">
+                                               <small>
+                                               <span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span>
+                                               </small>
+                                               
+<!--                                               mismo glyphicon que recurso, cambialo-->
+                                               <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarRecurso(recurso.recurso)" style="margin-left:3px;"></span>
                                                 <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                         </uib-accordion-heading>
                                         <ul class="list-group">
@@ -157,19 +163,13 @@
 
 
 
-
-
-
-
-
         </uib-tab>
         <!--                Termina primer tab-->
 
         <!--    Empieza el segundo tab-->
 
         <uib-tab index="1" heading="Reservas Permanentes" classes="estilo-tab">
-
-            <br>
+<br>
 
             <div class="panelreserva panel panel-info">
                 <div class="panel-heading">
@@ -192,35 +192,37 @@
 
                 <div class="panel-body">
 
-
-                    <div class="col-md-3">
-                        <br>
-                        <h3 class="listas">USUARIO</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item as item.nombre for item in vm.usuarios"
-                            ng-model="vm.usuarioRP">
+                    <div class="row">
+                        <!--                    primera columna de 6-->
+                        <div class="col-lg-6">
+                            <div class="panel panel-info" style="padding:10px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <br>
+                                        <h3 class="listas">USUARIO</h3>
+                                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item as item.nombre for item in vm.usuarios" ng-model="vm.usuarioRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                             </select>
-                    </div>
+                                    </div>
 
 
 
 
-                    <div class="col-md-3">
-                        <br>
-                        <h3 class="listas">RECURSOS</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.recurso as item.recurso for item in vm.recursos"
-                            ng-model="vm.recursoRP">
+                                    <div class="col-md-6">
+                                        <br>
+                                        <h3 class="listas">RECURSOS</h3>
+                                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.recurso as item.recurso for item in vm.recursos" ng-model="vm.recursoRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
                                             </select>
-                    </div>
+                                    </div>
 
-                    <div class="col-md-3">
-                        <br>
-                        <h3 class="listas">DÍAS</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-model="vm.dayRP">
+                                    <div class="col-md-6">
+                                        <br>
+                                        <h3 class="listas">DÍAS</h3>
+                                        <select class="selectpermanente form-control pull-right btn-info" ng-model="vm.dayRP">
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                 <option class="opcion_combo" value="6">Lunes</option>
                                                 <option class="opcion_combo" value="7">Martes</option>
@@ -228,30 +230,95 @@
                                                 <option class="opcion_combo" value="9">Jueves</option>
                                                 <option class="opcion_combo" value="10">Viernes</option>
                                             </select>
-                    </div>
-                    <div class="col-md-3" ng-if="vm.cursos.length > 1">
-                        <br>
-                        <h3 class="listas">CURSOS</h3>
-                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.value as item.label for item in vm.cursosRP"
-                            ng-model="vm.cursoRP">
+                                    </div>
+                                    <div class="col-md-6" ng-if="vm.cursos.length > 1">
+                                        <br>
+                                        <h3 class="listas">CURSOS</h3>
+                                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.value as item.label for item in vm.cursosRP" ng-model="vm.cursoRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
                                             </select>
-                    </div>
-                    <div class="col-md-3">
-                        <br>
-                        <h3 class="listas pra">HORA</h3>
-                        <div class="horaspermanente" uib-timepicker ng-model="vm.mytimeRP" hour-step="vm.hstep" minute-step="vm.mstep" max="vm.max"
-                            min="vm.min" show-meridian="false"></div>
+                                    </div>
+                                    <center>
+                                        <div class="col-md-12">
+                                            <br>
+                                            <h3 class="listas pra">HORA</h3>
+                                            <div class="horaspermanente" uib-timepicker ng-model="vm.mytimeRP" hour-step="vm.hstep" minute-step="vm.mstep" max="vm.max" min="vm.min" show-meridian="false"></div>
+
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--                    termine primera columna de 6-->
+
+                        <!--                    segunda columna de 6-->
+                        <div class="col-lg-6">
+                            <div class="panel panel-info" style="padding:10px;">
+                                
+                                    <center>
+                                    <div uib-alert ng-repeat="item in vm.RP" ng-class="'alert-' + (alert.type || 'info')" close="closeAlert($index)">{{item.nombre+' | '+item.recurso+' | '+item.hora+' | '+(item.curso!=0 ? 'curso:'+item.curso:'')}}</div>
+                                    </center>
+                                
+                                
+                                
+                                
+
+                                <!--                    prueba-->
+                                
+                                
+                                
+<!--
+                                <uib-accordion close-others="vm.oneAtATime">
+
+                                    <div uib-accordion-group class="panel-default" ng-repeat="item in vm.RP" is-open="vm.open[$index]">
+                                        <uib-accordion-heading>
+                                            <div class="azulmensaje">
+                                                <p ng-bind="item.nombre"></p>
+                                            </div>
+
+                                        </uib-accordion-heading>
+                                        <form class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label for="recursopermanente" class="col-lg-2 control-label">Recurso:</label>
+                                            <div class="col-lg-10">
+                                                <input ng-model="item.recurso" type="text" class="form-control" id="recursopermanente">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="horapermanente" class="col-lg-2 control-label">Hora:</label>
+                                            <div class="col-lg-10">
+                                                <input ng-model="item.hora" type="text" class="form-control" id="horapermanente">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cursopermanente" class="col-lg-2 control-label">Recurso:</label>
+                                            <div class="col-lg-10">
+                                                <input ng-model="(item.curso!=0 ? ' curso:'+item.curso:'')" type="text" class="form-control" id="cursopermanente">
+                                            </div>
+                                        </div>
+                                        </form>
+                                        
+
+
+
+                                    </div>
+                                </uib-accordion>
+-->
+
+
+                            </div>
+
+
+                        </div>
+
+
 
                     </div>
                 </div>
-                <ul>
-                    <li ng-repeat="item in vm.RP">
-                        <p ng-bind="item.nombre+' '+item.recurso+' '+item.hora+ (item.curso!=0 ? ' curso:'+item.curso:'')"></p>
-                    </li>
-                </ul>
+
             </div>
 
 
@@ -270,15 +337,14 @@
         <uib-tab index="2" heading="Usuarios" classes="estilo-tab">
             <div class="row">
                 <div class="col-xs-12">
-                    <h3 class="listas">Usuarios</h3>
-
+                   <br>
                     <table class="table table-bordered  table-responsive tabla_admin">
                         <!--
                          la clase table extiende la tabla y separa cada fila con una línea.
                               								 table-hover cambia el color o resalta cada la línea al pasar el mouse.
                               								 table-condensed comprime el tamanio de la tabla
                               								 table-responsive hace responsive la tabla-->
-                        <thead>
+                        <thead class="centradocolumnas">
                             <tr class="bg-primary">
                                 <th>Nombre</th>
                                 <th>Estandar/Administrador</th>
@@ -287,9 +353,11 @@
                                 <th>e-mail</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        
+                        <tbody class="tablausuariosadmin">
+                           
                             <tr ng-repeat="usuario in vm.usuarios">
-                                <td ng-bind="usuario.nombre"></td>
+                              <td ng-bind="usuario.nombre"></td>
                                 <td>
                                     <label class="switch">
                                         <input type="checkbox" ng-checked="usuario.tipo=='administrador'" ng-click="vm.cambiarTipo(usuario)">
@@ -299,6 +367,7 @@
                                 <td ng-bind="usuario.tel_fijo"></td>
                                 <td ng-bind="usuario.tel_movil"></td>
                                 <td ng-bind="usuario.email"></td>
+                                
                             </tr>
 
                         </tbody>
@@ -350,10 +419,10 @@
                                             </td>
                                         </tr>
                                         <tr class="tr-home" ng-if="vm.hora">
-                                            <td class="td-btn-datos">Inicio 
+                                            <td class="td-btn-datos">Inicio
                                                 <div class="horaspermanente" uib-timepicker ng-model="vm.inicio" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>
                                             </td>
-                                            <td class="td-btn-datos">Fin 
+                                            <td class="td-btn-datos">Fin
                                                 <div class="horaspermanente" uib-timepicker ng-model="vm.final" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>
                                             </td>
                                         </tr>

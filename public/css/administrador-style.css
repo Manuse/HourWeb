@@ -107,7 +107,7 @@ div.panel-body>div.col-md-3>select.selectpermanente{
 
 /* letras Usuarios, Recursos, Dias*/
 
-div.panel-body>div.col-md-3>h3.listas{
+div.col-md-6>h3.listas{
     text-align: center;
 }
 
@@ -122,6 +122,18 @@ div.panel-body>div.col-md-3>div.horaspermanente{
 
 
 /*--------------------------------------------TERCER TAB-------------------------------------*/
+
+/*fondo blanco tabla y centrado de los datos*/
+
+tbody.tablausuariosadmin>tr>td{
+    background-color: white;
+    text-align: center;
+    
+}
+/*centrado de los nombre de las columnas*/
+thead.centradocolumnas>tr>th{
+    text-align: center;
+}
 
 /*--------------------------------------------CUARTO TAB-------------------------------------*/
 
