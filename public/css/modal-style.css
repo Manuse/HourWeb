@@ -23,6 +23,7 @@ div>img.imagen-error {
     height: 31px;
 }
 
+
 /* login admin asignar horas */
 
 label.horas {
@@ -35,31 +36,38 @@ label.horas {
 
 
 /* inputs de mLoginForm */
+
+
 /* encabezado del login*/
 
 h4.entrar-hw {
     margin-left: 16px;
 }
 
+
 /*#e6f2ff*/
+
 input.form-control.form-login,
-input.form-control.form-login-user{
+input.form-control.form-login-user {
     background-color: #e6f2ff;
     width: 500px;
     font-family: "Verdana", Georgia, sans-serif;
     font-weight: bolder;
     margin-bottom: 7px;
 }
+
 @media (min-width: 769px) {
-    input.form-control.form-login-user{
+    input.form-control.form-login-user {
         margin-left: 17px;
     }
-    
 }
+
+
 /*encabezado-cod-centro formulario usuario standard */
-label.entrar-hw{
-    font-family:Verdana,arial,sans-serif;
-    margin-left:17px;    
+
+label.entrar-hw {
+    font-family: Verdana, arial, sans-serif;
+    margin-left: 17px;
 }
 
 input.form-control.form-login1 {
@@ -76,18 +84,19 @@ input.form-control.form-login1 {
         width: 530px !important;
         margin-left: 60px !important;
     }
-    h4.entrar-hw{
+    h4.entrar-hw {
         margin-left: 60px !important;
-    }    
+    }
 }
+
 @media only screen and (min-width:601px) and (max-width:650px) {
     input.form-control.form-login1 {
         width: 520px !important;
         margin-left: 55px !important;
     }
-    h4.entrar-hw{
+    h4.entrar-hw {
         margin-left: 55px !important;
-    }    
+    }
 }
 
 @media only screen and (min-width:500px) and (max-width:600px) {
@@ -95,7 +104,7 @@ input.form-control.form-login1 {
         width: 423px !important;
         margin-left: 25px !important;
     }
-    h4.entrar-hw{
+    h4.entrar-hw {
         margin-left: 25px !important;
     }
 }
@@ -106,7 +115,7 @@ input.form-control.form-login1 {
         margin-left: 30px !important;
     }
     /* encabezado del login*/
-    h4.entrar-hw{
+    h4.entrar-hw {
         margin-left: 30px !important;
     }
 }
@@ -117,20 +126,32 @@ input.form-control.form-login1 {
         margin-left: 20px !important;
         font-size: 12px;
     }
-    h4.entrar-hw{
+    h4.entrar-hw {
         margin-left: 20px !important;
     }
 }
 
-@media only screen and (min-width:200px) and (max-width:350px) {
+@media only screen and (min-width:301px) and (max-width:350px) {
     input.form-control.form-login1 {
-        width: 200px !important;
-        margin-left: 9px !important;
+        width: 280px !important;
+        margin-left: 11px !important;
         font-size: 12px;
     }
-    h4.entrar-hw{
-        margin-left: 9px !important;
-    }    
+    h4.entrar-hw {
+        margin-left: 11px !important;
+    }
+}
+
+@media only screen and (min-width:200px) and (max-width:300px) {
+    input.form-control.form-login1 {
+        width: 200px !important;
+        margin-left:15px !important;
+        font-size: 12px;
+    }
+    h4.entrar-hw {
+        margin-left: 15px !important;
+        font-size: 17px;
+    }
 }
 
 @media only screen and (min-width:769px) and (max-width:800px) {
@@ -139,14 +160,25 @@ input.form-control.form-login1 {
     }
 }
 
-@media only screen and (min-width:601px) and (max-width:768px) {
+@media only screen and (min-width:601px) and (max-width:660px) {
     input.form-control.form-login,
     input.form-control.form-login-user {
-        width: 427px;
-        margin-left: 45px;
+        width: 550px;
+        margin-left: 10px;
     }
-    label.entrar-hw{
-        margin-left: 45px;
+    label.entrar-hw {
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (min-width:661px) and (max-width:768px) {
+    input.form-control.form-login,
+    input.form-control.form-login-user {
+        width: 600px;
+        margin-left: 20px;
+    }
+    label.entrar-hw {
+        margin-left: 20px;
     }
 }
 
@@ -156,7 +188,7 @@ input.form-control.form-login1 {
         width: 424px;
         margin-left: 30px;
     }
-    label.entrar-hw{
+    label.entrar-hw {
         margin-left: 30px;
     }
 }
@@ -167,30 +199,42 @@ input.form-control.form-login1 {
         width: 333px;
         margin-left: 19px;
     }
-    label.entrar-hw{
+    label.entrar-hw {
         margin-left: 19px;
     }
 }
 
-@media only screen and (min-width:280px) and (max-width:396px) {
+.span-cancelar {
+    font-size: 13px;
+}
+
+@media only screen and (min-width:301px) and (max-width:396px) {
     input.form-control.form-login,
     input.form-control.form-login-user {
         width: 240px;
         margin-left: 15px;
+        font-size: 13px;
     }
-    label.entrar-hw{
+    label.entrar-hw {
         margin-left: 15px;
+    }
+    span.span-cancelar {
+        display: none;
     }
 }
 
-@media only screen and (min-width:200px) and (max-width:396px) {
+@media only screen and (min-width:200px) and (max-width:300px) {
     input.form-control.form-login,
     input.form-control.form-login-user {
-        width: 240px;
-        margin-left: 7px;
+        width: 170px;
+        margin-left: 5px;
+        font-size: 12px;
     }
-    label.entrar-hw{
-        margin-left: 7px;
+    label.entrar-hw {
+        margin-left: 5px;
+    }
+    span.span-cancelar {
+        display: none;
     }
 }
 
