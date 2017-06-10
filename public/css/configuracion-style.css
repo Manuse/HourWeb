@@ -36,8 +36,9 @@ input.input-pass-config2 {
 input.input-pass-config3 {
     font-weight: bold;
     font-family: 'Tahoma', sans-serif;
-    margin-bottom: 5px;    
+    margin-bottom: 5px;
 }
+
 
 /* hr bajo el titulo Edicion de Perfil */
 
@@ -80,7 +81,7 @@ input.form-control.input-nombre-centro {
         width: 150px;
         margin-bottom: 5px;
     }
-    input.input-pass-config2, 
+    input.input-pass-config2,
     input.input-pass-config3 {
         margin-left: 0;
         font-size: 9px;
@@ -118,9 +119,9 @@ input.form-control.input-nombre-centro {
         width: 170px;
         margin-bottom: 5px;
     }
-    input.input-pass-config3{
+    input.input-pass-config3 {
         font-size: 10px;
-        width: 160px !important;            
+        width: 160px !important;
     }
     input.input-pass-config {
         font-size: 10px;
@@ -132,8 +133,7 @@ input.form-control.input-nombre-centro {
         margin-top: 5px;
         font-size: 10px;
         width: 160px !important;
-    }       
-    
+    }
     span.icono-ojo-centro {
         font-size: 14px !important;
     }
@@ -152,7 +152,8 @@ input.form-control.input-nombre-centro {
         width: 290px !important;
         margin-top: 5px;
     }
-    input.input-pass-config2,input.input-pass-config3 {
+    input.input-pass-config2,
+    input.input-pass-config3 {
         margin-left: 0px;
         margin-top: 5px;
         width: 290px !important;
@@ -161,10 +162,10 @@ input.form-control.input-nombre-centro {
 
 @media (min-width: 770px) {
     input.input-pass-config,
-    input.input-pass-config2{
+    input.input-pass-config2 {
         margin-top: 5px;
     }
-    button.btn-ojo1{
+    button.btn-ojo1 {
         padding: 10px;
     }
 }
@@ -182,6 +183,7 @@ input.form-control.input-nombre-centro {
         width: 40% !important;
     }
 }
+
 
 /* estilo de tabla de configuracion de perfil */
 
@@ -230,8 +232,8 @@ a.btn-editar-foto {
         width: 20px;
         height: 20px;
     }
-    
 }
+
 
 /* para i-Pad , medida exacta */
 
@@ -249,7 +251,6 @@ a.btn-editar-foto {
         width: 25px;
         height: 25px;
     }
-    
 }
 
 @media only screen and (min-width:300px) and (max-width:768px) {
@@ -297,26 +298,38 @@ no obedece a las librerias de bootstrap */
 .imagen-config {
     opacity: 1;
     display: block;
-    width: 100%;
-    height: auto;
+    
     transition: .5s ease;
     backface-visibility: hidden;
+    border-width: 2px;
+    border-style: double;
+    border-color: skyblue;
+    border-radius: 4px;
 }
 
-@media only screen and (min-width:200px) and (max-width:991px) {
+/*@media only screen and (min-width:767px) and (max-width:991px) {
     /* div contenedor de la imagen de la configuaracion */
-    div.efecto1 {
-        width: 110px !important;
-        height: 110px !important;
+    /*div.efecto1 {
+        width: auto!important;
+        height: auto !important;
     }
-}
+}*/
 
+@media (max-width:767px) {
+    div.efecto1 {
+        width: 120px;
+        height: auto;
+        background-size: contain;
+    }
+    
+}
 
 /* damos opacidad a imagen */
 
 .efecto1:hover .imagen-config {
     opacity: 0.7;
 }
+
 
 /* hacemos visible la camara dentro de la imagen */
 
@@ -334,7 +347,7 @@ no obedece a las librerias de bootstrap */
     -ms-transform: translate(-42%, -42%);
 }
 
-.icon-camara {
+label.icon-camara {
     color: azure;
     font-size: 23px;
 }
