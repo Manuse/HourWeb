@@ -90,7 +90,7 @@
                     
                     <uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
                         
-                        <div class="btn-group pull-right">
+                        <div class="btn-group pull-right div-btn-home">
                             <!-- 2 BOTONES UI-BOOTSTRAP, ng-model hace referencia al homeControle>vm.radioModel, que por defecto coje Left, y como a los botones le ponemos la propiedad uib-btn-radio="posicion", el que este Left queda marcado cuando recarges la pagina -->
                             <label class="btn btn-info btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</label>
                             <label class="btn btn-warning btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</label>
