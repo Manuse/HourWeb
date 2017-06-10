@@ -6,7 +6,7 @@
         .factory('registerFactory', registerFactory);
 
 
-    function registerFactory(AUTH, DATABASE, $uibModal, errorFactory) {
+    function registerFactory(AUTH, DATABASE, $uibModal, errorFactory, modalFactory) {
 
         var factory = {
             registrarUser: function (dataUser, dataCenter, email, pass) {
@@ -17,17 +17,22 @@
                     });
                     insertarUsuario(dataCenter, dataUser, AUTH.currentUser.uid);
                     AUTH.currentUser.sendEmailVerification();
-                    error("Se ha enviado un email de verificacion a su correo");
+                    modalFactory.error("Se ha enviado un email de verificacion a su correo",1);
                 }, function (err) { //crea el usuario
-                    error(errorFactory.getError(err));
+                    modalFactory.error(errorFactory.getError(err));
                 });
             }
         };
 
+        /**
+         * Dependiendo del usuario creara el usuario directamente o creara el centro antes
+         * @param newcentro objeto con los datos del centro
+         * @param newuser objeto con los datos del usuario
+         * @param uid id del usuario
+         */
         function insertarUsuario(newcentro, newuser, uid) {
             try {
                 if (newuser.tipo == "administrador") { //si el usuario es administrador tambien hay que crear el centro y desde la creacion del centro se crea al usuario
-                    console.log("crearcentro")
                     crearCentro(newcentro, newuser, uid);
                 } else { // sino es admnistrador creadmos el usuario directamente
                     newuser.id = uid; //lo ponemos de atributo id el que nos proporciona firebase
@@ -36,43 +41,36 @@
             } catch (err) {}
         }
 
+        /**
+         * Crea un usuario en la base de datos
+         * @param user: objeto con los datos del usuario
+         */
         function crearUser(user) {
             var usuario = DATABASE.ref("user"); //recogemos la referencia de la base datos y le añadimos el uid de usuario como nodo
             usuario.push(user); //introducimos los datos dentro del nodo
         }
 
+        /**
+         * Inserta el centro en la base de datos
+         * @param centro objeto con los datos del centro
+         * @return codigo del centro
+         */
         function insertarCentro(centro) {
             var cent = DATABASE.ref("centros");
             var key = cent.push(centro).key; //recogemos el nombre del nodo
             return key;
         }
 
+        /**
+         * Crea el centro y luego al usuario
+         * @param centro: objeto con los daros del centro
+         * @param user: objeto con los datos del usuario
+         * @param uid:codigo del usuario 
+         */
         function crearCentro(centro, user, uid) {
-            console.log("crearuser")
             user.codcentro = insertarCentro(centro);
             user.id = uid;
-            console.log("crearuser"+user.codcentro)
             crearUser(user); //metodo que crea el nodo en usuario
-        }
-
-        function error(err) {
-            var modalInstance = $uibModal.open({
-                animation: false,
-                templateUrl: 'modal/mError.html',
-                controller: 'ErrorController',
-                controllerAs: 'vmmm',
-                resolve: {
-                    item: function () {
-                        return err;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function () {
-
-            }, function () {
-
-            });
         }
 
         return factory;

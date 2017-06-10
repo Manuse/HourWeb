@@ -42,7 +42,7 @@
         }
 
         /**
-         * Cambia
+         * Cambia el icono del ojo temporalmente
          */
         vm.visualizar = function () {
             vm.eye = !vm.eye;
