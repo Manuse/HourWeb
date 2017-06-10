@@ -23,14 +23,17 @@
                                 <uib-accordion close-others="vm.oneAtATime">
                                     <br>
                                     <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
-                                        <uib-accordion-heading >
-                                            <div class="accordcolor" >
-                                                <small>
+                                        <uib-accordion-heading>
+                                            <div class="accordcolor">
+
+                                                <small>                                                
                                                <span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span>
                                                </small>
 
-                                                <!--                                               mismo glyphicon que recurso, cambialo-->
+                                                <!-- mismo glyphicon que recurso, cambialo-->
                                                 <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarTipo(vm.tipologias.indexOf(tip))" ng-if="vm.open[$index]" style="margin-left:3px;"></span>
+
+                                                <!--flecha-->
                                                 <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                         </uib-accordion-heading>
                                         <ul class="list-group">
@@ -84,10 +87,10 @@
 
                         </div>
 
-                        <!--                        TERMINA PRIMER RESPONSIVE-->
+                        <!-- TERMINA PRIMER RESPONSIVE -->
 
 
-                        <!--                SEGUNDO RESPONSIVE-->
+                        <!-- SEGUNDO RESPONSIVE-->
                         <div class="hidden-lg hidden-md visible-sm visible-xs">
                             <div class="row">
 
@@ -121,8 +124,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
 
                         <div class="hidden-lg hidden-md visible-sm visible-xs">
@@ -144,12 +145,7 @@
 
                                 </uib-accordion>
                             </div>
-
-
                         </div>
-
-
-
                         <br><br><br>
 
 
@@ -159,12 +155,12 @@
                 </div>
 
             </div>
-            <!--            TERMINA SEGUNDO RESPONSIVE-->
+            <!--  TERMINA SEGUNDO RESPONSIVE-->
 
 
 
         </uib-tab>
-        <!--                Termina primer tab-->
+        <!--  Termina primer tab-->
 
         <!--    Empieza el segundo tab-->
 
@@ -271,15 +267,9 @@
                                 <center>
                                     <div uib-alert ng-repeat="item in vm.RP | buscarRPFilter : vm.bRP" class="alert-info" close="vm.borrarRP(item)">{{item.nombre+', Recurso: '+item.recurso+', Dia: '+item.dia+', Hora: '+item.hora+ (item.curso!=0 ? ', curso: '+item.curso:'')}}</div>
                                 </center>
-
-
-
-
-
-                                <!--                    prueba-->
-
-
-
+                                
+                                
+                                <!-- prueba -->
                                 <!--
                                 <uib-accordion close-others="vm.oneAtATime">
 
@@ -309,34 +299,15 @@
                                                 <input ng-model="(item.curso!=0 ? ' curso:'+item.curso:'')" type="text" class="form-control" id="cursopermanente">
                                             </div>
                                         </div>
-                                        </form>
-                                        
-
-
-
-                                    </div>
+                                        </form>                                      
+                                </div>
                                 </uib-accordion>
--->
-
-
+                             -->
                             </div>
-
-
                         </div>
-
-
-
                     </div>
                 </div>
-
             </div>
-
-
-
-
-
-
-
 
         </uib-tab>
 
@@ -384,12 +355,12 @@
                     </table>
                 </div>
             </div>
-        </uib-tab>
-        <!--        Termina el tercer tab-->
+        </uib-tab>       
+       <!-- Termina el tercer tab -->
 
         <!--       Empieza el cuarto tab-->
         <uib-tab index="3" heading="Centro" classes="estilo-tab">
-            <div class="row">
+            <div class="row" style="margin-top:20px;">
                 <div class="col-sm-12 perfil-home">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -401,55 +372,59 @@
                                     <tbody>
                                         <tr class="tr-home">
                                             <td colspan="2" class="td-datos-home">
-                                                <form class="form-inline">
+                                                <form class="">
                                                     <!-- se agruparan en linea -->
                                                     <div class="form-group">
-                                                        <input class="form-control input-nombre-config" type="text" placeholder="Cambiar Nombre del Centro" ng-disabled="!vm.datos" ng-model="vm.nCentro">
+                                                        <input class="form-control input-centro" type="text" placeholder="Cambiar Nombre del Centro" ng-disabled="!vm.datos" ng-model="vm.nCentro">
                                                     </div>
                                                 </form>
                                             </td>
                                         </tr>
                                         <tr class="tr-home" ng-if="!vm.datos">
                                             <td colspan="2" class="td-btn-datos">
-                                                <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos">
+                                                <button type="button" class="btn btn-info btn-xs btn-datos pull-left" ng-click="vm.datos=!vm.datos">
                                                         <strong>Editar nombre</strong>
                                                 </button>
                                             </td>
                                         </tr>
+                                        
                                         <tr class="tr-home" ng-if="vm.datos">
                                             <td colspan="1" class="td-btn-datos">
-                                                <div class="btn-group pull-left">
-                                                    <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.cambiarNombreCentro()">
+                                                <div class="btn-grupo">
+                                                    <button type="button" class="btn btn-info btn-xs pull-left" ng-click="vm.cambiarNombreCentro()">
                                                         <strong>Guardar</strong>
                                                 </button>
-                                                    <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.cancelarNombreCentro()">
-                                                        <strong>Cancelar</strong>
+                                                <button type="button" class="btn btn-default btn-xs pull-left" style="margin-left:3px;" ng-click="vm.cancelarNombreCentro()">
+                                                    <strong>Cancelar</strong>
                                                 </button>
                                                 </div>
                                             </td>
                                         </tr>
+                                        
                                         <tr class="tr-home" ng-if="vm.hora">
-                                            <td class="td-btn-datos">Inicio
+                                            <td style="font-weight: bold;">
+                                               <p class="parrafo-centro">Inicio</p>
                                                 <div class="horaspermanente" uib-timepicker ng-model="vm.inicio" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>
-                                            </td>
-                                            <td class="td-btn-datos">Fin
+                                                <br>
+                                               <p class="parrafo-centro">Fin</p>
                                                 <div class="horaspermanente" uib-timepicker ng-model="vm.final" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>
                                             </td>
                                         </tr>
+                                        
                                         <tr class="tr-home" ng-if="!vm.hora">
                                             <td colspan="2" class="td-btn-datos">
-                                                <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.hora=!vm.hora">
+                                                <button type="button" class="btn btn-info btn-xs btn-datos pull-left" ng-click="vm.hora=!vm.hora">
                                                         <strong>Cambiar Horario</strong>
                                                 </button>
                                             </td>
                                         </tr>
                                         <tr class="tr-home" ng-if="vm.hora">
                                             <td colspan="1" class="td-btn-datos">
-                                                <div class="btn-group pull-left">
-                                                    <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.cambiarHora()">
+                                                <div class="btn-grupo">
+                                                    <button type="button" class="btn btn-info btn-xs btn-datos pull-left" ng-click="vm.cambiarHora()">
                                                         <strong>Guardar</strong>
                                                 </button>
-                                                    <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.cancelarCambiarHora()">
+                                                    <button type="button" class="btn btn-default btn-xs btn-datos pull-left" style="margin-left:3px;" ng-click="vm.cancelarCambiarHora()">
                                                         <strong>Cancelar</strong>
                                                 </button>
                                                 </div>
@@ -459,31 +434,23 @@
                                 </table>
                             </div>
                         </div>
-
                     </div>
                     <!-- FIN PANEL-->
                 </div>
             </div>
 
         </uib-tab>
-        <!--        Termina el cuarto tab-->
+        <!-- Termina el cuarto tab -->
 
-        <!--       Empieza el quinto tab-->
+        <!-- Empieza el quinto tab -->
         <uib-tab index="4" heading="Cursos" classes="estilo-tab">
             <br>
-
-
             <div class="panelcurso panel panel-info">
                 <div class="panel-heading">
                     Agrege un Recurso
                 </div>
                 <div class="panel-body">
-
-
-
-
                     <div class="row">
-
                         <div class="col-lg-6 col-md-6 col-sm-6 col-sm-offset-3">
                             <div class="">
                                 <form class="form-horizontal">
@@ -525,9 +492,6 @@
                     </div>
                 </div>
             </div>
-
-
-
         </uib-tab>
         <!--        termina el quinto tab-->
 

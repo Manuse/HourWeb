@@ -2,15 +2,13 @@
 
 /* Color Encabezado Accordion*/
 
-div.panelrecursotipologia>div.panel-heading{
+div.panelrecursotipologia>div.panel-heading {
     text-align: center;
     font-size: 18px;
-    
 }
 
 .accordcolor {
     color: #f00;
-    
 }
 
 
@@ -27,8 +25,10 @@ div.row>div.col-lg-6>div.accord {
     background-color: skyblue;
 }
 
+
 /*Color Fondo Div Accordion SegundResponsive*/
-div.azulsegundo{
+
+div.azulsegundo {
     background-color: skyblue;
 }
 
@@ -73,87 +73,116 @@ ul.list-group>li.list-group-item-info>span {
     }
 }
 
+
 /* azul segundo responsive */
-div.recur2{
+
+div.recur2 {
     background-color: skyblue;
 }
 
-div.accord2{
-background-color: skyblue;
+div.accord2 {
+    background-color: skyblue;
 }
 
 
 /*-------------------------------------------SEGUNGO TAB------------------------------------*/
 
+
 /*Encabezado del tab*/
-div.panel-heading>div.row>div.col-xs-9.col-md-10{
-    
+
+div.panel-heading>div.row>div.col-xs-9.col-md-10 {
     text-align: center;
     font-size: 18px;
     margin-top: 3px;
 }
 
+
 /*Boton Guardar*/
 
-div.row>div.col-xs-3.col-md-2>button {
-    
-}
+div.row>div.col-xs-3.col-md-2>button {}
 
 
 /* select de usuario, recurso y dias*/
-div.panel-body>div.col-md-3>select.selectpermanente{
+
+div.panel-body>div.col-md-3>select.selectpermanente {
     margin-top: 35px;
 }
 
+
 /* letras Usuarios, Recursos, Dias*/
 
-div.col-md-6>h3.listas{
+div.col-md-6>h3.listas {
     text-align: center;
 }
 
+
 /* distancia de select dias al de horas*/
 
-div.panel-body>div.col-md-3>div.horaspermanente{
+div.panel-body>div.col-md-3>div.horaspermanente {
     margin-left: 75px;
 }
 
 
-
-
-
 /*--------------------------------------------TERCER TAB-------------------------------------*/
+
 
 /*fondo blanco tabla y centrado de los datos*/
 
-tbody.tablausuariosadmin>tr>td{
+tbody.tablausuariosadmin>tr>td {
     background-color: white;
     text-align: center;
-    
 }
+
+
 /*centrado de los nombre de las columnas*/
-thead.centradocolumnas>tr>th{
+
+thead.centradocolumnas>tr>th {
     text-align: center;
 }
 
-/*--------------------------------------------CUARTO TAB-------------------------------------*/
 
-/*--------------------------------------------QUINTO TAB-------------------------------------*/
+/*--------------------------------------------CUARTO TAB -Centro- -------------------------------------*/
+
+input.input-centro {
+    width: 100%;
+    font-weight: bold;
+    border: none;
+    text-align: left;
+    background-color: #e6f2ff;
+}
+
+p.parrafo-centro{
+    text-align: left;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+@media only screen and (min-width:250px) and (max-width:450px) {
+    input.input-centro {
+        font-size: 11px;
+    }
+}
+
+/*-------------------------------------------- QUINTO TAB -------------------------------------*/
+
 
 /* glyhicon de la lista*/
-div.row>div.col-lg-6>div.cent>ul.list-group>li>span{
+
+div.row>div.col-lg-6>div.cent>ul.list-group>li>span {
     margin-top: 2px;
 }
 
+
 /*Texto centrado en los li*/
-div.row>div.col-lg-6>div.cent>ul.list-group>li{
+
+div.row>div.col-lg-6>div.cent>ul.list-group>li {
     text-align: center;
 }
 
+
 /*letras panel-heading de cursos*/
-div.panelcurso>div.panel-heading{
+
+div.panelcurso>div.panel-heading {
     text-align: center;
     font-size: 18px;
 }
-    
-
-
