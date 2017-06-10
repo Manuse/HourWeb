@@ -454,7 +454,26 @@ a.btn-reservar {
     font-weight: bold;
 }
 
-@media only screen and (min-width: 376px) and (max-width:426px) {
+@media only screen and (min-width: 200px) and (max-width:426px) {
+    /* contenedor de los botones del home de la pestania Mis Reservas */
+    div.div-btn-home{
+        margin-bottom: 30px;
+    }
+    a.btn-reservar {
+        position: absolute;
+        right: 50%;        
+        font-size: 10px;
+        top: 50%;
+        
+    }
+    label.btn-semana12 {
+        position: relative;
+        right: 50%;       
+        font-size: 10px;
+    }
+    
+}
+/*@media only screen and (min-width: 376px) and (max-width:426px) {
     a.btn-reservar {
         position: relative;
         left: 0;
@@ -472,14 +491,13 @@ a.btn-reservar {
         margin-left: 0;
         font-size: 10px;
     }
-    /* botones agrupados semana1/semana2 */
     label.btn-semana12 {
         font-size: 10px;
     }
 }
 
 
-/* screen exacto 320px */
+
 
 @media (width: 320px) {
     a.btn-reservar {
@@ -488,7 +506,7 @@ a.btn-reservar {
         left: 78px;
         font-size: 10px;
     }
-    /* botones agrupados semana1/semana2 */
+    
     label.btn-semana12 {
         font-size: 10px;
     }
@@ -501,18 +519,14 @@ a.btn-reservar {
         margin-left: 0;
         font-size: 10px;
     }
-    /* botones agrupados semana1/semana2 */
+    
     label.btn-semana12 {
         font-size: 10px;
     }
-}
+}*/
 
 
 /* DIAS DE LA SEMANA*/
-
-div.border>h2 {
-    @ text-align: center;
-}
 
 
 /* BOTON CAMBIAR PESTAÑA HORARIO EN home.html */
