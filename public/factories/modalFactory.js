@@ -8,7 +8,7 @@
 
     function modalFactory($uibModal) {
         var factory = {
-            error: function (err) {
+            error: function (err, not) {
                 var modalInstance = $uibModal.open({
                     animation: false,
                     templateUrl: 'modal/mError.html',
@@ -18,7 +18,7 @@
                     size: err.length < 25 ? 'sm':'md',
                     resolve: {
                         item: function () {
-                            return err;
+                            return {error:err,tipo:not};
                         }
                     }
                 });

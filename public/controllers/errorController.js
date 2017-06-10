@@ -6,14 +6,16 @@
 
     function errorController($uibModalInstance, item, $timeout) {
         var vm = this;
-        vm.error = item;
+        vm.error = item.error;
+        vm.tipo = item.tipo;
         vm.close = function () {
             $uibModalInstance.close();
         };
 
-       $timeout(function(){
-             $uibModalInstance.close();
-        }, 2000);
-       
+        if (vm.tipo === undefined) {
+            $timeout(function () {
+                $uibModalInstance.close();
+            }, 2000);
+        }
     }
 })();

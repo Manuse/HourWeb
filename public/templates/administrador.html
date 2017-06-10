@@ -9,7 +9,7 @@
 
             <div class=" panelrecursotipologia panel panel-info">
                 <div class="panel-heading">
-                    Agrege un Recurso o una Tipología
+                    Agrege un Recurso o un Tipo
                 </div>
                 <div class="panel-body">
 
@@ -31,7 +31,7 @@
                                                </small>
 
                                                 <!-- mismo glyphicon que recurso, cambialo-->
-                                                <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarTipo(vm.tipologias.indexOf(tip))" ng-if="vm.open[$index]" style="margin-left:3px;"></span>
+                                                <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarTipo(vm.tipologias.indexOf(tip))" style="margin-left:3px;"></span>
 
                                                 <!--flecha-->
                                                 <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
@@ -391,7 +391,7 @@
                                         <tr class="tr-home" ng-if="vm.datos">
                                             <td colspan="1" class="td-btn-datos">
                                                 <div class="btn-grupo">
-                                                    <button type="button" class="btn btn-info btn-xs pull-left" ng-click="vm.cambiarNombreCentro()">
+                                                    <button type="button" class="btn btn-primary btn-xs pull-left" ng-click="vm.cambiarNombreCentro()">
                                                         <strong>Guardar</strong>
                                                 </button>
                                                 <button type="button" class="btn btn-default btn-xs pull-left" style="margin-left:3px;" ng-click="vm.cancelarNombreCentro()">
@@ -421,7 +421,7 @@
                                         <tr class="tr-home" ng-if="vm.hora">
                                             <td colspan="1" class="td-btn-datos">
                                                 <div class="btn-grupo">
-                                                    <button type="button" class="btn btn-info btn-xs btn-datos pull-left" ng-click="vm.cambiarHora()">
+                                                    <button type="button" class="btn btn-primary btn-xs btn-datos pull-left" ng-click="vm.cambiarHora()">
                                                         <strong>Guardar</strong>
                                                 </button>
                                                     <button type="button" class="btn btn-default btn-xs btn-datos pull-left" style="margin-left:3px;" ng-click="vm.cancelarCambiarHora()">
