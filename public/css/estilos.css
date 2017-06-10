@@ -472,80 +472,11 @@ a.btn-reservar {
     margin-top: 23px;
 }
 
-@media only screen and (min-width: 200px) and (max-width:426px) {
-    /* contenedor de los botones del home de la pestania Mis Reservas */
-    
-    /*a.btn-reservar {
-        position: relative;
-        left: 7px;
-        font-size: 10px;
-        bottom: 80%;
-    }*/
-    /*button.btn-semana12 {
-        position: relative;
-        right: 10%;
-        font-size: 10px;
-    }
-    button.btn-semana123{
-        position: relative;
-        right: 10%;
-        font-size: 10px;
-    }*/
+div.div-btn-home1 {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
 }
-
-
-/*@media only screen and (min-width: 376px) and (max-width:426px) {
-    a.btn-reservar {
-        position: relative;
-        left: 0;
-        font-size: 10px;
-    }
-    label.btn-semana12 {
-        font-size: 10px;
-    }
-}
-
-@media only screen and (min-width: 200px) and (max-width:319px) {
-    a.btn-reservar {
-        position: relative;
-        top: 0px;
-        margin-left: 0;
-        font-size: 10px;
-    }
-    label.btn-semana12 {
-        font-size: 10px;
-    }
-}
-
-
-
-
-@media (width: 320px) {
-    a.btn-reservar {
-        position: relative;
-        top: 0px;
-        left: 78px;
-        font-size: 10px;
-    }
-    
-    label.btn-semana12 {
-        font-size: 10px;
-    }
-}
-
-@media only screen and (min-width: 321px) and (max-width:375px) {
-    a.btn-reservar {
-        position: relative;
-        top: 0px;
-        margin-left: 0;
-        font-size: 10px;
-    }
-    
-    label.btn-semana12 {
-        font-size: 10px;
-    }
-}*/
-
 
 /* DIAS DE LA SEMANA*/
 
