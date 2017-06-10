@@ -22,6 +22,10 @@
         vm.cursosRP = [];
         vm.RP = [];
         vm.dayRP = "6";
+
+        /**
+         * Intervalo para recargar
+         */
         var interval = function () {
             $timeout(recarga, 100)
         };
@@ -423,18 +427,21 @@
                 vm.error(errorFactory.getError("errorHoraRegistro"));
             } else {
                 var funcion = function () {
-                    vm.progressBar()
+                    vm.progressBar();
+                    progressBarFactory.initProgress();
                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").once("value", function (snapshot) {
                         var reservas = snapshot.val();
                         DATABASE.ref("centros/" + vm.getUser().codcentro).update({
                             horas: vm.inicio.getHours() + ':' + (vm.inicio.getMinutes() != 0 ? vm.inicio.getMinutes() : vm.inicio.getMinutes() + '0') + '-' + vm.final.getHours() + ':' + (vm.final.getMinutes() != 0 ? vm.final.getMinutes() : vm.final.getMinutes() + '0'),
                             rango_horas: vm.final.getHours() - vm.inicio.getHours()
-                        })
+                        });
+                        progressBarFactory.sumProgress(35);
                         for (var data in reservas) {
                             if (new Date(reservas[data].fecha).getHours() < vm.inicio.getHours() || new Date(reservas[data].fecha).getHours() >= vm.final.getHours() && new Date(reservas[data].fecha).getMinutes() >= vm.final.getMinutes()) {
                                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data).remove();
                             }
                         }
+                        progressBarFactory.sumProgress(35);
                         vm.hora = !vm.hora;
                     });
                     for (var i = 0; i < vm.usuarios.length; i++) {
@@ -446,6 +453,7 @@
                             }
                         })
                     }
+                    progressBarFactory.sumProgress(30);
                 }
                 vm.confirmacion("Se borraran los horarios y reservas fuera del horario¿Esta seguro?", funcion);
             }

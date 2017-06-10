@@ -13,11 +13,18 @@
         vm.error = modalFactory.error;
         vm.confirmacion = modalFactory.confirmacion;
         vm.progressBar = modalFactory.progressBar;
+
+        /**
+         * Intervalo para cargar
+         */
         var interval = function () {
             $timeout(recarga, 100);
         };
         interval();
 
+        /**
+         * carga los datos de la pagina
+         */
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
@@ -35,7 +42,7 @@
         }
 
         /**
-         * 
+         * Cambia
          */
         vm.visualizar = function () {
             vm.eye = !vm.eye;
@@ -46,7 +53,7 @@
         }
 
         /**
-         * 
+         * Cambiar la contraseña
          */
         vm.cambiarPass = function () {
             if (vm.nPass1 != 0 && vm.nPass2 != 0 && vm.oldPass != 0) {
@@ -62,6 +69,7 @@
                                 vm.nPass1 = "";
                                 vm.nPass2 = "";
                                 vm.oldPass = "";
+                                vm.error("Contraseña cambiada", 1);
                             }, 0);
                         }, function (err) {
                             $timeout(function () {
@@ -83,7 +91,7 @@
         };
 
         /**
-         * 
+         * Cancela el cambio de contraseña
          */
         vm.cancelarPass = function () {
             vm.nPass1 = "";
@@ -92,15 +100,16 @@
             vm.bContrasena = !vm.bContrasena;
         }
         /**
-         * 
+         * Cambia la foto de perfil
+         * @param file:archivo imagen para subir
          */
         vm.cambiarFoto = function (file) {
             if (file.size < 300000) {
                 progressBarFactory.initProgress(); //muestra el progreso de subida
-                    vm.progressBar();
+                vm.progressBar();
                 var uploadTask = STORAGE.child("imgperfil/" + vm.getUser().id + ".jpeg").put(file); //añadimos el archivo a la carpeta de imgperfil de firebase y el archivo tendra el id del usuario 
                 uploadTask.on("state_changed", function (snapshot) { //mientras se ejecuta la subida                  
-                    progressBarFactory.setProgress((snapshot.bytesTransferred / snapshot.totalBytes)*100-1);
+                    progressBarFactory.setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100 - 1);
                 }, function (err) { //en caso de error
                     progressBarFactory.setProgress(100);
                     vm.error(errorFactory.getError(err));
@@ -124,41 +133,57 @@
         };
 
         /**
-         * 
+         * Actualiza el usuario
          */
         vm.updateUser = function () {
             if (vm.nombre != 0 && vm.apellido != 0) {
-                $log.log(isNaN(vm.movil))
-                $log.log(vm.movil)
+
                 if (!isNaN(vm.fijo) && !isNaN(vm.movil) || vm.fijo == 0 && !isNaN(vm.movil) || !isNaN(vm.fijo) && vm.movil == 0 || vm.fijo == 0 && vm.movil == 0) {
                     if (vm.fijo.length <= 12 && vm.movil.length <= 12) {
+                        progressBarFactory.initProgress();
+                        vm.progressBar();
                         DATABASE.ref("user/").orderByChild("id").equalTo(vm.getUser().id).once("value", function (snapshot) {
-                            //$log.log(Object.keys(snapshot.val())[0])
                             DATABASE.ref("user/" + Object.keys(snapshot.val())[0]).update({
                                 nombre: vm.nombre,
                                 apellido: vm.apellido,
                                 tel_fijo: vm.fijo == null ? "" : vm.fijo,
                                 tel_movil: vm.movil == null ? "" : vm.movil
                             }).then(function () {
-                                $timeout(function () {
-                                    vm.datos = !vm.datos;
-                                    user = {
-                                        nombre: vm.nombre,
-                                        apellido: vm.apellido,
-                                        tel_fijo: vm.fijo,
-                                        tel_movil: vm.movil,
-                                        codcentro: vm.getUser().codcentro,
-                                        id: vm.getUser().id,
-                                        tipo: vm.getUser().tipo,
-                                        verificado: vm.getUser().verificado
-                                    };
-                                    userFactory.setUser(user);
-                                }, 0);
-                            }, function (err) {
-                                vm.error(errorFactory.getError(err));
-                            });
-                            AUTH.currentUser.updateProfile({
-                                displayName: vm.nombre
+                                progressBarFactory.sumProgress(30)
+                                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (data) {
+                                    var reservas = Object.keys(data.val());
+                                    for (var i = 0; i < reservas.length; i++) {
+                                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + reservas[i]).update({
+                                            nombre: vm.nombre + ' ' + vm.apellido
+                                        })
+                                    }
+                                    progressBarFactory.sumProgress(30)
+
+                                    $timeout(function () {
+                                        vm.datos = !vm.datos;
+                                        user = {
+                                            nombre: vm.nombre,
+                                            apellido: vm.apellido,
+                                            tel_fijo: vm.fijo,
+                                            tel_movil: vm.movil,
+                                            codcentro: vm.getUser().codcentro,
+                                            id: vm.getUser().id,
+                                            tipo: vm.getUser().tipo,
+                                            verificado: vm.getUser().verificado
+                                        };
+                                        userFactory.setUser(user);
+                                        progressBarFactory.sumProgress(30)
+                                        AUTH.currentUser.updateProfile({
+                                            displayName: vm.nombre
+                                        });
+                                        progressBarFactory.sumProgress(10)
+                                        vm.error("Se han actualizado sus datos",1);
+                                    }, 0);
+                                }, function (err) {
+                                    progressBarFactory.setProgress(100)
+                                    vm.error(errorFactory.getError(err));
+                                });
+
                             });
                         });
                     } else {
@@ -173,6 +198,9 @@
 
         }
 
+        /**
+         * Cancela la actualizacion del usuario
+         */
         vm.cancelarUser = function () {
             vm.nombre = vm.getUser().nombre;
             vm.apellido = vm.getUser().apellido;
@@ -181,6 +209,9 @@
             vm.datos = !vm.datos;
         }
 
+        /**
+         * Cambia de centro
+         */
         vm.cambiarCentro = function () {
             DATABASE.ref("centros/" + vm.centro).once("value", function (snapshot) {
                 if (snapshot.exists() && vm.centro != vm.getUser().codcentro) {
@@ -215,7 +246,7 @@
                                             vm.error(errorFactory.getError(err));
                                         });
                                     }
-                                }else{
+                                } else {
                                     progressBarFactory.sumProgress(10);
                                 }
                                 progressBarFactory.sumProgress(30);
@@ -307,81 +338,3 @@
         }
     }
 })();
-
-/*
-function actualizarFoto(archivo){
-  var uploadTask = STORAGE.child("imgperfil/"+vm.getUser().uid+".jpeg").put(archivo);//añadimos el archivo a la carpeta de imgperfil de firebase y el archivo tendra el id del usuario 
-  uploadTask.on("state_changed", function(snapshot){//mientras se ejecuta la subida
-    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100; //obtencion del progreso
-    console.log("subida al "+progress);//muestra el progreso de subida
-  }, function(error){//en caso de error
-    alert("Ha ocurrido un error");
-  },function(){//cuando finaliza
-    vm.getUser().updateProfile({//actualizamos la url de la foto de perfil del usuario por si tuviera otra distinta
-      photoURL : uploadTask.snapshot.downloadURL
-    });
-    setTimeout(function(){document.getElementById("config_foto").setAttribute("src",vm.getUser().photoURL);}, 1000);//refresca  la foto de la configuracion
-  });
-}
-
-function actualizarUser(nom, apel) {
-    REF.ref("user/").orderByChild("id").equalTo(vm.getUser().uid).once("value", function(codi) {
-        var data = codi.val();
-        for (var data1 in data) {
-            REF.ref("user/" + data1).update({
-                nombre: nom,
-                apellido: apel
-            });
-            vm.getUser().updateProfile({
-                displayName: nom
-            });
-            montarNavigation();
-        }
-    });
-}
-
-function cambiarCentro(centro) {
-    REF.ref("user/").orderByChild("id").equalTo(vm.getUser().uid).once("value", function(usuario) {
-        var user;
-        for (var i in usuario.val()) {
-            user = REF.ref("user/" + i);
-        }
-        REF.ref("centros/" + centro).once("value", function(snapshot) {
-            var exist = snapshot.exists();
-            user.once("value", function(dat) { //recogemos el antiguo codigo
-                var cod = dat.val().codcentro;//recogemos el codigo del centro
-                if (exist && centro != cod) {
-                    user.update({//actualizamos el nodo del usuario
-                        tipo: "estandar",
-                        codcentro: centro
-                    }); //un usuario que se cambia de centro no puede ser administrador del nuevo por lo que se cambia a estandar
-                    REF.ref("user/").orderByChild("codcentro").equalTo(cod).once("value", function(user) { //comprobamos si hay administradores
-                        var usuarios = user.val(),
-                            hay = false; //en principio no hay
-                        var data1;
-                        for (data1 in usuarios) {
-                            if (usuarios[data1].tipo == "administrador") { //si hay se cambia el valor del boleano
-                                hay = true;
-                                break;
-                            }
-                        }
-                        if (!hay) { //sino hay se selecciona a un usuario aleatorio como administrador
-                            REF.ref("user/" + data1).update({
-                                tipo: "administrador"
-                            });
-                        }
-                    });
-                    REF.ref("centros/" + cod + "/reservas/").orderByChild("usuario").equalTo(vm.getUser().uid).once("value", function(res) {//se borran las reservas que tuviera ese usuario
-                        var reserva = res.val();
-                        for (var r in reserva) {
-                            REF.ref("centros/" + cod + "/reservas/" + r).removed();
-                        }
-                    });
-                } else {//si el codigo del centro no es valido
-                    alert("El centro nuevo no existe o ya estas añadido");
-                }
-            });
-        });
-    });
-}
-*/
