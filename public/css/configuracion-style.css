@@ -285,7 +285,6 @@ label.nom-mail-config {
     top: 1px;
 }
 
-
 /*foto perfil esto hace q el elemento se quede estatico si no se fijan las coordenadas, ademas
 no obedece a las librerias de bootstrap */
 
@@ -297,13 +296,12 @@ no obedece a las librerias de bootstrap */
 
 .imagen-config {
     opacity: 1;
-    display: block;
-    
+    display: block;    
     transition: .5s ease;
     backface-visibility: hidden;
     border-width: 2px;
     border-style: double;
-    border-color: skyblue;
+    border-color: #d3edf8;
     border-radius: 4px;
 }
 
@@ -320,8 +318,7 @@ no obedece a las librerias de bootstrap */
         width: 120px;
         height: auto;
         background-size: contain;
-    }
-    
+    }    
 }
 
 /* damos opacidad a imagen */

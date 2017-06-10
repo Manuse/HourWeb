@@ -27,7 +27,7 @@
 /* cambia esto diego */
 
 .azulmensaje {
-    color: 	#428bca;
+    color: #428bca;
 }
 
 
@@ -212,6 +212,7 @@ ul.list-group>li.lista-roja {
     border-radius: 10px 10px 10px;
 }
 
+
 /* situamos IMAGEN X en el borde de la lista del home */
 
 a.btn-eliminar-lista>img.img-eliminar-lista {
@@ -225,32 +226,35 @@ a.btn-eliminar-lista>img.img-eliminar-lista {
     border: 0;
 }
 
+
 /* reducimos el borde de arriba en resoluciones <= 1199*/
+
 @media(max-width: 1199px) {
     ul.list-group>li.lista-azul,
     ul.list-group>li.lista-verde,
-    ul.list-group>li.lista-roja{
+    ul.list-group>li.lista-roja {
         border-top-width: 25px;
-            
     }
     /* boton X en lista verde no permanente*/
-   a.btn-eliminar-lista>img.img-eliminar-lista {
+    a.btn-eliminar-lista>img.img-eliminar-lista {
         width: 18px !important;
         height: 18px !important;
-        top:-21px;
+        top: -21px;
     }
 }
 
-p.curso-home{
+p.curso-home {
     font-size: 12px;
-    font-family: 'Monospace',sans-serif;
+    font-family: 'Monospace', sans-serif;
 }
+
 
 /* un puntero con una flecha */
 
 div.div-verde {
     cursor: default;
 }
+
 
 /* hover color verde un poco mas vistoso */
 
@@ -395,7 +399,7 @@ div.navbar-collapse>ul.navbar-right>li>div.icono-home>a>span.glyphicon-home:hove
 
 div>p.navbar-text.titulo-web {
     position: absolute;
-    top:5px;
+    top: 5px;
     color: azure;
     font-size: 40px;
     font-family: 'Times New Roman', sans-serif;
@@ -448,31 +452,48 @@ div>p.navbar-text.titulo-web:hover {
 }
 
 
-/* BOTON RESERVAR home.html*/
+/* BOTONES RESERVAR y SEMANA 1 y 2 home.html*/
+
+div.div-btn-home {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 40px;
+}
+
+button.btn-semana12,
+button.btn-semana123{
+    font-weight: bold;
+    margin-top: 12px;    
+}
 
 a.btn-reservar {
     font-weight: bold;
+    margin-top: 12px;
+    margin-top: 23px;
 }
 
 @media only screen and (min-width: 200px) and (max-width:426px) {
     /* contenedor de los botones del home de la pestania Mis Reservas */
-    div.div-btn-home{
-        margin-bottom: 30px;
-    }
-    a.btn-reservar {
-        position: absolute;
-        right: 50%;        
-        font-size: 10px;
-        top: 50%;
-        
-    }
-    label.btn-semana12 {
-        position: relative;
-        right: 50%;       
-        font-size: 10px;
-    }
     
+    /*a.btn-reservar {
+        position: relative;
+        left: 7px;
+        font-size: 10px;
+        bottom: 80%;
+    }*/
+    /*button.btn-semana12 {
+        position: relative;
+        right: 10%;
+        font-size: 10px;
+    }
+    button.btn-semana123{
+        position: relative;
+        right: 10%;
+        font-size: 10px;
+    }*/
 }
+
+
 /*@media only screen and (min-width: 376px) and (max-width:426px) {
     a.btn-reservar {
         position: relative;
@@ -737,6 +758,7 @@ table.tabla-reservar>tbody>tr>td {
     font-weight: bold;
     color: rgb(233, 17, 24);
 }
+
 
 /* damos estilos a los placeholders y controlamos la compatibilidad para los
 distintos navegadores web*/
