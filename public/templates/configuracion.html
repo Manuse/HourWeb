@@ -73,7 +73,7 @@
 
                             <tr class="tr-home" ng-if="!vm.datos">
                                 <td colspan="2" class="td-btn-datos">
-                                    <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.datos=!vm.datos">
+                                    <button type="button" class="btn btn-info btn-xs btn-datos pull-left" ng-click="vm.datos=!vm.datos">
 									            <strong>Editar</strong>
 								        </button>
                                 </td>
@@ -81,11 +81,11 @@
                             </tr>
                             <tr class="tr-home" ng-if="vm.datos">
                                 <td colspan="1" class="td-btn-datos">
-                                    <div class="btn-group pull-left">
-                                        <button type="button" class="btn btn-info btn-sm btn-datos" ng-click="vm.updateUser()">
+                                    <div>
+                                        <button type="button" class="btn btn-primary btn-xs pull-left" ng-click="vm.updateUser()">
 									            <strong>Guardar</strong>
 								        </button>
-                                        <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.cancelarUser()">
+                                        <button type="button" class="btn btn-default btn-xs pull-left" style="margin-left:3px;" ng-click="vm.cancelarUser()">
 									            <strong>Cancelar</strong>
 								        </button>
                                     </div>
@@ -124,21 +124,22 @@
 
                             <tr class="tr-home" ng-if="!vm.bContrasena">
                                 <td colspan="2" class="td-btn-datos">
-                                    <button type="button" class="btn btn-success btn-sm btn-datos pull-left" ng-click="vm.bContrasena=!vm.bContrasena">
+                                    <button type="button" class="btn btn-info btn-xs btn-datos pull-left" ng-click="vm.bContrasena=!vm.bContrasena">
 									            <strong>Cambiar Contraseña</strong>
 								        </button>
                                 </td>
                             </tr>
                             <tr class="tr-home" ng-if="vm.bContrasena">
                                 <td colspan="1" class="td-btn-datos">
-                                    <button type="button" class="btn btn-info btn-sm btn-datos pull-left" ng-click="vm.cambiarPass()">
+                                    <div>
+                                        <button type="button" class="btn btn-primary btn-xs pull-left" ng-click="vm.cambiarPass()">
 									            <strong>Guardar</strong>
 								        </button>
-                                </td>
-                                <td colspan="1" class="td-btn-datos">
-                                    <button type="button" class="btn btn-danger btn-sm btn-datos" ng-click="vm.cancelarPass()">
+
+                                        <button type="button" class="btn btn-default btn-xs pull-left" style="margin-left:3px;" ng-click="vm.cancelarPass()">
 									            <strong>Cancelar</strong>
 								        </button>
+                                    </div>
                                 </td>
                             </tr>
 
@@ -152,7 +153,7 @@
                                         <div class="input-group">
                                             <div class="input-group-btn">
                                                 <input class="form-control input-nombre-centro" type="text" placeholder="Código nuevo" ng-model="vm.centro" required>
-                                                <button type="submit" class="form-control btn btn-info btn-xs btn-guardar-centro">
+                                                <button type="submit" class="form-control btn btn-primary btn-xs btn-guardar-centro">
 									                    <strong>Cambiar de centro</strong>
 								                    </button>
                                             </div>
@@ -163,8 +164,8 @@
 
                             <tr class="tr-home">
                                 <td colspan="2" class="td-home">
-                                    <label class="nom-mail-config">email:</label>
-                                    <span><button type="button" class="btn btn-link" disabled ng-bind="vm.email"></button></span>
+                                    <label class="nom-mail-config">email:</label>                     <button type="button" class="btn btn-link mail-texto" disabled ng-bind="vm.email"></button>
+                                    
                                 </td>
 
                             </tr>
