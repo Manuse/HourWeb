@@ -4,10 +4,11 @@
         .module('app')
         .controller('HomeController', homeController);
 
-    function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory,$sce) {
+    function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory, $window) {
         var vm = this;
         vm.confirmacion = modalFactory.confirmacion;
-
+        vm.ancho=$window.innerWidth;
+        $log.log(vm.ancho.innerWidth)
         /*Accordion*/
         vm.oneAtATime = true;
         vm.open = [];
@@ -37,6 +38,7 @@
                     recogerMisReservas();
                     recogerCentro();
                     cargarFecha();
+                    cargarCursos();
                     rellenarTablaHorarios();
                 }, 0);
             } else {
@@ -212,7 +214,6 @@
                         vm.horarios = [];
                         var data = snapshot.val();
                         var hora = horas.val();
-                        $log.log(data)
                         for (var i = 1; i <= hora; i++) {
                             var fila = {
                                 num: i
@@ -220,12 +221,13 @@
                             for (var j = 1; j <= 5; j++) {
                                 var horario = {
                                     dia: j,
-                                    hora: i
+                                    hora: i,
+                                    curso: null,
+                                    usuario: vm.getUser().id
                                 };
                                 for (var data1 in data) {
                                     if (data[data1].hora == i && data[data1].dia == j) {
                                         horario.curso = data[data1].curso;
-                                        horario.usuario = data[data1].usuario;
                                         horario.code = data1;
                                         break;
                                     }
@@ -272,8 +274,24 @@
             });
         }
 
-        vm.htmlPopover = function(index, index2) {
-            return '<div style="background:blue"><select ng-option="curso.value as curso.label for curso in vm.cursos"></select></div>';
+        vm.crearHorario = function (fila) {
+            $log.log(fila.code)
+            if (fila.curso == null && fila.code != null) {
+                DATABASE.ref("horarios/" + fila.code).remove();
+                fila.code=null;
+            } else if (fila.curso != null && fila.code != null) {
+                DATABASE.ref("horarios/" + fila.code).update({
+                    curso: fila.curso
+                })
+            } else if (fila.curso != null && fila.code == null) {
+                
+               fila.code=  DATABASE.ref("horarios/").push({
+                    dia: fila.dia,
+                    hora: fila.hora,
+                    curso: fila.curso,
+                    usuario: fila.usuario
+                }).key;
+            }
         };
     }
 })();

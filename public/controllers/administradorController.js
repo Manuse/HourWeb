@@ -279,12 +279,12 @@
         vm.addCurso = function () {
             if (vm.nCurso != 0 && vm.nCurso != null) {
                 if (!vm.cursos.includes(vm.nCurso)) {
-                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").set(vm.cursos);
                     vm.cursosRP.push({
                         label: vm.nCurso,
                         value: vm.nCurso
                     });
                     vm.cursos.push(vm.nCurso);
+                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").set(vm.cursos);
                 } else {
                     vm.error(errorFactory.getError("noCurso"));
                 }

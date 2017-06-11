@@ -226,18 +226,14 @@
                                 <tbody >
                                     <tr ng-repeat="fila in vm.horarios">
                                         <td ng-bind="fila.num"></td>
-                                        <td ng-init="vm.horario[$index][0]=fila.lunes.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" uib-popover-html="vm.htmlPopover(index,0)" popover-title="Cursos" popover-trigger="'click'"/></td>
-                                        <td ng-init="vm.horario[$index][1]=fila.martes.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" popover-title="Cursos" popover-trigger="'click'" uib-popover-html="htmlPopover(index,1)"/></td>
-                                        <td ng-init="vm.horario[$index][2]=fila.miercoles.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" popover-title="Cursos" popover-trigger="'click'" uib-popover-html="htmlPopover(index,2)"/></td>
-                                        <td ng-init="vm.horario[$index][3]=fila.jueves.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" popover-title="Cursos" popover-trigger="'click'" uib-popover-html="htmlPopover(index,3)"/></td>
-                                        <td ng-init="vm.horario[$index][4]=fila.viernes.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" popover-title="Cursos" popover-trigger="'click'" uib-popover-html="htmlPopover(index,4)"/></td>
+                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.lunes.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.lunes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.lunes.curso"></select></td>
+                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.martes.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.martes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.martes.curso"></select></td>
+                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.miercoles.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.miercoles)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.miercoles.curso"></select></td>
+                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.jueves.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.jueves)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.jueves.curso"></select></td>
+                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.viernes.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.viernes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.viernes.curso"></select></td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="btn-cambiar">
-                            <button type="button" class="btn btn-sm btn-info">Cambiar</button>
-                            <button type="button" class="btn btn-sm btn-info" style="display:none">Guardar</button>
                         </div>
 
                     </uib-tab>

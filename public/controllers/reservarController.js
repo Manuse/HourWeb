@@ -40,8 +40,8 @@
                 var cursos = snapshot.val();
                 $timeout(function () {
                     for (var data in cursos) {
-                        if (!vm.cursos.includes(cursos[data].nombre)) {
-                            vm.cursos.push(cursos[data].nombre);
+                        if (!vm.cursos.includes(cursos[data].curso)) {
+                            vm.cursos.push(cursos[data].curso);
                         }
                     }
                     vm.cursos.sort();
@@ -149,7 +149,6 @@
                                     var celda = {};
                                     celda.activo = true;
                                     celda.fecha = new Date(vm.dias[j]);
-                                    //console.log(celda.fecha);
                                     if (vm.dias[j] < new Date()) {
                                         celda.activo = false;
                                     }
