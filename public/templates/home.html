@@ -214,7 +214,7 @@
                         <div class="col-xs-12">
                             <table class="table table-bordered table-responsive tabla-mi-horario">
                                 <thead>
-                                    <tr class="bg-info">
+                                    <tr class="bg-primary">
                                         <th>Horas</th>
                                         <th>Lunes</th>
                                         <th>Martes</th>
@@ -226,11 +226,11 @@
                                 <tbody >
                                     <tr ng-repeat="fila in vm.horarios">
                                         <td ng-bind="fila.num"></td>
-                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.lunes.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.lunes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.lunes.curso"></select></td>
-                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.martes.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.martes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.martes.curso"></select></td>
-                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.miercoles.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.miercoles)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.miercoles.curso"></select></td>
-                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.jueves.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.jueves)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.jueves.curso"></select></td>
-                                        <td><span ng-if="vm.ancho<950" ng-bind="fila.viernes.curso"></span><select ng-if="vm.ancho>950" ng-change="vm.crearHorario(fila.viernes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.viernes.curso"></select></td>
+                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][0]=!vm.mostrarSelect[$index][0]" ng-mouseenter="vm.mostrarSelect[$index][0]=!vm.mostrarSelect[$index][0]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][0]" ng-bind="fila.lunes.curso"></span><select class="btn-info" ng-if="width>950 && vm.mostrarSelect[$index][0]" ng-change="vm.crearHorario(fila.lunes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.lunes.curso"></select></td>
+                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][1]=!vm.mostrarSelect[$index][1]" ng-mouseenter="vm.mostrarSelect[$index][1]=!vm.mostrarSelect[$index][1]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][1]" ng-bind="fila.martes.curso"></span><select class="btn-info" ng-if="width>950 && vm.mostrarSelect[$index][1]" ng-change="vm.crearHorario(fila.martes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.martes.curso"></select></td>
+                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][2]=!vm.mostrarSelect[$index][2]" ng-mouseenter="vm.mostrarSelect[$index][2]=!vm.mostrarSelect[$index][2]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][2]" ng-bind="fila.miercoles.curso"></span><select class="btn-info" ng-if="width>950 && vm.mostrarSelect[$index][2]" ng-change="vm.crearHorario(fila.miercoles)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.miercoles.curso"></select></td>
+                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][3]=!vm.mostrarSelect[$index][3]" ng-mouseenter="vm.mostrarSelect[$index][3]=!vm.mostrarSelect[$index][3]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][3]" ng-bind="fila.jueves.curso"></span><select class="btn-info" ng-if="width>950 && vm.mostrarSelect[$index][3]" ng-change="vm.crearHorario(fila.jueves)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.jueves.curso"></select></td>
+                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][4]=!vm.mostrarSelect[$index][4]" ng-mouseenter="vm.mostrarSelect[$index][4]=!vm.mostrarSelect[$index][4]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][4]" ng-bind="fila.viernes.curso"></span><select class="btn-info" ng-if="width>950 && vm.mostrarSelect[$index][4]" ng-change="vm.crearHorario(fila.viernes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.viernes.curso"></select></td>
                                     </tr>
                                 </tbody>
                             </table>
