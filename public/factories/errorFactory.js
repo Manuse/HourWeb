@@ -44,6 +44,10 @@
                         return "La reserva permanente ya existe";
                     case "noCurso":
                         return "El curso ya existe";
+                    case "asuntoVacio":
+                        return "El asunto no puede estar vacio";
+                    case "textoVacio":
+                        return "El texto no puede estar vacio";
                     default:
                         return "Ha ocurrido un error";
                 }

@@ -244,19 +244,16 @@
 
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                <form>
-
+                                <form ng-submit="vm.nuevoMensaje()">
                                     <div class="form-group">
                                         <label for="Asunto">Asunto:</label>
-                                        <input type="text" class="form-control pilar" id="Asunto">
+                                        <input type="text" class="form-control pilar" ng-model="vm.asunto" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="Mensaje">Mensaje:</label>
-                                        <textarea class="form-control" rows="5" id="Mensaje"></textarea>
+                                        <textarea class="form-control" rows="5" ng-model="vm.texto" required></textarea>
                                     </div>
-                                    <button class="btn btn-info pull-right">Enviar</button>
-
-
+                                    <button type="submit" class="btn btn-info pull-right">Enviar</button>
                                 </form>
 
                             </div>
@@ -266,46 +263,19 @@
                         <div style="border-top:1px solid;"></div>
                         <br>
                         <div class="row">
-
-                            <uib-accordion close-others="vm.oneAtATime">
-
+                            <uib-accordion >
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div uib-accordion-group class="panel-default" is-open="vm.open1">
+                                    <div uib-accordion-group class="panel-default" ng-repeat="mensaje in vm.mensajes" is-open="vm.open[$index]">
                                         <uib-accordion-heading>
                                             <div class="azulmensaje">
-
-                                                Asunto del Mensaje
+                                                <span ng-bind="mensaje.asunto"></span>
                                                 <span>&#32;</span>
-                                                <span class="glyphicon glyphicon-remove pull-left"></span>
-                                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open1, 'glyphicon-chevron-right': !vm.open1}"></i></div>
+                                                <span ng-bind="mensaje.remitente"></span>
+                                                <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarMensaje(mensaje)" ng-if="vm.getUser().tipo=='administrador'"></span>
+                                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                                 <span></span>
                                         </uib-accordion-heading>
-                                        
-                                            
-                                                <p>
-                                                    Contenido del mensaje eeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                                </p>
-                                            
-                                        
-                                    </div>
-
-                                    <div uib-accordion-group class="panel-default" is-open="vm.open2">
-                                        <uib-accordion-heading>
-                                            <div class="azulmensaje">
-                                                Asunto del Mensaje
-                                                <span>&#32;</span>
-                                                <span class="glyphicon glyphicon-remove pull-left"></span>
-                                                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open2, 'glyphicon-chevron-right': !vm.open2}"></i></div>
-                                        </uib-accordion-heading>
-                                        
-                                            
-                                                <p>
-                                                    Contenido del mensaje eeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                                </p>
-                                            
-                                        
-
-
+                                           <p ng-bind="mensaje.texto"></p>                              
                                     </div>
                                 </div>
                             </uib-accordion>

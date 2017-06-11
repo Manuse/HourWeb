@@ -7,12 +7,11 @@
     function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory, $window) {
         var vm = this;
         vm.confirmacion = modalFactory.confirmacion;
-        vm.ancho=$window.innerWidth;
-        $log.log(vm.ancho.innerWidth)
+        vm.error=modalFactory.error;
         /*Accordion*/
         vm.oneAtATime = true;
         vm.open = [];
-
+        
         /**
          * Intervalo para recargar
          */
@@ -20,12 +19,14 @@
             $timeout(recarga, 100);
         };
         interval();
+
         vm.lunes = [];
         vm.martes = [];
         vm.miercoles = [];
         vm.jueves = [];
         vm.viernes = [];
         vm.semana = 0;
+        vm.mensajes=[]
 
         /**
          * Carga los datos de la vista
@@ -38,6 +39,7 @@
                     recogerMisReservas();
                     recogerCentro();
                     cargarFecha();
+                    cargarMensajes();
                     cargarCursos();
                     rellenarTablaHorarios();
                 }, 0);
@@ -206,7 +208,9 @@
             }
         };
 
-        //CAMBIAR
+        /**
+         * Rellena la tabla de horarios
+         */
         function rellenarTablaHorarios() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/rango_horas").once("value", function (horas) {
                 DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
@@ -257,6 +261,9 @@
             });
         }
 
+        /**
+         * Carga los cursos
+         */
         function cargarCursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos").once("value", function (snapshot) {
                 vm.cursos = snapshot.val().map(function (key) {
@@ -274,18 +281,20 @@
             });
         }
 
+        /**
+         * crea un horario
+         * @param fila dia de la semana de una fila
+         */
         vm.crearHorario = function (fila) {
-            $log.log(fila.code)
             if (fila.curso == null && fila.code != null) {
                 DATABASE.ref("horarios/" + fila.code).remove();
-                fila.code=null;
+                fila.code = null;
             } else if (fila.curso != null && fila.code != null) {
                 DATABASE.ref("horarios/" + fila.code).update({
                     curso: fila.curso
                 })
             } else if (fila.curso != null && fila.code == null) {
-                
-               fila.code=  DATABASE.ref("horarios/").push({
+                fila.code = DATABASE.ref("horarios/").push({
                     dia: fila.dia,
                     hora: fila.hora,
                     curso: fila.curso,
@@ -293,5 +302,57 @@
                 }).key;
             }
         };
+
+        /**
+         * carga los mensajes
+         */
+        function cargarMensajes() {
+            DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(50).once("value", function (snapshot) {
+                vm.mensajes = Object.keys(snapshot.val()).map(function (key) {
+                    return {
+                        code: key,
+                        texto: snapshot.val()[key].texto,
+                        asunto: snapshot.val()[key].asunto,
+                        remitente: snapshot.val()[key].remitente,
+                        fecha: snapshot.val()[key].fecha
+                    };
+                }).reverse();
+                $log.log(vm.mensajes);
+            });
+        }
+
+        /**
+         * Crea un nuevo mensaje
+         */
+        vm.nuevoMensaje = function () {
+            if (vm.asunto != 0 && vm.asunto != null) {
+                if (vm.texto != 0 && vm.texto != null) {
+                    var mensaje = {
+                        texto: vm.texto,
+                        asunto: vm.asunto,
+                        remitente: vm.getUser().nombre + " " + vm.getUser().apellido,
+                        codcentro: vm.getUser().codcentro,
+                        fecha:new Date()
+                    }
+                    mensaje.code = DATABASE.ref("mensajes/").push(mensaje).key;
+                    vm.mensajes.unshift(mensaje);
+                } else {
+                    vm.error(errorFactory.getError("textoVacio"));
+                }
+            } else {
+                vm.error(errorFactory.getError("asuntoVacio"));
+            }
+        }
+
+        /**
+         * Borra un mensaje
+         */
+        vm.borrarMensaje=function(mensaje){
+            funcion=function(){
+                vm.mensajes.splice(vm.mensajes.indexOf(mensaje),1)
+                DATABASE.ref("mensajes/"+mensaje.code).remove();
+            }
+            vm.confirmacion("¿Borrar este mensaje?", funcion);
+        }
     }
 })();
