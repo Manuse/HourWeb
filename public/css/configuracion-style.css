@@ -283,7 +283,16 @@ img.imagen-editar-foto {
 label.nom-mail-config {
     position: relative;
     top: 1px;
+    font-weight: 500;
 }
+
+@media (max-width:370px) {
+    .nom-mail-config,
+    button.mail-texto {
+        font-size: 10px;
+    }
+}
+
 
 /*foto perfil esto hace q el elemento se quede estatico si no se fijan las coordenadas, ademas
 no obedece a las librerias de bootstrap */
@@ -296,7 +305,7 @@ no obedece a las librerias de bootstrap */
 
 .imagen-config {
     opacity: 1;
-    display: block;    
+    display: block;
     transition: .5s ease;
     backface-visibility: hidden;
     border-width: 2px;
@@ -305,9 +314,12 @@ no obedece a las librerias de bootstrap */
     border-radius: 4px;
 }
 
+
 /*@media only screen and (min-width:767px) and (max-width:991px) {
     /* div contenedor de la imagen de la configuaracion */
-    /*div.efecto1 {
+
+
+/*div.efecto1 {
         width: auto!important;
         height: auto !important;
     }
@@ -318,8 +330,9 @@ no obedece a las librerias de bootstrap */
         width: 120px;
         height: auto;
         background-size: contain;
-    }    
+    }
 }
+
 
 /* damos opacidad a imagen */
 
