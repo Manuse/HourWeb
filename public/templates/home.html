@@ -91,11 +91,9 @@
                     <uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
                         
                         <div class="div-btn-home hidden-xs">
-                           <div class="btn-group pull-right">                            
-                            <button class="btn btn-warning btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</button>
-                            <button class="btn btn-info btn-sm btn-semana123" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</button>                            
-                            
-                            </div>                                                   
+                           <div class="btn-group pull-right">
+                            <button class="btn btn-info btn-sm btn-semana123" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</button>                             
+                            <button class="btn btn-warning btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</button>     </div>                                                   
 
                         <a ui-sref="normal.reservar" name="button" class="btn btn-info btn-reservar btn-sm  pull-left">RESERVAR</a>
                         
