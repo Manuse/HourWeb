@@ -1,33 +1,19 @@
-<nav class="navbar navbar-transparent" role="navigation" ng-controller="NavController as uc">
+
+<div class="container">
+   <nav class="navbar navbar-transparent" role="navigation" ng-controller="NavController as uc">
     <div class="navbar-header">
-        <div class="mishuevos navbar-brand">
-            <p class="titulo_web2">HOURWEB</p>
-        </div>
-
-        <button type="button" class="navbar-toggle well-xs" ng-click="uc.isNavCollapsed = !uc.isNavCollapsed">
-                                                                <!-- la clase sr-only es necesaria para que los dispositivos de lectura puedan visualizar el contenido
-                                                                de nuestras etiquetas Kinddle x ej -->
-                                                                <span class="sr-only">
-                                                                        Desplegar / ocultar Menú
-                                                                </span>
-                                                                
-                                                                <!-- triplicamos el icono dentro del boton para reproducir las 3 lineas al'colapsar' el contenido del navbar-->
-                                                                <div style="border:3px solid #428bca;margin-top:-4px;background:#ECE5CE;">
-                                                                <span style="color:black;" class="icon-bar">---</span>
-                                                                <span style="color:black;" class="icon-bar">---</span>
-                                                                <span style="color:black;" class="icon-bar">---</span>
-                                                                <br>
-                                                                </div>
-            </button>
-        <!-- indicamos enlace hacia donde queremos que nos lleve el boton, por ej la dir de inicio de mi web -->
-
-    </div>
+        
+            <img style="margin-top:-13px;" height="100px;" width="150px;" src=".\imagenes\logo_hourweb.ico" alt="">
+        
+</div>
 
     <!-- Inicia menu -->
-    <div class="collapse navbar-collapse" uib-collapse="uc.isNavCollapsed">
+    
 
-        <ul class="penascazo nav navbar-right" style="margin-top:3px;">
-
+        <ul class="navbar-form navbar-right" style="margin-top:3px;">
+           
+            
+            <button type="button" class="botonlogin1 btn btn-danger btn-lg " ng-click="vm.loginForm()">Entrar</button>
             <button type="button" class="botonlogin1 btn btn-primary btn-lg hidden-sm hidden-xs" ng-click="vm.adminForm()">Registro como Administrador</button>
             <button type="button" class="botonlogin2 btn btn-info btn-lg hidden-sm hidden-xs" ng-click="vm.standarForm()">Registro como Usuario</button>
 
@@ -37,14 +23,12 @@
         </ul>
 
 
-    </div>
+    
 </nav>
-
-<br><br><br>
-<div class="container">
+   <br><br>
     <div class="row">
         <center>
-            <p style="font-size:50px;color:white;">Web de Reserveras de recursos escolares</p>
+            <p style="font-size:50px;color:#3E5EDD;">Web de Reserveras de recursos escolares</p>
             <div class="slide2">
 		<figure>
 			<div class="slide">

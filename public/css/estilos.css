@@ -1519,7 +1519,7 @@ form>div.form-group>input.pilar {
 }
 
 .fondo-login {
-    background-image: url('../imagenes/azul.jpg')
+    background-image: url('../imagenes/universidad.jpg')
 }
 
 
@@ -1527,14 +1527,7 @@ form>div.form-group>input.pilar {
 
 
 .titulo_web2 {
-    text-shadow: 7px 1px 5px #7fc1d1;
-    -webkit-text-shadow: 7px 1px 5px #7fc1d1;
-    /* chrome */
-    -moz-text-shadow: 7px 1px 5px #7fc1d1;
-    /* mozilla */
-    -o-text-shadow: 7px 1px 5px #7fc1d1;
-    /* opera */
-    -ms-text-shadow: 7px 1px 5px #7fc1d1;
+    
     /* microsoft explorer*/
     font-size: 50px;
     color: white;
@@ -1542,22 +1535,8 @@ form>div.form-group>input.pilar {
 
 
 
-@media only screen and (min-width:768px) and (max-width:1024px) {
-    .botonlogin1 {}
-    .botonlogin2 {
-        margin-right: 40px;
-    }
-}
 
-@media only screen and (min-width:250px) and (max-width:736px) {
-    .botonlogin1 {
-        width: 100%;
-    }
-    .botonlogin2 {
-        margin-top: 10px;
-        width: 100%
-    }
-}
+
 
 /*pepe*/
 .slide2{
