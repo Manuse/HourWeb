@@ -1525,7 +1525,7 @@ form>div.form-group>input.pilar {
 
 
 
-
+/*login diego*/
 .titulo_web2 {
     
     /* microsoft explorer*/
@@ -1637,4 +1637,29 @@ form>div.form-group>input.pilar {
 }
 .externafont{
     font-family: 'Oswald', serif;
+    color: white;
 }
+img.imagenlogin{
+    margin-top:-13px;
+    height:90px;
+    width:140px;
+}
+
+@media only screen and (min-width:250px) and (max-width:736px) {
+    .botonlogin1{
+        width: 100%;
+        
+    }
+    
+    img.imagenlogin{
+    margin-top: 1px;
+        
+    }
+    .externafont{
+        margin-top: -40px;
+    }
+    
+}
+
+
+

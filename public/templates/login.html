@@ -3,7 +3,9 @@
    <nav class="navbar navbar-transparent" role="navigation" ng-controller="NavController as uc">
     <div class="navbar-header">
         
-            <img style="margin-top:-13px;" height="90px;" width="140px;" src=".\imagenes\logo_hourweb.ico" alt="">
+            <img class="imagenlogin hidden-xs" src=".\imagenes\logo_hourweb.ico" alt="">
+            <img class="center-block imagenlogin hidden-lg hidden-md hidden-sm" src=".\imagenes\logo_hourweb.ico" alt="">
+            
         
 </div>
 
@@ -13,12 +15,14 @@
         <ul class="navbar-form navbar-right" style="margin-top:3px;">
            
             
-            <button type="button" class="botonlogin1 btn btn-danger btn-lg " ng-click="vm.loginForm()">Entrar</button>
-            <button type="button" class="botonlogin1 btn btn-primary btn-lg hidden-sm hidden-xs" ng-click="vm.adminForm()">Registro como Administrador</button>
-            <button type="button" class="botonlogin2 btn btn-info btn-lg hidden-sm hidden-xs" ng-click="vm.standarForm()">Registro como Usuario</button>
+            <button type="button" class="botonlogin1 btn btn-danger btn-lg" ng-click="vm.loginForm()">Entrar</button>
+            <button type="button" class="botonlogin2 btn btn-primary btn-lg hidden-sm  hidden-xs" ng-click="vm.adminForm()">Registro como Administrador</button>
+            <button type="button" class="botonlogin3 btn btn-info btn-lg hidden-sm  hidden-xs" ng-click="vm.standarForm()">Registro como Usuario</button>
+            
+            <button type="button" class="botonlogin2 btn btn-primary btn-lg hidden-lg hidden-md  hidden-xs" ng-click="vm.adminForm()">Registro Admin</button>
+            <button type="button" class="botonlogin3 btn btn-info btn-lg hidden-lg hidden-md   hidden-xs" ng-click="vm.standarForm()">Registro Usuario</button>
 
-            <button type="button" class="botonlogin1 btn btn-primary btn-lg hidden-lg hidden-md" ng-click="vm.adminForm()">Registro Admin</button>
-            <button type="button" class="botonlogin2 btn btn-info btn-lg hidden-lg hidden-md" ng-click="vm.standarForm()">Registro Usuario</button>
+            
 
         </ul>
 
