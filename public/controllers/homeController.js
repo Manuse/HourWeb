@@ -4,9 +4,9 @@
         .module('app')
         .controller('HomeController', homeController);
 
-    function homeController(userFactory, $timeout, DATABASE, $log) {
+    function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory,$sce) {
         var vm = this;
-
+        vm.confirmacion = modalFactory.confirmacion;
 
         /*Accordion*/
         vm.oneAtATime = true;
@@ -37,6 +37,7 @@
                     recogerMisReservas();
                     recogerCentro();
                     cargarFecha();
+                    rellenarTablaHorarios();
                 }, 0);
             } else {
                 interval();
@@ -184,19 +185,22 @@
          */
         vm.borrarReserva = function (reserva, array) {
             if (reserva.activo) {
-                var reser = DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + reserva.code);
-                reser.once("value", function (datos) {
-                    var a = datos.val();
-                    if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
-                        reser.remove().then(function () {
-                            $timeout(function () {
-                                array.splice(array.indexOf(reserva), 1)
-                            });
-                        }, function (err) {});
-                    } else {
-                        vm.error("No puedes borrar las asignaciones permanentes");
-                    }
-                });
+                funcion = function () {
+                    var reser = DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + reserva.code);
+                    reser.once("value", function (datos) {
+                        var a = datos.val();
+                        if (a.perm == null) { // si perm es null es porque no es permanente y se puede borrar
+                            reser.remove().then(function () {
+                                $timeout(function () {
+                                    array.splice(array.indexOf(reserva), 1)
+                                });
+                            }, function (err) {});
+                        } else {
+                            vm.error("No puedes borrar las asignaciones permanentes");
+                        }
+                    });
+                }
+                vm.confirmacion("¿Desea borrar esta reserva?", funcion)
             }
         };
 
@@ -204,27 +208,72 @@
         function rellenarTablaHorarios() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/rango_horas").once("value", function (horas) {
                 DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
-                    vm.filas = [];
-                    var data = snapshot.val();
-                    var hora = horas.val();
-                    for (var i = 1; i <= hora; i++) {
-                        for (var j = 1; j <= 5; j++) {
-                            var horario = {
-                                dia: j,
-                                hora: i
-                            };
-                            for (var data1 in data) {
-                                if (data[data1].hora==i && data[data1].dia==j){
-                                    horario.curso=data[data1].curso;
-                                    horario.usuario=data[data1].usuario;
-                                    break;
+                    $timeout(function () {
+                        vm.horarios = [];
+                        var data = snapshot.val();
+                        var hora = horas.val();
+                        $log.log(data)
+                        for (var i = 1; i <= hora; i++) {
+                            var fila = {
+                                num: i
+                            }
+                            for (var j = 1; j <= 5; j++) {
+                                var horario = {
+                                    dia: j,
+                                    hora: i
+                                };
+                                for (var data1 in data) {
+                                    if (data[data1].hora == i && data[data1].dia == j) {
+                                        horario.curso = data[data1].curso;
+                                        horario.usuario = data[data1].usuario;
+                                        horario.code = data1;
+                                        break;
+                                    }
+                                }
+                                switch (j) {
+                                    case 1:
+                                        fila.lunes = horario;
+                                        break;
+                                    case 2:
+                                        fila.martes = horario;
+                                        break;
+                                    case 3:
+                                        fila.miercoles = horario;
+                                        break;
+                                    case 4:
+                                        fila.jueves = horario;
+                                        break;
+                                    case 5:
+                                        fila.viernes = horario;
+                                        break;
                                 }
                             }
-                            vm.filas.push(horario);
+                            vm.horarios.push(fila);
                         }
-                    }
+                    }, 0)
                 });
             });
         }
+
+        function cargarCursos() {
+            DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos").once("value", function (snapshot) {
+                vm.cursos = snapshot.val().map(function (key) {
+                    return {
+                        label: key,
+                        value: key
+                    };
+                })
+                try {
+                    vm.cursos.unshift({
+                        label: "Seleccione un curso",
+                        value: null
+                    });
+                } catch (err) {}
+            });
+        }
+
+        vm.htmlPopover = function(index, index2) {
+            return '<div style="background:blue"><select ng-option="curso.value as curso.label for curso in vm.cursos"></select></div>';
+        };
     }
 })();

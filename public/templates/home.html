@@ -97,7 +97,7 @@
                             
                             </div>                                                   
 
-                        <a ui-sref="normal.reservar" name="button" id="ir_reserva" class="btn btn-info btn-reservar btn-sm  pull-left">RESERVAR</a>
+                        <a ui-sref="normal.reservar" name="button" class="btn btn-info btn-reservar btn-sm  pull-left">RESERVAR</a>
                         
                         </div>
                         <!-- Botones en  tamanio XS -->
@@ -109,7 +109,7 @@
                             
                             </div>                                                   
                         <br><br>
-                        <a ui-sref="normal.reservar" name="button" id="ir_reserva" class="btn btn-info btn-xs  btn-reservar-xs center">
+                        <a ui-sref="normal.reservar" name="button" class="btn btn-info btn-xs  btn-reservar-xs center">
                         <strong>RESERVAR</strong>
                         </a>
                         
@@ -210,7 +210,6 @@
 
                         <!-- TAB 2 -->
                     </uib-tab>
-                    <!--<div class="tab-pane" role="tabpanel" id="seccion2">-->
                     <uib-tab index="1" heading="Mi Horario" classes="estilo-tab">
                         <div class="col-xs-12">
                             <table class="table table-bordered table-responsive tabla-mi-horario">
@@ -224,14 +223,21 @@
                                         <th>Viernes</th>
                                     </tr>
                                 </thead>
-                                <tbody class="tabla-horarios" id="tabla_horarios">
-
+                                <tbody >
+                                    <tr ng-repeat="fila in vm.horarios">
+                                        <td ng-bind="fila.num"></td>
+                                        <td ng-init="vm.horario[$index][0]=fila.lunes.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" uib-popover-html="vm.htmlPopover(index,0)" popover-title="Cursos" popover-trigger="'click'"/></td>
+                                        <td ng-init="vm.horario[$index][1]=fila.martes.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" popover-title="Cursos" popover-trigger="'click'" uib-popover-html="htmlPopover(index,1)"/></td>
+                                        <td ng-init="vm.horario[$index][2]=fila.miercoles.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" popover-title="Cursos" popover-trigger="'click'" uib-popover-html="htmlPopover(index,2)"/></td>
+                                        <td ng-init="vm.horario[$index][3]=fila.jueves.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" popover-title="Cursos" popover-trigger="'click'" uib-popover-html="htmlPopover(index,3)"/></td>
+                                        <td ng-init="vm.horario[$index][4]=fila.viernes.curso"><input type="text" placeholder="¡click aqui!" style="background: transparent; border: none;" popover-title="Cursos" popover-trigger="'click'" uib-popover-html="htmlPopover(index,4)"/></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="btn-cambiar">
-                            <button type="button" class="btn btn-sm btn-info" id="cambiar_horario">Cambiar</button>
-                            <button type="button" class="btn btn-sm btn-info" id="guardar_horario" style="display:none">Guardar</button>
+                            <button type="button" class="btn btn-sm btn-info">Cambiar</button>
+                            <button type="button" class="btn btn-sm btn-info" style="display:none">Guardar</button>
                         </div>
 
                     </uib-tab>
