@@ -1519,7 +1519,7 @@ form>div.form-group>input.pilar {
 }
 
 .fondo-login {
-    background-image: url('../imagenes/universidad.jpg')
+    background-image: url('../imagenes/educacion.jpg')
 }
 
 
@@ -1634,4 +1634,7 @@ form>div.form-group>input.pilar {
 	100%{
 		left: 0%;
 	}
+}
+.externafont{
+    font-family: 'Oswald', serif;
 }
