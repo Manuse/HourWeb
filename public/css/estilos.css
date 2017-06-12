@@ -292,8 +292,6 @@ span.glyphicon.glyphicon-triangle-bottom {
 /* posicion del dropdown del navbar */
 
 
-
-
 /* tamaño letra del dropdown del navbar */
 
 a.editar-perfil {
@@ -436,7 +434,7 @@ div>p.navbar-text.titulo-web {
         box-shadow: none;
         border: 0;
     }
-    ul.dropdown-menu.dropdown-admin{
+    ul.dropdown-menu.dropdown-admin {
         margin-top: 0px;
         margin-left: 10px;
         font-size: 1.1em;
@@ -476,8 +474,7 @@ button.btn-semana2-xs {
 
 a.btn-reservar {
     font-weight: bold;
-    margin-top: 12px;
-    margin-top: 23px;
+    margin-top: 25px;
 }
 
 div.div-btn-home1 {
@@ -1729,10 +1726,33 @@ form>div.form-group>input.pilar {
 /*caption tabla reservar*/
 
 table>caption.captionreservar {
-    text-align: center;
+    text-align: left;
     color: crimson;
 }
 
+@media only screen and (min-width:200px) and (max-width:768px) {
+    div.div-semana-reservar1 {
+        display:none;
+    }
+    label.btn-semana-reservar {
+        font-size: 11px;
+        border: none !important;
+    }
+}
+@media (min-width:769px) {
+    div.div-semana-reservar2 {
+        display:none;
+    }
+}
+
+@media only screen and (min-width:200px) and (max-width:571px) {
+    table>caption.captionreservar {
+        font-size: 10px;
+    }
+    select.input-reservar {
+        font-size: 10px;
+    }
+}
 
 /*select reserva*/
 
@@ -1758,4 +1778,10 @@ ul.dropdown-standar {
     margin-right: 15px;
     margin-top: 60px;
     box-shadow: 0px 1px 5px grey;
+}
+
+select.input-home {
+    position: relative;
+    right: 10px;
+    width: 160px;
 }
