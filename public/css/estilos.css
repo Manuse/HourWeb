@@ -282,9 +282,9 @@ ul.list-group>li.dias.lista-roja:hover {
 
 /* caret --> glyphicon flecha hacia abajo desplegar dropdown Usuario*/
 
-span.glyphicon-triangle-bottom {
-    color: white;
-    font-size: 13px;
+span.glyphicon.glyphicon-triangle-bottom {
+    color: red;
+    font-size: 12px !important;
 }
 
 
@@ -407,10 +407,6 @@ div>p.navbar-text.titulo-web {
     cursor: pointer;
 }
 
-div>p.navbar-text.titulo-web:hover {
-    text-decoration: none;
-}
-
 
 /* Mostramos al desplegar el navegador sólo el menú resultante del dropdown 
 -- quitamos imagen user e icono home */
@@ -513,18 +509,27 @@ div>article.foto_izquierda>img {
 /* DROPDOWN HACIA LA DERECHA*/
 
 span.span-main-dropdown>a.dropdown-toggle.navbar-text {
-    margin-right: 50px;
+    margin-right: 20px;
 }
 
 
 /* STRONG DEL a DE ARRIBA*/
 
-span.span-main-dropdown>a.dropdown-toggle.navbar-text>strong {
-    font-size: 18px;
+span.span-main-dropdown>a.navbar-text>span{
+    font-size: 15px;
     color: white;
+    font-weight: bold;
+    
 }
 
-
+span.span-main-dropdown>a.dropdown-toggle:hover,
+span.span-main-dropdown>a.dropdown-toggle:active,
+span.span-main-dropdown>a.dropdown-toggle:focus{
+    
+    background-color: transparent !important;
+    text-decoration: none !important;
+    outline: none !important;    
+}
 /* FUENTE BOTONES SEMANA 1 Y SEMANA 2 */
 
 div.tab-pane.active>div.btn-group.pull-right>label {
