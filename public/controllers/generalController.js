@@ -19,14 +19,14 @@
                                 verificado: true
                             }).then(function () {
                                 if ($location.path() == "/login") {
-                                    $location.path("/home/principal");
+                                    $location.path("/principal/home");
                                 }
                                 userFactory.getData();
                             });
                         } else {
                             limpiar(snapshot.val()[Object.keys(snapshot.val())[0]].codcentro);
                             if ($location.path() == "/login") {
-                                $location.path("/home/principal");
+                                $location.path("/principal/home");
                             }
                             userFactory.getData();
                         }

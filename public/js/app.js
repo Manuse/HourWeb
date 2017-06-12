@@ -10,11 +10,11 @@
                     controllerAs: "vm"
                 })
                 .state("normal", {
-                    url: "/home",
+                    url: "/principal",
                     templateUrl: "templates/principal.html",
                 })
                 .state("normal.home", {
-                    url: "/principal",
+                    url: "/home",
                     templateUrl: "templates/home.html",
                     controller: 'HomeController',
                     controllerAs: "vm"
@@ -24,14 +24,14 @@
                     templateUrl: "templates/reservar.html",
                     controller: 'ReservarController',
                     controllerAs: "vm"
-                }).state("normal.configuracion", {
+                })
+                .state("normal.configuracion", {
                     url: "/perfil",
                     templateUrl: "templates/configuracion.html",
                     controller: 'ConfiguracionController',
                     controllerAs: "vm"
-
-
-                }).state("normal.administrador", {
+                })
+                .state("normal.administrador", {
                     url: "/administrador",
                     templateUrl: "templates/administrador.html",
                     controller: 'AdministradorController',

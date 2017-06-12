@@ -103,8 +103,6 @@
                     semana1.setTime(semana1.getTime() + (8 * 86400000));
                     fsemana1.setTime(fsemana1.getTime() + (8 * 86400000));
                 }
-                $log.log(semana1)
-                $log.log(fsemana1)
                 $timeout(function () {
                     for (var data in reser) {
                         if (reser[data].fecha < new Date("1/1/2999")) {

@@ -35,7 +35,7 @@
                         </a>
                     </div>
                 </li>
-                <li>
+                <li resizedirective>
                     <span class="span-main-dropdown" uib-dropdown>
                             <!-- Navbar nombre user y glyphicon desplegar -->
 						    <a href id="simple-dropdown" class="dropdown-toggle navbar-text" uib-dropdown-toggle>				    						
@@ -43,13 +43,13 @@
 								<span class="glyphicon glyphicon-triangle-bottom"></span>
                     </a>
                     
-                    <ul class="dropdown-menu" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                    <ul ng-class="uc.getUser().tipo == 'administrador' && width > 768 ? 'dropdown-menu dropdown-admin':'dropdown-menu dropdown-standar'" role="menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                         <li role="menuitem">
                             <a ui-sref="normal.configuracion" class="editar-perfil">Editar Perfil
                                 <span><img src="imagenes/users.png" class="imagen-user-dropdown" alt="no foto"></span>
                                 </a>
                         </li>
-                        <li role="menuitem" ng-if="uc.getUser().tipo == 'administrador'">
+                        <li role="menuitem" ng-if="uc.getUser().tipo == 'administrador' && width > 768">
                             <a ui-sref="normal.administrador" class="editar-perfil">Administrador
                                 <span><img src="imagenes/tools-svg1.svg" class="imagen-tool-dropdown" alt="no foto">
                                 </span>

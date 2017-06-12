@@ -39,7 +39,7 @@
                 $timeout(function () {
                     vm.getUser = userFactory.getUser;
                     if (vm.getUser().tipo != "administrador" || vm.getUser().baneo) {
-                        $location.path("/home/principal");
+                        $location.path("/principal/home");
                     }
                     cargarRecursos();
                     cargarUsuarios();

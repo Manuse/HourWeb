@@ -8,7 +8,7 @@
         vm.standarForm = modalFactory.standarForm;
         $timeout(function () {
             if (AUTH.currentUser != null) {
-                $location.path("/home/principal");
+                $location.path("/principal/home");
             }
         }, 350);
     }
