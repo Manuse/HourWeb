@@ -7,11 +7,11 @@
     function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory, $window) {
         var vm = this;
         vm.confirmacion = modalFactory.confirmacion;
-        vm.error=modalFactory.error;
+        vm.error = modalFactory.error;
         /*Accordion*/
         vm.oneAtATime = true;
         vm.open = [];
-        
+        vm.filtro="todos"
         /**
          * Intervalo para recargar
          */
@@ -26,7 +26,7 @@
         vm.jueves = [];
         vm.viernes = [];
         vm.semana = 0;
-        vm.mensajes=[]
+        vm.mensajes = []
 
         /**
          * Carga los datos de la vista
@@ -40,6 +40,7 @@
                     recogerCentro();
                     cargarFecha();
                     cargarMensajes();
+                    cargarUsuarios();
                     cargarCursos();
                     rellenarTablaHorarios();
                 }, 0);
@@ -307,17 +308,19 @@
          * carga los mensajes
          */
         function cargarMensajes() {
-            DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(50).once("value", function (snapshot) {
+            DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(70).once("value", function (snapshot) {
                 vm.mensajes = Object.keys(snapshot.val()).map(function (key) {
                     return {
                         code: key,
                         texto: snapshot.val()[key].texto,
                         asunto: snapshot.val()[key].asunto,
                         remitente: snapshot.val()[key].remitente,
-                        fecha: snapshot.val()[key].fecha
+                        cod_remitente: snapshot.val()[key].cod_remitente,
+                        fecha: new Date(snapshot.val()[key].fecha),
+                        codcentro: snapshot.val()[key].codcentro,
+                        destinatario: snapshot.val()[key].destinatario
                     };
                 }).reverse();
-                $log.log(vm.mensajes);
             });
         }
 
@@ -331,11 +334,16 @@
                         texto: vm.texto,
                         asunto: vm.asunto,
                         remitente: vm.getUser().nombre + " " + vm.getUser().apellido,
+                        cod_remitente: vm.getUser().id,
                         codcentro: vm.getUser().codcentro,
-                        fecha:new Date()
+                        fecha: new Date().getTime(),
+                        destinatario: vm.destinatario
                     }
                     mensaje.code = DATABASE.ref("mensajes/").push(mensaje).key;
+                    mensaje.fecha=new Date(mensaje.fecha);
                     vm.mensajes.unshift(mensaje);
+                    vm.texto="";
+                    vm.asunto="";
                 } else {
                     vm.error(errorFactory.getError("textoVacio"));
                 }
@@ -347,12 +355,35 @@
         /**
          * Borra un mensaje
          */
-        vm.borrarMensaje=function(mensaje){
-            funcion=function(){
-                vm.mensajes.splice(vm.mensajes.indexOf(mensaje),1)
-                DATABASE.ref("mensajes/"+mensaje.code).remove();
+        vm.borrarMensaje = function (mensaje) {
+            funcion = function () {
+                vm.mensajes.splice(vm.mensajes.indexOf(mensaje), 1)
+                DATABASE.ref("mensajes/" + mensaje.code).remove();
             }
             vm.confirmacion("¿Borrar este mensaje?", funcion);
+        }
+
+        /**
+         * Carga los usuarios
+         */
+        function cargarUsuarios() {
+            DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).once("value", function (snapshot) {
+                $timeout(function () {
+                    vm.usuarios = Object.keys(snapshot.val()).map(function (key) {
+                        return {
+                            id: snapshot.val()[key].id,
+                            nombre: snapshot.val()[key].nombre + ' ' + snapshot.val()[key].apellido,
+                            verificado: snapshot.val()[key].verificado
+                        };
+                    });
+                    vm.usuarios.unshift({
+                        id: vm.getUser().codcentro,
+                        nombre: "Todos",
+                        verificado:true 
+                    });
+                    vm.destinatario = vm.usuarios[0].id;
+                }, 0);
+            });
         }
     }
 })();

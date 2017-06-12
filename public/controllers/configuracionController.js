@@ -240,7 +240,10 @@
                                                 asunto: "Nuevo administrador",
                                                 texto: "El usuario " + user.val()[id].nombre + " " + user.val()[id].apellido + " se ha convertido en admnistrado del centro",
                                                 codcentro: user.val()[id].codcentro,
-                                                remitente: "Sistema"
+                                                remitente: "Sistema de HourWeb",
+                                                fecha: new Date().getTime(),
+                                                destinatario: user.val()[id].codcentro,
+                                                cod_remitente: user.val()[id].codcentro,
                                             });
                                         }, function (err) {
                                             vm.error(errorFactory.getError(err));

@@ -17,11 +17,11 @@
         vm.tipos = [];
         vm.semana = '0';
         vm.cursos = [];
-		var q;
+        var q;
 
-		/*
-		carga datos cuando carga al usuario
-		*/
+        /*
+        carga datos cuando carga al usuario
+        */
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
@@ -37,43 +37,54 @@
 
         function cargarCursos() {
             DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
-                var cursos = snapshot.val();
-                $timeout(function () {
-                    for (var data in cursos) {
-                        if (!vm.cursos.includes(cursos[data].curso)) {
-                            vm.cursos.push(cursos[data].curso);
-                        }
-                    }
-                    vm.cursos.sort();
-                    vm.curso = vm.cursos[0];
-                }, 0);
-
+                vm.cursos = Object.keys(snapshot.val()).map(function (key) {
+                        return snapshot.val()[key].curso;
+                    }).filter(function (value, index, array) {
+                        return array.indexOf(value) === index;
+                    }).sort().map(function (val) {
+                        return {
+                            value: val,
+                            label: val
+                        };
+                    })
+                    vm.cursos.unshift({
+                        value: null,
+                        label: "Seleccione un curso(Opcional)"
+                    });
+                    $log.log(vm.cursos)
+                vm.curso = vm.cursos[0].value;
             });
         }
-        
+
         /* carga los dias de la semana en el home y en reservar.html */
+        /**
+         * Carga la fecha
+         */
         function cargarFecha() {
-            var dia = new Date(new Date().getTime() -(82800000*(new Date().getDay() - 1)));
+            var dia = new Date(new Date().getTime() - (82800000 * (new Date().getDay() - 1)));
             vm.dias = [];
             for (var j = 0; j < 5; j++) {
                 dia.setTime(dia.getTime() + (j == 0 ? 0 : 82800000));
                 if (vm.semana == 1 && j == 0) {
-                    dia.setTime(dia.getTime() + (7*82800000));
+                    dia.setTime(dia.getTime() + (7 * 82800000));
                 }
                 vm.dias.push(new Date(dia));
             }
         }
 
+        /**
+         * Carga la fecha y luego los recursos
+         */
         vm.cargarFechaRecursos = function () {
             cargarFecha();
             if (vm.recurso != null)
                 vm.cargarDisponible();
         }
 
-        vm.hacerReserva = function (celda, ncelda) {          
+        vm.hacerReserva = function (celda, ncelda) {
             var reserva = {
                 nombre: vm.getUser().nombre + ' ' + vm.getUser().apellido,
-                curso: vm.curso==null ? '':vm.curso,
+                curso: vm.curso == null ? '' : vm.curso,
                 fecha: celda.fecha.getTime(),
                 recurso: vm.recurso,
                 usuario: vm.getUser().id
@@ -82,7 +93,7 @@
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(reserva);
                 vm.progress();
                 progressBarFactory.initProgress();
-            } 
+            }
         };
 
         /* select de pruebaReservas.html que se carga al seleccionar opcion del select anterior */
@@ -104,8 +115,8 @@
                         try {
                             vm.recurso = vm.recursos[0].value;
                         } catch (err) {}
-                    }else{
-                        vm.recursos=[];
+                    } else {
+                        vm.recursos = [];
                     }
                 }, 0);
             });
@@ -126,10 +137,10 @@
 
         /* carga recursos disponibles en la tabla de pruebaReservas.html*/
         vm.cargarDisponible = function () {
-            try{
+            try {
                 q.off()
-            }catch(err){}
-            q =  DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso);
+            } catch (err) {}
+            q = DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso);
             if (vm.recurso == null) {
                 vm.tabla = [];
             } else {
@@ -145,7 +156,7 @@
                                 fila.hora = new Date(i).getHours() + ':' + (new Date(i).getMinutes() != 0 ? new Date(i).getMinutes() : new Date(i).getMinutes() + '0') + ' - ' + new Date(i + 1800000).getHours() + ':' + (new Date(i + 1800000).getMinutes() != 0 ? new Date(i + 1800000).getMinutes() : new Date(i + 1800000).getMinutes() + '0');
                                 progressBarFactory.setProgress(20);
                                 for (var j = 0; j < 5; j++) { //columnas
-                                    vm.dias[j].setHours(new Date(i).getHours(),new Date(i).getMinutes(),0);
+                                    vm.dias[j].setHours(new Date(i).getHours(), new Date(i).getMinutes(), 0);
                                     var celda = {};
                                     celda.activo = true;
                                     celda.fecha = new Date(vm.dias[j]);
@@ -153,9 +164,9 @@
                                         celda.activo = false;
                                     }
                                     for (var data in reservas) {
-                                        if(reservas[data].perm && new Date(reservas[data].fecha).getDay()==vm.dias[j].getDay()){
+                                        if (reservas[data].perm && new Date(reservas[data].fecha).getDay() == vm.dias[j].getDay()) {
                                             var nf = new Date(vm.dias[j]);
-                                            reservas[data].fecha = nf.setHours(new Date(reservas[data].fecha).getHours(), new Date(reservas[data].fecha).getMinutes(),0);
+                                            reservas[data].fecha = nf.setHours(new Date(reservas[data].fecha).getHours(), new Date(reservas[data].fecha).getMinutes(), 0);
                                         }
                                         if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000) {
                                             celda.activo = false;
@@ -163,8 +174,8 @@
                                             celda.curso = reservas[data].curso;
                                         }
                                     }
-                                    if(progressBarFactory.getProgress()<90){
-                                         progressBarFactory.sumProgress(5);
+                                    if (progressBarFactory.getProgress() < 90) {
+                                        progressBarFactory.sumProgress(5);
                                     }
                                     switch (j) {
                                         case 0:

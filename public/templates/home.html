@@ -245,14 +245,25 @@
                                 <form ng-submit="vm.nuevoMensaje()">
                                     <div class="form-group">
                                         <label for="Asunto">Asunto:</label>
-                                        <input type="text" class="form-control pilar" ng-model="vm.asunto" required>
+                                        <input type="text" class="form-control pilar" placeholder="Introduzca el asunto" ng-model="vm.asunto" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="Mensaje">Mensaje:</label>
-                                        <textarea class="form-control" rows="5" ng-model="vm.texto" required></textarea>
+                                        <textarea class="form-control" rows="5" placeholder="Introduzca el mensaje" ng-model="vm.texto" required></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-info pull-right">Enviar</button>
                                 </form>
+                                <!--ng-options="usuario.id as usuario.nombre for usuario in vm.usuarios"-->
+                                destinatario
+                                <select ng-model="vm.destinatario">
+                                    <option ng-repeat="usuario in vm.usuarios" ng-if="usuario.id!=vm.getUser().id && usuario.verificado" value="{{usuario.id}}" ng-bind="usuario.nombre"></option>
+                                </select>
+                                mensajes a ver
+                                <select ng-model="vm.filtro">
+                                    <option value="todos" >Todos</option>
+                                    <option value="enviados" >Enviados por mi</option>
+                                    <option value="recibidos" >Solo para mi</option>
+                                </select>
 
                             </div>
 
@@ -263,17 +274,17 @@
                         <div class="row">
                             <uib-accordion >
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div uib-accordion-group class="panel-default" ng-repeat="mensaje in vm.mensajes" is-open="vm.open[$index]">
+                                    <div uib-accordion-group class="panel-default" ng-repeat="mensaje in vm.mensajes | messageFilter:vm.filtro" is-open="vm.open[$index]">
                                         <uib-accordion-heading>
                                             <div class="azulmensaje">
                                                 <span ng-bind="mensaje.asunto"></span>
                                                 <span>&#32;</span>
-                                                <span ng-bind="mensaje.remitente"></span>
                                                 <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarMensaje(mensaje)" ng-if="vm.getUser().tipo=='administrador'"></span>
                                                 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                                 <span></span>
                                         </uib-accordion-heading>
-                                           <p ng-bind="mensaje.texto"></p>                              
+                                           <p ng-bind="mensaje.texto"></p>    
+                                           <p><span ng-bind="mensaje.remitente+' '"> </span><span ng-bind="mensaje.fecha | date:' dd/MM/yyyy'"></span></p>                          
                                     </div>
                                 </div>
                             </uib-accordion>

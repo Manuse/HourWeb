@@ -132,7 +132,6 @@
 
 
         vm.crearTipo = function () {
-
             if (vm.ntipo != 0 && vm.ntipo != null) {
                 if (!vm.tipologias.includes(vm.ntipo)) {
                     vm.tipologias.push(vm.ntipo);
@@ -147,6 +146,9 @@
             }
         };
 
+        /**
+         * borra un recurso
+         */
         vm.borrarRecurso = function (recurso) {
             var funcion = function () {
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + recurso).remove();
@@ -154,6 +156,9 @@
             vm.confirmacion("¿Borrar el recurso " + recurso + "?", funcion);
         };
 
+        /**
+         * carga los recursos
+         */
         function cargarRecursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").on("value", function (snapshot) {
                 $timeout(function () {
@@ -168,8 +173,11 @@
             });
         }
 
+        /**
+         * Carga de usuario
+         */
         function cargarUsuarios() {
-            DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).on("value", function (snapshot) {
+            DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).once("value", function (snapshot) {
                 $timeout(function () {
                     vm.usuarios = Object.keys(snapshot.val()).map(function (key) {
                         return {

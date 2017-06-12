@@ -8,7 +8,7 @@
         </select>
             <select class="btn btn-info" ng-if="vm.recursos.length > 1" ng-options="item.value as item.name for item in vm.recursos" ng-change="vm.cargarDisponible()" ng-model="vm.recurso">          
         </select>
-            <select class="btn btn-info" ng-if="vm.cursos.length > 0" ng-options="item as item for item in vm.cursos" ng-model="vm.curso">          
+            <select class="btn btn-info" ng-if="vm.cursos.length > 1" ng-options="item.value as item.label for item in vm.cursos" ng-model="vm.curso">          
         </select>
         </div>
 
