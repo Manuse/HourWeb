@@ -1,18 +1,17 @@
-
 <div class="row">
     <div class="container">
 
         <div class=" col-xs-7 col-sm-8 col-md-9 col-lg-9">
 
-            <select class="btn btn-info" ng-model="vm.tipo" ng-options="item as item for item in vm.tipos" ng-change="vm.cargarRecursos()">
+            <select class="btn btn-info" ng-model="vm.tipo" ng-options="item as item for item in vm.tipos" ng-change="vm.cargarRecursos()" style="margin-top:10px;">
         </select>
-            <select class="btn btn-info" ng-if="vm.recursos.length > 1" ng-options="item.value as item.name for item in vm.recursos" ng-change="vm.cargarDisponible()" ng-model="vm.recurso">          
+            <select class="btn btn-info" ng-if="vm.recursos.length > 1" ng-options="item.value as item.name for item in vm.recursos" ng-change="vm.cargarDisponible()" ng-model="vm.recurso" style="margin-top:10px;">          
         </select>
-            <select class="btn btn-info" ng-if="vm.cursos.length > 1" ng-options="item.value as item.label for item in vm.cursos" ng-model="vm.curso">          
+            <select class="btn btn-info" ng-if="vm.cursos.length > 1" ng-options="item.value as item.label for item in vm.cursos" ng-model="vm.curso" style="margin-top:10px;">          
         </select>
         </div>
 
-        <div class=" col-xs-5 col-sm-4 col-md-3 col-lg-3">          
+        <div class=" col-xs-5 col-sm-4 col-md-3 col-lg-3">
 
             <label class="btn btn-info btn-md" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.cargarFechaRecursos()">Semana 1</label>
             <label class="btn btn-warning btn-md" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.cargarFechaRecursos()">Semana 2</label>
@@ -29,8 +28,10 @@
             <table class="tabla-reservar table table-striped table-bordered table-responsive">
                 <thead>
                     <tr class="bg-primary">
-                        <th>&nbsp;HORA&nbsp;</th>
-                        <th ng-repeat="dia in vm.dias" ng-bind="dia | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'"></th>
+                        <th class="th-reservar-hora">&nbsp;HORA&nbsp;
+                        </th>
+                        <th class="th-reservar" ng-repeat="dia in vm.dias" ng-bind="dia | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

@@ -293,7 +293,7 @@ span.glyphicon.glyphicon-triangle-bottom {
 ul.dropdown-menu {
     width: 290px;
     height: 150px;
-    margin-right: 60px;
+    margin-right: 15px;
     margin-top: 45px;
     box-shadow: 0px 1px 5px grey;
 }
@@ -460,7 +460,13 @@ button.btn-semana12,
 button.btn-semana123 {
     font-weight: bold;
     margin-top: 12px;
+    border:none;
 }
+
+button.btn-semana1-xs,
+button.btn-semana2-xs{
+        font-weight: bold;
+    }
 
 a.btn-reservar {
     font-weight: bold;
@@ -474,7 +480,56 @@ div.div-btn-home1 {
     margin-bottom: 10px;
 }
 
-
+/* botones semana1 y 2 en bajisimo screen*/
+@media only screen and (min-width:200px) and (max-width:320px) {
+    button.btn-semana1-xs,button.btn-semana2-xs{
+        font-size: 11px;
+        border: none;
+    }
+    button.btn-semana2-xs{
+        background-color: #00e673;
+        color: white;
+    }
+    button.btn-semana2-xs:hover,
+    button.btn-semana2-xs:active,
+    button.btn-semana2-xs:focus{
+        color:white;
+        background-color: #00cc66;
+    }
+}
+@media  (min-width:321px) {
+    button.btn-semana1-xs{
+        font-weight: bold;
+        border: none;
+    }
+    button.btn-semana2-xs,
+    button.btn-semana12{
+        background-color: #00e673;
+        color: white;
+        border: none;
+    }
+    button.btn-semana2-xs:hover,
+    button.btn-semana12:hover,
+    button.btn-semana2-xs:active,
+    button.btn-semana12:active,
+    button.btn-semana2-xs:focus,
+    button.btn-semana12:focus{
+        color:white;
+        background-color: #00cc66;
+        border: none;
+    }
+    
+}
+th.th-reservar{
+    font-size: 12px;
+    vertical-align: text-top;
+    
+}
+th.th-reservar-hora{
+    font-size: 12px;
+    vertical-align: middle;
+    
+}
 /* DIAS DE LA SEMANA*/
 
 
@@ -516,10 +571,10 @@ span.span-main-dropdown>a.dropdown-toggle.navbar-text {
 /* STRONG DEL a DE ARRIBA*/
 
 span.span-main-dropdown>a.navbar-text>span{
-    font-size: 15px;
-    color: white;
-    font-weight: bold;
-    
+    margin-top: 7px;
+    font-size: 16px;
+    color: azure;
+    font-weight: bold;    
 }
 
 span.span-main-dropdown>a.dropdown-toggle:hover,
@@ -666,7 +721,7 @@ tbody.tabla-horarios>tr,
 td.tabla-horarios {
     color: black;
     border: 1px solid rgb(238, 120, 120);
-    max-width: 100px;
+    
 }
 
 table.tabla-mi-horario {
@@ -1538,7 +1593,7 @@ form>div.form-group>input.pilar {
 }
 
 
-/*pepe*/
+/* carrusel del login */
 
 .slide2 {
     overflow: hidden;
@@ -1556,12 +1611,13 @@ form>div.form-group>input.pilar {
 
 .slide2 figure {
     position: relative;
-    width: 500%;
+    width: 500%;/* 100 x nº de imagenes */
     margin: 0;
     left: 0;
-    animation: 20s slidy infinite;
+    animation: 40s slidy infinite;
 }
 
+/* rotacion de las imagenes recorriendo un ancho */
 @keyframes slidy {
     0% {
         left: 0%
@@ -1619,34 +1675,6 @@ form>div.form-group>input.pilar {
     }
 }
 
-
-/*
-.externafont{
-    font-family: 'Oswald', serif;
-    color: white;
-}
-img.imagenlogin{
-    margin-top:-13px;
-    height:90px;
-    width:140px;
-}
-
-@media only screen and (min-width:250px) and (max-width:736px) {
-    .botonlogin1{
-        width: 100%;
-        
-    }
-    
-    img.imagenlogin{
-    margin-top: 1px;
-        
-    }
-    .externafont{
-        margin-top: -40px;
-    }
-    
-}*/
-
 .externafont {
     font-family: 'Tahoma', serif;
     color: white;
@@ -1656,13 +1684,18 @@ img.imagenlogin{
     border-left: 0;
 }
 
-@media only screen and (min-width:200px) and (max-width:470px) {
+@media only screen and (min-width:200px) and (max-width:399px) {
+    .externafont {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width:400px) and (max-width:501px) {
     .externafont {
         font-size: 20px;
     }
 }
-
-@media only screen and (min-width:471px) and (max-width:699px) {
+@media only screen and (min-width:502px) and (max-width:699px) {
     .externafont {
         font-size: 25px;
     }
@@ -1670,7 +1703,7 @@ img.imagenlogin{
 
 @media (min-width:701px) {
     .externafont {
-        font-size: 30px;
+        font-size: 28px;
     }
 }
 
