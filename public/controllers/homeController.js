@@ -308,7 +308,8 @@
          * carga los mensajes
          */
         function cargarMensajes() {
-            DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(70).once("value", function (snapshot) {
+            DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(70).on("value", function (snapshot) {
+                
                 vm.mensajes = Object.keys(snapshot.val()).map(function (key) {
                     return {
                         code: key,
@@ -341,7 +342,7 @@
                     }
                     mensaje.code = DATABASE.ref("mensajes/").push(mensaje).key;
                     mensaje.fecha=new Date(mensaje.fecha);
-                    vm.mensajes.unshift(mensaje);
+                    //vm.mensajes.unshift(mensaje);
                     vm.texto="";
                     vm.asunto="";
                 } else {
