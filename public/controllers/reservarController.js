@@ -5,7 +5,7 @@
         .controller('ReservarController', reservarController);
 
     /* primer select de pruebaReservas.html*/
-    function reservarController(userFactory, DATABASE, $timeout, $log, modalFactory, progressBarFactory) {
+    function reservarController(userFactory, DATABASE, $timeout, $log, modalFactory, progressBarFactory, $location) {
         var vm = this;
         var interval = function () {
             $timeout(recarga, 100);

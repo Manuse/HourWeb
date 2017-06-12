@@ -9,7 +9,7 @@
         var code;
 
         function getData() {
-            DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).once("value", function (snapshot) {
+            DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).on("value", function (snapshot) {
                 $timeout(function () {
                     users = snapshot.val()[Object.keys(snapshot.val())[0]];
                     photo = AUTH.currentUser.photoURL;
