@@ -11,7 +11,7 @@
         /*Accordion*/
         vm.oneAtATime = true;
         vm.open = [];
-        vm.filtro="todos"
+        vm.filtro = "todos"
         /**
          * Intervalo para recargar
          */
@@ -309,19 +309,20 @@
          */
         function cargarMensajes() {
             DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(70).on("value", function (snapshot) {
-                
-                vm.mensajes = Object.keys(snapshot.val()).map(function (key) {
-                    return {
-                        code: key,
-                        texto: snapshot.val()[key].texto,
-                        asunto: snapshot.val()[key].asunto,
-                        remitente: snapshot.val()[key].remitente,
-                        cod_remitente: snapshot.val()[key].cod_remitente,
-                        fecha: new Date(snapshot.val()[key].fecha),
-                        codcentro: snapshot.val()[key].codcentro,
-                        destinatario: snapshot.val()[key].destinatario
-                    };
-                }).reverse();
+                $timeout(function () {
+                    vm.mensajes = Object.keys(snapshot.val()).map(function (key) {
+                        return {
+                            code: key,
+                            texto: snapshot.val()[key].texto,
+                            asunto: snapshot.val()[key].asunto,
+                            remitente: snapshot.val()[key].remitente,
+                            cod_remitente: snapshot.val()[key].cod_remitente,
+                            fecha: new Date(snapshot.val()[key].fecha),
+                            codcentro: snapshot.val()[key].codcentro,
+                            destinatario: snapshot.val()[key].destinatario
+                        };
+                    }).reverse();
+                }, 0)
             });
         }
 
@@ -341,10 +342,10 @@
                         destinatario: vm.destinatario
                     }
                     mensaje.code = DATABASE.ref("mensajes/").push(mensaje).key;
-                    mensaje.fecha=new Date(mensaje.fecha);
+                    mensaje.fecha = new Date(mensaje.fecha);
                     //vm.mensajes.unshift(mensaje);
-                    vm.texto="";
-                    vm.asunto="";
+                    vm.texto = "";
+                    vm.asunto = "";
                 } else {
                     vm.error(errorFactory.getError("textoVacio"));
                 }
@@ -358,7 +359,7 @@
          */
         vm.borrarMensaje = function (mensaje) {
             funcion = function () {
-                vm.mensajes.splice(vm.mensajes.indexOf(mensaje), 1)
+                //   vm.mensajes.splice(vm.mensajes.indexOf(mensaje), 1)
                 DATABASE.ref("mensajes/" + mensaje.code).remove();
             }
             vm.confirmacion("¿Borrar este mensaje?", funcion);
@@ -380,7 +381,7 @@
                     vm.usuarios.unshift({
                         id: vm.getUser().codcentro,
                         nombre: "Todos",
-                        verificado:true 
+                        verificado: true
                     });
                     vm.destinatario = vm.usuarios[0].id;
                 }, 0);
