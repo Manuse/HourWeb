@@ -305,8 +305,12 @@
                                                 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                             <span></span>
                                         </uib-accordion-heading>
-                                        <p ng-bind="mensaje.texto"></p>
-                                        <p><span ng-bind="mensaje.remitente+' '"> </span><span ng-bind="mensaje.fecha | date:' dd/MM/yyyy'"></span></p>
+                                        <textarea ng-bind="mensaje.texto" class="form-control" rows="5" disabled>
+                                           
+                                        </textarea>
+                                        <p class="pull-right"><span ng-bind="mensaje.remitente+' '"> </span><span ng-bind="mensaje.fecha | date:' dd/MM/yyyy'"></span></p> 
+                                        
+                                        
                                     </div>
                                 </div>
                             </uib-accordion>
