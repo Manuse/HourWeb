@@ -405,12 +405,12 @@
                 DATABASE.ref("user/" + user.code).update({
                     tipo: "administrador"
                 });
-                // vm.usuarios[vm.usuarios.indexOf(user)].tipo = "administrador";
+                 user.tipo = "administrador";
             } else {
                 DATABASE.ref("user/" + user.code).update({
                     tipo: "estandar"
                 });
-                // vm.usuarios[vm.usuarios.indexOf(user)].tipo = "estandar";
+                user.tipo = "estandar";
             }
         }
 

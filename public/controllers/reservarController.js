@@ -26,6 +26,9 @@
             if (userFactory.getUser() != null) {
                 $timeout(function () {
                     vm.getUser = userFactory.getUser;
+                    if(vm.getUser().baneo){
+                        $location.path("/home/principal");
+                    }
                     vm.cargarFechaRecursos();
                     cargarTipos();
                     cargarCursos();
