@@ -64,12 +64,12 @@
          * Carga la fecha
          */
         function cargarFecha() {
-            var dia = new Date(new Date().getTime() - (82800000 * (new Date().getDay() - 1)));
+            var dia = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
             vm.dias = [];
             for (var j = 0; j < 5; j++) {
-                dia.setTime(dia.getTime() + (j == 0 ? 0 : 82800000));
+                dia.setTime(dia.getTime() + (j == 0 ? 0 : 86400000));
                 if (vm.semana == 1 && j == 0) {
-                    dia.setTime(dia.getTime() + (7 * 82800000));
+                    dia.setTime(dia.getTime() + (7 * 86400000));
                 }
                 vm.dias.push(new Date(dia));
             }
