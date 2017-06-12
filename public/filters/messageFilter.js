@@ -5,22 +5,22 @@
         .filter('messageFilter', messageFilter);
 
     function messageFilter(userFactory) {
-        return function (array, filtro) {
+        return function (array, filtro, page) {
             switch (filtro) {
                 case "todos":
                     return array.filter(function (el) {
                         return (el.destinatario == userFactory.getUser().codcentro || el.destinatario == userFactory.getUser().id
                          || el.cod_remitente == userFactory.getUser().id);
-                    })
+                    }).slice(((page-1)*10), ((page)*10));
                 case "enviados":
                     return array.filter(function (el) {
                         return el.cod_remitente == userFactory.getUser().id;
-                    })
+                    }).slice(((page-1)*10), ((page)*10));
 
                 case "recibidos":
                     return array.filter(function (el) {
                         return el.destinatario == userFactory.getUser().id;
-                    })
+                    }).slice(((page-1)*10), ((page)*10));
             }
         }
     }

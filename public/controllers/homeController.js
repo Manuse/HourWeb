@@ -11,7 +11,8 @@
         /*Accordion*/
         vm.oneAtATime = true;
         vm.open = [];
-        vm.filtro = "todos"
+        vm.filtro = "todos";
+        vm.page=1;
         /**
          * Intervalo para recargar
          */
