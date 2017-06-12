@@ -35,7 +35,8 @@
                 codcentro: 0,
                 tipo: "administrador",
                 email:vm.email,
-                verificado: false
+                verificado: false,
+                baneo:false
             };
             registerFactory.registrarUser(newuser, newcentro, vm.email, vm.pass1);
         };

@@ -208,7 +208,7 @@
                                     <div class="col-md-6">
                                         <br>
                                         <h3 class="listas">RECURSOS</h3>
-                                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.recurso as item.recurso for item in vm.recursos" ng-model="vm.recursoRP">
+                                        <select class="selectpermanente form-control pull-right btn-info" ng-options="item.value as item.recurso for item in vm.recursos" ng-model="vm.recursoRP">
 
                                                 <!-- como un checkbox y a continuacion las distintas opciones, placeholder da texto previo  -->
                                                
@@ -268,41 +268,6 @@
                                     <div uib-alert ng-repeat="item in vm.RP | buscarRPFilter : vm.bRP" class="alert-info" close="vm.borrarRP(item)">{{item.nombre+', Recurso: '+item.recurso+', Dia: '+item.dia+', Hora: '+item.hora+ (item.curso!=0 ? ', curso: '+item.curso:'')}}</div>
                                 </center>
                                 
-                                
-                                <!-- prueba -->
-                                <!--
-                                <uib-accordion close-others="vm.oneAtATime">
-
-                                    <div uib-accordion-group class="panel-default" ng-repeat="item in vm.RP" is-open="vm.open[$index]">
-                                        <uib-accordion-heading>
-                                            <div class="azulmensaje">
-                                                <p ng-bind="item.nombre"></p>
-                                            </div>
-
-                                        </uib-accordion-heading>
-                                        <form class="form-horizontal" role="form">
-                                        <div class="form-group">
-                                            <label for="recursopermanente" class="col-lg-2 control-label">Recurso:</label>
-                                            <div class="col-lg-10">
-                                                <input ng-model="item.recurso" type="text" class="form-control" id="recursopermanente">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="horapermanente" class="col-lg-2 control-label">Hora:</label>
-                                            <div class="col-lg-10">
-                                                <input ng-model="item.hora" type="text" class="form-control" id="horapermanente">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="cursopermanente" class="col-lg-2 control-label">Recurso:</label>
-                                            <div class="col-lg-10">
-                                                <input ng-model="(item.curso!=0 ? ' curso:'+item.curso:'')" type="text" class="form-control" id="cursopermanente">
-                                            </div>
-                                        </div>
-                                        </form>                                      
-                                </div>
-                                </uib-accordion>
-                             -->
                             </div>
                         </div>
                     </div>

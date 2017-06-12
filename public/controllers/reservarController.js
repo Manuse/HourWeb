@@ -40,6 +40,7 @@
 
         function cargarCursos() {
             DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
+                try{
                 vm.cursos = Object.keys(snapshot.val()).map(function (key) {
                         return snapshot.val()[key].curso;
                     }).filter(function (value, index, array) {
@@ -53,9 +54,9 @@
                     vm.cursos.unshift({
                         value: null,
                         label: "Seleccione un curso(Opcional)"
-                    });
-                    $log.log(vm.cursos)
+                    });           
                 vm.curso = vm.cursos[0].value;
+                }catch(err){}
             });
         }
 

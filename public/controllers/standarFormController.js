@@ -25,7 +25,8 @@
                 codcentro: vm.centro,
                 tipo: "estandar",
                 email:vm.email,
-                verificado: false
+                verificado: false,
+                baneo:false
             };
             DATABASE.ref("centros/" + vm.centro).once("value", function (snapshot) {
                 if (snapshot.exists()) { //si existe registra el usuario

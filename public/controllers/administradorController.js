@@ -20,7 +20,11 @@
         vm.open = [];
 
         vm.cursosRP = [];
+        vm.cursos = [];
         vm.RP = [];
+        vm.tipologias = [];
+        vm.recursos = [];
+        vm.usuarios = [];
         vm.dayRP = "6";
 
         /**
@@ -82,12 +86,16 @@
             if (vm.recurso != 0 && vm.recurso != null) {
                 re.once("value", function (snapshot) {
                     if (!snapshot.exists()) { //sino existe lo creamos
+                        if (vm.recursos[0].value == null) {
+                            vm.recursos.splice(0, 1);
+                        }
                         re.set({
                             tipo: vm.tipo
                         });
                         vm.recursos.push({
                             recurso: vm.recurso,
-                            tipo: vm.tipo
+                            tipo: vm.tipo,
+                            value: vm.recurso
                         });
                         vm.recurso = "";
                     } else {
@@ -175,13 +183,23 @@
         function cargarRecursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").on("value", function (snapshot) {
                 $timeout(function () {
-                    vm.recursos = Object.keys(snapshot.val()).map(function (key) {
-                        return {
-                            recurso: key,
-                            tipo: snapshot.val()[key].tipo
-                        };
-                    });
-                    vm.recursoRP = vm.recursos[0].recurso;
+                    try {
+                        vm.recursos = Object.keys(snapshot.val()).map(function (key) {
+                            return {
+                                recurso: key,
+                                tipo: snapshot.val()[key].tipo,
+                                value: key
+                            };
+                        });
+                    } catch (err) {}
+                    if (vm.recursos.length == 0) {
+                        vm.recursos.push({
+                            recurso: "No hay recursos",
+                            value: null
+                        })
+                    }
+                    vm.recursoRP = vm.recursos[0].value;
+
                 }, 0);
             });
         }
@@ -278,20 +296,22 @@
         function cargarCursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").once("value", function (snapshot) {
                 $timeout(function () {
-                    vm.cursos = snapshot.val();
-                    vm.cursosRP = snapshot.val().map(function (key) {
-                        return {
-                            label: key,
-                            value: key
-                        }
-                    });
                     try {
+                        vm.cursos = snapshot.val();
+                        vm.cursosRP = snapshot.val().map(function (key) {
+                            return {
+                                label: key,
+                                value: key
+                            }
+                        });
                         vm.cursosRP.unshift({
                             label: 'Seleccione el curso (Opcional)',
                             value: null
                         });
                         vm.cursoRP = vm.cursosRP[0].value;
-                    } catch (err) {}
+                    } catch (err) {
+                        vm.cursos = []
+                    }
                 }, 0)
             });
         }
@@ -301,7 +321,7 @@
          */
         vm.addCurso = function () {
             if (vm.nCurso != 0 && vm.nCurso != null) {
-                if (!vm.cursos.includes(vm.nCurso)) {
+                if (vm.cursos.length == 0 || !vm.cursos.includes(vm.nCurso)) {
                     vm.cursosRP.push({
                         label: vm.nCurso,
                         value: vm.nCurso
@@ -352,34 +372,36 @@
         function cargarRP() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("perm").equalTo(true).once("value", function (snapshot) {
                 $timeout(function () {
-                    vm.RP = Object.keys(snapshot.val()).map(function (key) {
-                        var date = new Date(snapshot.val()[key].fecha);
+                    try {
+                        vm.RP = Object.keys(snapshot.val()).map(function (key) {
+                            var date = new Date(snapshot.val()[key].fecha);
 
-                        function day(key) {
-                            switch (parseInt(key)) {
-                                case 1:
-                                    return "Lunes";
-                                case 2:
-                                    return "Martes";
-                                case 3:
-                                    return "Miercoles";
-                                case 4:
-                                    return "Jueves";
-                                case 5:
-                                    return "Viernes";
+                            function day(key) {
+                                switch (parseInt(key)) {
+                                    case 1:
+                                        return "Lunes";
+                                    case 2:
+                                        return "Martes";
+                                    case 3:
+                                        return "Miercoles";
+                                    case 4:
+                                        return "Jueves";
+                                    case 5:
+                                        return "Viernes";
+                                }
                             }
-                        }
-                        return {
-                            fecha: date,
-                            code: key,
-                            dia: day(date.getDay()),
-                            nombre: snapshot.val()[key].nombre,
-                            recurso: snapshot.val()[key].recurso,
-                            hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
-                            perm: true,
-                            curso: snapshot.val()[key].curso
-                        }
-                    });
+                            return {
+                                fecha: date,
+                                code: key,
+                                dia: day(date.getDay()),
+                                nombre: snapshot.val()[key].nombre,
+                                recurso: snapshot.val()[key].recurso,
+                                hora: (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0') + "-" + (new Date(date.getTime() + 3600000).getHours() < 10 ? '0' + new Date(date.getTime() + 3600000).getHours() : new Date(date.getTime() + 3600000).getHours()) + ':' + (date.getMinutes() != 0 ? date.getMinutes() : date.getMinutes() + '0'),
+                                perm: true,
+                                curso: snapshot.val()[key].curso
+                            }
+                        });
+                    } catch (err) {}
                 }, 0)
             });
         }
@@ -405,7 +427,7 @@
                 DATABASE.ref("user/" + user.code).update({
                     tipo: "administrador"
                 });
-                 user.tipo = "administrador";
+                user.tipo = "administrador";
             } else {
                 DATABASE.ref("user/" + user.code).update({
                     tipo: "estandar"

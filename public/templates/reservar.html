@@ -38,7 +38,7 @@
                     <tr class="bg-primary">
                         <th class="th-reservar-hora">&nbsp;HORA&nbsp;
                         </th>
-                        <th class="th-reservar" ng-repeat="dia in vm.dias" ng-bind="dia | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;'">
+                        <th class="th-reservar" ng-repeat="dia in vm.dias" ng-bind="dia | date:' &nbsp;EEEE, dd/MMMM/yyyy &nbsp;' | mayus">
                         </th>
                     </tr>
                 </thead>

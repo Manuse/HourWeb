@@ -309,6 +309,7 @@
         function cargarMensajes() {
             DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(70).on("value", function (snapshot) {
                 $timeout(function () {
+                    try{
                     vm.mensajes = Object.keys(snapshot.val()).map(function (key) {
                         return {
                             code: key,
@@ -321,6 +322,7 @@
                             destinatario: snapshot.val()[key].destinatario
                         };
                     }).reverse();
+                    }catch(err){}
                 }, 0)
             });
         }
