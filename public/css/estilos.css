@@ -28,6 +28,7 @@
 
 .azulmensaje {
     color: #428bca;
+    text-align: center;
 }
 
 
@@ -1675,6 +1676,7 @@ form>div.form-group>input.pilar {
     }
 }
 
+/* Fuente externa del login*/
 .externafont {
     font-family: 'Tahoma', serif;
     color: white;
@@ -1705,5 +1707,20 @@ form>div.form-group>input.pilar {
     .externafont {
         font-size: 28px;
     }
+}
+
+/*caption tabla reservar*/
+table>caption.captionreservar{
+    text-align: center;
+    color: red;
+}
+
+/*select reserva*/
+select.selectreserva{
+    margin-top: 10px;
+}
+
+div.separacionmensaje{
+    border-top: 1px solid;
 }
 

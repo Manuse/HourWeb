@@ -6,6 +6,10 @@ div.panelrecursotipologia>div.panel-heading {
     text-align: center;
     font-size: 18px;
 }
+/*distancia del badge a las x de eliminar*/
+span.spaneliminartipologia{
+    margin-left: 3px;
+}
 
 .accordcolor {
     color: 	#428bca;
@@ -96,6 +100,12 @@ div.panel-heading>div.row>div.col-xs-9.col-md-10 {
     margin-top: 3px;
 }
 
+/*padding de la seccion de select y alert*/
+div.panelreservaspermanentes{
+    padding: 10px;
+    
+}
+
 
 /*Boton Guardar*/
 
@@ -143,6 +153,8 @@ thead.centradocolumnas>tr>th {
 
 /*--------------------------------------------CUARTO TAB -Centro- -------------------------------------*/
 
+/*fran comenta esto*/
+
 input.input-centro {
     width: 100%;
     font-weight: bold;
@@ -150,18 +162,35 @@ input.input-centro {
     text-align: left;
     background-color: #e6f2ff;
 }
-
+/*fran comenta esto*/
 p.parrafo-centro{
     text-align: left;
     margin-left: 10px;
     font-weight: bold;
 }
-
+/*fran comenta esto*/
 @media only screen and (min-width:250px) and (max-width:450px) {
     input.input-centro {
         font-size: 11px;
     }
 }
+
+/*boton cancelar de editar nombre */
+button.cancelareditarnombre{
+    margin-left: 3px;
+}
+
+/*Inicio y fin en grita*/
+td.horarionegrita{
+    font-weight: bold;
+}
+
+/*boton cancelar cambiar Horario*/
+button.cancelarcambiarhorario{
+    margin-left: 3px;
+}
+
+
 
 /*-------------------------------------------- QUINTO TAB -------------------------------------*/
 

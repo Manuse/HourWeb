@@ -7,7 +7,7 @@
         <uib-tab index="0" heading="Recursos" classes="estilo-tab">
             <br>
 
-            <div class=" panelrecursotipologia panel panel-info">
+            <div class="panelrecursotipologia panel panel-info">
                 <div class="panel-heading">
                     Agrege un Recurso o un Tipo
                 </div>
@@ -31,7 +31,7 @@
                                                </small>
 
                                                 <!-- mismo glyphicon que recurso, cambialo-->
-                                                <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarTipo(vm.tipologias.indexOf(tip))" style="margin-left:3px;"></span>
+                                                <span class="spaneliminartipologia glyphicon glyphicon-remove pull-left" ng-click="vm.borrarTipo(vm.tipologias.indexOf(tip))"></span>
 
                                                 <!--flecha-->
                                                 <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
@@ -191,7 +191,7 @@
                     <div class="row">
                         <!--                    primera columna de 6-->
                         <div class="col-lg-6">
-                            <div class="panel panel-info" style="padding:10px;">
+                            <div class="panelreservaspermanentes panel panel-info">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <br>
@@ -252,7 +252,7 @@
 
                         <!--                    segunda columna de 6-->
                         <div class="col-lg-6">
-                            <div class="panel panel-info" style="padding:10px;">
+                            <div class="panelreservaspermanentes panel panel-info">
 
                                 <div class="form-group">
                                     <center>
@@ -360,7 +360,8 @@
 
         <!--       Empieza el cuarto tab-->
         <uib-tab index="3" heading="Centro" classes="estilo-tab">
-            <div class="row" style="margin-top:20px;">
+           <br>
+            <div class="row">
                 <div class="col-sm-12 perfil-home">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -394,7 +395,7 @@
                                                     <button type="button" class="btn btn-primary btn-xs pull-left" ng-click="vm.cambiarNombreCentro()">
                                                         <strong>Guardar</strong>
                                                 </button>
-                                                <button type="button" class="btn btn-default btn-xs pull-left" style="margin-left:3px;" ng-click="vm.cancelarNombreCentro()">
+                                                <button type="button" class="cancelareditarnombre btn btn-default btn-xs pull-left" ng-click="vm.cancelarNombreCentro()">
                                                     <strong>Cancelar</strong>
                                                 </button>
                                                 </div>
@@ -402,7 +403,7 @@
                                         </tr>
                                         
                                         <tr class="tr-home" ng-if="vm.hora">
-                                            <td style="font-weight: bold;">
+                                            <td class="horarionegrita">
                                                <p class="parrafo-centro">Inicio</p>
                                                 <div class="horaspermanente" uib-timepicker ng-model="vm.inicio" hour-step="vm.hstep" minute-step="vm.mstep" show-meridian="false"></div>
                                                 <br>
@@ -424,7 +425,7 @@
                                                     <button type="button" class="btn btn-primary btn-xs btn-datos pull-left" ng-click="vm.cambiarHora()">
                                                         <strong>Guardar</strong>
                                                 </button>
-                                                    <button type="button" class="btn btn-default btn-xs btn-datos pull-left" style="margin-left:3px;" ng-click="vm.cancelarCambiarHora()">
+                                                    <button type="button" class="cancelarcambiarhorario btn btn-default btn-xs btn-datos pull-left" ng-click="vm.cancelarCambiarHora()">
                                                         <strong>Cancelar</strong>
                                                 </button>
                                                 </div>
