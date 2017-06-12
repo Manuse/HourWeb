@@ -332,6 +332,7 @@
                                 <th>Telefono fijo</th>
                                 <th>Telefono movil</th>
                                 <th>e-mail</th>
+                                <th>Bloqueado</th>
                             </tr>
                         </thead>
 
@@ -348,7 +349,8 @@
                                 <td ng-bind="usuario.tel_fijo"></td>
                                 <td ng-bind="usuario.tel_movil"></td>
                                 <td ng-bind="usuario.email"></td>
-
+                                <td><button ng-if="usuario.baneo" class="btn btn-danger" ng-click="vm.banearUsuario(usuario)" type="button">Desbloquear</button>
+                                <button ng-if="!usuario.baneo" class="btn btn-primary" ng-click="vm.banearUsuario(usuario)" type="button">Bloquear</button></td>
                             </tr>
 
                         </tbody>

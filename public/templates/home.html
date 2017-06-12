@@ -317,7 +317,7 @@
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12-col-sm-12 col-xs-12">
-                              <ul uib-pagination total-items="vm.mensajes.length" ng-model="vm.page" max-size="10" class="pagination-sm" boundary-link-numbers="true"></ul>
+                              <ul uib-pagination total-items="vm.mensajes | messageFilter:vm.filtro" ng-model="vm.page" max-size="10" class="pagination-sm" boundary-link-numbers="true"></ul>
                               
                           </div>
                           

@@ -38,7 +38,7 @@
             if (userFactory.getUser() != null) {
                 $timeout(function () {
                     vm.getUser = userFactory.getUser;
-                    if(vm.getUser().tipo != "administrador"){
+                    if(vm.getUser().tipo != "administrador" || vm.getUser().baneo){
                         $location.path("/home/principal");
                     }
                     cargarRecursos();
@@ -53,6 +53,9 @@
             }
         }
 
+        /**
+         * Carga la hora y en nombre del centro
+         */
         function horaYNombreCentro() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (snapshot) {
                 $timeout(function () {
@@ -71,7 +74,9 @@
             });
         }
 
-
+        /**
+         * Crea un recurso
+         */
         vm.crearRecurso = function () {
             var re = DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + vm.recurso); //decimos el nodo del recurso
             if (vm.recurso != 0 && vm.recurso != null) {
@@ -94,6 +99,9 @@
             }
         };
 
+        /**
+         * Carga los tipos
+         */
         function getTipologias() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").once("value", function (snapshot) {
                 $timeout(function () {
@@ -105,7 +113,10 @@
             });
         }
 
-
+        /**
+         * Borra un tipo, sus recursos y las reservas de ese recurso
+         * @param index posicion
+         */
         vm.borrarTipo = function (index) {
             var funcion = function () {
                 var tipo = vm.tipologias[index];
@@ -130,7 +141,9 @@
             vm.confirmacion("¿Borrar este tipo?", funcion);
         };
 
-
+        /**
+         * Crea un nuevo tipo
+         */
         vm.crearTipo = function () {
             if (vm.ntipo != 0 && vm.ntipo != null) {
                 if (!vm.tipologias.includes(vm.ntipo)) {
@@ -187,7 +200,8 @@
                             tel_fijo: snapshot.val()[key].tel_fijo,
                             email: snapshot.val()[key].email,
                             tipo: snapshot.val()[key].tipo,
-                            tel_movil: snapshot.val()[key].tel_movil
+                            tel_movil: snapshot.val()[key].tel_movil,
+                            baneo:snapshot.val()[key].baneo
                         };
                     });
                     vm.usuarioRP = vm.usuarios[0];
@@ -476,6 +490,19 @@
             vm.final = vm.max + 3600000;
         }
 
+        /**
+         * Banea o quita el baneo a un usuario
+         * @param usuario usuario a banear
+         */
+        vm.banearUsuario=function(usuario){
+            if(usuario.baneo){
+                DATABASE.ref("user/"+usuario.id).update({baneo:false});
+                usuario.baneo=false;
+            }else{
+                DATABASE.ref("user/"+usuario.id).update({baneo:true});
+                usuario.baneo=true;
+            }
+        }
     }
 
 })();
