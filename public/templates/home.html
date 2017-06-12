@@ -81,38 +81,38 @@
     </div>
     <br>
     <div class="row">
-       <!-- encerramos el contenido de las pestanias en un panel-default de bootstrap -->
+        <!-- encerramos el contenido de las pestanias en un panel-default de bootstrap -->
         <div class="panel panel-default container-fluid panel-home">
-            
+
             <div class="tab-content">
                 <!-- TAB indice y titulo de la pestaña en iu-bootstrap, no hace falta controller-->
                 <uib-tabset>
-                    
-                    <uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
-                        
-                        <div class="div-btn-home hidden-xs">
-                           <div class="btn-group pull-right">
-                            <button class="btn btn-info btn-sm btn-semana123" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</button>                             
-                            <button class="btn btn-warning btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</button>     </div>                                                   
 
-                        <a ui-sref="normal.reservar" name="button" class="btn btn-info btn-reservar btn-sm  pull-left">RESERVAR</a>
-                        
+                    <uib-tab index="0" heading="Mis Reservas" classes="estilo-tab">
+
+                        <div class="div-btn-home hidden-xs">
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-info btn-sm btn-semana123" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</button>
+                                <button class="btn btn-warning btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</button> </div>
+
+                            <a ui-sref="normal.reservar" name="button" class="btn btn-info btn-reservar btn-sm  pull-left">RESERVAR</a>
+
                         </div>
                         <!-- Botones en  tamanio XS -->
                         <div class="div-btn-home1 visible-xs">
-                           <div class="btn-group center-block">
-                           <button class="btn btn-xs btn-default btn-semana1-xs" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</button>                             
-                            <button class="btn btn-default btn-xs btn-semana2-xs" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</button>
-                                                       
-                            
-                            </div>                                                   
-                        <br><br>
-                        <a ui-sref="normal.reservar" name="button" class="btn btn-info btn-xs  btn-reservar-xs center">
-                        <strong>RESERVAR</strong>
-                        </a>
-                        
+                            <div class="btn-group center-block">
+                                <button class="btn btn-xs btn-default btn-semana1-xs" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</button>
+                                <button class="btn btn-default btn-xs btn-semana2-xs" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</button>
+
+
+                            </div>
+                            <br><br>
+                            <a ui-sref="normal.reservar" name="button" class="btn btn-info btn-xs  btn-reservar-xs center">
+                                <strong>RESERVAR</strong>
+                            </a>
+
                         </div>
-                        
+
                         <div class="">
                             <!--lunes-->
                             <div class="col-md-25 col-lg-5">
@@ -121,7 +121,7 @@
                                 <ul class="list-group d_semana" id="lunes">
                                     <li ng-repeat="lunes in vm.lunes | orderBy: 'hora'" ng-class="lunes.activo ? 'list-group-item dias lista-verde' : lunes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'">
                                         <a type="button" class="btn-eliminar-lista" ng-if="lunes.activo && lunes.perm == null">
-                                            <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto"  ng-click="vm.borrarReserva(lunes, vm.lunes)">
+                                            <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto" ng-click="vm.borrarReserva(lunes, vm.lunes)">
                                         </a>
                                         <div class="div-verde">
                                             <p ng-bind="lunes.recurso"></p>
@@ -137,7 +137,7 @@
                                 <h6 class="sombra"><span ng-bind="vm.dias[1] | date:'EEEE' | mayus"></span>
                                     <p class="hidden-md hidden-xs hidden-sm"></p><span ng-bind="vm.dias[1] | date:'dd/MMM'"></span></h6>
                                 <ul class="list-group d_semana" id="martes">
-                                    <li ng-repeat="martes in vm.martes | orderBy: 'hora'" ng-class="martes.activo ? 'list-group-item dias lista-verde' : martes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'" >
+                                    <li ng-repeat="martes in vm.martes | orderBy: 'hora'" ng-class="martes.activo ? 'list-group-item dias lista-verde' : martes.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'">
                                         <a type="button" class="btn-eliminar-lista" ng-if="martes.activo && martes.perm == null">
                                             <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto" ng-click="vm.borrarReserva(martes, vm.martes)">
                                         </a>
@@ -157,7 +157,7 @@
                                 <ul id="miercoles" class="list-group d_semana">
                                     <li ng-repeat="miercoles in vm.miercoles | orderBy: 'hora'" ng-class="miercoles.activo ? 'list-group-item dias lista-verde' : miercoles.actual ? 'list-group-item dias lista-azul' : 'list-group-item dias lista-roja'">
                                         <a type="button" class="btn-eliminar-lista" ng-if="miercoles.activo && miercoles.perm == null">
-                                            <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto"  ng-click="vm.borrarReserva(miercoles, vm.miercoles)">
+                                            <img src="imagenes/close1-icon.svg" class="img-eliminar-lista" alt="no foto" ng-click="vm.borrarReserva(miercoles, vm.miercoles)">
                                         </a>
                                         <div class="div-verde">
                                             <p ng-bind="miercoles.recurso"></p>
@@ -221,7 +221,7 @@
                                         <th>Viernes</th>
                                     </tr>
                                 </thead>
-                                <tbody >
+                                <tbody>
                                     <tr ng-repeat="fila in vm.horarios">
                                         <td ng-bind="fila.num"></td>
                                         <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][0]=!vm.mostrarSelect[$index][0]" ng-mouseenter="vm.mostrarSelect[$index][0]=!vm.mostrarSelect[$index][0]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][0]" ng-bind="fila.lunes.curso"></span><select class="btn-info" ng-if="width>950 && vm.mostrarSelect[$index][0]" ng-change="vm.crearHorario(fila.lunes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.lunes.curso"></select></td>
@@ -240,51 +240,73 @@
                     <uib-tab index="2" heading="Mensajes" classes="estilo-tab">
                         <br>
 
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <form ng-submit="vm.nuevoMensaje()">
+                        <form ng-submit="vm.nuevoMensaje()">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-5 col-xs-9">
                                     <div class="form-group">
                                         <label for="Asunto">Asunto:</label>
                                         <input type="text" class="form-control pilar" placeholder="Introduzca el asunto" ng-model="vm.asunto" required>
                                     </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                                    <div class="form-group">
+                                        <label for="Asunto">Destinatario:</label>
+                                        <select class="btn btn-info" ng-model="vm.destinatario">
+                                    <option ng-repeat="usuario in vm.usuarios" ng-if="usuario.id!=vm.getUser().id && usuario.verificado" value="{{usuario.id}}" ng-bind="usuario.nombre"></option>
+                                </select>
+
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
                                         <label for="Mensaje">Mensaje:</label>
                                         <textarea class="form-control" rows="5" placeholder="Introduzca el mensaje" ng-model="vm.texto" required></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-info pull-right">Enviar</button>
-                                </form>
-                                <!--ng-options="usuario.id as usuario.nombre for usuario in vm.usuarios"-->
-                                destinatario
-                                <select ng-model="vm.destinatario">
-                                    <option ng-repeat="usuario in vm.usuarios" ng-if="usuario.id!=vm.getUser().id && usuario.verificado" value="{{usuario.id}}" ng-bind="usuario.nombre"></option>
-                                </select>
-                                mensajes a ver
-                                <select ng-model="vm.filtro">
+
+                                </div>
+                                
+                                
+                            </div>
+                            <button type="submit" class="btn btn-info pull-right">Enviar</button>
+                            
+                        </form>
+                        <br><br><br>
+                        <div style="border-top:1px solid;"></div>
+                        <br>
+                        <div class="row">
+                          
+                           <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+
+                                    <div class="form-group">
+                                        <label for="Asunto">Mensajes a ver:</label>
+                                        <select class="btn btn-info" ng-model="vm.filtro">
                                     <option value="todos" >Todos</option>
                                     <option value="enviados" >Enviados por mi</option>
                                     <option value="recibidos" >Solo para mi</option>
                                 </select>
-
-                            </div>
-
+                                    </div>
+                                </div>
+                              
+                            
                         </div>
-                        <br>
-                        <div style="border-top:1px solid;"></div>
-                        <br>
                         <div class="row">
-                            <uib-accordion >
+                            <uib-accordion>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div uib-accordion-group class="panel-default" ng-repeat="mensaje in vm.mensajes | messageFilter:vm.filtro" is-open="vm.open[$index]">
                                         <uib-accordion-heading>
-                                            <div class="azulmensaje">
+                                            <div class="azulmensaje" style="text-align:center;">
+                                               
                                                 <span ng-bind="mensaje.asunto"></span>
-                                                <span>&#32;</span>
                                                 <span class="glyphicon glyphicon-remove pull-left" ng-click="vm.borrarMensaje(mensaje)" ng-if="vm.getUser().tipo=='administrador'"></span>
                                                 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
-                                                <span></span>
+                                            <span></span>
                                         </uib-accordion-heading>
-                                           <p ng-bind="mensaje.texto"></p>    
-                                           <p><span ng-bind="mensaje.remitente+' '"> </span><span ng-bind="mensaje.fecha | date:' dd/MM/yyyy'"></span></p>                          
+                                        <p ng-bind="mensaje.texto"></p>
+                                        <p><span ng-bind="mensaje.remitente+' '"> </span><span ng-bind="mensaje.fecha | date:' dd/MM/yyyy'"></span></p>
                                     </div>
                                 </div>
                             </uib-accordion>
