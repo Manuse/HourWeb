@@ -48,6 +48,8 @@
                         return "El asunto no puede estar vacio";
                     case "textoVacio":
                         return "El texto no puede estar vacio";
+                    case "sinTipo":
+                        return "Minimo debe haber un tipo";
                     default:
                         return "Ha ocurrido un error";
                 }

@@ -126,27 +126,29 @@
          * @param index posicion
          */
         vm.borrarTipo = function (index) {
-            var funcion = function () {
-                var tipo = vm.tipologias[index];
-                vm.tipologias.splice(index, 1);
-                vm.open.splice(index, 1);
-                DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").set(vm.tipologias);
-                DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").orderByChild("tipo").equalTo(tipo).once("value", function (snapshot) {
-                    var recursos = snapshot.val();
-                    for (var data in recursos) {
-                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(data).once("value", function (data1) {
-                            var reserva = data1.val();
-                            for (var data2 in reserva) {
-                                $log.log(data2);
-                                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data2).remove();
-                            }
-                        });
-                        DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + data).remove();
-                    }
-                })
-            }
+            if (vm.tipologias.length > 1) {
+                var funcion = function () {
+                    var tipo = vm.tipologias[index];
+                    vm.tipologias.splice(index, 1);
+                    vm.open.splice(index, 1);
+                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").set(vm.tipologias);
+                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").orderByChild("tipo").equalTo(tipo).once("value", function (snapshot) {
+                        var recursos = snapshot.val();
+                        for (var data in recursos) {
+                            DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(data).once("value", function (data1) {
+                                var reserva = data1.val();
+                                for (var data2 in reserva) {
+                                    DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data2).remove();
+                                }
+                            });
+                            DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + data).remove();
+                        }
+                    })
+                }
+                vm.confirmacion("¿Borrar este tipo?", funcion);
+            }else{
 
-            vm.confirmacion("¿Borrar este tipo?", funcion);
+            }
         };
 
         /**
