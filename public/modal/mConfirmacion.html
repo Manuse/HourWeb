@@ -1,15 +1,19 @@
-<div>
+
     <br>
-    <div style="text-align: center;">
-        <h4 style="color:blue;" ng-bind="vmmm.mensaje"></h4>
+    <div style="width:100%">
+        <img class="img-responsive imagen-error" alt="Usuario Pic"
+        ng-src="imagenes/interrogacion1.svg"/>
+        <h4 class="text-center text-info" style="position:relative;top:-9px;left:15px;" ng-bind="vmmm.mensaje"></h4>
     </div>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-danger" ng-click="vmmm.ok()">
-                <strong>Si</strong>
+        <div class="btn-group center">
+            <button type="button" class="btn btn-sm btn-primary" ng-click="vmmm.ok()">
+                Si
         </button>
-        <button type="button" class="btn btn-sm btn-danger" ng-click="vmmm.close()">
-            <strong>No</strong>
+            <button type="button" class="btn btn-sm btn-info" ng-click="vmmm.close()">
+            No
         </button>
+        </div>
     </div>
-</div>
+
