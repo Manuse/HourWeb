@@ -59,7 +59,7 @@
 
                                         <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
 
-                                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
+                                        <button type="button" class="btn btn-sm btn-success" ng-click="vm.crearTipo()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
@@ -73,9 +73,9 @@
                                         <h3>Crear Recurso</h3>
 
                                         <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
-                                        <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
+                                        <select class="selectrecurso btn btn-sm btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
                             </select>
-                                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
+                                        <button type="button" class="btn btn-sm btn-success" ng-click="vm.crearRecurso()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
@@ -100,7 +100,7 @@
 
                                         <input class="form-control input_recurso" ng-model="vm.ntipo" type="text" placeholder="Nuevo tipo:">
 
-                                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearTipo()">
+                                        <button type="button" class="btn btn-sm btn-success" ng-click="vm.crearTipo()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
@@ -114,9 +114,9 @@
                                         <h3>Crear Recurso</h3>
 
                                         <input class="form-control input_recurso" type="text" placeholder="Nuevo recurso:" ng-model="vm.recurso">
-                                        <select class="btn btn-lg btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
+                                        <select class="selectrecurso btn btn-sm btn-info" ng-options="item as item for item in vm.tipologias" ng-model="vm.tipo">                                
                             </select>
-                                        <button type="button" class="btn btn-lg btn-success" ng-click="vm.crearRecurso()">
+                                        <button type="button" class="btn btn-sm btn-success" ng-click="vm.crearRecurso()">
                         <span class="glyphicon glyphicon-floppy-save"></span>
                                                             Guardar
                         </button>
@@ -132,7 +132,16 @@
                                     <br>
                                     <div uib-accordion-group class="panel-default" ng-repeat="tip in vm.tipologias" is-open="vm.open[$index]">
                                         <uib-accordion-heading>
-                                            <div class="accordcolor"><small><span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span></small>
+                                            <div class="accordcolor">
+
+                                                <small>                                                
+                                               <span class="badge pull-left" ng-bind="vm.filtrar(tip)"></span>
+                                               </small>
+
+                                                <!-- mismo glyphicon que recurso, cambialo-->
+                                                <span class="spaneliminartipologia glyphicon glyphicon-remove pull-left" ng-click="vm.borrarTipo(vm.tipologias.indexOf(tip))"></span>
+
+                                                <!--flecha-->
                                                 <span ng-bind="tip"></span><i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': vm.open[$index], 'glyphicon-chevron-right': !vm.open[$index]}"></i></div>
                                         </uib-accordion-heading>
                                         <ul class="list-group">
