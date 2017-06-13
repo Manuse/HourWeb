@@ -26,7 +26,7 @@
                 nombre: vm.centro,
                 horas: vm.inicioHora.getHours()+':'+(vm.inicioHora.getMinutes()!=0 ? vm.inicioHora.getMinutes():vm.inicioHora.getMinutes()+'0')+'-'+vm.finHora.getHours()+':'+(vm.finHora.getMinutes()!=0 ? vm.finHora.getMinutes():vm.finHora.getMinutes()+'0'),
                 rango_horas:vm.finHora.getHours()-vm.inicioHora.getHours(),
-                tipologias:["Clase"]
+                tipos:["Clase"]
             };
             newuser = {
                 id: 0,

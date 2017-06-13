@@ -150,13 +150,15 @@
                                 tel_movil: vm.movil == null ? "" : vm.movil
                             }).then(function () {
                                 progressBarFactory.sumProgress(30)
-                                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (data) {
+                                DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (data) {
+                                    try{
                                     var reservas = Object.keys(data.val());
                                     for (var i = 0; i < reservas.length; i++) {
                                         DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + reservas[i]).update({
                                             nombre: vm.nombre + ' ' + vm.apellido
                                         })
                                     }
+                                    }catch(err){}
                                     progressBarFactory.sumProgress(30)
 
                                     $timeout(function () {
@@ -216,11 +218,13 @@
             DATABASE.ref("centros/" + vm.centro).once("value", function (snapshot) {
                 if (snapshot.exists() && vm.centro != vm.getUser().codcentro) {
                     //un usuario que se cambia de centro no puede ser administrador del nuevo por lo que se cambia a estandar
-                    DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).once("value", function (user) { //comprobamos si hay administradores
+                    DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).once("value", function (user) { 
+                        //si solo hay un usuario se borra el centro
                         if (Object.keys(user.val()).length > 1) {
                             funcion1 = function () {
                                 progressBarFactory.initProgress();
                                 vm.progressBar();
+                                //se comprueba que haya un administrador en caso de que el usuario sea un admin
                                 if (vm.getUser().tipo == "administrador") {
                                     usuarios = user.val(),
                                         hay = false;
@@ -231,7 +235,7 @@
                                         }
                                     }
                                     progressBarFactory.sumProgress(10);
-                                    if (!hay) { //sino hay se selecciona a un usuario aleatorio como administrador
+                                    if (!hay) { //sino hay se selecciona a un usuario aleatorio como administrador y se envia un mensaje
                                         var id = user.val()[Object.keys(user.val())[0]].id == vm.getUser().id ? Object.keys(user.val())[1] : Object.keys(user.val())[0];
                                         DATABASE.ref("user/" + id).update({
                                             tipo: "administrador"
@@ -253,6 +257,7 @@
                                     progressBarFactory.sumProgress(10);
                                 }
                                 progressBarFactory.sumProgress(30);
+                                //se borran las reservas, horarios y se cambia el tipo a ese usuario
                                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (res) { //se borran las reservas que tuviera ese usuario
                                     var reserva = res.val();
                                     for (var r in reserva) {

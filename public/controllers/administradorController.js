@@ -146,7 +146,7 @@
                     })
                 }
                 vm.confirmacion("¿Borrar este tipo?", funcion);
-            }else{
+            } else {
                 vm.error(errorFactory.getError("sinTipo"));
             }
         };
@@ -277,6 +277,7 @@
                             var key = DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(rp).key;
                             rp.hora = (vm.mytimeRP.getHours() < 10 ? '0' + vm.mytimeRP.getHours() : vm.mytimeRP.getHours()) + ':' + (vm.mytimeRP.getMinutes() != 0 ? vm.mytimeRP.getMinutes() : vm.mytimeRP.getMinutes() + '0') + "-" + (new Date(vm.mytimeRP.getTime() + 3600000).getHours() < 10 ? '0' + new Date(vm.mytimeRP.getTime() + 3600000).getHours() : new Date(vm.mytimeRP.getTime() + 3600000).getHours()) + ':' + (vm.mytimeRP.getMinutes() != 0 ? vm.mytimeRP.getMinutes() : vm.mytimeRP.getMinutes() + '0')
                             rp.code = key;
+                            rp.dia = day(vm.mytimeRP.getDay());
                             $timeout(function () {
                                 vm.RP.push(rp);
                             }, 0);
@@ -369,6 +370,25 @@
         }
 
         /**
+         * Devuelve el dia de la semana
+         * @param key 
+         */
+        function day(key) {
+            switch (parseInt(key)) {
+                case 1:
+                    return "Lunes";
+                case 2:
+                    return "Martes";
+                case 3:
+                    return "Miercoles";
+                case 4:
+                    return "Jueves";
+                case 5:
+                    return "Viernes";
+            }
+        }
+
+        /**
          * Carga las reservas permanentes
          */
         function cargarRP() {
@@ -377,21 +397,6 @@
                     try {
                         vm.RP = Object.keys(snapshot.val()).map(function (key) {
                             var date = new Date(snapshot.val()[key].fecha);
-
-                            function day(key) {
-                                switch (parseInt(key)) {
-                                    case 1:
-                                        return "Lunes";
-                                    case 2:
-                                        return "Martes";
-                                    case 3:
-                                        return "Miercoles";
-                                    case 4:
-                                        return "Jueves";
-                                    case 5:
-                                        return "Viernes";
-                                }
-                            }
                             return {
                                 fecha: date,
                                 code: key,
