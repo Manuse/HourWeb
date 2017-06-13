@@ -1730,7 +1730,7 @@ table>caption.captionreservar {
     color: crimson;
 }
 
-@media only screen and (min-width:200px) and (max-width:768px) {
+@media only screen and (min-width:100px) and (max-width:768px) {
     div.div-semana-reservar1 {
         display:none;
     }
@@ -1745,7 +1745,7 @@ table>caption.captionreservar {
     }
 }
 
-@media only screen and (min-width:200px) and (max-width:571px) {
+@media only screen and (min-width:150px) and (max-width:571px) {
     table>caption.captionreservar {
         font-size: 10px;
     }
