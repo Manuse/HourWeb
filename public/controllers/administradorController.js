@@ -147,7 +147,7 @@
                 }
                 vm.confirmacion("¿Borrar este tipo?", funcion);
             }else{
-
+                vm.error(errorFactory.getError("sinTipo"));
             }
         };
 
