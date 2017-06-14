@@ -527,17 +527,6 @@ div.div-btn-home1 {
     }
 }
 
-th.th-reservar {
-    font-size: 12px;
-    vertical-align: text-top;
-}
-
-th.th-reservar-hora {
-    font-size: 12px;
-    vertical-align: middle;
-}
-
-
 /* DIAS DE LA SEMANA*/
 
 
@@ -717,7 +706,8 @@ hr.estilo_hr {
 
 /* CONTENEDOR de la tabla horario HOME con Scroll */
 
-div.div-tabla-mi-horario {
+div.div-tabla-mi-horario,
+div.div-tabla-reservar,div.div-tabla-usuarios-admin {
     overflow-y: auto;
 }
 
@@ -730,25 +720,28 @@ th.th-horas {
     text-align: center;
 }
 
+
 /* Primera columna con el numero de cada hora */
+
 td.td-numeros-horario {
     vertical-align: middle !important;
     text-align: center !important;
 }
+
+
 /* encabezados de dias de la semana */
 
 th.th-dias-semana,
 td.td-dias-semana {
     width: 154px !important;
     /* son 6 columnas las que encabezan la tabla */
-    vertical-align: middle !important; /* sobreescribimos librerias para centrar verticalmente */
+    vertical-align: middle !important;
+    /* sobreescribimos librerias para centrar verticalmente */
     text-align: center !important;
 }
 
-
-
 tr.tr-mi-horario:nth-child(even) {
-    background-color:#e6fff7;
+    background-color: #e6fff7;
 }
 
 
@@ -760,18 +753,29 @@ select.select-home {
 }
 
 
-/* tabla reservar*/
+/* TABLA RESERVAR */
 
 table.tabla-reservar {
     border-collapse: separate;
     border-spacing: 1px;
 }
 
-table.tabla-reservar>tbody>tr>td {
-    border: 1px solid #5bc0de;
+table.tabla-reservar>tbody>tr>td,
+table.tabla-admin>tbody>tr>td,
+table.tabla-admin>thead>tr>th{ 
+    vertical-align: middle;
+    text-align: center;
+}
+th.th-reservar {
+    font-size: 12px;
+    text-align: center;
 }
 
-
+th.th-reservar-hora {
+    font-size: 12px;
+    vertical-align: middle !important;
+    text-align: center !important;
+}
 /* aviso de validacion de los logins */
 
 #error_reg_admin,

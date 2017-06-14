@@ -142,12 +142,7 @@ div.panel-body>div.col-md-3>div.horaspermanente {
 /*--------------------------------------------TERCER TAB-------------------------------------*/
 
 
-/*fondo blanco tabla y centrado de los datos*/
 
-tbody.tablausuariosadmin>tr>td {
-    background-color: white;
-    text-align: center;
-}
 
 
 /*centrado de los nombre de las columnas*/
