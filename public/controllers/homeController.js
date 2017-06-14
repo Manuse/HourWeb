@@ -95,11 +95,11 @@
                 vm.miercoles = [];
                 vm.jueves = [];
                 vm.viernes = [];
-                var semana1 = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
-                var fsemana1 = new Date(semana1.getTime() + (6 * 86400000));
+                var semana1 = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));//se posiciona en el lunes
+                var fsemana1 = new Date(semana1.getTime() + (6 * 86400000));//se posiciona el domingo
                 semana1.setHours(0, 0, 0);
                 fsemana1.setHours(0, 0, 0);
-                if (vm.semana == 1) {
+                if (vm.semana == 1) {//suma una semana si semana 2 esta seleccionada
                     semana1.setTime(semana1.getTime() + (8 * 86400000));
                     fsemana1.setTime(fsemana1.getTime() + (8 * 86400000));
                 }
@@ -110,10 +110,10 @@
                             if (semana1 < date && date < fsemana1) {
                                 var activ = true;
                                 var actu = false;
-                                if (new Date() > date) {
+                                if (new Date() > date) {//si es antiguo esta pasada
                                     activ = false;
                                 }
-                                if (date < new Date() && date >= new Date() - 3600000) {
+                                if (date < new Date() && date >= new Date() - 3600000) {//si esta dentro del rango es actual
                                     actu = true;
                                 }
                                 var reserva = {
@@ -230,7 +230,7 @@
                                     usuario: vm.getUser().id
                                 };
                                 for (var data1 in data) {
-                                    if (data[data1].hora == i && data[data1].dia == j) {
+                                    if (data[data1].hora == i && data[data1].dia == j) {//si hay una reserva cambia los datos
                                         horario.curso = data[data1].curso;
                                         horario.code = data1;
                                         break;

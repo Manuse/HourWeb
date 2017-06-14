@@ -8,6 +8,7 @@
         var vm = this;
         vm.value = progressBarFactory.getProgress;
         vm.max=100;
+        //comprueba el valor de la barra de progreso
         var refrescar = function () {
             $timeout(function () {
                 if (vm.value() < 100) {

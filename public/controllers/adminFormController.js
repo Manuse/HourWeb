@@ -8,8 +8,12 @@
         vm.finHora = new Date('1/1/1 13:00');
         vm.error = modalFactory.error;
 
+        /**
+         * Valida los campos del formulario
+         */
         vm.registrar = function () {
-            if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0 || vm.horas == 0) {
+            if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0
+                || vm.nombre == null || vm.apellido == null || vm.email == null || vm.pass1 == null || vm.pass2 == null || vm.centro == null) {
                 vm.error(errorFactory.getError("campoVacio"));
             } else if (vm.inicioHora >= vm.finHora || vm.finHora-vm.inicioHora < 7200000) {
                 vm.error(errorFactory.getError("errorHoraRegistro"));
@@ -20,8 +24,10 @@
             }
         }
 
-        vm.registrarAdmin = function() {
-            
+        /**
+         * Registra un administrador
+         */
+        vm.registrarAdmin = function() {        
             newcentro = { //le damos los valores que se van a insertar en la base de datos a los objetos
                 nombre: vm.centro,
                 horas: vm.inicioHora.getHours()+':'+(vm.inicioHora.getMinutes()!=0 ? vm.inicioHora.getMinutes():vm.inicioHora.getMinutes()+'0')+'-'+vm.finHora.getHours()+':'+(vm.finHora.getMinutes()!=0 ? vm.finHora.getMinutes():vm.finHora.getMinutes()+'0'),
@@ -41,6 +47,9 @@
             registerFactory.registrarUser(newuser, newcentro, vm.email, vm.pass1);
         };
 
+        /**
+         * Cierra el modal
+         */
         vm.close = function(){
             $uibModalInstance.close();
         }

@@ -8,6 +8,9 @@
         var photo;
         var code;
 
+        /**
+         * Consulta los datos del usuario actual
+         */
         function getData() {
             DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).on("value", function (snapshot) {
                 $timeout(function () {

@@ -38,6 +38,9 @@
             }
         }
 
+        /**
+         * Carga los cursos y los mete en un array
+         */
         function cargarCursos() {
             DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
                 try{
@@ -60,16 +63,16 @@
             });
         }
 
-        /* carga los dias de la semana en el home y en reservar.html */
+        /* carga los dias de la semana en reservar.html */
         /**
-         * Carga la fecha
+         * Carga la fecha en un array
          */
         function cargarFecha() {
             var dia = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
             vm.dias = [];
             for (var j = 0; j < 5; j++) {
                 dia.setTime(dia.getTime() + (j == 0 ? 0 : 86400000));
-                if (vm.semana == 1 && j == 0) {
+                if (vm.semana == 1 && j == 0) {//si esta en semana 2 le suma 7
                     dia.setTime(dia.getTime() + (7 * 86400000));
                 }
                 vm.dias.push(new Date(dia));
@@ -85,6 +88,11 @@
                 vm.cargarDisponible();
         }
 
+        /**
+         * Crea una reserva
+         * @param celda celda seleccionada
+         * @param ncelda siguiente celda vertical 
+         */
         vm.hacerReserva = function (celda, ncelda) {
             var reserva = {
                 nombre: vm.getUser().nombre + ' ' + vm.getUser().apellido,
@@ -93,14 +101,17 @@
                 recurso: vm.recurso,
                 usuario: vm.getUser().id
             };
-            if (celda.activo && ncelda == null || ncelda.activo && celda.activo) {
+            if (celda.activo && ncelda == null || ncelda.activo && celda.activo) {//si la siguiente celda esta disponible o la actual es la ultima
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").push(reserva);
                 vm.progress();
-                progressBarFactory.initProgress();
+                progressBarFactory.initProgress();//se inicia la barra de progreso
             }
         };
 
         /* select de pruebaReservas.html que se carga al seleccionar opcion del select anterior */
+        /**
+         * Carga los recursos en un array 
+         */
         vm.cargarRecursos = function () {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").orderByChild("tipo").equalTo(vm.tipo).on("value", function (snapshot) {
                 vm.tabla = [];
@@ -140,22 +151,25 @@
         }
 
         /* carga recursos disponibles en la tabla de pruebaReservas.html*/
+        /**
+         * carga los recursos disponibles
+         */
         vm.cargarDisponible = function () {
             try {
-                q.off()
+                q.off()//quita el evento on de la anterior consulta
             } catch (err) {}
             q = DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recurso);
-            if (vm.recurso == null) {
+            if (vm.recurso == null) {//si es null vacia el array y la tabla
                 vm.tabla = [];
             } else {
                 q.on("value", function (snapshot) {
                     var reservas = snapshot.val();
                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (hor) {
                         var horas = hor.val().split("-");
-                        progressBarFactory.setProgress(20);
+                        progressBarFactory.setProgress(20);//aumenta el progreso
                         $timeout(function () {
                             vm.tabla = [];
-                            for (var i = new Date('1/1/1 ' + horas[0]).getTime(); i < new Date('1/1/1 ' + horas[1]); i += 1800000) { //fila
+                            for (var i = new Date('1/1/1 ' + horas[0]).getTime(); i < new Date('1/1/1 ' + horas[1]); i += 1800000) { //fila que aumenta el tiempo en 30 minutos
                                 var fila = {};
                                 fila.hora = new Date(i).getHours() + ':' + (new Date(i).getMinutes() != 0 ? new Date(i).getMinutes() : new Date(i).getMinutes() + '0') + ' - ' + new Date(i + 1800000).getHours() + ':' + (new Date(i + 1800000).getMinutes() != 0 ? new Date(i + 1800000).getMinutes() : new Date(i + 1800000).getMinutes() + '0');
                                 progressBarFactory.setProgress(20);
@@ -167,12 +181,12 @@
                                     if (vm.dias[j] < new Date()) {
                                         celda.activo = false;
                                     }
-                                    for (var data in reservas) {
-                                        if (reservas[data].perm && new Date(reservas[data].fecha).getDay() == vm.dias[j].getDay()) {
+                                    for (var data in reservas) {//buscar en las reservas
+                                        if (reservas[data].perm && new Date(reservas[data].fecha).getDay() == vm.dias[j].getDay()) {//si es permanente y el mismo dia se adapta la fecha para que cumpla la siguiente condicion
                                             var nf = new Date(vm.dias[j]);
                                             reservas[data].fecha = nf.setHours(new Date(reservas[data].fecha).getHours(), new Date(reservas[data].fecha).getMinutes(), 0);
                                         }
-                                        if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000) {
+                                        if (vm.dias[j] - new Date(reservas[data].fecha) < 3500000 && vm.dias[j] - new Date(reservas[data].fecha) >= -60000) {//si entra dentro del rango de horario  
                                             celda.activo = false;
                                             celda.nombre = reservas[data].nombre;
                                             celda.curso = reservas[data].curso;
@@ -181,7 +195,7 @@
                                     if (progressBarFactory.getProgress() < 90) {
                                         progressBarFactory.sumProgress(5);
                                     }
-                                    switch (j) {
+                                    switch (j) {//dependiendo del dia lo pondra en una posicion u otra
                                         case 0:
                                             fila.lunes = celda;
                                             break;

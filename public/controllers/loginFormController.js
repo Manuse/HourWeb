@@ -7,16 +7,19 @@
         var vm = this;
         vm.error = modalFactory.error;
 
-         vm.iniciarSesion = function() {
-            AUTH.signInWithEmailAndPassword(vm.email, vm.pass).then(function(){
-               $uibModalInstance.close(); 
-            },
-            function (err) {
-                vm.error(errorFactory.getError(err));
-            });
+        /**
+         * Inicia sesion
+         */
+        vm.iniciarSesion = function () {
+            AUTH.signInWithEmailAndPassword(vm.email, vm.pass).then(function () {
+                    $uibModalInstance.close();
+                },
+                function (err) {
+                    vm.error(errorFactory.getError(err));
+                });
         }
 
-        vm.close = function(){
+        vm.close = function () {
             $uibModalInstance.close();
         };
     }

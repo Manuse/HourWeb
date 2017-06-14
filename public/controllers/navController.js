@@ -10,17 +10,23 @@
         interval();
         vm.isNavCollapsed = true;
 
-
+        //si no esta logueado lo redirige al login
         $timeout(function () {
             if (AUTH.currentUser == null) {
                 $location.path("/login");
             }
         }, 350);
 
+        /**
+         * Desloguea a un usuario
+         */
         vm.signOut = function () {
             AUTH.signOut();
         };
 
+        /**
+         * Carga los datos del usuario
+         */
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {

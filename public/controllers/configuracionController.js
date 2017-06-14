@@ -62,6 +62,7 @@
                         vm.email,
                         vm.oldPass
                     );
+                    //si reatentica actualiza la contraseña
                     AUTH.currentUser.reauthenticate(credential).then(function () {
                         AUTH.currentUser.updatePassword(vm.nPass2).then(function () {
                             $timeout(function () {
@@ -137,7 +138,7 @@
          */
         vm.updateUser = function () {
             if (vm.nombre != 0 && vm.apellido != 0) {
-
+                //if con las posibles combinaciones de valores
                 if (!isNaN(vm.fijo) && !isNaN(vm.movil) || vm.fijo == 0 && !isNaN(vm.movil) || !isNaN(vm.fijo) && vm.movil == 0 || vm.fijo == 0 && vm.movil == 0
                 || vm.fijo == null && !isNaN(vm.movil) || !isNaN(vm.fijo) && vm.movil == null || vm.fijo == null && vm.movil == null) {
                     if (vm.fijo.length <= 12 && vm.movil.length <= 12) {

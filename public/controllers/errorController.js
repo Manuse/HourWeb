@@ -12,6 +12,7 @@
             $uibModalInstance.close();
         };
 
+        //si tipo es indefinido se ejecuta el timeout para cerrar el modal
         if (vm.tipo === undefined) {
             $timeout(function () {
                 $uibModalInstance.close();
