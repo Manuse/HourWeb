@@ -730,20 +730,25 @@ th.th-horas {
     text-align: center;
 }
 
-
+/* Primera columna con el numero de cada hora */
+td.td-numeros-horario {
+    vertical-align: middle !important;
+    text-align: center !important;
+}
 /* encabezados de dias de la semana */
 
 th.th-dias-semana,
 td.td-dias-semana {
     width: 154px !important;
     /* son 6 columnas las que encabezan la tabla */
-    vertical-align: middle;
-    text-align: center;
-    background-color: aqua;
+    vertical-align: middle !important; /* sobreescribimos librerias para centrar verticalmente */
+    text-align: center !important;
 }
 
-td.td-numeros-horarios {
-    text-align: center;
+
+
+tr.tr-mi-horario:nth-child(even) {
+    background-color:#e6fff7;
 }
 
 
