@@ -50,7 +50,8 @@
                                         <label class="nomenclatura">Centro:</label>
                                     </td>
                                     <td class="td-datos-home">
-                                       <span class="nombre-home" style="color:black;" ng-bind="vm.centro | mayus"></span> <!-- lo dejo este aqui por si acaso-->
+                                        <span class="nombre-home" style="color:black;" ng-bind="vm.centro | mayus"></span>
+                                        <!-- lo dejo este aqui por si acaso-->
                                     </td>
                                 </tr>
 
@@ -209,28 +210,63 @@
                         <!-- TAB 2 -->
                     </uib-tab>
                     <uib-tab index="1" heading="Mi Horario" classes="estilo-tab">
-                        <div class="col-xs-12">
-                            <table class="table table-bordered table-responsive" style="border:none;margin-top:20px;">
+                       <!-- CONTENEDOR DE LA TABLA -->
+                        <div class="col-xs-12 div-tabla-mi-horario">
+                           
+                            <table class="table table-bordered tabla-mi-horario">
                                 <thead>
-                                    <tr class="bg-primary">
-                                        <th>Horas</th>
-                                        <th>Lunes</th>
-                                        <th>Martes</th>
-                                        <th>Miercoles</th>
-                                        <th>Jueves</th>
-                                        <th>Viernes</th>
+                                    <tr class="bg-primary tr-mi-horario">
+                                        <th class="th-horas">Horas</th>
+                                        <th class="th-dias-semana">Lunes</th>
+                                        <th class="th-dias-semana">Martes</th>
+                                        <th class="th-dias-semana">Miercoles</th>
+                                        <th class="th-dias-semana">Jueves</th>
+                                        <th class="th-dias-semana">Viernes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="fila in vm.horarios">
-                                        <td ng-bind="fila.num"></td>
-                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][0]=!vm.mostrarSelect[$index][0]" ng-mouseenter="vm.mostrarSelect[$index][0]=!vm.mostrarSelect[$index][0]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][0]" ng-bind="fila.lunes.curso"></span><select class="btn-info input-home" ng-if="width>950 && vm.mostrarSelect[$index][0]" ng-change="vm.crearHorario(fila.lunes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.lunes.curso"></select></td>
-                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][1]=!vm.mostrarSelect[$index][1]" ng-mouseenter="vm.mostrarSelect[$index][1]=!vm.mostrarSelect[$index][1]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][1]" ng-bind="fila.martes.curso"></span><select class="btn-info input-home" ng-if="width>950 && vm.mostrarSelect[$index][1]" ng-change="vm.crearHorario(fila.martes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.martes.curso"></select></td>
-                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][2]=!vm.mostrarSelect[$index][2]" ng-mouseenter="vm.mostrarSelect[$index][2]=!vm.mostrarSelect[$index][2]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][2]" ng-bind="fila.miercoles.curso"></span><select class="btn-info input-home" ng-if="width>950 && vm.mostrarSelect[$index][2]" ng-change="vm.crearHorario(fila.miercoles)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.miercoles.curso"></select></td>
-                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][3]=!vm.mostrarSelect[$index][3]" ng-mouseenter="vm.mostrarSelect[$index][3]=!vm.mostrarSelect[$index][3]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][3]" ng-bind="fila.jueves.curso"></span><select class="btn-info input-home" ng-if="width>950 && vm.mostrarSelect[$index][3]" ng-change="vm.crearHorario(fila.jueves)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.jueves.curso"></select></td>
-                                        <td resizedirective ng-mouseleave="vm.mostrarSelect[$index][4]=!vm.mostrarSelect[$index][4]" ng-mouseenter="vm.mostrarSelect[$index][4]=!vm.mostrarSelect[$index][4]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][4]" ng-bind="fila.viernes.curso"></span><select class="btn-info input-home" ng-if="width>950 && vm.mostrarSelect[$index][4]" ng-change="vm.crearHorario(fila.viernes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.viernes.curso"></select></td>
+                                    <tr class="tr-mi-horario" ng-repeat="fila in vm.horarios">
+                                        <!-- Se autogeneran tantas filas como horas lectivas se predefinan -->
+                                        <td class="td-numeros-horario" ng-bind="fila.num"></td>
+                                        
+                                        <!-- muestra el select dentro de la celda de la tabla si el 
+                                         width supera los 950px de screen -->
+                                         <!-- LUNES -->
+                                        <td class="td-dias-semana" resizedirective ng-mouseleave="vm.mostrarSelect[$index][0]=!vm.mostrarSelect[$index][0]" ng-mouseenter="vm.mostrarSelect[$index][0]=!vm.mostrarSelect[$index][0]">
+                                            <span ng-if="width < 950 || !vm.mostrarSelect[$index][0]" ng-bind="fila.lunes.curso">                               </span>
+                                        <select class="btn-info select-home" ng-if="width>950 && vm.mostrarSelect[$index][0]" ng-change="vm.crearHorario(fila.lunes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.lunes.curso">                                     </select>
+                                        </td>
+                                        
+                                        <!-- MARTES -->
+                                        <td class="td-dias-semana" resizedirective ng-mouseleave="vm.mostrarSelect[$index][1]=!vm.mostrarSelect[$index][1]" ng-mouseenter="vm.mostrarSelect[$index][1]=!vm.mostrarSelect[$index][1]">
+                                        <span ng-if="width < 950 || !vm.mostrarSelect[$index][1]" ng-bind="fila.martes.curso"></span>
+                                        <select class="btn-info select-home" ng-if="width>950 && vm.mostrarSelect[$index][1]" ng-change="vm.crearHorario(fila.martes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.martes.curso">                                            
+                                        </select>
+                                        </td>
+                                        <!-- MIERCOLES -->
+                                        <td class="td-dias-semana" resizedirective ng-mouseleave="vm.mostrarSelect[$index][2]=!vm.mostrarSelect[$index][2]" ng-mouseenter="vm.mostrarSelect[$index][2]=!vm.mostrarSelect[$index][2]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][2]" ng-bind="fila.miercoles.curso"></span>
+                                        <select class="btn-info select-home" ng-if="width>950 && vm.mostrarSelect[$index][2]" ng-change="vm.crearHorario(fila.miercoles)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.miercoles.curso">
+                                        </select>
+                                        </td>
+                                        <!-- JUEVES -->
+                                        <td class="td-dias-semana" resizedirective ng-mouseleave="vm.mostrarSelect[$index][3]=!vm.mostrarSelect[$index][3]" ng-mouseenter="vm.mostrarSelect[$index][3]=!vm.mostrarSelect[$index][3]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][3]" ng-bind="fila.jueves.curso"></span>
+                                        <select class="btn-info select-home" ng-if="width>950 && vm.mostrarSelect[$index][3]" ng-change="vm.crearHorario(fila.jueves)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.jueves.curso">                                            
+                                        </select>
+                                        </td>
+                                        <!-- VIERNES -->
+                                        <td class="td-dias-semana" resizedirective ng-mouseleave="vm.mostrarSelect[$index][4]=!vm.mostrarSelect[$index][4]" ng-mouseenter="vm.mostrarSelect[$index][4]=!vm.mostrarSelect[$index][4]"><span ng-if="width < 950 || !vm.mostrarSelect[$index][4]" ng-bind="fila.viernes.curso"></span><select class="btn-info select-home" ng-if="width>950 && vm.mostrarSelect[$index][4]" ng-change="vm.crearHorario(fila.viernes)" ng-options="curso.value as curso.label for curso in vm.cursos" ng-model="fila.viernes.curso">                                            
+                                        </select>
+                                        </td>
                                     </tr>
                                 </tbody>
+                                <tfooter>
+                                    <tr>
+                                        <td colspan="6">
+                                            <p>AQUI VA UNA IMAGEN PARA INDICAR MOVER LA TABLA</p>
+
+                                        </td>
+                                    </tr>
+                                </tfooter>
                             </table>
                         </div>
 
@@ -313,15 +349,15 @@
                                     </div>
                                 </div>
                             </uib-accordion>
-                            
+
                         </div>
                         <div class="row">
-                          <div class="col-lg-12 col-md-12-col-sm-12 col-xs-12">
-                              <ul uib-pagination total-items="vm.mensajes | messageFilter:vm.filtro" ng-model="vm.page" max-size="10" class="pagination-sm" boundary-link-numbers="true"></ul>
-                              
-                          </div>
-                          
-                            
+                            <div class="col-lg-12 col-md-12-col-sm-12 col-xs-12">
+                                <ul uib-pagination total-items="vm.mensajes | messageFilter:vm.filtro" ng-model="vm.page" max-size="10" class="pagination-sm" boundary-link-numbers="true"></ul>
+
+                            </div>
+
+
                         </div>
                     </uib-tab>
                 </uib-tabset>
