@@ -42,7 +42,7 @@
         }
 
         /**
-         * Cambia el icono del ojo temporalmente
+         * @method visualizar Cambia el icono del ojo temporalmente
          */
         vm.visualizar = function () {
             vm.eye = !vm.eye;
@@ -53,7 +53,7 @@
         }
 
         /**
-         * Cambiar la contraseña
+         * @method cambiarPass Cambia la contraseña del usuario
          */
         vm.cambiarPass = function () {
             if (vm.nPass1 != 0 && vm.nPass2 != 0 && vm.oldPass != 0) {
@@ -92,7 +92,7 @@
         };
 
         /**
-         * Cancela el cambio de contraseña
+         * @method cancelarPass Cancela el cambio de contraseña
          */
         vm.cancelarPass = function () {
             vm.nPass1 = "";
@@ -101,8 +101,8 @@
             vm.bContrasena = !vm.bContrasena;
         }
         /**
-         * Cambia la foto de perfil
-         * @param file:archivo imagen para subir
+         * @method cambiarFoto Cambia la foto de perfil
+         * @param file archivo imagen para subir
          */
         vm.cambiarFoto = function (file) {
             if (file.size < 300000) {
@@ -134,7 +134,7 @@
         };
 
         /**
-         * Actualiza el usuario
+         * @method updateUser Actualiza el usuario
          */
         vm.updateUser = function () {
             if (vm.nombre != 0 && vm.apellido != 0) {
@@ -203,7 +203,7 @@
         }
 
         /**
-         * Cancela la actualizacion del usuario
+         * @method cancelarUser Cancela la actualizacion del usuario
          */
         vm.cancelarUser = function () {
             vm.nombre = vm.getUser().nombre;
@@ -214,7 +214,7 @@
         }
 
         /**
-         * Cambia de centro
+         * @method cambiarCentro Cambia de centro al usuario borrando toda su informacion del actual
          */
         vm.cambiarCentro = function () {
             DATABASE.ref("centros/" + vm.centro).once("value", function (snapshot) {

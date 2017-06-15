@@ -8,6 +8,10 @@
         var vm = this;
         vm.error = item.error;
         vm.tipo = item.tipo;
+
+        /**
+         * @method close Cierra el modal
+         */
         vm.close = function () {
             $uibModalInstance.close();
         };

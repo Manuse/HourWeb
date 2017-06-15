@@ -8,7 +8,7 @@
         vm.error = modalFactory.error;
 
         /**
-         * Inicia sesion
+         * @method iniciarSesion Inicia sesion de un usuario
          */
         vm.iniciarSesion = function () {
             AUTH.signInWithEmailAndPassword(vm.email, vm.pass).then(function () {
@@ -19,8 +19,15 @@
                 });
         }
 
+        /**
+         * @method close cierra el modal
+         */
         vm.close = function () {
             $uibModalInstance.close();
         };
+
+        vm.restablecerPass=function(){
+
+        }
     }
 })();

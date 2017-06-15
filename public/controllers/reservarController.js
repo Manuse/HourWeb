@@ -4,7 +4,7 @@
         .module('app')
         .controller('ReservarController', reservarController);
 
-    /* primer select de pruebaReservas.html*/
+
     function reservarController(userFactory, DATABASE, $timeout, $log, modalFactory, progressBarFactory, $location) {
         var vm = this;
         var interval = function () {
@@ -19,9 +19,9 @@
         vm.cursos = [];
         var q;
 
-        /*
-        carga datos cuando carga al usuario
-        */
+        /**
+         * @method recarga carga datos cuando carga al usuario
+         */
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
@@ -29,9 +29,9 @@
                     if(vm.getUser().baneo){
                         $location.path("/principal/home");
                     }
-                    vm.cargarFechaRecursos();
-                    cargarTipos();
-                    cargarCursos();
+                    vm.getFechaRecursos();
+                    getTipos();
+                    getCursos();
                 }, 0);
             } else {
                 interval();
@@ -39,9 +39,9 @@
         }
 
         /**
-         * Carga los cursos y los mete en un array
+         * @method getCursos Carga los cursos y los mete en un array
          */
-        function cargarCursos() {
+        function getCursos() {
             DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
                 try{
                 vm.cursos = Object.keys(snapshot.val()).map(function (key) {
@@ -65,9 +65,9 @@
 
         /* carga los dias de la semana en reservar.html */
         /**
-         * Carga la fecha en un array
+         * @method getFecha Carga la fecha en un array
          */
-        function cargarFecha() {
+        function getFecha() {
             var dia = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
             vm.dias = [];
             for (var j = 0; j < 5; j++) {
@@ -80,18 +80,18 @@
         }
 
         /**
-         * Carga la fecha y luego los recursos
+         * @method getFechaRecursos Carga la fecha y luego los recursos
          */
-        vm.cargarFechaRecursos = function () {
-            cargarFecha();
+        vm.getFechaRecursos = function () {
+            getFecha();
             if (vm.recurso != null)
-                vm.cargarDisponible();
+                vm.getDisponible();
         }
 
         /**
-         * Crea una reserva
-         * @param celda celda seleccionada
-         * @param ncelda siguiente celda vertical 
+         * @method hacerReserva Crea una reserva
+         * @param {object} celda celda seleccionada
+         * @param {object} ncelda siguiente celda vertical 
          */
         vm.hacerReserva = function (celda, ncelda) {
             var reserva = {
@@ -110,9 +110,9 @@
 
         /* select de pruebaReservas.html que se carga al seleccionar opcion del select anterior */
         /**
-         * Carga los recursos en un array 
+         * @method getRecursos Carga los recursos en un array 
          */
-        vm.cargarRecursos = function () {
+        vm.getRecursos = function () {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").orderByChild("tipo").equalTo(vm.tipo).on("value", function (snapshot) {
                 vm.tabla = [];
                 $timeout(function () {
@@ -137,10 +137,10 @@
             });
         };
 
-        /*
-         * Carga los tipos
+        /**
+         * @method getTipos Carga los tipos
          */
-        function cargarTipos() {
+        function getTipos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.tipos = snapshot.val();
@@ -152,9 +152,9 @@
 
         /* carga recursos disponibles en la tabla de pruebaReservas.html*/
         /**
-         * carga los recursos disponibles
+         * @method getDisponible carga los recursos disponibles
          */
-        vm.cargarDisponible = function () {
+        vm.getDisponible = function () {
             try {
                 q.off()//quita el evento on de la anterior consulta
             } catch (err) {}

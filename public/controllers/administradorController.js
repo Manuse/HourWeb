@@ -45,12 +45,12 @@
                     if (vm.getUser().tipo != "administrador" || vm.getUser().baneo) {
                         $location.path("/principal/home");
                     }
-                    cargarRecursos();
-                    cargarUsuarios();
+                    getRecursos();
+                    getUsuarios();
                     getTipologias();
                     horaYNombreCentro()
-                    cargarCursos();
-                    cargarRP();
+                    getCursos();
+                    getRP();
                 }, 0);
             } else {
                 interval();
@@ -58,7 +58,7 @@
         }
 
         /**
-         * Carga la hora y en nombre del centro
+         * @method horaYNombreCentro Carga la hora y en nombre del centro
          */
         function horaYNombreCentro() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (snapshot) {
@@ -108,7 +108,7 @@
         };
 
         /**
-         * Carga los tipos
+         * @method getTipologias Carga los tipos
          */
         function getTipologias() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").once("value", function (snapshot) {
@@ -122,8 +122,8 @@
         }
 
         /**
-         * Borra un tipo, sus recursos y las reservas de ese recurso
-         * @param index posicion
+         * @method borrarTipo Borra un tipo, sus recursos y las reservas de ese recurso
+         * @param {number} index posicion
          */
         vm.borrarTipo = function (index) {
             if (vm.tipologias.length > 1) {
@@ -152,7 +152,7 @@
         };
 
         /**
-         * Crea un nuevo tipo
+         * @method crearTipo Crea un nuevo tipo
          */
         vm.crearTipo = function () {
             if (vm.ntipo != 0 && vm.ntipo != null) {
@@ -170,7 +170,8 @@
         };
 
         /**
-         * borra un recurso
+         * @method borrarRecurso borra un recurso
+         * @param {object} recurso objeto recurso
          */
         vm.borrarRecurso = function (recurso) {
             var funcion = function () {
@@ -180,9 +181,9 @@
         };
 
         /**
-         * carga los recursos
+         * @method getRecursos carga los recursos
          */
-        function cargarRecursos() {
+        function getRecursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").on("value", function (snapshot) {
                 $timeout(function () {
                     try {
@@ -207,9 +208,9 @@
         }
 
         /**
-         * Carga de usuario
+         * @method getUsuarios Carga de usuario
          */
-        function cargarUsuarios() {
+        function getUsuarios() {
             DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).once("value", function (snapshot) {
                 $timeout(function () {
                     vm.usuarios = Object.keys(snapshot.val()).map(function (key) {
@@ -231,8 +232,8 @@
         }
 
         /** 
-         *devuelve el numero de recursos segun el tipo
-         * @param tip: tipo
+         * @method filtrar devuelve el numero de recursos segun el tipo
+         * @param {text} tip: tipo
          * @return numero de tipos
          */
         vm.filtrar = function (tip) {
@@ -242,7 +243,7 @@
         };
 
         /**
-         * Hace una reserva permanente
+         * @method hacerReservaPermanente Hace una reserva permanente
          */
         vm.hacerReservaPermanente = function () {
             vm.mytimeRP.setDate(parseInt(vm.dayRP));
@@ -294,9 +295,9 @@
         };
 
         /**
-         * Carga la lista de cursos
+         * @method getCursos Carga la lista de cursos
          */
-        function cargarCursos() {
+        function getCursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").once("value", function (snapshot) {
                 $timeout(function () {
                     try {
@@ -320,7 +321,7 @@
         }
 
         /**
-         * Añade un curso
+         * @method addCurso añade un curso
          */
         vm.addCurso = function () {
             if (vm.nCurso != 0 && vm.nCurso != null) {
@@ -341,9 +342,9 @@
         }
 
         /**
-         * Borra un curso
-         * @param index: posicion
-         * @param curso: curso
+         * @method borrarCurso Borra un curso de la base de datos y de los arrays
+         * @param {number} index: posicion
+         * @param {object} curso: curso
          */
         vm.borrarCurso = function (index, curso) {
             var funcion = function () {
@@ -392,7 +393,7 @@
         /**
          * Carga las reservas permanentes
          */
-        function cargarRP() {
+        function getRP() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("perm").equalTo(true).once("value", function (snapshot) {
                 $timeout(function () {
                     try {

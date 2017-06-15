@@ -9,7 +9,7 @@
         vm.error = modalFactory.error;
 
         /**
-         * Valida los campos del formulario
+         * @method registrar Valida los campos del formulario
          */
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0
@@ -25,7 +25,7 @@
         }
 
         /**
-         * Registra un administrador
+         * @method registrarAdmin Registra un administrador
          */
         vm.registrarAdmin = function() {        
             newcentro = { //le damos los valores que se van a insertar en la base de datos a los objetos
@@ -48,7 +48,7 @@
         };
 
         /**
-         * Cierra el modal
+         * @method close Cierra el modal
          */
         vm.close = function(){
             $uibModalInstance.close();

@@ -1,28 +1,4 @@
 <div class="container">
-    <!-- perfil screen < 769px -->
-    <!-- <div class="row well well-sm div-xs-acordeon">
-        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-            <a href="#" class="nombre-xs-home" ng-bind="vm.getUser.nombre+' '+vm.getUser.apellido"></a>
-            <hr>
-            <a href="#" class="centro-xs-home" ng-bind="vm.centro"></a>
-            <hr>
-            <uib-accordion close-others="vm.oneAtATime" ng-if="vm.getUser.tipo == 'administrador'">
-                <div uib-accordion-group class="panel-default" is-open="vm.open">
-                    <uib-accordion-heading>
-                        <div class="text-primary">
-                              <span class="texto">Consultar/Ocultar código del Centro</span>                        
-                                                          
-                            <i class="glyphicon" ng-class="{'glyphicon-chevron-down': vm.open, 'glyphicon-chevron-right': !vm.open}">
-                            </i>
-
-                        </div>
-                    </uib-accordion-heading>
-                    <p class="text-center codigo-xs-home1" ng-bind="vm.getUser.codcentro"></p>
-                </div>
-            </uib-accordion>
-        </div>
-    </div>-->
-
     <div class="row">
         <div class="col-sm-12 perfil-home">
             <div class="panel panel-primary">
@@ -93,8 +69,8 @@
 
                         <div class="div-btn-home hidden-xs">
                             <div class="btn-group pull-right">
-                                <button class="btn btn-info btn-sm btn-semana123" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</button>
-                                <button class="btn  btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</button> </div>
+                                <button class="btn btn-info btn-sm btn-semana123" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrescarCalendario()">Semana 1</button>
+                                <button class="btn  btn-sm btn-semana12" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrescarCalendario()">Semana 2</button> </div>
 
                             <a ui-sref="normal.reservar" name="button" class="btn btn-info btn-reservar btn-sm  pull-left">RESERVAR</a>
 
@@ -102,8 +78,8 @@
                         <!-- Botones en  tamanio XS -->
                         <div class="div-btn-home1 visible-xs">
                             <div class="btn-group center-block">
-                                <button class="btn btn-xs btn-info btn-semana1-xs well-xs" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrecarCalendario()">Semana 1</button>
-                                <button class="btn  btn-xs btn-semana2-xs well-xs" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrecarCalendario()">Semana 2</button>
+                                <button class="btn btn-xs btn-info btn-semana1-xs well-xs" ng-model="vm.semana" uib-btn-radio="0" ng-click="vm.refrescarCalendario()">Semana 1</button>
+                                <button class="btn  btn-xs btn-semana2-xs well-xs" ng-model="vm.semana" uib-btn-radio="1" ng-click="vm.refrescarCalendario()">Semana 2</button>
 
 
                             </div>

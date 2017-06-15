@@ -18,14 +18,14 @@
         }, 350);
 
         /**
-         * Desloguea a un usuario
+         * @method signOut Desloguea a un usuario
          */
         vm.signOut = function () {
             AUTH.signOut();
         };
 
         /**
-         * Carga los datos del usuario
+         * @method recarga Carga los datos del usuario
          */
         function recarga() {
             if (userFactory.getUser() != null) {

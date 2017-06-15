@@ -8,7 +8,7 @@
 
         var factory = {
             getError: function (error) {
-
+                //dependiendo del error devolvera un texto u otro
                 switch (error.code == null ? error : error.code) {
                     case "auth/invalid-email":
                         return "El email no es válido";

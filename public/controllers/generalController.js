@@ -8,6 +8,7 @@
         var vm = this;
         vm.location = $location;
 
+        //evento que controla la sesion del usuario
         AUTH.onAuthStateChanged(function (user) {
             if (user) { //el usuario esta logueao 
                 if (AUTH.currentUser.emailVerified) {
@@ -40,6 +41,10 @@
             }
         });
 
+        /**
+         * @method limpiar Elimina reservas antiguas
+         * @param {String} cod 
+         */
         function limpiar(cod){
             DATABASE.ref("centros/" + cod + "/reservas/").once("value", function(snapshot){
                 //seleccionamos el sabado pasado para asegurarnos de no borrar ninguna que nos interese

@@ -1,10 +1,16 @@
 (function () {
+
+    /*
+     * Modulo de angular unico para toda la aplicacion, usa los modulos ui.router para hacer el cambio de vistas,
+     * ui.boostrap para componentes compatibles de angular y ngAnimate y ngSanitize que son utilizados por ui.boostrap
+     * para animaciones
+     */
     angular.module('app', ['ngAnimate', 'ngSanitize', 'ui.router', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider) {
 
-            $urlRouterProvider.otherwise("login");
+            $urlRouterProvider.otherwise("login");//la primera vista que carga es el login
 
-            $stateProvider.state("login", {
-                    url: "/login",
+            $stateProvider.state("login", {//declaracion de las distintas vistas con la url que tendran, su template,
+                    url: "/login",         //controlador y alias del controlador
                     templateUrl: "templates/login.html",
                     controller: 'LoginController',
                     controllerAs: "vm"
@@ -13,7 +19,7 @@
                     url: "/principal",
                     templateUrl: "templates/principal.html",
                 })
-                .state("normal.home", {
+                .state("normal.home", {//subvista de normal
                     url: "/home",
                     templateUrl: "templates/home.html",
                     controller: 'HomeController',
@@ -37,7 +43,7 @@
                     controller: 'AdministradorController',
                     controllerAs: "vm"
                 });
-        }).constant("DATABASE", firebase.database())
+        }).constant("DATABASE", firebase.database())//constantes de firebase
         .constant("AUTH", firebase.auth())
         .constant("STORAGE", firebase.storage().ref());
 })();

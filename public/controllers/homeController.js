@@ -14,10 +14,10 @@
         vm.filtro = "todos";
         vm.page=1;
         /**
-         * Intervalo para recargar
+         * @method interval Intervalo para recargar
          */
         var interval = function () {
-            $timeout(recarga, 100);
+            $timeout(recarga, 50);
         };
         interval();
 
@@ -30,19 +30,19 @@
         vm.mensajes = []
 
         /**
-         * Carga los datos de la vista
+         * @method recarga Carga los datos de la vista
          */
         function recarga() {
             if (userFactory.getUser() != null) {
                 $timeout(function () {
                     vm.getUser = userFactory.getUser;
                     vm.photo = userFactory.getPhoto;
-                    recogerMisReservas();
-                    recogerCentro();
-                    cargarFecha();
-                    cargarMensajes();
-                    cargarUsuarios();
-                    cargarCursos();
+                    getMisReservas();
+                    getCentro();
+                    getFecha();
+                    getMensajes();
+                    getUsuarios();
+                    getCursos();
                     rellenarTablaHorarios();
                 }, 0);
             } else {
@@ -51,17 +51,17 @@
         }
 
         /**
-         * Refresa las listas y su encabezado
+         * @method refrescarCalendario Refresa las listas y su encabezado
          */
-        vm.refrecarCalendario = function () {
-            recogerMisReservas();
-            cargarFecha();
+        vm.refrescarCalendario = function () {
+            getMisReservas();
+            getFecha();
         };
 
         /**
-         * Carga los datos del centro
+         * @method getCentro Carga el nombre del centro
          */
-        function recogerCentro() {
+        function getCentro() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/nombre").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.centro = snapshot.val();
@@ -70,9 +70,9 @@
         }
 
         /**
-         * Carga una fecha segun la semana seleccionada
+         * @method getFecha Carga una fecha segun la semana seleccionada
          */
-        function cargarFecha() {
+        function getFecha() {
             var dia = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
             vm.dias = [];
             for (var j = 0; j < 5; j++) {
@@ -85,9 +85,9 @@
         }
 
         /**
-         * Carga mis reservas
+         * @method getMisReservas Carga mis reservas
          */
-        function recogerMisReservas() {
+        function getMisReservas() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
                 var reser = snapshot.val();
                 vm.lunes = [];
@@ -183,7 +183,7 @@
         }
 
         /**
-         * Borra una reserva
+         * @method borrarReserva Borra una reserva
          * @param reserva objeto reserva
          * @param array array en el que esta el objeto
          */
@@ -209,7 +209,7 @@
         };
 
         /**
-         * Rellena la tabla de horarios
+         * @method rellenarTablaHorarios Rellena la tabla de horarios
          */
         function rellenarTablaHorarios() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/rango_horas").once("value", function (horas) {
@@ -218,11 +218,11 @@
                         vm.horarios = [];
                         var data = snapshot.val();
                         var hora = horas.val();
-                        for (var i = 1; i <= hora; i++) {
+                        for (var i = 1; i <= hora; i++) {//horas
                             var fila = {
                                 num: i
                             }
-                            for (var j = 1; j <= 5; j++) {
+                            for (var j = 1; j <= 5; j++) {//dias
                                 var horario = {
                                     dia: j,
                                     hora: i,
@@ -262,9 +262,9 @@
         }
 
         /**
-         * Carga los cursos
+         * @method getCursos Carga los cursos
          */
-        function cargarCursos() {
+        function getCursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos").once("value", function (snapshot) {
                 vm.cursos = snapshot.val().map(function (key) {
                     return {
@@ -282,8 +282,8 @@
         }
 
         /**
-         * crea un horario
-         * @param fila dia de la semana de una fila
+         * @method crearHorario crea un horario
+         * @param {object} fila dia de la semana de una fila
          */
         vm.crearHorario = function (fila) {
             if (fila.curso == null && fila.code != null) {
@@ -304,9 +304,9 @@
         };
 
         /**
-         * carga los mensajes
+         * @method getMensajes carga los mensajes
          */
-        function cargarMensajes() {
+        function getMensajes() {
             DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(70).on("value", function (snapshot) {
                 $timeout(function () {
                     try{
@@ -328,7 +328,7 @@
         }
 
         /**
-         * Crea un nuevo mensaje
+         * @method nuevoMensaje Crea un nuevo mensaje
          */
         vm.nuevoMensaje = function () {
             if (vm.asunto != 0 && vm.asunto != null) {
@@ -356,7 +356,8 @@
         }
 
         /**
-         * Borra un mensaje
+         * @method borrarMensaje Borra un mensaje
+         * @param {object} mensaje mensaje 
          */
         vm.borrarMensaje = function (mensaje) {
             funcion = function () {
@@ -367,9 +368,9 @@
         }
 
         /**
-         * Carga los usuarios
+         * @method getUsuarios Carga los usuarios
          */
-        function cargarUsuarios() {
+        function getUsuarios() {
             DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).once("value", function (snapshot) {
                 $timeout(function () {
                     vm.usuarios = Object.keys(snapshot.val()).map(function (key) {
