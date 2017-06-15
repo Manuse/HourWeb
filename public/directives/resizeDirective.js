@@ -14,7 +14,7 @@
         return directive;
         
         function link(scope, element, attrs) {
-            scope.width = $window.innerWidth;
+            scope.width = $window.innerWidth;//ancho
         
             function onResize(){ 
                 if (scope.width !== $window.innerWidth)
@@ -25,10 +25,10 @@
             };
 
             function cleanUp() {
-                angular.element($window).off('resize', onResize);
+                angular.element($window).off('resize', onResize);//quita el evento
             }
 
-            angular.element($window).on('resize', onResize);
+            angular.element($window).on('resize', onResize);//evento
             scope.$on('$destroy', cleanUp);
         }
     }

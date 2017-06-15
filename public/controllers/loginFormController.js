@@ -6,6 +6,7 @@
     function loginFormController(AUTH, $uibModalInstance, modalFactory, errorFactory) {
         var vm = this;
         vm.error = modalFactory.error;
+        vm.restablecer = modalFactory.restablecerPass;
 
         /**
          * @method iniciarSesion Inicia sesion de un usuario
@@ -26,8 +27,12 @@
             $uibModalInstance.close();
         };
 
+        /**
+         * @method restablecerPass cierra el modal actual y abre el de restablecer contraseña
+         */
         vm.restablecerPass=function(){
-
+            vm.restablecerPass();
+            $uibModalInstance.close();
         }
     }
 })();

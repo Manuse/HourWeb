@@ -114,6 +114,20 @@
                 }, function () {
 
                 });
+            },
+            restablecerPass: function () {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'modal/mRestablecerPass.html',
+                    controller: 'RestablecerPassController',
+                    controllerAs: 'vmm'
+                });
+
+                modalInstance.result.then(function () {
+
+                }, function () {
+
+                });
             }
         };
 
