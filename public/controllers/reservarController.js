@@ -144,7 +144,7 @@
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos").once("value", function (snapshot) {
                 $timeout(function () {
                     vm.tipos = snapshot.val();
-                    vm.tipos.unshift('Seleccione un recurso');
+                    vm.tipos.unshift('Seleccione un tipo');
                     vm.tipo = vm.tipos[0];
                 }, 0);
             });
