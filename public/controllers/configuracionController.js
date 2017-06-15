@@ -102,7 +102,7 @@
         }
         /**
          * @method cambiarFoto Cambia la foto de perfil
-         * @param file archivo imagen para subir
+         * @param {object} file archivo imagen para subir
          */
         vm.cambiarFoto = function (file) {
             if (file.size < 300000) {

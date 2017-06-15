@@ -4,7 +4,7 @@
         .module('app')
         .filter('messageFilter', messageFilter);
     
-    //filtro para los mensajes
+    //filtro para los mensajes segun si son todos, los enviados o recibidos
     function messageFilter(userFactory) {
         return function (array, filtro, page) {
             switch (filtro) {//dependiendo del caso mostrara unos mensajes u otros

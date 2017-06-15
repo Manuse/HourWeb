@@ -4,6 +4,7 @@
         .module('app')
         .directive('resizedirective', resizeDirective);
 
+    //directiva con evento para cuando se modifique el ancho
     function resizeDirective($window) {
   
         var directive = {

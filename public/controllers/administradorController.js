@@ -36,7 +36,7 @@
         interval();
 
         /**
-         * carga los datos de la pagina
+         * @method recarga carga los datos de la pagina
          */
         function recarga() {
             if (userFactory.getUser() != null) {
@@ -372,8 +372,8 @@
         }
 
         /**
-         * Devuelve el dia de la semana
-         * @param key dia de la semana
+         * @method day Devuelve el dia de la semana
+         * @param {number} key dia de la semana
          */
         function day(key) {
             switch (parseInt(key)) {
@@ -391,7 +391,7 @@
         }
 
         /**
-         * Carga las reservas permanentes
+         * @method getRP Carga las reservas permanentes
          */
         function getRP() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("perm").equalTo(true).once("value", function (snapshot) {
@@ -416,8 +416,8 @@
         }
 
         /**
-         * Borra una reserva permanente
-         * @param rp: reserva permanente
+         * @method borrarRP Borra una reserva permanente
+         * @param {object} rp: reserva permanente
          */
         vm.borrarRP = function (rp) {
             funcion = function () {
@@ -428,8 +428,8 @@
         };
 
         /**
-         * Cambia el tipo de usuario de administrador a estandar y viceversa
-         * @param user: usuario con los datos 
+         * @method cambiarTipo Cambia el tipo de usuario de administrador a estandar y viceversa
+         * @param {object} user: usuario con los datos 
          */
         vm.cambiarTipo = function (user) {
             if (user.tipo != 'administrador') {
@@ -447,7 +447,7 @@
 
 
         /**
-         * Cambia el nombre del centro
+         * @method cambiarNombreCentro Cambia el nombre del centro
          */
         vm.cambiarNombreCentro = function () {
             if (vm.nCentro != 0 && vm.nCentro != null) {
@@ -462,7 +462,7 @@
         }
 
         /**
-         * Cancela el nombre del centro
+         * @method cancelarNombreCentro Cancela el nombre del centro
          */
         vm.cancelarNombreCentro = function () {
             vm.nCentro = centro;
@@ -470,7 +470,7 @@
         }
 
         /**
-         * Cambia la hora del centro
+         * @method cambiarHora Cambia la hora del centro
          */
         vm.cambiarHora = function () {
             if (vm.inicio >= vm.fin || vm.fin - vm.inicio < 7200000) {
@@ -510,7 +510,7 @@
         };
 
         /**
-         * Cancela el cambio de hora del centro
+         * @method cancelarCambiarhora Cancela el cambio de hora del centro
          */
         vm.cancelarCambiarHora = function () {
             vm.hora = !vm.hora;
@@ -519,8 +519,8 @@
         }
 
         /**
-         * Banea o quita el baneo a un usuario
-         * @param usuario usuario a banear
+         * @method banearUsuario Banea o quita el baneo a un usuario
+         * @param {object} usuario usuario a banear
          */
         vm.banearUsuario = function (usuario) {
             if (usuario.baneo) {

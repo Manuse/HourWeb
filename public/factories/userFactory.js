@@ -2,16 +2,17 @@
     angular
         .module('app')
         .factory('userFactory', userFactory);
-
+    
+    //factoria para compartir informacion del usuario
     function userFactory(DATABASE, AUTH, $timeout) {
         var users;
         var photo;
         var code;
 
         /**
-         * Consulta los datos del usuario actual
+         * @method getDataUser Consulta los datos del usuario actual
          */
-        function getData() {
+        function getDataUser() {
             DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).on("value", function (snapshot) {
                 $timeout(function () {
                     users = snapshot.val()[Object.keys(snapshot.val())[0]];
@@ -38,7 +39,7 @@
                 return code;
             },
             getData : function(){
-                getData();
+                getDataUser();
             }
         };
         return factory;

@@ -3,7 +3,8 @@
     angular
         .module('app')
         .factory('errorFactory', errorFactory);
-
+    
+    //factoria para compartir los mensajes de error
     function errorFactory() {
 
         var factory = {

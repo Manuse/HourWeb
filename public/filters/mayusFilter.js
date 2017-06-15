@@ -5,12 +5,12 @@
         .module('app')
         .filter('mayus', mayusFilter);
 
+    //Pone en mayuscula la primera letra del texto
     function mayusFilter() {
         return function (text) {
             if (text != null) {
                 var i=0;
                 while(i < text.length){
-                   // console.log(text.substring(i, i+1))
                     if(text.substring(i, i+1) != ' ' && text.substring(i, i+1) != '\xa0'){
                       return text.substring(0, i+1).toUpperCase() + text.substring(i+1);
                     }

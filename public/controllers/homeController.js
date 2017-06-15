@@ -184,8 +184,8 @@
 
         /**
          * @method borrarReserva Borra una reserva
-         * @param reserva objeto reserva
-         * @param array array en el que esta el objeto
+         * @param {object} reserva objeto reserva
+         * @param {array} array array en el que esta el objeto
          */
         vm.borrarReserva = function (reserva, array) {
             if (reserva.activo) {

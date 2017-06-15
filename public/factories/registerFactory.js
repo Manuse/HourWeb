@@ -5,7 +5,7 @@
         .module('app')
         .factory('registerFactory', registerFactory);
 
-
+    //factoria para compartir los metodos de registro
     function registerFactory(AUTH, DATABASE, $uibModal, errorFactory, modalFactory) {
 
         var factory = {
@@ -25,10 +25,10 @@
         };
 
         /**
-         * Dependiendo del usuario creara el usuario directamente o creara el centro antes
-         * @param newcentro objeto con los datos del centro
-         * @param newuser objeto con los datos del usuario
-         * @param uid id del usuario
+         * @method insertarUsuario Dependiendo del usuario creara el usuario directamente o creara el centro antes
+         * @param {object} newcentro objeto con los datos del centro
+         * @param {object} newuser objeto con los datos del usuario
+         * @param {String} uid id del usuario
          */
         function insertarUsuario(newcentro, newuser, uid) {
             try {
@@ -42,8 +42,8 @@
         }
 
         /**
-         * Crea un usuario en la base de datos
-         * @param user: objeto con los datos del usuario
+         * @method crearUser Crea un usuario en la base de datos
+         * @param {object} user: objeto con los datos del usuario
          */
         function crearUser(user) {
             var usuario = DATABASE.ref("user"); //recogemos la referencia de la base datos y le añadimos el uid de usuario como nodo
@@ -51,8 +51,8 @@
         }
 
         /**
-         * Inserta el centro en la base de datos
-         * @param centro objeto con los datos del centro
+         * @method insertarCentro Inserta el centro en la base de datos
+         * @param {object} centro objeto con los datos del centro
          * @return codigo del centro
          */
         function insertarCentro(centro) {
@@ -62,10 +62,10 @@
         }
 
         /**
-         * Crea el centro y luego al usuario
-         * @param centro: objeto con los daros del centro
-         * @param user: objeto con los datos del usuario
-         * @param uid:codigo del usuario 
+         * @method crearCentro Crea el centro y luego al usuario
+         * @param {object} centro: objeto con los daros del centro
+         * @param {object} user: objeto con los datos del usuario
+         * @param {String} uid:codigo del usuario 
          */
         function crearCentro(centro, user, uid) {
             user.codcentro = insertarCentro(centro);

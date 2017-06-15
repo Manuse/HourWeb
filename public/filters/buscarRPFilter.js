@@ -4,6 +4,7 @@
         .module('app')
         .filter('buscarRPFilter', buscarRPFilter);
 
+    //filtra las reservas permanentes por nombre, recurso y dia
     function buscarRPFilter() {
         return function (value, item) {
             if(item != null && item != 0)

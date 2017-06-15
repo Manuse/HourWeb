@@ -5,7 +5,7 @@
         .module('app')
         .factory('modalFactory', modalFactory);
 
-
+    //factoria para abrir modales
     function modalFactory($uibModal) {
         var factory = {
             error: function (err, not) {
@@ -118,8 +118,6 @@
         };
 
         return factory;
-
-        ////////////////
 
     }
 })();

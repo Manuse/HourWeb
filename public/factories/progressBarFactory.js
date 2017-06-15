@@ -4,7 +4,7 @@
         .module('app')
         .factory('progressBarFactory', progressBarFactory);
 
-
+    //factoria para manejar la progressBar
     function progressBarFactory() {
         var progress = 0;
         var factory = {
