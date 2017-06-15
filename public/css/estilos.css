@@ -220,10 +220,10 @@ a.btn-eliminar-lista>img.img-eliminar-lista {
     cursor: pointer;
     position: absolute;
     z-index: 2;
-    top: -32px;
-    left: 164px;
-    width: 27px;
-    height: 27px;
+    top: -28px;
+    left: 167px;
+    width: 22px;
+    height: 22px;
     border: 0;
 }
 
@@ -527,6 +527,7 @@ div.div-btn-home1 {
     }
 }
 
+
 /* DIAS DE LA SEMANA*/
 
 
@@ -707,7 +708,8 @@ hr.estilo_hr {
 /* CONTENEDOR de la tabla horario HOME con Scroll */
 
 div.div-tabla-mi-horario,
-div.div-tabla-reservar,div.div-tabla-usuarios-admin {
+div.div-tabla-reservar,
+div.div-tabla-usuarios-admin {
     overflow-y: auto;
 }
 
@@ -762,10 +764,11 @@ table.tabla-reservar {
 
 table.tabla-reservar>tbody>tr>td,
 table.tabla-admin>tbody>tr>td,
-table.tabla-admin>thead>tr>th{ 
+table.tabla-admin>thead>tr>th {
     vertical-align: middle;
     text-align: center;
 }
+
 th.th-reservar {
     font-size: 12px;
     text-align: center;
@@ -776,6 +779,8 @@ th.th-reservar-hora {
     vertical-align: middle !important;
     text-align: center !important;
 }
+
+
 /* aviso de validacion de los logins */
 
 #error_reg_admin,
@@ -1630,6 +1635,12 @@ form>div.form-group>input.pilar {
 
 /* carrusel del login */
 
+.div-carrusel {
+    border-width: medium;
+    border-style: solid;
+    border-color: floralwhite;
+}
+
 .slide2 {
     overflow: hidden;
 }
@@ -1650,7 +1661,7 @@ form>div.form-group>input.pilar {
     /* 100 x nº de imagenes */
     margin: 0;
     left: 0;
-    animation: 40s slidy infinite;
+    animation: 50s slidy infinite;
 }
 
 
@@ -1757,13 +1768,39 @@ table>caption.captionreservar {
     color: crimson;
 }
 
+
+/* boton semana2 en reservar.html */
+button.btn-semana-reservar1 {
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+button.btn-semana-reservar {
+    background-color: #00e673;
+    color: white;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+button.btn-semana-reservar:hover,
+button.btn-semana-reservar:active,
+button.btn-semana-reservar:focus {
+    color: white;
+    background-color: #00cc66;
+    border: none;
+}
+
+
 @media only screen and (min-width:100px) and (max-width:768px) {
     div.div-semana-reservar1 {
         display: none;
     }
-    label.btn-semana-reservar {
+    button.btn-semana-reservar,
+    button.btn-semana-reservar1 {
         font-size: 11px;
-        border: none !important;
+        font-weight: 400;
     }
 }
 
@@ -1779,6 +1816,7 @@ table>caption.captionreservar {
     }
     select.input-reservar {
         font-size: 10px;
+        width: 187px;
     }
 }
 
