@@ -3,13 +3,21 @@
         .module('app')
         .controller('LoginFormController', loginFormController);
 
+    /**
+     * @namespace loginFormController
+     * @description
+     * Controlador del modal mLoginForm.html para loguearse en la pagina
+     */
     function loginFormController(AUTH, $uibModalInstance, modalFactory, errorFactory) {
         var vm = this;
         vm.error = modalFactory.error;
         vm.restablecer = modalFactory.restablecerPass;
 
         /**
-         * @method iniciarSesion Inicia sesion de un usuario
+         * @method iniciarSesion 
+         * @memberof loginFormController
+         * @description
+         * Inicia sesion de un usuario
          */
         vm.iniciarSesion = function () {
             AUTH.signInWithEmailAndPassword(vm.email, vm.pass).then(function () {
@@ -21,14 +29,20 @@
         }
 
         /**
-         * @method close cierra el modal
+         * @method close 
+         * @memberof loginFormController
+         * @description
+         * Cierra el modal
          */
         vm.close = function () {
             $uibModalInstance.close();
         };
 
         /**
-         * @method restablecerPass cierra el modal actual y abre el de restablecer contraseña
+         * @method restablecerPass 
+         * @memberof loginFormController
+         * @description
+         * Cierra el modal actual y abre el de restablecer contraseña
          */
         vm.restablecerPass=function(){
             vm.restablecerPass();

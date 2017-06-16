@@ -2,15 +2,23 @@
     angular
         .module('app')
         .factory('userFactory', userFactory);
+
     
-    //factoria para compartir informacion del usuario
+    /**
+     * @namespace userFactory
+     * @description 
+     * Factoria para compartir informacion del usuario
+     */
     function userFactory(DATABASE, AUTH, $timeout) {
         var users;
         var photo;
         var code;
 
         /**
-         * @method getDataUser Consulta los datos del usuario actual
+         * @method getDataUser 
+         * @memberof userFactory
+         * @description
+         * Consulta los datos del usuario actual
          */
         function getDataUser() {
             DATABASE.ref("user/").orderByChild("id").equalTo(AUTH.currentUser.uid).on("value", function (snapshot) {
@@ -23,22 +31,63 @@
         }
 
         var factory = {
+            /**
+             * @method getUser 
+             * @memberof userFactory
+             * @return objeto usuario
+             * @description
+             * Devuelve el objeto usuario
+             */
             getUser: function () {
                 return users;
             },
+            /**
+             * @method getPhoto 
+             * @memberof userFactory
+             * @return url de la foto
+             * @description
+             * Devuelve la url de la foto
+             */
             getPhoto: function () {
                 return photo;
             },
-            setPhoto:function(url){
-                photo=url;
+            /**
+             * @method setPhoto 
+             * @memberof userFactory
+             * @param {String} url url de la foto
+             * @description
+             * Setea el enlace de la foto
+             */
+            setPhoto: function (url) {
+                photo = url;
             },
-            setUser:function(user){
-                users=user;
+            /**
+             * @method setUser 
+             * @memberof userFactory
+             * @param {object} user objeto user
+             * @description
+             * Setea el usuario
+             */
+            setUser: function (user) {
+                users = user;
             },
-            getCode: function(){
+            /**
+             * @method getCode 
+             * @memberof userFactory
+             * @return codigo del nodo
+             * @description
+             * Devuelve codigo del nodo del usuario
+             */
+            getCode: function () {
                 return code;
             },
-            getData : function(){
+            /**
+             * @method getData
+             * @memberof userFactory
+             * @description
+             *  Refresca los datos del usuario consultando la base de datos
+             */
+            getData: function () {
                 getDataUser();
             }
         };

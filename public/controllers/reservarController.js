@@ -4,13 +4,22 @@
         .module('app')
         .controller('ReservarController', reservarController);
 
-
+    /**
+     * @namespace reservarController
+     * @description 
+     * Controlador de la vista reservar.html
+     */
     function reservarController(userFactory, DATABASE, $timeout, $log, modalFactory, progressBarFactory, $location) {
         var vm = this;
+       
+        /*
+         * Intervalo de recarga
+         */
         var interval = function () {
-            $timeout(recarga, 100);
+            $timeout(recarga, 50);
         };
         interval();
+
         vm.progress = modalFactory.progressBar;
         vm.recursos = [];
         vm.tabla = [];
@@ -20,7 +29,10 @@
         var q;
 
         /**
-         * @method recarga carga datos cuando carga al usuario
+         * @method recarga 
+         * @memberof reservarController
+         * @description
+         * Carga datos de la pagina cuando carga al usuario
          */
         function recarga() {
             if (userFactory.getUser() != null) {
@@ -39,7 +51,10 @@
         }
 
         /**
-         * @method getCursos Carga los cursos y los mete en un array
+         * @method getCursos 
+         * @memberof reservarController
+         * @description
+         * Carga los cursos y los mete en un array
          */
         function getCursos() {
             DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
@@ -65,7 +80,10 @@
 
         /* carga los dias de la semana en reservar.html */
         /**
-         * @method getFecha Carga la fecha en un array
+         * @method getFecha 
+         * @memberof reservarController
+         * @description
+         * Carga la fecha en un array
          */
         function getFecha() {
             var dia = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
@@ -80,7 +98,10 @@
         }
 
         /**
-         * @method getFechaRecursos Carga la fecha y luego los recursos
+         * @method getFechaRecursos 
+         * @memberof reservarController
+         * @description
+         * Carga la fecha y luego los recursos
          */
         vm.getFechaRecursos = function () {
             getFecha();
@@ -89,9 +110,12 @@
         }
 
         /**
-         * @method hacerReserva Crea una reserva
+         * @method hacerReserva 
+         * @memberof reservarController
          * @param {object} celda celda seleccionada
          * @param {object} ncelda siguiente celda vertical 
+         * @description
+         * Crea una reserva
          */
         vm.hacerReserva = function (celda, ncelda) {
             var reserva = {
@@ -110,7 +134,10 @@
 
         /* select de pruebaReservas.html que se carga al seleccionar opcion del select anterior */
         /**
-         * @method getRecursos Carga los recursos en un array 
+         * @method getRecursos 
+         * @memberof reservarController
+         * @description
+         * Carga los recursos en un array 
          */
         vm.getRecursos = function () {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").orderByChild("tipo").equalTo(vm.tipo).on("value", function (snapshot) {
@@ -138,7 +165,10 @@
         };
 
         /**
-         * @method getTipos Carga los tipos
+         * @method getTipos 
+         * @memberof reservarController
+         * @description
+         * Carga los tipos
          */
         function getTipos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos").once("value", function (snapshot) {
@@ -152,7 +182,10 @@
 
         /* carga recursos disponibles en la tabla de pruebaReservas.html*/
         /**
-         * @method getDisponible carga los recursos disponibles
+         * @method getDisponible 
+         * @memberof reservarController
+         * @description
+         * Carga los recursos disponibles
          */
         vm.getDisponible = function () {
             try {

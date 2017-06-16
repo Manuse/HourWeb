@@ -3,13 +3,21 @@
     angular
         .module('app')
         .controller('RestablecerPassController', restablecerPassController);
-
+    
+    /**
+     * @namespace restablecerPassController
+     * @description
+     * Controlador del modal mRestablecerPass.html
+     */
     function restablecerPassController(AUTH, modalFactory, $uibModalInstance) {
         var vm = this;
         vm.error=modalFactory.error
 
         /**
-         * @method restablecer Envia un email para restablecer la contraseña
+         * @method restablecer 
+         * @memberof restablecerPassController
+         * @description
+         * Envia un email para restablecer la contraseña
          */
         vm.restablecer=function() {
             AUTH.sendPasswordResetEmail(vm.email).then(function () {
@@ -21,7 +29,10 @@
         }
 
         /**
-         * @method close cierra el modal
+         * @method close 
+         * @memberof restablecerPassController
+         * @description
+         * Cierra el modal
          */
         vm.close = function () {
             $uibModalInstance.close();

@@ -4,6 +4,11 @@
         .module('app')
         .controller('AdministradorController', administradorController);
 
+    /**
+     * @namespace administradorController
+     * @description
+     * Controlador de la vista administrador.html
+     */
     function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, modalFactory, errorFactory, progressBarFactory) {
         var vm = this;
         var centro;
@@ -27,16 +32,19 @@
         vm.usuarios = [];
         vm.dayRP = "6";
 
-        /**
+        /*
          * Intervalo para recargar
          */
         var interval = function () {
-            $timeout(recarga, 100)
+            $timeout(recarga, 50)
         };
         interval();
 
         /**
-         * @method recarga carga los datos de la pagina
+         * @method recarga 
+         * @memberof administradorController
+         * @description
+         * carga los datos de la pagina cuando carga el usuario
          */
         function recarga() {
             if (userFactory.getUser() != null) {
@@ -58,7 +66,10 @@
         }
 
         /**
-         * @method horaYNombreCentro Carga la hora y en nombre del centro
+         * @method horaYNombreCentro 
+         * @memberof administradorController
+         * @description
+         * Carga la hora y en nombre del centro
          */
         function horaYNombreCentro() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/horas").once("value", function (snapshot) {
@@ -79,7 +90,10 @@
         }
 
         /**
-         * Crea un recurso
+         * @method crearRecurso 
+         * @memberof administradorController
+         * @description
+         * Crea un recurso nuevo
          */
         vm.crearRecurso = function () {
             var re = DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + vm.recurso); //decimos el nodo del recurso
@@ -108,7 +122,10 @@
         };
 
         /**
-         * @method getTipologias Carga los tipos
+         * @method getTipologias 
+         * @memberof administradorController
+         * @description 
+         * Carga los tipos
          */
         function getTipologias() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").once("value", function (snapshot) {
@@ -122,8 +139,11 @@
         }
 
         /**
-         * @method borrarTipo Borra un tipo, sus recursos y las reservas de ese recurso
+         * @method borrarTipo 
+         * @memberof administradorController
          * @param {number} index posicion
+         * @description
+         * Borra un tipo, sus recursos y las reservas de ese recurso
          */
         vm.borrarTipo = function (index) {
             if (vm.tipologias.length > 1) {
@@ -152,7 +172,10 @@
         };
 
         /**
-         * @method crearTipo Crea un nuevo tipo
+         * @method crearTipo
+         * @memberof administradorController
+         * @description
+         * Crea un nuevo tipo
          */
         vm.crearTipo = function () {
             if (vm.ntipo != 0 && vm.ntipo != null) {
@@ -170,8 +193,11 @@
         };
 
         /**
-         * @method borrarRecurso borra un recurso
+         * @method borrarRecurso 
+         * @memberof administradorController
          * @param {object} recurso objeto recurso
+         * @description
+         * Borra un recurso
          */
         vm.borrarRecurso = function (recurso) {
             var funcion = function () {
@@ -181,7 +207,10 @@
         };
 
         /**
-         * @method getRecursos carga los recursos
+         * @method getRecursos
+         * @memberof administradorController
+         * @description
+         * Carga los recursos
          */
         function getRecursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/").on("value", function (snapshot) {
@@ -208,7 +237,10 @@
         }
 
         /**
-         * @method getUsuarios Carga de usuario
+         * @method getUsuarios 
+         * @memberof administradorController
+         * @description
+         * Carga de usuario
          */
         function getUsuarios() {
             DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).once("value", function (snapshot) {
@@ -232,9 +264,12 @@
         }
 
         /** 
-         * @method filtrar devuelve el numero de recursos segun el tipo
+         * @method filtrar 
+         * @memberof administradorController
          * @param {text} tip: tipo
          * @return numero de tipos
+         * @description
+         * Devuelve el numero de recursos segun el tipo
          */
         vm.filtrar = function (tip) {
             return vm.recursos.filter(function (x) {
@@ -243,7 +278,10 @@
         };
 
         /**
-         * @method hacerReservaPermanente Hace una reserva permanente
+         * @method hacerReservaPermanente 
+         * @memberof administradorController
+         * @description
+         * Hace una reserva permanente
          */
         vm.hacerReservaPermanente = function () {
             vm.mytimeRP.setDate(parseInt(vm.dayRP));
@@ -295,7 +333,10 @@
         };
 
         /**
-         * @method getCursos Carga la lista de cursos
+         * @method getCursos
+         * @memberof administradorController
+         * @description
+         * Carga la lista de cursos
          */
         function getCursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").once("value", function (snapshot) {
@@ -321,7 +362,10 @@
         }
 
         /**
-         * @method addCurso añade un curso
+         * @method addCurso 
+         * @memberof administradorController
+         * @description
+         * Añade un curso
          */
         vm.addCurso = function () {
             if (vm.nCurso != 0 && vm.nCurso != null) {
@@ -342,9 +386,12 @@
         }
 
         /**
-         * @method borrarCurso Borra un curso de la base de datos y de los arrays
-         * @param {number} index: posicion
-         * @param {String} curso: curso
+         * @method borrarCurso
+         * @memberof administradorController
+         * @param {number} index posicion
+         * @param {String} curso curso
+         * @description
+         * Borra un curso de la base de datos y de los arrays
          */
         vm.borrarCurso = function (index, curso) {
             var funcion = function () {
@@ -374,8 +421,11 @@
         }
 
         /**
-         * @method day Devuelve el dia de la semana
+         * @method day
+         * @memberof administradorController
          * @param {number} key dia de la semana
+         * @description
+         * Devuelve el dia de la semana
          */
         function day(key) {
             switch (parseInt(key)) {
@@ -393,7 +443,10 @@
         }
 
         /**
-         * @method getRP Carga las reservas permanentes
+         * @method getRP 
+         * @memberof administradorController
+         * @description
+         * Carga las reservas permanentes
          */
         function getRP() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("perm").equalTo(true).once("value", function (snapshot) {
@@ -418,8 +471,11 @@
         }
 
         /**
-         * @method borrarRP Borra una reserva permanente
+         * @method borrarRP 
+         * @memberof administradorController
          * @param {object} rp: reserva permanente
+         * @description
+         * Borra una reserva permanente
          */
         vm.borrarRP = function (rp) {
             funcion = function () {
@@ -430,8 +486,11 @@
         };
 
         /**
-         * @method cambiarTipo Cambia el tipo de usuario de administrador a estandar y viceversa
+         * @method cambiarTipo 
+         * @memberof administradorController
          * @param {object} user: usuario con los datos 
+         * @description
+         * Cambia el tipo de usuario de administrador a estandar y viceversa
          */
         vm.cambiarTipo = function (user) {
             if (user.tipo != 'administrador') {
@@ -449,7 +508,10 @@
 
 
         /**
-         * @method cambiarNombreCentro Cambia el nombre del centro
+         * @method cambiarNombreCentro 
+         * @memberof administradorController
+         * @description
+         * Cambia el nombre del centro
          */
         vm.cambiarNombreCentro = function () {
             if (vm.nCentro != 0 && vm.nCentro != null) {
@@ -464,7 +526,10 @@
         }
 
         /**
-         * @method cancelarNombreCentro Cancela el nombre del centro
+         * @method cancelarNombreCentro 
+         * @memberof administradorController
+         * @description
+         * Cancela el nombre del centro
          */
         vm.cancelarNombreCentro = function () {
             vm.nCentro = centro;
@@ -472,7 +537,10 @@
         }
 
         /**
-         * @method cambiarHora Cambia la hora del centro
+         * @method cambiarHora 
+         * @memberof administradorController
+         * @description
+         * Cambia la hora del centro
          */
         vm.cambiarHora = function () {
             if (vm.inicio >= vm.fin || vm.fin - vm.inicio < 7200000) {
@@ -512,7 +580,10 @@
         };
 
         /**
-         * @method cancelarCambiarhora Cancela el cambio de hora del centro
+         * @method cancelarCambiarhora 
+         * @memberof administradorController
+         * @description
+         * Cancela el cambio de hora del centro
          */
         vm.cancelarCambiarHora = function () {
             vm.hora = !vm.hora;
@@ -521,8 +592,11 @@
         }
 
         /**
-         * @method banearUsuario Banea o quita el baneo a un usuario
+         * @method banearUsuario 
+         * @memberof administradorController
          * @param {object} usuario usuario a banear
+         * @description
+         * Banea o quita el baneo a un usuario
          */
         vm.banearUsuario = function (usuario) {
             if (usuario.baneo) {

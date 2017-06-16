@@ -4,6 +4,11 @@
         .module('app')
         .controller('GeneralController', generalController);
 
+    /**
+     * @namespace generalController
+     * @description
+     * Controlador general de toda la pagina, solo maneja la sesion y un metodo de limpieza de la base de datos
+     */
     function generalController(AUTH, DATABASE, $location, userFactory, $log, $timeout) {
         var vm = this;
         vm.location = $location;
@@ -42,8 +47,11 @@
         });
 
         /**
-         * @method limpiar Elimina reservas antiguas
-         * @param {String} cod 
+         * @method limpiar 
+         * @memberof generalController
+         * @param {String} cod codigo del centro
+         * @description
+         * Elimina reservas antiguas
          */
         function limpiar(cod){
             DATABASE.ref("centros/" + cod + "/reservas/").once("value", function(snapshot){

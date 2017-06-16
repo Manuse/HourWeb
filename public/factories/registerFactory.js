@@ -1,14 +1,27 @@
-
 (function () {
 
     angular
         .module('app')
         .factory('registerFactory', registerFactory);
 
-    //factoria para compartir los metodos de registro
+    /**
+     * @namespace registerFactory
+     * @description 
+     * Factoria para compartir los metodos de registro
+     */
     function registerFactory(AUTH, DATABASE, $uibModal, errorFactory, modalFactory) {
 
         var factory = {
+            /**
+             * @method registrarUser 
+             * @memberof registerFactory
+             * @param {object} dataUser objecto con los datos del usuario
+             * @param {object} dataCenter objecto con los datos del centro
+             * @param {String} email email del usuario
+             * @param {String} pass contraseña del usuario
+             * @description
+             * Registra un usuario
+             */
             registrarUser: function (dataUser, dataCenter, email, pass) {
                 AUTH.createUserWithEmailAndPassword(email, pass).then(function (res) {
                     AUTH.currentUser.updateProfile({
@@ -17,7 +30,7 @@
                     });
                     insertarUsuario(dataCenter, dataUser, AUTH.currentUser.uid);
                     AUTH.currentUser.sendEmailVerification();
-                    modalFactory.error("Se ha enviado un email de verificacion a su correo",1);
+                    modalFactory.error("Se ha enviado un email de verificacion a su correo", 1);
                 }, function (err) { //crea el usuario
                     modalFactory.error(errorFactory.getError(err));
                 });
@@ -25,10 +38,13 @@
         };
 
         /**
-         * @method insertarUsuario Dependiendo del usuario creara el usuario directamente o creara el centro antes
+         * @method insertarUsuario 
+         * @memberof registerFactory
          * @param {object} newcentro objeto con los datos del centro
          * @param {object} newuser objeto con los datos del usuario
          * @param {String} uid id del usuario
+         * @description
+         * Dependiendo del usuario creara el usuario directamente o creara el centro antes
          */
         function insertarUsuario(newcentro, newuser, uid) {
             try {
@@ -42,8 +58,11 @@
         }
 
         /**
-         * @method crearUser Crea un usuario en la base de datos
-         * @param {object} user: objeto con los datos del usuario
+         * @method crearUser 
+         * @memberof registerFactory
+         * @param {object} user objeto con los datos del usuario
+         * @description
+         * Crea un usuario en la base de datos
          */
         function crearUser(user) {
             var usuario = DATABASE.ref("user"); //recogemos la referencia de la base datos y le añadimos el uid de usuario como nodo
@@ -51,9 +70,12 @@
         }
 
         /**
-         * @method insertarCentro Inserta el centro en la base de datos
+         * @method insertarCentro 
+         * @memberof registerFactory
          * @param {object} centro objeto con los datos del centro
          * @return codigo del centro
+         * @description
+         * Inserta el centro en la base de datos
          */
         function insertarCentro(centro) {
             var cent = DATABASE.ref("centros");
@@ -62,10 +84,13 @@
         }
 
         /**
-         * @method crearCentro Crea el centro y luego al usuario
+         * @method crearCentro 
+         * @memberof registerFactory
          * @param {object} centro: objeto con los daros del centro
          * @param {object} user: objeto con los datos del usuario
          * @param {String} uid:codigo del usuario 
+         * @description
+         * Crea el centro y luego al usuario
          */
         function crearCentro(centro, user, uid) {
             user.codcentro = insertarCentro(centro);

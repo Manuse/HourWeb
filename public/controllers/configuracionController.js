@@ -5,6 +5,11 @@
         .module('app')
         .controller('ConfiguracionController', configuracionController);
 
+    /**
+     * @namespace configuracionController
+     * @description
+     * Controlador de la vista configuracion.html
+     */
     function configuracionController($timeout, userFactory, DATABASE, AUTH, STORAGE, $log, errorFactory, modalFactory, progressBarFactory) {
         var vm = this;
         vm.nPass1 = "";
@@ -14,7 +19,7 @@
         vm.confirmacion = modalFactory.confirmacion;
         vm.progressBar = modalFactory.progressBar;
 
-        /**
+        /*
          * Intervalo para cargar
          */
         var interval = function () {
@@ -23,7 +28,10 @@
         interval();
 
         /**
-         * carga los datos de la pagina
+         * @method recarga 
+         * @memberof configuracionController
+         * @description
+         * carga los datos de la pagina cuando carga el usuario
          */
         function recarga() {
             if (userFactory.getUser() != null) {
@@ -42,7 +50,10 @@
         }
 
         /**
-         * @method visualizar Cambia el icono del ojo temporalmente
+         * @method visualizar 
+         * @memberof configuracionController
+         * @description
+         * Cambia el icono del ojo temporalmente
          */
         vm.visualizar = function () {
             vm.eye = !vm.eye;
@@ -53,7 +64,10 @@
         }
 
         /**
-         * @method cambiarPass Cambia la contraseña del usuario
+         * @method cambiarPass
+         * @memberof configuracionController
+         * @description
+         * Cambia la contraseña del usuario
          */
         vm.cambiarPass = function () {
             if (vm.nPass1 != 0 && vm.nPass2 != 0 && vm.oldPass != 0) {
@@ -92,7 +106,10 @@
         };
 
         /**
-         * @method cancelarPass Cancela el cambio de contraseña
+         * @method cancelarPass 
+         * @memberof configuracionController
+         * @description
+         * Cancela el cambio de contraseña
          */
         vm.cancelarPass = function () {
             vm.nPass1 = "";
@@ -101,8 +118,11 @@
             vm.bContrasena = !vm.bContrasena;
         }
         /**
-         * @method cambiarFoto Cambia la foto de perfil
+         * @method cambiarFoto 
+         * @memberof configuracionController
          * @param {object} file archivo imagen para subir
+         * @description
+         * Cambia la foto de perfil
          */
         vm.cambiarFoto = function (file) {
             if (file.size < 300000) {
@@ -134,7 +154,10 @@
         };
 
         /**
-         * @method updateUser Actualiza el usuario
+         * @method updateUser 
+         * @memberof configuracionController
+         * @description
+         * Actualiza el usuario
          */
         vm.updateUser = function () {
             if (vm.nombre != 0 && vm.apellido != 0) {
@@ -203,7 +226,10 @@
         }
 
         /**
-         * @method cancelarUser Cancela la actualizacion del usuario
+         * @method cancelarUser 
+         * @memberof configuracionController
+         * @description
+         * Cancela la actualizacion del usuario
          */
         vm.cancelarUser = function () {
             vm.nombre = vm.getUser().nombre;
@@ -214,7 +240,10 @@
         }
 
         /**
-         * @method cambiarCentro Cambia de centro al usuario borrando toda su informacion del actual
+         * @method cambiarCentro 
+         * @memberof configuracionController
+         * @description
+         * Cambia de centro al usuario borrando toda su informacion del actual
          */
         vm.cambiarCentro = function () {
             DATABASE.ref("centros/" + vm.centro).once("value", function (snapshot) {

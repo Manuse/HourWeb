@@ -2,8 +2,17 @@
 
     angular.module('app').controller('NavController', navController);
 
+    /**
+     * @namespace navController
+     * @description
+     * Controlador del navbar
+     */
     function navController(userFactory, AUTH, $timeout, $location, $log) {
         var vm = this;
+
+        /*
+         *Intervalo para recargar
+         */
         var interval = function () {
             $timeout(recarga, 50);
         };
@@ -18,14 +27,20 @@
         }, 350);
 
         /**
-         * @method signOut Desloguea a un usuario
+         * @method signOut 
+         * @memberof navController
+         * @description
+         * Desloguea a un usuario
          */
         vm.signOut = function () {
             AUTH.signOut();
         };
 
         /**
-         * @method recarga Carga los datos del usuario
+         * @method recarga 
+         * @memberof navController
+         * @description
+         * Carga los datos del usuario cuando estan disponibles
          */
         function recarga() {
             if (userFactory.getUser() != null) {

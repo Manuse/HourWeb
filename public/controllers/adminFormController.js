@@ -2,6 +2,11 @@
 
     angular.module('app').controller('AdminFormController', adminFormController);
 
+    /**
+     * @namespace adminFormController
+     * @description 
+     * Controlador del modal del formulario del registro como administrador mAdminForm.html
+     */
     function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory,$log, errorFactory) {
         var vm = this;
         vm.inicioHora = new Date('1/1/1 12:00');
@@ -9,7 +14,10 @@
         vm.error = modalFactory.error;
 
         /**
-         * @method registrar Valida los campos del formulario
+         * @method vm.registrar 
+         * @memberof adminFormController
+         * @description
+         * Valida los campos del formulario si pasa el filtro procede a registrar
          */
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0
@@ -25,7 +33,10 @@
         }
 
         /**
-         * @method registrarAdmin Registra un administrador
+         * @method vm.registrarAdmin 
+         * @memberof adminFormController
+         * @description
+         * Registra un administrador
          */
         vm.registrarAdmin = function() {        
             newcentro = { //le damos los valores que se van a insertar en la base de datos a los objetos
@@ -48,7 +59,10 @@
         };
 
         /**
-         * @method close Cierra el modal
+         * @method close 
+         * @memberof adminFormController
+         * @description
+         * Cierra el modal 
          */
         vm.close = function(){
             $uibModalInstance.close();

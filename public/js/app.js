@@ -1,6 +1,12 @@
 (function () {
 
-    /*
+    /**
+     * @module app
+     * @requires ngAnimate
+     * @requires ngSabitize 
+     * @requires ui.router 
+     * @requires ui.bootstrap  
+     * @description
      * Modulo de angular unico para toda la aplicacion, usa los modulos ui.router para hacer el cambio de vistas,
      * ui.boostrap para componentes compatibles de angular y ngAnimate y ngSanitize que son utilizados por ui.boostrap
      * para animaciones

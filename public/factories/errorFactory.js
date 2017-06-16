@@ -3,13 +3,24 @@
     angular
         .module('app')
         .factory('errorFactory', errorFactory);
+
     
-    //factoria para compartir los mensajes de error
+    /**
+     * @namespace errorFactory
+     * @description
+     * Factoria para compartir los distintos mensajes de error
+     */
     function errorFactory() {
 
         var factory = {
+            /**
+             * @method getError 
+             * @memberof errorFactory
+             * @param {object|String} error error en texto y objeto
+             * @description
+             * Dependiendo del error devolvera un texto u otro
+             */
             getError: function (error) {
-                //dependiendo del error devolvera un texto u otro
                 switch (error.code == null ? error : error.code) {
                     case "auth/invalid-email":
                         return "El email no es válido";

@@ -5,9 +5,24 @@
         .module('app')
         .factory('modalFactory', modalFactory);
 
-    //factoria para abrir modales
+    
+    /**
+     * @namespace modalFactory
+     * @description 
+     * Factoria para abrir los distintos modales
+     */
     function modalFactory($uibModal) {
+
+
         var factory = {
+            /**
+             * @method error 
+             * @memberof modalFactory
+             * @param {String} err mensaje de error
+             * @param {any} not parametro que si se usa muestra una notificacion
+             * @description
+             * Abre el modal de error o notificacion
+             */
             error: function (err, not) {
                 var modalInstance = $uibModal.open({
                     animation: false,
@@ -15,10 +30,13 @@
                     controller: 'ErrorController',
                     controllerAs: 'vmmm',
                     // si <10 letras sm, en caso contrario md
-                    size: err.length < 25 ? 'sm':'md',
+                    size: err.length < 25 ? 'sm' : 'md',
                     resolve: {
                         item: function () {
-                            return {error:err,tipo:not};
+                            return {
+                                error: err,
+                                tipo: not
+                            };
                         }
                     }
                 });
@@ -29,6 +47,14 @@
 
                 });
             },
+            /**
+             * @method confirmacion 
+             * @memberof modalFactory
+             * @param {String} msg texto del modal
+             * @param {function} funcion funcion que se ejecuta si la respuesta es 'si'
+             * @description
+             * Abre el modal de confirmacion
+             */
             confirmacion: function (msg, funcion) {
                 var modalInstance = $uibModal.open({
                     animation: true,
@@ -36,7 +62,7 @@
                     controller: 'ConfirmacionController',
                     controllerAs: 'vmmm',
                     // si < 40 letras sm, en caso contrario md
-                    size: msg.length < 40 ? 'sm':'md',
+                    size: msg.length < 40 ? 'sm' : 'md',
                     resolve: {
                         item: function () {
                             return msg;
@@ -55,6 +81,12 @@
                 });
             },
             // barra de progreso mientras se carga la nueva foto en configuracion.html
+            /**
+             * @method progressBar 
+             * @memberof modalFactory
+             * @description
+             * Abre el modal de con la barra de progreso
+             */
             progressBar: function () {
                 var modalInstance = $uibModal.open({
                     animation: true,
@@ -72,13 +104,19 @@
 
                 });
             },
+            /**
+             * @method loginForm 
+             * @memberof modalFactory
+             * @description
+             * Abre el modal de login
+             */
             loginForm: function () {
                 var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'modal/mLoginForm.html',
                     controller: 'LoginFormController',
                     controllerAs: 'vmm',
-                    size:'sm'
+                    size: 'sm'
                 });
 
                 modalInstance.result.then(function () {
@@ -87,6 +125,12 @@
 
                 });
             },
+            /**
+             * @method adminForm 
+             * @memberof modalFactory
+             * @description 
+             * Abre el modal de registro como administrador
+             */
             adminForm: function () {
                 var modalInstance = $uibModal.open({
                     animation: true,
@@ -101,6 +145,12 @@
 
                 });
             },
+            /**
+             * @method standarForm 
+             * @memberof modalFactory
+             * @description
+             * Abre el modal de registro de usuario normal
+             */
             standarForm: function () {
                 var modalInstance = $uibModal.open({
                     animation: true,
@@ -115,6 +165,12 @@
 
                 });
             },
+            /**
+             * @method restablecerPass 
+             * @memberof modalFactory
+             * @description
+             * Abre el modal de para restablecer la contraseña
+             */
             restablecerPass: function () {
                 var modalInstance = $uibModal.open({
                     animation: true,
@@ -130,8 +186,6 @@
                 });
             }
         };
-
         return factory;
-
     }
 })();

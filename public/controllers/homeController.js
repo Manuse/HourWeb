@@ -4,6 +4,11 @@
         .module('app')
         .controller('HomeController', homeController);
 
+    /**
+     * @namespace homeController
+     * @description 
+     * Controlador de la vista home.html
+     */
     function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory, $window) {
         var vm = this;
         vm.confirmacion = modalFactory.confirmacion;
@@ -13,8 +18,9 @@
         vm.open = [];
         vm.filtro = "todos";
         vm.page=1;
-        /**
-         * @method interval Intervalo para recargar
+        
+        /*
+         * Intervalo para recargar
          */
         var interval = function () {
             $timeout(recarga, 50);
@@ -30,7 +36,10 @@
         vm.mensajes = []
 
         /**
-         * @method recarga Carga los datos de la vista
+         * @method recarga 
+         * @memberof homeController
+         * @description
+         * Carga los datos de la pagina cuando carga el usuario
          */
         function recarga() {
             if (userFactory.getUser() != null) {
@@ -51,7 +60,10 @@
         }
 
         /**
-         * @method refrescarCalendario Refresa las listas y su encabezado
+         * @method refrescarCalendario 
+         * @memberof homeController
+         * @description
+         * Refresa las listas y su encabezado
          */
         vm.refrescarCalendario = function () {
             getMisReservas();
@@ -59,7 +71,10 @@
         };
 
         /**
-         * @method getCentro Carga el nombre del centro
+         * @method getCentro 
+         * @memberof homeController
+         * @description
+         * Carga el nombre del centro
          */
         function getCentro() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/nombre").once("value", function (snapshot) {
@@ -70,7 +85,10 @@
         }
 
         /**
-         * @method getFecha Carga una fecha segun la semana seleccionada
+         * @method getFecha 
+         * @memberof homeController
+         * @description
+         * Carga una fecha segun la semana seleccionada
          */
         function getFecha() {
             var dia = new Date(new Date().getTime() - (86400000 * (new Date().getDay() - 1)));
@@ -85,7 +103,10 @@
         }
 
         /**
-         * @method getMisReservas Carga mis reservas
+         * @method getMisReservas 
+         * @memberof homeController
+         * @description
+         * Carga mis reservas
          */
         function getMisReservas() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("usuario").equalTo(vm.getUser().id).once("value", function (snapshot) {
@@ -183,9 +204,12 @@
         }
 
         /**
-         * @method borrarReserva Borra una reserva
+         * @method borrarReserva
+         * @memberof homeController
          * @param {object} reserva objeto reserva
          * @param {array} array array en el que esta el objeto
+         * @description
+         * Borra una reserva
          */
         vm.borrarReserva = function (reserva, array) {
             if (reserva.activo) {
@@ -209,7 +233,10 @@
         };
 
         /**
-         * @method rellenarTablaHorarios Rellena la tabla de horarios
+         * @method rellenarTablaHorarios 
+         * @memberof homeController
+         * @description
+         * Rellena la tabla de horarios
          */
         function rellenarTablaHorarios() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/rango_horas").once("value", function (horas) {
@@ -262,7 +289,10 @@
         }
 
         /**
-         * @method getCursos Carga los cursos
+         * @method getCursos 
+         * @memberof homeController
+         * @description
+         * Carga los cursos
          */
         function getCursos() {
             DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos").once("value", function (snapshot) {
@@ -282,8 +312,11 @@
         }
 
         /**
-         * @method crearHorario crea un horario
+         * @method crearHorario 
+         * @memberof homeController
          * @param {object} fila dia de la semana de una fila
+         * @description
+         * Crea un horario lo remueve o lo actualiza
          */
         vm.crearHorario = function (fila) {
             if (fila.curso == null && fila.code != null) {
@@ -304,7 +337,10 @@
         };
 
         /**
-         * @method getMensajes carga los mensajes
+         * @method getMensajes 
+         * @memberof homeController
+         * @description
+         * Carga los mensajes
          */
         function getMensajes() {
             DATABASE.ref("mensajes/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).limitToLast(70).on("value", function (snapshot) {
@@ -328,7 +364,10 @@
         }
 
         /**
-         * @method nuevoMensaje Crea un nuevo mensaje
+         * @method nuevoMensaje 
+         * @memberof homeController
+         * @description
+         * Crea un nuevo mensaje
          */
         vm.nuevoMensaje = function () {
             if (vm.asunto != 0 && vm.asunto != null) {
@@ -344,7 +383,6 @@
                     }
                     mensaje.code = DATABASE.ref("mensajes/").push(mensaje).key;
                     mensaje.fecha = new Date(mensaje.fecha);
-                    //vm.mensajes.unshift(mensaje);
                     vm.texto = "";
                     vm.asunto = "";
                 } else {
@@ -356,19 +394,24 @@
         }
 
         /**
-         * @method borrarMensaje Borra un mensaje
+         * @method borrarMensaje 
+         * @memberof homeController
          * @param {object} mensaje mensaje 
+         * @description
+         * Borra un mensaje
          */
         vm.borrarMensaje = function (mensaje) {
             funcion = function () {
-                //   vm.mensajes.splice(vm.mensajes.indexOf(mensaje), 1)
                 DATABASE.ref("mensajes/" + mensaje.code).remove();
             }
             vm.confirmacion("¿Borrar este mensaje?", funcion);
         }
 
         /**
-         * @method getUsuarios Carga los usuarios
+         * @method getUsuarios 
+         * @memberof homeController
+         * @description
+         * Carga los usuarios
          */
         function getUsuarios() {
             DATABASE.ref("user/").orderByChild("codcentro").equalTo(vm.getUser().codcentro).once("value", function (snapshot) {
