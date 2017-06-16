@@ -250,7 +250,7 @@
             var existe = false,
                 i = 0;
 
-            while (i < vm.RP.length && !existe) {//comprueba que si existe
+            while (i < vm.RP.length && !existe) { //comprueba que si existe
                 if (vm.RP[i].recurso == vm.recursoRP && new Date(vm.RP[i].fecha).getDay() == vm.mytimeRP.getDay() && new Date(vm.RP[i].fecha).getHours() == vm.mytimeRP.getHours() && new Date(vm.RP[i].fecha).getMinutes() == vm.mytimeRP.getMinutes()) {
                     existe = true;
                 }
@@ -262,7 +262,7 @@
                     var funcion = function () {
                         DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/").orderByChild("recurso").equalTo(vm.recursoRP).once("value", function (snapshot) {
 
-                            for (var data in snapshot.val()) {//borra las reservas que que coincidan en hora y dia
+                            for (var data in snapshot.val()) { //borra las reservas que que coincidan en hora y dia
                                 if (new Date(snapshot.val()[data].fecha).getDay() == vm.mytimeRP.getDay() && new Date(snapshot.val()[data].fecha).getHours() == vm.mytimeRP.getHours() && new Date(snapshot.val()[data].fecha).getMinutes() == vm.mytimeRP.getMinutes()) {
                                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + data).remove();
                                 }
@@ -325,14 +325,14 @@
          */
         vm.addCurso = function () {
             if (vm.nCurso != 0 && vm.nCurso != null) {
-                if (vm.cursos.length == 0 || !vm.cursos.includes(vm.nCurso)) {//si no esta dentro del array no existe
+                if (vm.cursos.length == 0 || !vm.cursos.includes(vm.nCurso)) { //si no esta dentro del array no existe
                     vm.cursosRP.push({
                         label: vm.nCurso,
                         value: vm.nCurso
                     });
                     vm.cursos.push(vm.nCurso);
                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").set(vm.cursos);
-                    vm.nCurso="";
+                    vm.nCurso = "";
                 } else {
                     vm.error(errorFactory.getError("noCurso"));
                 }
@@ -344,7 +344,7 @@
         /**
          * @method borrarCurso Borra un curso de la base de datos y de los arrays
          * @param {number} index: posicion
-         * @param {object} curso: curso
+         * @param {String} curso: curso
          */
         vm.borrarCurso = function (index, curso) {
             var funcion = function () {
@@ -363,7 +363,9 @@
                     DATABASE.ref("horarios/").orderByChild("usuario").equalTo(vm.usuarios[i].id).once("value", function (data) {
                         var horarios = data.val();
                         for (var data1 in horarios) {
-                            DATABASE.ref("horarios/" + data1).remove();
+                            if (horarios[data1].curso == curso) {
+                                DATABASE.ref("horarios/" + data1).remove();
+                            }
                         }
                     })
                 }
