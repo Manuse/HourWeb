@@ -771,12 +771,13 @@ table.tabla-admin>thead>tr>th {
 
 th.th-reservar {
     font-size: 12px;
+    vertical-align: text-top !important;
     text-align: center;
 }
 
 th.th-reservar-hora {
     font-size: 12px;
-    vertical-align: middle !important;
+    vertical-align:middle !important;
     text-align: center !important;
 }
 
