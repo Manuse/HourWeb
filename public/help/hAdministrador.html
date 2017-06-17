@@ -1,23 +1,73 @@
+<!-- modal de ayuda Administrador -->
 <div style="padding:30px;">
 
     <div>
-        <button type="button" class="close" ng-click="vmm.close()" aria-hidden="true" style="margin-right:9px;margin-top:8px;border:none;">
+        <button type="button" class="close" ng-click="vmmm.close()" aria-hidden="true" style="margin-right:9px;margin-top:8px;border:none;">
 		    <span class="span-cancelar">Cerrar</span><strong>&#32;&times;</strong>  
         </button>
 
     </div>
     <br><br><br>
-    <p class="letra-ayuda">La ventana de Inicio de HourWeb consta de tres pestañas:
+    <p class="letra-ayuda">La ventana de Administrador de HourWeb consta de cinco pestañas:
         <br><br>
 
-        <strong>1. <u>Mis Reservas</u></strong>
-        <br><br> En ella aparecen una serie de botones además de las listas del usuario donde se plasman los recursos ya reservados en la parte de <strong>Reservas</strong>, a la cual accedemos pulsando el botón Reservar.
-        
+        <strong>1. <u>Recursos</u></strong>:
+        <br>en esta pestaña generaremos las categorías de cada recurso en <strong>‘Crear Tipo’</strong>.
+        <br> En la parte <strong>‘Crear Recurso’</strong> señalaremos el tipo o categoría de recurso en el desplegable, y escribiremos el nombre del recurso que queramos que pertenezca a dicha categoría. Una vez introducido, el recurso aparecerá en la lista inferior desplegable, la cual define la categoría de un grupo de recursos y el número de ellos pertenecientes a aquélla. Cada lista puede ser desplegada haciendo click en la misma para consultar los distintos recursos pertenecientes a las mismas.
     </p>
-    
-    
-    <br>
+
     <div>
-        <button class="btn btn-warning btn-xs center-block">SALIR</button>
+        <img class="img-responsive" src="imagenes/admin-recurso.png" alt="foto no encontrada">
+    </div>
+    <br><br>
+
+    <p class="letra-ayuda">
+
+        <strong>2. <u>Reservas Permanentes</u></strong>:
+        <br> 
+        en esta pestaña podremos generar un recurso permanente para un usuario concreto.
+    </p>
+    <div>
+        <img class="img-responsive" src="imagenes/permanente.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        Para ello, será necesario indicar el nombre del recurso que vamos a convertir en permanente, el día, el curso (opcional) y la hora. <br> En la lista inferior podremos visualizar todos los recursos permanentes del centro, donde también tenemos la posibilidad de realizar búsquedas de los mismos y eliminarlos.
+    </p>
+    <br>
+
+    <p class="letra-ayuda">
+
+        <strong>3. <u>Usuarios</u></strong>:
+        <br><br> en esta sección encontramos una tabla con todos los usuarios de nuestro centro. El administrador/es podrá/n conceder permisos de administrador a cualquier usuario que no lo sea. Además, los administrador/es del centro pueden <strong>bloquear a un usuario o banearlo</strong> de la aplicación manejando los botones situados a la derecha.
+    </p>
+    <div>
+        <img class="img-responsive" src="imagenes/usuarios-admin.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+
+        <strong>4. <u>Centro</u></strong>:
+        <br>
+         en esta pestaña tendremos la posibilidad de modificar el nombre de nuestro centro y las horas. Los recursos ya reservados que se encuentren fuera del nuevo rango de horas pasarán a no reservados.
+    </p>
+    <div>
+        <img class="img-responsive" src="imagenes/centro-admin.png" alt="foto no encontrada">
+    </div>
+
+    <br><br>
+    <p class="letra-ayuda">
+
+        <strong>5. <u>Cursos</u></strong>:
+        <br>
+        en esta pestaña, el usuario puede agregar los diferentes cursos que reciben clases en el centro. La creación del curso es opcional. En esta sección, el administrador puede crearlos y realizar búsquedas de todos ellos.
+    </p>
+
+    <div>
+        <img class="img-responsive" src="imagenes/curso-admin.png" alt="foto no encontrada">
+    </div>
+    <br> <br>
+    <div>
+        <button class="btn btn-warning btn-xs center-block" ng-click="vmmm.close()">SALIR</button>
     </div>
 </div>

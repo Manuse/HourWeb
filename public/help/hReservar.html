@@ -1,0 +1,48 @@
+<!-- pagina de reservas -->
+<div style="padding:30px;">
+
+    <div>
+        <button type="button" class="close" ng-click="vmmm.close()" aria-hidden="true" style="margin-right:9px;margin-top:8px;border:none;">
+		    <span class="span-cancelar">Cerrar</span><strong>&#32;&times;</strong>  
+        </button>
+
+    </div>
+    <br><br><br>
+
+
+    <p class="letra-ayuda">
+        <strong><u>Edición de Perfil</u></strong>
+    </p>
+    <br>
+    <div>
+        <img class="img-responsive" src="imagenes/combo-reservar.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        En un principio, nos encontramos con dos menús desplegables en la parte superior izquierda.
+        <br> El primero, al desplegarse, nos muestra todos los tipos de recursos creados por el administrador. Si seleccionamos una categoría que contenga recursos, aparecerá un nuevo menú desplegable con el listado de recursos pertenecientes a la categoría seleccionada del primer menú. <em style="font-size:12px;">Véase la siguiente imagen.</em>
+    </p>
+
+    <div>
+        <img class="img-responsive" src="imagenes/combo-recurso.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        Señalar el curso es opcional, pero si se señala un curso ya creado, éste podrá visualizarse en las listas de reservas de la ventana de Inicio, la cual ya veremos más adelante.  <br>
+        Tras elegir la categoría y la reserva , se desplegará una tabla con las reservas disponibles en verde y las ocupadas o ya pasadas en rojo. Cualquier usuario sólo tendrá que clickar en alguna de las <strong>celdas disponibles</strong> para elegir la hora y el día de su reserva. 
+        <em style="font-size:12px;">Véase la siguiente imagen.</em>
+    </p>
+    <br>
+    <div>
+        <img class="img-responsive" src="imagenes/tabla-reservas.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        Los botones <strong>Semana1 y Semana2</strong> nos permitirán navegar entre las dos semanas en las que están distribuidas las reservas. Semana1 es la semana actual. Pasada ésta última, se eliminará de la tabla y aparecerá la siguiente semana disponible para fijar las reservas en ella. <br><br>
+        <em style="font-size:12px;">Nota: una reserva debe ser de una hora , por lo tanto, si seleccionamos una celda de la tabla cuyo rango de horas sea por ejemplo  11:00 – 11:30,  la reserva durará hasta las 12:00. Si el rango de horas seleccionada comienza a las 11:30, concluirá a las 12:30.</em>
+    </p>
+    <br>
+    <div>
+        <button class="btn btn-warning btn-xs center-block" ng-click="vmmm.close()">SALIR</button>
+    </div>
+</div>
