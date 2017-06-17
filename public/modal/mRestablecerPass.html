@@ -1,6 +1,6 @@
 <div class="">
     <div>
-        <button type="button" class="close" ng-click="vmm.close()" aria-hidden="true" style="margin-right:9px;margin-top:8px;">
+        <button type="button" class="close" ng-click="vmmm.close()" aria-hidden="true" style="margin-right:9px;margin-top:8px;">
 		    <span class="span-cancelar">Cancelar</span><strong>&#32;&times;</strong>  
         </button>
         <br><br>
@@ -9,11 +9,11 @@
         </h4>
     </div>
     
-    <form class="">
+    <form class="" ng-submit="vmmm.restablecer()">
         <div class="">
         
                     <div class="input-group">
-                        <input class="form-control form-login1" autofocus type="email" placeholder="Introduzca su email" required ng-model="vmm.email">
+                        <input class="form-control form-login1" autofocus type="email" placeholder="Introduzca su email" required ng-model="vmmm.email">
                                               
                     </div>
                 </div>
@@ -21,7 +21,7 @@
 
         <div class="modal-footer">
             <button type="submit" class="btn btn-md btn-info center-block" name="boton_entrar">
-			    <strong>OK</strong>
+			    <strong>Recuperar contraseña</strong>
 			</button>
         </div>
     </form>

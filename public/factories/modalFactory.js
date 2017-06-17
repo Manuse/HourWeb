@@ -5,13 +5,13 @@
         .module('app')
         .factory('modalFactory', modalFactory);
 
-    
+
     /**
      * @namespace modalFactory
      * @description 
      * Factoria para abrir los distintos modales
      */
-    function modalFactory($uibModal) {
+    function modalFactory($uibModal, $location) {
 
 
         var factory = {
@@ -176,7 +176,43 @@
                     animation: true,
                     templateUrl: 'modal/mRestablecerPass.html',
                     controller: 'RestablecerPassController',
-                    controllerAs: 'vmm'
+                    controllerAs: 'vmmm',
+                    size: "sm"
+                });
+
+                modalInstance.result.then(function () {
+
+                }, function () {
+
+                });
+            },
+            /**
+             * @method help 
+             * @memberof modalFactory
+             * @description
+             * Abre el modal de ayuda con el template dependiendo de la vista
+             */
+            help: function () {
+                var template;
+                switch ($location.path()) {
+                    case "/principal/home":
+                        template = "hHome.html";
+                        break;
+                    case "/principal/reservar":
+                        template = "hReservar.html";
+                        break;
+                    case "/principal/administrador":
+                        template = "hAdministrador.html";
+                        break;
+                    case "/principal/perfil":
+                        template = "hConfiguracion.html"
+                        break;
+                }
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'modal/' + template,
+                    controller: 'HelpController',
+                    controllerAs: 'vmmm'
                 });
 
                 modalInstance.result.then(function () {

@@ -45,8 +45,8 @@
          * Cierra el modal actual y abre el de restablecer contraseña
          */
         vm.restablecerPass=function(){
-            vm.restablecerPass();
-            $uibModalInstance.close();
+            vm.restablecer();
+            vm.close();
         }
     }
 })();
