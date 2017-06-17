@@ -1,35 +1,32 @@
-<div class="">
+<div syle="padding: 15px;">
     <div>
         <button type="button" class="close" ng-click="vmm.close()" aria-hidden="true" style="margin-right:9px;margin-top:8px;">
 		    <span class="span-cancelar">Cancelar</span><strong>&#32;&times;</strong>  
         </button>
         <br><br>
-        <h4  class="entrar-hw">
+        <h4 class="entrar-hw">
             <strong>Entrar en HourWeb</strong>
         </h4>
     </div>
-    
-    <form class="form-inline" ng-submit="vmm.iniciarSesion()">
-        <div class="">
-            <!-- se agruparan en linea -->
 
-            <fieldset>
-                <div class="form-group">
+    <form class="form-inline" ng-submit="vmm.iniciarSesion()" style="padding:10px;">
+        <div>
+            <div class="form-group">
 
-                    <div class="input-group">
-                        <input class="form-control form-login1" autofocus type="email" placeholder="Correo" required ng-model="vmm.email">
-                        <br><br>
-                        <input class="form-control form-login1" type="password" placeholder="Password" required ng-model="vmm.pass">
-                    </div>
+                <div class="input-group">
+                    <input class="form-control form-login1" autofocus type="email" placeholder="Correo" required ng-model="vmm.email">
+                    <br><br>
+                    <input class="form-control form-login1" type="password" placeholder="Password" required ng-model="vmm.pass">
                 </div>
-            </fieldset>
-            <br>
-        </div>
-        <a ng-click="vmm.restablecerPass()">¿Has olvidado tu contraseña?</a>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-md btn-info center-block" name="boton_entrar">
+            </div>
+            <div>
+                <a class="btn btn-link btn-primary olvida-pass" ng-click="vmm.restablecerPass()">¿Has olvidado tu contraseña?</a>
+                
+                <button type="submit" class="btn btn-sm btn-info center-block" name="boton_entrar">
 			    <strong>Entrar</strong>
 			</button>
+            </div>
         </div>
+
     </form>
 </div>

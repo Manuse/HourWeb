@@ -48,7 +48,7 @@ h4.entrar-hw {
 /*#e6f2ff*/
 
 input.form-control.form-login,
-input.form-control.form-login-user{
+input.form-control.form-login-user {
     background-color: #e6f2ff;
     width: 500px;
     font-family: "Verdana", Georgia, sans-serif;
@@ -63,7 +63,6 @@ input.form-control.form-login-user{
     }
 }
 
-
 /*encabezado-cod-centro formulario usuario standard */
 
 label.entrar-hw {
@@ -72,12 +71,17 @@ label.entrar-hw {
 }
 
 input.form-control.form-login1 {
-    width: 267px !important;
+    width: 260px !important;
     background-color: #e6f2ff;
     font-family: "Verdana", Georgia, sans-serif;
     font-size: 14px;
     font-weight: 400;
     margin-left: 15px;
+}
+/* aviso de pass olvidado mLoginForm */
+a.olvida-pass {
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 @media only screen and (min-width:651px) and (max-width:768px) {
@@ -88,6 +92,10 @@ input.form-control.form-login1 {
     h4.entrar-hw {
         margin-left: 60px !important;
     }
+    a.olvida-pass {
+        margin-left: 55px;
+        float: none;
+    }
 }
 
 @media only screen and (min-width:601px) and (max-width:650px) {
@@ -95,7 +103,8 @@ input.form-control.form-login1 {
         width: 520px !important;
         margin-left: 55px !important;
     }
-    h4.entrar-hw {
+    h4.entrar-hw,
+    a.olvida-pass {
         margin-left: 55px !important;
     }
 }
@@ -105,7 +114,8 @@ input.form-control.form-login1 {
         width: 423px !important;
         margin-left: 25px !important;
     }
-    h4.entrar-hw {
+    h4.entrar-hw,
+    a.olvida-pass {
         margin-left: 25px !important;
     }
 }
@@ -116,7 +126,8 @@ input.form-control.form-login1 {
         margin-left: 30px !important;
     }
     /* encabezado del login*/
-    h4.entrar-hw {
+    h4.entrar-hw,
+    a.olvida-pass {
         margin-left: 30px !important;
     }
 }
@@ -127,7 +138,8 @@ input.form-control.form-login1 {
         margin-left: 20px !important;
         font-size: 12px;
     }
-    h4.entrar-hw {
+    h4.entrar-hw,
+    a.olvida-pass {
         margin-left: 20px !important;
     }
 }
@@ -135,23 +147,31 @@ input.form-control.form-login1 {
 @media only screen and (min-width:301px) and (max-width:350px) {
     input.form-control.form-login1 {
         width: 250px !important;
-        margin-left: 10px;;
+        margin-left: 10px;
         font-size: 12px;
     }
     h4.entrar-hw {
         margin-left: 10px !important;
     }
+    a.olvida-pass {
+        margin-left: 10px;
+        font-size: 12px;
+    }
 }
 
 @media only screen and (min-width:200px) and (max-width:300px) {
     input.form-control.form-login1 {
-        width: 200px !important;
-        margin-left:15px !important;
+        width: 190px !important;
+        margin-left: 15px !important;
         font-size: 12px;
     }
     h4.entrar-hw {
         margin-left: 15px !important;
-        font-size: 17px;
+        font-size: 15px;
+    }
+    a.olvida-pass {
+        margin-left: 15px;
+        font-size: 11px;
     }
 }
 
@@ -160,6 +180,7 @@ input.form-control.form-login1 {
         font-size: 1.5em;
     }
 }
+
 
 /*@media (min-width:769){
      input.form-control.form-login,
