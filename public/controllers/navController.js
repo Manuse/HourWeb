@@ -7,6 +7,19 @@
      * @description
      * Controlador del navbar
      */
+
+    /**
+     * @method navController
+     * @memberof controllers
+     * @param {object} userFactory factoria con los datos del usuario
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} timeout servicio de timeout de angular
+     * @param {object} location servicio de rutas de angular
+     * @param {object} log servicio de logging de angular
+     * @param {object} modalFactory factoria de modales
+     * @description
+     * Controlador del navbar
+     */
     function navController(userFactory, AUTH, $timeout, $location, $log, modalFactory) {
         var vm = this;
         vm.ayuda=modalFactory.help;

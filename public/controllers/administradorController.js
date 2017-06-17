@@ -9,6 +9,22 @@
      * @description
      * Controlador de la vista administrador.html
      */
+
+    /**
+     * @method administradorController
+     * @memberof controllers
+     * @param {object} userFactory factoria con los datos del usuario
+     * @param {object} DATABASE constante de firebase.database()
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} log servicio de logging de angular
+     * @param {object} timeout servicio de timeout de angular
+     * @param {object} location servicio de rutas de angular
+     * @param {object} modalFactory factoria de modales
+     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} progressBarFactory factoria para manejar la progress bar
+     * @description
+     * Controlador de la vista administrador.html
+     */
     function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, modalFactory, errorFactory, progressBarFactory) {
         var vm = this;
         var centro;

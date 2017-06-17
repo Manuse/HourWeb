@@ -10,6 +10,13 @@
      * @description 
      * Factoria para manejar el progreso de la progressBar
      */
+
+    /**
+     * @method progressBarFactory
+     * @memberof factories
+     * @description 
+     * Factoria para manejar el progreso de la progressBar
+     */
     function progressBarFactory() {
         var progress = 0;
 

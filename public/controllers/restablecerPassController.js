@@ -9,6 +9,16 @@
      * @description
      * Controlador del modal mRestablecerPass.html
      */
+
+    /**
+     * @method restablecerPassController
+     * @memberof controllers
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} modalFactory factoria de modales
+     * @param {object} uibModalInstance servicio de modales del angular
+     * @description
+     * Controlador del modal mRestablecerPass.html
+     */
     function restablecerPassController(AUTH, modalFactory, $uibModalInstance) {
         var vm = this;
         vm.error=modalFactory.error

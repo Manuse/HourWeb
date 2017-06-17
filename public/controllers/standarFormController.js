@@ -7,6 +7,19 @@
      * @description 
      * Controlador del modal mStandarForm.html para el registro de los usuarios 
      */
+
+    /**
+     * @method standarFormController
+     * @memberof controllers
+     * @param {object} DATABASE constante de firebase.database()
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} registerFactory factoria para manejar la progress bar
+     * @param {object} uibModalInstance servicio de modales del angular
+     * @param {object} modalFactory factoria de modales
+     * @param {object} errorFactory factoria con los mensajes de error
+     * @description 
+     * Controlador del modal mStandarForm.html para el registro de los usuarios 
+     */
     function standarFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory, errorFactory) {
         var vm = this;
         vm.error = modalFactory.error;

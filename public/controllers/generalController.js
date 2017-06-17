@@ -9,6 +9,19 @@
      * @description
      * Controlador general de toda la pagina, solo maneja la sesion y un metodo de limpieza de la base de datos
      */
+
+    /**
+     * @method configuracionController
+     * @memberof controllers
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} DATABASE constante de firebase.database()
+     * @param {object} location servicio de rutas de angular
+     * @param {object} userFactory factoria con los datos del usuario
+     * @param {object} log servicio de logging de angular
+     * @param {object} timeout servicio de timeout de angular
+     * @description
+     * Controlador general de toda la pagina, solo maneja la sesion y un metodo de limpieza de la base de datos
+     */
     function generalController(AUTH, DATABASE, $location, userFactory, $log, $timeout) {
         var vm = this;
         vm.location = $location;

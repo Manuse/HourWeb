@@ -1,5 +1,8 @@
 (function () {
-
+    /** @namespace controllers*/
+    /** @namespace factories*/
+    /** @namespace directives*/
+    /** @namespace filters */
     /**
      * @module app
      * @requires ngAnimate

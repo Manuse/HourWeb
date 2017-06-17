@@ -11,6 +11,15 @@
      * @description 
      * Factoria para abrir los distintos modales
      */
+
+    /**
+     * @method modalFactory
+     * @memberof factories
+     * @param {object} uibModal servicio de modales del angular
+     * @param {object} location servicio de rutas de angular
+     * @description 
+     * Factoria para abrir los distintos modales
+     */
     function modalFactory($uibModal, $location) {
 
 
@@ -208,7 +217,6 @@
                         template = "hConfiguracion.html"
                         break;
                 }
-                console.log(template)
                 var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: 'help/' + template,

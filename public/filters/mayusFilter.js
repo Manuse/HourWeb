@@ -5,7 +5,13 @@
         .module('app')
         .filter('mayus', mayusFilter);
 
-    //Pone en mayuscula la primera letra del texto
+    
+    /**
+     * @method mayusFilter
+     * @memberof filters
+     * @description
+     * Pone en mayuscula la primera letra del texto
+     */
     function mayusFilter() {
         return function (text) {
             if (text != null) {

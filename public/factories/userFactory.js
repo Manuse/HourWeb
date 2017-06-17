@@ -9,6 +9,16 @@
      * @description 
      * Factoria para compartir informacion del usuario
      */
+
+    /**
+     * @method userFactory
+     * @memberof factories
+     * @param {object} DATABASE constante de firebase.database()
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} timeout servicio de timeout de angular
+     * @description 
+     * Factoria para compartir informacion del usuario
+     */
     function userFactory(DATABASE, AUTH, $timeout) {
         var users;
         var photo;

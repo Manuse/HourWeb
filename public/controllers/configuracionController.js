@@ -10,6 +10,22 @@
      * @description
      * Controlador de la vista configuracion.html
      */
+
+    /**
+     * @method configuracionController
+     * @memberof controllers
+     * @param {object} uibModalInstance servicio de modales del angular
+     * @param {object} userFactory factoria con los datos del usuario
+     * @param {object} DATABASE constante de firebase.database()
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} STORAGE constante de firebase.storage
+     * @param {object} log servicio de logging de angular
+     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} modalFactory factoria de modales
+     * @param {object} progressBarFactory factoria para manejar la progress bar
+     * @description
+     * Controlador de la vista configuracion.html
+     */
     function configuracionController($timeout, userFactory, DATABASE, AUTH, STORAGE, $log, errorFactory, modalFactory, progressBarFactory) {
         var vm = this;
         vm.nPass1 = "";

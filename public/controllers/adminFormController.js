@@ -7,6 +7,19 @@
      * @description 
      * Controlador del modal del formulario del registro como administrador mAdminForm.html
      */
+   
+    /**
+     * @method adminFormController
+     * @memberof controllers
+     * @param {object} DATABASE constante de firebase.database()
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} uibModalInstance servicio de modales del angular
+     * @param {object} modalFactory factoria de modales
+     * @param {object} log servicio de logging de angular
+     * @param {object} errorFactory factoria con los mensajes de error
+     * @description 
+     * Controlador del modal del formulario del registro como administrador mAdminForm.html
+     */
     function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory,$log, errorFactory) {
         var vm = this;
         vm.inicioHora = new Date('1/1/1 12:00');

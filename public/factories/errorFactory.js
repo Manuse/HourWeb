@@ -10,6 +10,13 @@
      * @description
      * Factoria para compartir los distintos mensajes de error
      */
+
+    /**
+     * @method errorFactory
+     * @memberof factories
+     * @description
+     * Factoria para compartir los distintos mensajes de error
+     */
     function errorFactory() {
 
         var factory = {

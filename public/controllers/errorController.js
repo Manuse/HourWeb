@@ -9,6 +9,16 @@
      * @description
      * Controlador del modal nError.html usado tambien para notificaciones
      */
+
+    /**
+     * @method errorController
+     * @memberof controllers
+     * @param {object} uibModalInstance servicio de modales del angular
+     * @param {object} item objeto con informacion del controlador que abre el modal
+     * @param {object} timeout servicio de timeout de angular
+     * @description
+     * Controlador del modal nError.html usado tambien para notificaciones
+     */
     function errorController($uibModalInstance, item, $timeout) {
         var vm = this;
         vm.error = item.error;

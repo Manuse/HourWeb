@@ -9,7 +9,18 @@
      * @description 
      * Factoria para compartir los metodos de registro
      */
-    function registerFactory(AUTH, DATABASE, $uibModal, errorFactory, modalFactory) {
+
+    /**
+     * @method registerFactory
+     * @memberof factories
+     * @param {object} AUTH constante de firebase.auth()
+     * @param {object} DATABASE constante de firebase.database()
+     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} modalFactory factoria de modales
+     * @description 
+     * Factoria para compartir los metodos de registro
+     */
+    function registerFactory(AUTH, DATABASE, errorFactory, modalFactory) {
 
         var factory = {
             /**

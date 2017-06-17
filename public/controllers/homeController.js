@@ -9,7 +9,20 @@
      * @description 
      * Controlador de la vista home.html
      */
-    function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory, $window) {
+
+    /**
+     * @method homeController
+     * @memberof controllers
+     * @param {object} userFactory factoria con los datos del usuario
+     * @param {object} timeout servicio de timeout de angular
+     * @param {object} DATABASE constante de firebase.database()
+     * @param {object} log servicio de logging de angular
+     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} modalFactory factoria de modales
+     * @description 
+     * Controlador de la vista home.html
+     */
+    function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory) {
         var vm = this;
         vm.confirmacion = modalFactory.confirmacion;
         vm.error = modalFactory.error;

@@ -5,6 +5,14 @@
         .filter('messageFilter', messageFilter);
     
     //filtro para los mensajes segun si son todos, los enviados o recibidos
+    /**
+     * @method messageFilter
+     * @memberof filters
+     * @param {object} userFactory factoria con los datos del usuario 
+     * @description
+     * Filtro para los mensajes segun si son todos, los enviados o recibidos
+     * los argumentos que recibe son el filtro y pagina
+     */
     function messageFilter(userFactory) {
         return function (array, filtro, page) {
             switch (filtro) {//dependiendo del caso mostrara unos mensajes u otros

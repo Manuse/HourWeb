@@ -4,7 +4,13 @@
         .module('app')
         .directive('filedirective', fileDirective);
 
-    //directiva que recoge la imagen
+    
+    /**
+     * @method fileDirective
+     * @memberof directives
+     * @description
+     * Directiva que recoge la imagen y ejecuta una funcion para trabajar la imagen
+     */
     function fileDirective() {
         return {
             

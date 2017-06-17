@@ -9,6 +9,16 @@
      * @description
      * Controlador del modal mProgressBar
      */
+
+    /**
+     * @method progressBarController
+     * @memberof controllers
+     * @param {object} uibModalInstance servicio de modales del angular
+     * @param {object} progressBarFactory factoria para manejar la progress bar
+     * @param {object} timeout servicio de timeout de angular
+     * @description
+     * Controlador del modal mProgressBar
+     */
     function progressBarController($uibModalInstance, progressBarFactory, $timeout) {
         var vm = this;
         vm.value = progressBarFactory.getProgress;
