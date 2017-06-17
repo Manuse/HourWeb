@@ -1,0 +1,99 @@
+<div style="padding:30px;">
+
+    <div>
+        <button type="button" class="close" ng-click="vmm.close()" aria-hidden="true" style="margin-right:9px;margin-top:8px;border:none;">
+		    <span class="span-cancelar">Cerrar</span><strong>&#32;&times;</strong>  
+        </button>
+
+    </div>
+    <br><br><br>
+    <p class="letra-ayuda">La ventana de Inicio de HourWeb consta de tres pestañas:
+        <br><br>
+
+        <strong>1. <u>Mis Reservas</u></strong>
+        <br><br> En ella aparecen una serie de botones además de las listas del usuario donde se plasman los recursos ya reservados en la parte de <strong>Reservas</strong>, a la cual accedemos pulsando el botón Reservar.
+        <button class="btn btn-info btn-xs" style="border:none;">RESERVAR</button>
+    </p>
+    <br>
+    <p class="letra-ayuda">Los botones <strong>Semana1 y Semana2</strong> nos permitirán visualizar el listado de reservas repartidas entre la semana actual y la inmediata a la misma.</p>
+    <div>
+        <img class="img-responsive" src="imagenes/boton-semana12.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        Bajo la serie de botones mencionados, tenemos la lista de reservas del usuario logueado. Cada casilla representa una reserva ya realizada. La fecha aparece en el encabezado de las listas. <br>
+    </p>
+    <div>
+        <img class="img-responsive" src="imagenes/listas-full.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda"><strong>Nos encontraremos las siguientes casillas:</strong>:</p>
+    <br>
+    <p class="letra-ayuda">
+        <u><strong>Reserva no permanente</strong></u>: se trata de un recurso escolar de carácter no permanente, cuyo tramo horario del día al que pertenece aún no ha comenzado. El botón rojo permite eliminar la casilla del listado. Se mostrará un aviso al usuario solicitándole si desea borrarla o no. Esta casilla siempre tendrá el fondo verde con los bordes azules, y siempre contendrá un botón para eliminar la casilla de la lista arriba a la derecha.
+    </p>
+    <div>
+        <img class="img-responsive" src="imagenes/casilla-no-permanente.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        <strong><u>Reserva permanente</u></strong>: a priori tiene el mismo aspecto que el recurso no permanente, con la salvedad de que no presenta el botón de eliminar, ya que este proceso, si se desea, debe ser ejecutado por un usuario con permiso de administración del centro en la <strong>pestaña Reservas Permanentes en la ventana de Administración</strong>.
+    </p>
+
+    <div>
+        <img class="img-responsive" src="imagenes/casilla-permanente.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        <strong><u>Reserva actual</u></strong>: se trata de la reserva de la lista que está en uso <strong>actualmente</strong>. Si cumple esas premisas, aparecerá con el fondo azul claro y los bordes azules.
+    </p>
+    <br>
+    <div>
+        <img class="img-responsive" src="imagenes/casilla-actual.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        <strong><u>Reserva pasada o concluida</u></strong>: la casilla tiene un fondo rojo con bordes grises. Se trata de una reserva perteneciente a una <strong>hora o día anterior al actual</strong>.
+    </p>
+    <br>
+    <div>
+        <img class="img-responsive" src="imagenes/casilla-pasada.png" alt="foto no encontrada">
+    </div>
+    <br><br>
+
+    <p class="letra-ayuda">
+        <br><br>
+        <strong>2. <u>Mi Horario</u></strong>
+    </p>
+
+    <br>
+    <div>
+        <img class="img-responsive" src="imagenes/tabla-mi-horario.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        En esta pestaña, el usuario tiene la posibilidad de fijar el curso en el día y la hora que le corresponde. Sólo con pasar el cursor del ratón por la celda deseada, aparecerá un menú desplegable con los cursos ya ingresados por el administrador/es. Luego eligirá el curso (esta acción es opcional, pero al realizarse, el curso se verá plasmado en las listas de la pestaña 'Mis Reservas', siempre que el usuario disponga en esa hora de algún recurso reservado)
+        <br>
+        <em style="font-size:12px;">
+      <strong>Nota: funcionalidad no disponible para tablets ni para dispositivos móviles.</strong></em>
+    </p>
+    <br>
+
+    <p class="letra-ayuda">
+        <br><br>
+        <strong>3. <u>Mensajes</u></strong>
+    </p>
+    <br>
+    <div>
+        <img class="img-responsive" src="imagenes/mensajes.png" alt="foto no encontrada">
+    </div>
+    <br>
+    <p class="letra-ayuda">
+        La aplicación web permite a los usuarios de un mismo centro enviarse mensajes. En el menú de destinatario seleccionamos al miembro del centro al que deseemos enviar la notificación. Éste último lo recibirá en su bandeja de entrada situada en la parte inferior.
+    </p>
+    <br>
+    <div>
+        <button class="btn btn-warning btn-xs center-block">SALIR</button>
+    </div>
+
+</div>

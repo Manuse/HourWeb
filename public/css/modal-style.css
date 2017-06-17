@@ -1,5 +1,10 @@
 /* INDEX - MODALES - */
-
+div.modal-content{
+    overflow-y: auto;
+}
+p.letra-ayuda{
+    font-size: 14px;  
+}
 p.clase-error {
     text-align: center;
     color: red;
