@@ -7,8 +7,9 @@
      * @description
      * Controlador del navbar
      */
-    function navController(userFactory, AUTH, $timeout, $location, $log) {
+    function navController(userFactory, AUTH, $timeout, $location, $log, modalFactory) {
         var vm = this;
+        vm.ayuda=modalFactory.help;
 
         /*
          *Intervalo para recargar

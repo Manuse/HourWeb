@@ -208,9 +208,10 @@
                         template = "hConfiguracion.html"
                         break;
                 }
+                console.log(template)
                 var modalInstance = $uibModal.open({
                     animation: true,
-                    templateUrl: 'modal/' + template,
+                    templateUrl: 'help/' + template,
                     controller: 'HelpController',
                     controllerAs: 'vmmm'
                 });
