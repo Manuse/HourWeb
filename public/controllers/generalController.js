@@ -71,7 +71,7 @@
                 //seleccionamos el sabado pasado para asegurarnos de no borrar ninguna que nos interese
                 var dia = new Date(new Date().getTime() - (86400000 * (new Date().getDay()+1)));
                 //retrocedemos 2 semanas mas y borramos las reservas de 2 semanas atras
-                dia=new Date(dia.getTime()-86400000*14); 
+                //dia=new Date(dia.getTime()-86400000*14); 
                 for(var reserva in snapshot.val()){
                     if(snapshot.val()[reserva].perm==null && new Date(snapshot.val()[reserva].fecha)<dia){
                            DATABASE.ref("centros/" + cod + "/reservas/"+reserva).remove();
@@ -79,6 +79,5 @@
                 }
             });
         }
-
     }
 })();
