@@ -1,0 +1,148 @@
+/*login */
+
+
+.fondo-login {
+    background-image: url('../imagenes/educacion.jpg');
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+.titulo_web2 {
+    /* microsoft explorer*/
+    font-size: 50px;
+    color: white;
+}
+
+.div-carrusel {
+    
+    border-width: medium;
+    border-style: solid;
+    border-color: floralwhite;
+}
+
+figure>div.slide{
+    width: 800px;
+    height: 450px;
+}
+
+/* carrusel del login */
+
+
+
+.slide2 {
+    overflow: hidden;
+}
+
+.slide2 figure div {
+    width: 20%;
+    float: left;
+}
+
+.slide2 figure img {
+    width: 100%;
+    float: left;
+}
+
+.slide2 figure {
+    position: relative;
+    width: 500%;
+    /* 100 x nº de imagenes */
+    margin: 0;
+    left: 0;
+    animation: 50s slidy infinite;
+}
+
+
+/* rotacion de las imagenes recorriendo un ancho */
+
+@keyframes slidy {
+    0% {
+        left: 0%
+    }
+    10% {
+        left: 0%;
+    }
+    12% {
+        left: -100%;
+    }
+    22% {
+        left: -100%;
+    }
+    24% {
+        left: -200%;
+    }
+    34% {
+        left: -200%;
+    }
+    36% {
+        left: -300%;
+    }
+    46% {
+        left: -300%;
+    }
+    48% {
+        left: -400%;
+    }
+    58% {
+        left: -400%;
+    }
+    60% {
+        left: -300%;
+    }
+    70% {
+        left: -300%;
+    }
+    72% {
+        left: -200%;
+    }
+    82% {
+        left: -200%;
+    }
+    84% {
+        left: -100%;
+    }
+    94% {
+        left: -100%;
+    }
+    96% {
+        left: 0%;
+    }
+    100% {
+        left: 0%;
+    }
+}
+
+
+/* Fuente externa del login*/
+
+.externafont {
+    font-family: 'Tahoma', serif;
+    color: white;
+    font-weight: bolder;
+    border: 2px solid white;
+    border-right: 0;
+    border-left: 0;
+}
+
+@media only screen and (min-width:200px) and (max-width:399px) {
+    .externafont {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width:400px) and (max-width:501px) {
+    .externafont {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width:502px) and (max-width:699px) {
+    .externafont {
+        font-size: 25px;
+    }
+}
+
+@media (min-width:701px) {
+    .externafont {
+        font-size: 28px;
+    }
+}
