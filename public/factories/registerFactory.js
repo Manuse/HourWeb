@@ -15,12 +15,12 @@
      * @memberof factories
      * @param {object} AUTH constante de firebase.auth()
      * @param {object} DATABASE constante de firebase.database()
-     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} textFactory factoria con los mensajes 
      * @param {object} modalFactory factoria de modales
      * @description 
      * Factoria para compartir los metodos de registro
      */
-    function registerFactory(AUTH, DATABASE, errorFactory, modalFactory) {
+    function registerFactory(AUTH, DATABASE, textFactory, modalFactory) {
 
         var factory = {
             /**
@@ -41,9 +41,9 @@
                     });
                     insertarUsuario(dataCenter, dataUser, AUTH.currentUser.uid);
                     AUTH.currentUser.sendEmailVerification();
-                    modalFactory.error("Se ha enviado un email de verificacion a su correo", 1);
+                    modalFactory.error(textFactory.getAviso("verificacion"), 1);
                 }, function (err) { //crea el usuario
-                    modalFactory.error(errorFactory.getError(err));
+                    modalFactory.error(textFactory.getError(err));
                 });
             }
         };

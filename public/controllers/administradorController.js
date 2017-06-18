@@ -20,12 +20,12 @@
      * @param {object} timeout servicio de timeout de angular
      * @param {object} location servicio de rutas de angular
      * @param {object} modalFactory factoria de modales
-     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} textFactory factoria con los mensajes 
      * @param {object} progressBarFactory factoria para manejar la progress bar
      * @description
      * Controlador de la vista administrador.html
      */
-    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, modalFactory, errorFactory, progressBarFactory) {
+    function administradorController(userFactory, DATABASE, AUTH, $log, $timeout, $location, modalFactory, textFactory, progressBarFactory) {
         var vm = this;
         var centro;
         // Timepicker reservas permanentes       
@@ -129,11 +129,11 @@
                         });
                         vm.recurso = "";
                     } else {
-                        vm.error(errorFactory.getError("noRecurso"));
+                        vm.error(textFactory.getError("noRecurso"));
                     }
                 });
             } else {
-                vm.error(errorFactory.getError("campoVacio"));
+                vm.error(textFactory.getError("campoVacio"));
             }
         };
 
@@ -181,9 +181,9 @@
                         }
                     })
                 }
-                vm.confirmacion("¿Borrar este tipo?", funcion);
+                vm.confirmacion(textFactory.getAviso("borrarTipo"), funcion);
             } else {
-                vm.error(errorFactory.getError("sinTipo"));
+                vm.error(textFactory.getError("sinTipo"));
             }
         };
 
@@ -201,10 +201,10 @@
                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/tipos/").set(vm.tipologias);
                     vm.ntipo = "";
                 } else {
-                    vm.error(errorFactory.getError("noTipo"));
+                    vm.error(textFactory.getError("noTipo"));
                 }
             } else {
-                vm.error(errorFactory.getError("campoVacio"));
+                vm.error(textFactory.getError("campoVacio"));
             }
         };
 
@@ -219,7 +219,7 @@
             var funcion = function () {
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/recursos/" + recurso).remove();
             };
-            vm.confirmacion("¿Borrar el recurso " + recurso + "?", funcion);
+            vm.confirmacion(textFactory.getAviso("borrarRecurso",recurso), funcion);
         };
 
         /**
@@ -339,12 +339,12 @@
                         })
 
                     }
-                    vm.confirmacion("Se borraran todas las reservas normales que coincidan con esta reserva ¿Está seguro?", funcion);
+                    vm.confirmacion(textFactory.getAviso("hacerRP"), funcion);
                 } else {
-                    vm.error(errorFactory.getError("existeRP"));
+                    vm.error(textFactory.getError("existeRP"));
                 }
             } else {
-                vm.error(errorFactory.getError("debeRecurso"));
+                vm.error(textFactory.getError("debeRecurso"));
             }
         };
 
@@ -394,10 +394,10 @@
                     DATABASE.ref("centros/" + vm.getUser().codcentro + "/cursos/").set(vm.cursos);
                     vm.nCurso = "";
                 } else {
-                    vm.error(errorFactory.getError("noCurso"));
+                    vm.error(textFactory.getError("noCurso"));
                 }
             } else {
-                vm.error(errorFactory.getError("campoVacio"));
+                vm.error(textFactory.getError("campoVacio"));
             }
         }
 
@@ -433,7 +433,7 @@
                     })
                 }
             }
-            vm.confirmacion("¿Borrar el curso " + curso + "? eso también borrará el curso de las reservas y de los horarios", funcion);
+            vm.confirmacion(textFactory.getAviso("borrarCurso", curso), funcion);
         }
 
         /**
@@ -498,7 +498,7 @@
                 vm.RP.splice(vm.RP.indexOf(rp), 1);
                 DATABASE.ref("centros/" + vm.getUser().codcentro + "/reservas/" + rp.code).remove();
             }
-            vm.confirmacion("¿Borrar esta reserva permanente?", funcion);
+            vm.confirmacion(textFactory.getAviso("borrarRP"), funcion);
         };
 
         /**
@@ -534,10 +534,10 @@
                 DATABASE.ref("centros/" + vm.getUser().codcentro).update({
                     nombre: vm.nCentro
                 });
-                vm.error("Nombre del centro cambiado", 1)
+                vm.error(textFactory.getAviso("centroCambiado"), 1)
                 vm.datos = !vm.datos;
             } else {
-                vm.error(errorFactory.getError("campoVacio"));
+                vm.error(textFactory.getError("campoVacio"));
             }
         }
 
@@ -560,7 +560,7 @@
          */
         vm.cambiarHora = function () {
             if (vm.inicio >= vm.fin || vm.fin - vm.inicio < 7200000) {
-                vm.error(errorFactory.getError("errorHoraRegistro"));
+                vm.error(textFactory.getError("errorHoraRegistro"));
             } else {
                 var funcion = function () {
                     vm.progressBar();
@@ -591,7 +591,7 @@
                     }
                     progressBarFactory.sumProgress(30);
                 }
-                vm.confirmacion("Se borraran los horarios y reservas fuera del horario¿Esta seguro?", funcion);
+                vm.confirmacion(textFactory.getAviso("cambiarHora"), funcion);
             }
         };
 

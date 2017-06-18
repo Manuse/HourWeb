@@ -20,13 +20,13 @@
      * @param {object} AUTH constante de firebase.auth()
      * @param {object} STORAGE constante de firebase.storage
      * @param {object} log servicio de logging de angular
-     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} textFactory factoria con los mensajes de
      * @param {object} modalFactory factoria de modales
      * @param {object} progressBarFactory factoria para manejar la progress bar
      * @description
      * Controlador de la vista configuracion.html
      */
-    function configuracionController($timeout, userFactory, DATABASE, AUTH, STORAGE, $log, errorFactory, modalFactory, progressBarFactory) {
+    function configuracionController($timeout, userFactory, DATABASE, AUTH, STORAGE, $log, textFactory, modalFactory, progressBarFactory) {
         var vm = this;
         vm.nPass1 = "";
         vm.nPass2 = "";
@@ -100,24 +100,24 @@
                                 vm.nPass1 = "";
                                 vm.nPass2 = "";
                                 vm.oldPass = "";
-                                vm.error("Contraseña cambiada", 1);
+                                vm.error(textFactory.getAviso("passCambiada"), 1);
                             }, 0);
                         }, function (err) {
                             $timeout(function () {
-                                vm.error(errorFactory.getError(err));
+                                vm.error(textFactory.getError(err));
                             }, 0)
                         });
                     }, function (err) {
                         $timeout(function () {
-                            vm.error(errorFactory.getError(err));
+                            vm.error(textFactory.getError(err));
                         }, 0);
 
                     });
                 } else {
-                    vm.error(errorFactory.getError("contraseñaDistinta"));
+                    vm.error(textFactory.getError("contraseñaDistinta"));
                 }
             } else {
-                vm.error(errorFactory.getError("campoVacio"));
+                vm.error(textFactory.getError("campoVacio"));
             }
         };
 
@@ -149,7 +149,7 @@
                     progressBarFactory.setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100 - 1);
                 }, function (err) { //en caso de error
                     progressBarFactory.setProgress(100);
-                    vm.error(errorFactory.getError(err));
+                    vm.error(textFactory.getError(err));
                 }, function () { //cuando finaliza
                     AUTH.currentUser.updateProfile({ //actualizamos la url de la foto de perfil del usuario por si tuviera otra distinta
                         photoURL: uploadTask.snapshot.downloadURL
@@ -160,12 +160,12 @@
                         }, 0);
                     }, function (err) {
                         progressBarFactory.setProgress(100);
-                        vm.error(errorFactory.getError(err));
+                        vm.error(textFactory.getError(err));
                     });
                     //refresca  la foto de la configuracion
                 });
             } else {
-                vm.error(errorFactory.getError("bigImg"));
+                vm.error(textFactory.getError("bigImg"));
             }
         };
 
@@ -220,23 +220,23 @@
                                             displayName: vm.nombre
                                         });
                                         progressBarFactory.sumProgress(10)
-                                        vm.error("Se han actualizado sus datos",1);
+                                        vm.error(textFactory.getAviso("updateDatos"),1);
                                     }, 0);
                                 }, function (err) {
                                     progressBarFactory.setProgress(100)
-                                    vm.error(errorFactory.getError(err));
+                                    vm.error(textFactory.getError(err));
                                 });
 
                             });
                         });
                     } else {
-                        vm.error(errorFactory.getError("telefono/largo"));
+                        vm.error(textFactory.getError("telefono/largo"));
                     }
                 } else {
-                    vm.error(errorFactory.getError("telefono/formato"));
+                    vm.error(textFactory.getError("telefono/formato"));
                 }
             } else {
-                vm.error(errorFactory.getError("nombre/apellido"));
+                vm.error(textFactory.getError("nombre/apellido"));
             }
 
         }
@@ -297,7 +297,7 @@
                                                 cod_remitente: user.val()[id].codcentro,
                                             });
                                         }, function (err) {
-                                            vm.error(errorFactory.getError(err));
+                                            vm.error(textFactory.getError(err));
                                         });
                                     }
                                 } else {
@@ -334,12 +334,12 @@
                                             userFactory.setUser(user);
                                             progressBarFactory.sumProgress(10);
                                         }, function (err) {
-                                            vm.error(errorFactory.getError(err));
+                                            vm.error(textFactory.getError(err));
                                         });
                                     });
                                 });
                             };
-                            vm.confirmacion("Si cambia de centro se borraran sus reservas, su calendario de horarios y no podra ver los mensajes del antiguo centro ¿Esta usted seguro?", funcion1)
+                            vm.confirmacion(textFactory.getAviso("cambioCentro1"), funcion1)
                         } else {
                             var funcion2 = function () {
                                 vm.progressBar();
@@ -376,18 +376,18 @@
                                             userFactory.setUser(user);
                                             progressBarFactory.sumProgress(15);
                                         }, function (err) {
-                                            vm.error(errorFactory.getError(err));
+                                            vm.error(textFactory.getError(err));
                                         });
                                     });
                                 }, function (err) {
-                                    vm.error(errorFactory.getError(err));
+                                    vm.error(textFactory.getError(err));
                                 });
                             };
-                            vm.confirmacion("Usted es el unico miembro asi que se borrara el centro y su calendario de horarios ¿Esta usted seguro?", funcion2);
+                            vm.confirmacion(textFactory.getAviso("cambioCentro2"), funcion2);
                         }
                     });
                 } else { //si el codigo del centro no es valido
-                    vm.error(errorFactory.getError("cambioCentro"));
+                    vm.error(textFactory.getError("cambioCentro"));
                 }
             });
         }

@@ -15,11 +15,11 @@
      * @param {object} AUTH constante de firebase.auth()
      * @param {object} uibModalInstance servicio de modales del angular
      * @param {object} modalFactory factoria de modales
-     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} textFactory factoria con los mensajes
      * @description
      * Controlador del modal mLoginForm.html para loguearse en la pagina
      */
-    function loginFormController(AUTH, $uibModalInstance, modalFactory, errorFactory) {
+    function loginFormController(AUTH, $uibModalInstance, modalFactory, textFactory) {
         var vm = this;
         vm.error = modalFactory.error;
         vm.restablecer = modalFactory.restablecerPass;
@@ -35,7 +35,7 @@
                     $uibModalInstance.close();
                 },
                 function (err) {
-                    vm.error(errorFactory.getError(err));
+                    vm.error(textFactory.getError(err));
                 });
         }
 

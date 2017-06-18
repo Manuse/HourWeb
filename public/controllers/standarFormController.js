@@ -16,11 +16,11 @@
      * @param {object} registerFactory factoria para manejar la progress bar
      * @param {object} uibModalInstance servicio de modales del angular
      * @param {object} modalFactory factoria de modales
-     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} textFactory factoria con los mensajes
      * @description 
      * Controlador del modal mStandarForm.html para el registro de los usuarios 
      */
-    function standarFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory, errorFactory) {
+    function standarFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory, textFactory) {
         var vm = this;
         vm.error = modalFactory.error;
         
@@ -31,16 +31,12 @@
          * Valida los campos del formulario y su son validos pasa a comprobar el centro
          */
         vm.registrar = function () {
-            console.log("entra")
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0
-                || vm.nombre == null || vm.apellido == null || vm.email == null || vm.pass1 == null || vm.pass2 == null || vm.centro == null) {
-                console.log("entra1")
-                vm.error(errorFactory.getError("campoVacio"));
+                || vm.nombre == null || vm.apellido == null || vm.email == null || vm.pass1 == null || vm.pass2 == null || vm.centro == null) {             
+                vm.error(textFactory.getError("campoVacio"));
             } else if (vm.pass1 != vm.pass2) {
-                console.log("entra2")
-                vm.error(errorFactory.getError("contraseñaDistinta"));
+                vm.error(textFactory.getError("contraseñaDistinta"));
             } else {
-                console.log("entra3")
                 vm.comprobarCentro();
             }
         }
@@ -66,7 +62,7 @@
                 if (snapshot.exists()) { //si existe registra el usuario
                     registerFactory.registrarUser(newuser, {}, vm.email, vm.pass1);
                 } else {
-                    vm.error(errorFactory.getError("centroInexistente"));
+                    vm.error(textFactory.getError("centroInexistente"));
                 }
             });
         };

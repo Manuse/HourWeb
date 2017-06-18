@@ -16,11 +16,11 @@
      * @param {object} uibModalInstance servicio de modales del angular
      * @param {object} modalFactory factoria de modales
      * @param {object} log servicio de logging de angular
-     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} textFactory factoria con los mensajes de error
      * @description 
      * Controlador del modal del formulario del registro como administrador mAdminForm.html
      */
-    function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory,$log, errorFactory) {
+    function adminFormController(DATABASE, AUTH, registerFactory, $uibModalInstance, modalFactory,$log, textFactory) {
         var vm = this;
         vm.inicioHora = new Date('1/1/1 12:00');
         vm.finHora = new Date('1/1/1 13:00');
@@ -35,11 +35,11 @@
         vm.registrar = function () {
             if (vm.nombre == 0 || vm.apellido == 0 || vm.email == 0 || vm.pass1 == 0 || vm.pass2 == 0 || vm.centro == 0
                 || vm.nombre == null || vm.apellido == null || vm.email == null || vm.pass1 == null || vm.pass2 == null || vm.centro == null) {
-                vm.error(errorFactory.getError("campoVacio"));
+                vm.error(textFactory.getError("campoVacio"));
             } else if (vm.inicioHora >= vm.finHora || vm.finHora-vm.inicioHora < 7200000) {
-                vm.error(errorFactory.getError("errorHoraRegistro"));
+                vm.error(textFactory.getError("errorHoraRegistro"));
             } else if (vm.pass1 != vm.pass2) {
-                vm.error(errorFactory.getError("contraseñaDistinta"));
+                vm.error(textFactory.getError("contraseñaDistinta"));
             } else {
                 vm.registrarAdmin();
             }

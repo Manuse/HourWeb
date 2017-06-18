@@ -17,12 +17,12 @@
      * @param {object} timeout servicio de timeout de angular
      * @param {object} DATABASE constante de firebase.database()
      * @param {object} log servicio de logging de angular
-     * @param {object} errorFactory factoria con los mensajes de error
+     * @param {object} textFactory factoria con los mensajes
      * @param {object} modalFactory factoria de modales
      * @description 
      * Controlador de la vista home.html
      */
-    function homeController(userFactory, $timeout, DATABASE, $log, errorFactory, modalFactory) {
+    function homeController(userFactory, $timeout, DATABASE, $log, textFactory, modalFactory) {
         var vm = this;
         vm.confirmacion = modalFactory.confirmacion;
         vm.error = modalFactory.error;
@@ -235,13 +235,15 @@
                                 $timeout(function () {
                                     array.splice(array.indexOf(reserva), 1)
                                 });
-                            }, function (err) {});
+                            }, function (err) {
+                                vm.error(textFactory.getError(err))
+                            });
                         } else {
-                            vm.error("No puedes borrar las asignaciones permanentes");
+                            vm.error(textFactory.getError("borrarPermanente"));
                         }
                     });
                 }
-                vm.confirmacion("¿Desea borrar esta reserva?", funcion)
+                vm.confirmacion(textFactory.getAviso("borrarReserva"), funcion)
             }
         };
 
@@ -399,10 +401,10 @@
                     vm.texto = "";
                     vm.asunto = "";
                 } else {
-                    vm.error(errorFactory.getError("textoVacio"));
+                    vm.error(textFactory.getError("textoVacio"));
                 }
             } else {
-                vm.error(errorFactory.getError("asuntoVacio"));
+                vm.error(textFactory.getError("asuntoVacio"));
             }
         }
 
