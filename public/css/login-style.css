@@ -1,19 +1,32 @@
 /*login */
 
+
+.fondo-login {
+    background-image: url('../imagenes/educacion.jpg');
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
 .titulo_web2 {
     /* microsoft explorer*/
     font-size: 50px;
     color: white;
 }
 
-
-/* carrusel del login */
-
 .div-carrusel {
+    
     border-width: medium;
     border-style: solid;
     border-color: floralwhite;
 }
+
+figure>div.slide{
+    width: 800px;
+    height: 450px;
+}
+
+/* carrusel del login */
+
+
 
 .slide2 {
     overflow: hidden;

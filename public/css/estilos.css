@@ -1,3 +1,8 @@
+/*  FONDO PRINCIPAL DE LA WEB */
+.fondo-principal {
+    background-color: #FFFFF0;
+}
+
 /* PERFIL home.html */
 
 @media only screen and (min-width:679px) and (max-width:992px) {
@@ -1604,25 +1609,6 @@ form>div.form-group>input.pilar {
     }
 }
 
-
-/*fondo color del mensaje*/
-
-
-/*colores*/
-
-
-/*#34495e*/
-
-
-/* aside #c0392b */
-
-.fondo-principal {
-    background-color: #FFFFF0
-}
-
-.fondo-login {
-    background-image: url('../imagenes/educacion.jpg')
-}
 
 
 /*caption tabla reservar*/
