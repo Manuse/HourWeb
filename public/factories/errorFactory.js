@@ -36,15 +36,15 @@
                     case "auth/wrong-password":
                         return "La contraseña no es correcta";
                     case "campoVacio":
-                        return "No puede haber campos vacios";
+                        return "No pueden existir campos vacios";
                     case "contraseñaDistinta":
-                        return "Las contraseñas no son iguales";
+                        return "Las contraseñas NO son iguales";
                     case "errorHoraRegistro":
-                        return "El inicio debe ser menor que el final y haber un minimo de 2 horas de diferencia";
+                        return "La hora de inicio debe ser menor que la final. Debe haber al menos 2 horas de diferencia entre ambas";
                     case "centroInexistente":
-                        return "El centro no existe";
+                        return "El centro introducido no existe";
                     case "nombre/apellido":
-                        return "El nombre y el apellidos son obligatorios";
+                        return "El nombre y apellidos son obligatorios";
                     case "noRecurso":
                         return "El recurso ya existe";
                     case "noTipo":
